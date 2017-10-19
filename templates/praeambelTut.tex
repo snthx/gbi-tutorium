@@ -1,0 +1,195 @@
+% by Stephan
+
+%% Moritz mode or Stephan mode
+\ifdefined \Moritz
+\input{../config_Moritz.tex} % Moritz mode
+\else
+\input{../config.tex} % Stephan mode
+\fi
+
+%% Beamer-Klasse im korrekten Modus
+\ifdefined \handout
+\documentclass[handout]{beamer} % Handout mode
+\else
+\documentclass{beamer}
+\fi
+%\documentclass[18pt,parskip]{beamer}
+
+%% SLIDE FORMAT
+
+% use 'beamerthemekit' for standard 4:3 ratio
+% for widescreen slides (16:9), use 'beamerthemekitwide'
+
+\usepackage{../templates/KIT-slides/beamerthemekit}
+%\usepackage{../templates/KIT-slides/beamerthemekitwide}
+
+%% TITLE PICTURE
+
+% if a custom picture is to be used on the title page, copy it into the 'logos'
+% directory, in the line below, replace 'mypicture' with the 
+% filename (without extension) and uncomment the following line
+% (picture proportions: 63 : 20 for standard, 169 : 40 for wide
+% *.eps format if you use latex+dvips+ps2pdf, 
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+\titleimage{../figures/titleimage/brain}
+
+%% TITLE LOGO
+
+% for a custom logo on the front page, copy your file into the 'logos'
+% directory, insert the filename in the line below and uncomment it
+
+%\titlelogo{mylogo}
+
+% (*.eps format if you use latex+dvips+ps2pdf,
+% *.jpg/*.png/*.pdf if you use pdflatex)
+
+%% TikZ INTEGRATION
+
+% use these packages for PCM symbols and UML classes
+% \usepackage{templates/tikzkit}
+% \usepackage{templates/tikzuml}
+
+%\usepackage{tikz}
+%\usetikzlibrary{matrix}
+%\usetikzlibrary{arrows.meta}
+%\usetikzlibrary{automata}
+%\usetikzlibrary{tikzmark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Libertine font (Original GBI font)
+\usepackage{libertine}
+%\renewcommand*\familydefault{\sfdefault}  %% Only if the base font of the document is to be sans serif
+
+%% Deutsche Silbentrennung und Beschriftungen
+\usepackage[ngerman]{babel}
+
+%% UTF-8-Encoding
+\usepackage[utf8]{inputenc}
+
+%% Schönere Schriften
+\usepackage[TS1,T1]{fontenc}
+
+%% Bibliotheken für viele mathematische Symbole
+\usepackage{amsmath, amsfonts, amssymb}
+
+
+%% Anzeigetiefe für Inhaltsverzeichnis: 1 Stufe
+\setcounter{tocdepth}{1}
+
+%% Hyperlinks
+\usepackage{hyperref}
+% I don't know why, but this works and only includes sections and NOT subsections in the pdf-bookmarks.
+\hypersetup{bookmarksdepth=subsection}
+
+%% remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+%% switch between "ngerman" and "english" for German/English style date and logos
+\selectlanguage{ngerman}
+
+%% for invisible pause texts instead of dimming
+\setbeamercovered{invisible}
+
+
+
+%%%%%%%%%%%% Shortcuts %%%%%%%%%%%%%
+\newcommand{\nM}{\mathbb{M}}
+\newcommand{\nR}{\mathbb{R}}
+\newcommand{\nN}{\mathbb{N}}
+\newcommand{\nZ}{\mathbb{Z}}
+\newcommand{\nQ}{\mathbb{Q}}
+\newcommand{\nB}{\mathbb{B}}
+\newcommand{\nC}{\mathbb{C}}
+\newcommand{\nK}{\mathbb{K}}
+\newcommand{\nF}{\mathbb{F}}
+\newcommand{\nG}{\mathbb{G}}
+\newcommand{\nullel}{\mathcal{O}}
+\newcommand{\einsel}{\mathds{1}}
+\newcommand{\nP}{\mathbb{P}}
+\newcommand{\Pot}{\mathcal{P}}
+\renewcommand{\O}{\text{O}}
+
+\newcommand{\set}[1]{\{ #1 \}}
+\newcommand{\setc}[2]{\set{#1 \mid #2}}
+\newcommand{\setC}[2]{\set{#1 \mid \text{ #2 }}}
+
+\newcommand{\setsize}[1]{\; \mid #1 \mid \; }
+
+%%%%%%%%%%%% INHALT %%%%%%%%%%%%%%%%
+
+%% Wochennummer
+%\newcounter{weeknum}
+
+%% Titelinformationen
+%\title[GBI Tutorium, Woche \theweeknum]{Grundbegriffe der Informatik \\ Tutorium \mytutnumber}
+%\subtitle{Termin \theweeknum \ | \mydate \\ \myname}
+\author[\myname]{\myname}
+\institute{Fakultät für Informatik}
+%\date{\mydate}
+
+%% Titel einfügen
+\newcommand{\titleframe}{\frame{\titlepage}\addtocounter{framenumber}{-1}}
+
+
+%% Alles starten mit \starttut{X}
+%\newcommand{\starttut}[1]{\setcounter{weeknum}{#1}\titleframe\frame{\frametitle{Inhalt}\tableofcontents} \AtBeginSection[]{%
+%\begin{frame}
+%	\tableofcontents[currentsection]
+%\end{frame}\addtocounter{framenumber}{-1}}}
+
+
+%\newcommand{\framePrevEpisode}{
+%	\begin{frame}
+%		\centering
+%		\textbf{In the previous episode of GBI...}
+%	\end{frame}
+%}
+
+%% Roadmap frame
+%table of contents
+\newcommand{\roadmap}{
+	\frame{\frametitle{Roadmap}\tableofcontents}}
+
+ \AtBeginSection[]{%
+\begin{frame}
+	\frametitle{Roadmap}
+	\tableofcontents[currentsection]
+\end{frame}%\addtocounter{framenumber}{-1}
+}
+
+
+%% ShowMessage frame
+\newcommand{\showmessage}[1]{\frame{\frametitle{\phantom{1em}}\centering\textbf{#1}}}
+
+%% Fragen
+%% Lastframe
+\newcommand{\questionframe}{\showmessage{Fragen?}}
+
+%% Lastframe
+\newcommand{\lastframe}{\showmessage{Vielen Dank für Eure Aufmerksamkeit! \\Bis nächste Woche :)}}
+
+%% Thanks frame
+\newcommand{\slideThanks}{
+	\begin{frame}
+		\frametitle{Credits}
+		\begin{block}{}
+			An der Erstellung des Foliensatzes haben mitgewirkt:\\[1em]
+			\ifdefined \Moritz
+			Stephan Bohr \\
+			\else
+			Moritz Laupichler \\
+			\fi
+			Katharina Wurz \\
+			Thassilo Helmold \\
+			Philipp Basler \\
+			Nils Braun \\
+			Dominik Doerner \\
+			Ou Yue \\
+		\end{block}
+	\end{frame}
+}
+
+%% Verbatim
+%\usepackage{moreverb}
+

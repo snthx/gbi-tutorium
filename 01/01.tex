@@ -1,0 +1,280 @@
+% Comment/uncoment this line to toogle Mortitz mode
+% \newcommand{\Moritz}{}
+
+% Comment/uncomment this line to toggle handout mode
+ \newcommand{\handout}{}
+
+\input{../templates/praeambelTut.tex}
+
+\title[Mengen, Abbildungen, Relationen]{1. Tutorium\\ Mengen, Abbildungen, Relationen}
+\subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
+\date{\today}
+
+\begin{document}
+\titleframe
+\roadmap
+
+%%%%%%%%%% %%%%%%%%%%
+\section{Organisatorisches}
+\subsection{Tutorium}
+
+	\aboutMeFrame
+
+	\ifdefined \Moritz 
+	\showmessage{Und ihr?}
+	\fi
+
+	\begin{frame}{Infos zum Tutorium}
+		\begin{itemize}
+			\item Name: \myname
+			\item Tutoriumsnummer: \mytutnumber
+			\item \mytutinfos
+		\end{itemize}	
+	\end{frame}
+
+	\begin{frame}{Infos zum Tutorium}
+		Tutorium ist...\\
+		\begin{itemize}
+			\item Wiederholung der Vorlesung
+			\item Gemeinsames Üben des aktuellen Stoffes
+			\item Erste Anlaufstelle für Fragen
+			\item Ausgabestelle der korrigierten Übungsblätter
+		\end{itemize}
+		\pause
+		Tutorium ist nicht...\\
+		\begin{itemize}
+			\item Ersatz für die Vorlesung
+			\item Lösen des kommenden Übungsblattes
+		\end{itemize}
+	\end{frame}
+	
+	\showmessage{Mitarbeit ist erwünscht!}
+	
+\subsection{Übungsblätter}
+	\begin{frame}{Übungsblätter}
+		\textbf{Ausgabe:} Mittwochs im ILIAS-Forum \\ %TODO
+		\pause
+		\textbf{Abgabe:}
+			\begin{itemize}
+				\item Donnerstags, 16 Uhr, 2 Wochen nach Ausgabe %TODO
+				\item Briefkasten im Infobau-UG %TODO sortiert nach Tutnummer?
+				\pause
+				\item \textbf{einzeln} und \textbf{handschriftlich} bearbeitet, Abschreiben führt zu Nichtbestehen des Scheines
+				\item Blätter getackert
+			\end{itemize}
+		\pause	
+		\textbf{Rückgabe:} Im Tutorium
+	\end{frame}
+\subsection{Schein/Klausur}
+ \begin{frame}{Modul GBI}
+		\textbf{Übungsschein}
+			\begin{itemize}
+				\item Erhält, wer mind. 50\% aller möglichen Punkte auf den Übungsblättern erzieht
+				\item Ist keine Voraussetzung für die Teilnahme an der Klausur
+				\item \textbf{Übungsschein wird zum Bestehen des Moduls benötigt} 
+			\end{itemize}
+		\pause	
+		\textbf{Klausur}
+		\begin{itemize}
+				\item Datum: 08.03.18, 14-16 Uhr %TODO
+				\item Nebenklausur nach dem SS
+				\item Klausurnote = Modulnote
+				\item \textbf{Klausur wird zum Bestehen des Moduls benötigt} 
+			\end{itemize}
+	\end{frame}
+	
+	\showmessage{Orientierungsprüfung!}
+
+\section[Nachrichten]{Nachrichten, Informationen}
+\subsection{}
+	\begin{frame}
+		\frametitle{Nachricht, Information, ...}
+			\begin{block}{Nachricht}
+			      Mitteilung, bei der vom Medium und den Einzelheiten der Signale abstrahiert wird.
+			\end{block}
+		\pause
+			\begin{block}{Information}
+		    	  Bedeutung, die einer Nachricht zugeordnet wird (kontextabhängig!).
+			\end{block}
+		\pause
+			\begin{block}{Informationsgehalt}
+				Anzahl der Elemente... \\ %TODO
+		     	Naturalis: log$_{e}$ \\
+		      	Hartley: log$_{10}$ \\
+		      	Shannon: log$_{2}$
+		\end{block}
+	\end{frame}
+
+\section{Mengen}
+\subsection{Basics}
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Menge}
+			Eine \textbf{Menge} ist eine Zusammenfassung wohlunterschiedener Objekte zu einer Gesamtheit.\\
+			Die leere Menge wird mit $\emptyset$ bezeichnet.\\
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize}
+				\item Aus der Schule kennen wir \qquad $\nN, \nZ, \nQ, \nR \qquad \nN_+, \nN_0$.
+				\item Menge der natürlichen positven Zahlen $\nN_+ = \{1,2,3,\dots\}$
+				\item Menge d. Star-Wars-Filme: $SW:=\{4,5,6,1,2,3,7,RO\} = \{1,2,3,RO,4,5,6,7\}$
+				\item $\{1,1,2,3\} = \{1,2,3\}$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Element}
+			Ein Objekt $x$, dass in einer Menge $M$ enthalten ist, heißt \textbf{Element von $M$}. Man schreibt $x \in M$ oder $x \notin M$.			
+		\end{block}
+
+		\begin{block}{Def.: Teilmenge}
+			Sind alle Elemente einer Menge $A$ auch in einer Menge $B$ enthalten, so heißt $A$ \textbf{Teilmenge} von $B$. Man schreibt $A \subseteq B$.\\
+			Es gilt für jede Menge $M$: $\emptyset \subseteq M$ und $M \subseteq M$.
+		\end{block}
+		\pause
+		\begin{block}{set comprehension}
+			Eine \textbf{set comprehension} ist eine Möglichkeit, eine Menge mit Bedingungen zu definieren:\\
+			$\set{x \in SW \mid x \text{ ist ein guter Star-Wars-Film}} = \set{2,3,RO,4,5,6} \subseteq SW$.
+		\end{block}
+	\end{frame}
+
+\subsection{Operationen}
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Kardinalität}
+			Unter \textbf{Kardinalität} einer Menge $A$ versteht man die Anzahl der Elemente der Menge. Man schreibt $\setsize{M}$ .
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize} % TODO \pause -> \only
+				\item $\setsize{SW} = \pause 8$
+				\item $\setsize{\emptyset} = \pause 0$
+				\item $\setsize{\{1,2,2,3\}} = \pause 3$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Vereinigung}
+			Die \textbf{Vereinigung} $A \cup B$ der Mengen $A$ und $B$ ist die Menge aller Elemente, die Elemente der Menge $A$ oder der Menge $B$ sind: $A \cup B = \{x \mid x \in A \text{ oder } x \in B\}$.
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize} % TODO \pause -> \only
+				%\item $\{1,3,5\}\cup\{2,4,6\} = \{1,2,3,4,5,6\}$
+				\item $\{4,5,6\}\cup\{1,2,3\}\cup\{7\}\cup\{RO\} = \pause \{1,2,3,RO,4,5,6,7\}$
+				\item $\{1,2,3\}\cup\{2,3,4\} = \pause \{1,2,3,4\}$
+				\item Für jede Menge $M$ gilt: $M \cup \emptyset = \pause M$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Schnitt}
+			Der (Durch-)\textbf{Schnitt} $A \cap B$ der Mengen $A$ und $B$ ist die Menge aller Elemente, die sowohl Elemente der Menge $A$ als auch der Menge $B$ sind: $A \cap B = \{x \mid x \in A \text{ und } x \in B\}$.\\
+			Zwei Mengen heißen disjunkt, wenn ihr Schnitt leer ist, also $A \cap B = \emptyset$
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize} % TODO \pause -> \only?
+				\item $\{1,2,3\}\cap\{1,2\} = \pause \{1,2\}$
+				\item Für jede Menge $M$ gilt: $M \cup \emptyset = \pause \emptyset$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}	
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Differenz}
+			Die \textbf{Differenz} der Mengen $A$ und $B$ sind die Elemente, die in $A$ sind, aber nicht in $B$.
+			$$A \setminus B = \{x \mid x \in A \text{ und } x \notin B\}$$
+		\end{block}		
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize} % TODO \pause -> \only
+				\item $\set{1,2,3}\setminus\set{1} = \pause \set{2,3}$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+	\begin{exampleblock}{Aufgabe}
+		Seien $A = \{1, 2\}, B = \{3\}, C = \{1, 3\}  \subseteq M = \{1, 2, 3\}$ Mengen.\\
+		Berechne folgende Mengen:
+		\begin{align*}
+		A \cup B &= \only<2->{ \{1, 2, 3\} }  \\
+		A \cap C &= \only<3->{ \{1\} }\\
+		A \setminus C &= \only<4->{ \{2\} }\\
+		B \setminus A &= \only<5->{ \{3\} }\\
+		A \cup (B \setminus C) &= \only<6->{ \{1, 2\} }\\
+		(A \setminus C) \cup B &= \only<7->{ \{2, 3\} }\\
+		A \cap B &= \only<8->{ \emptyset }
+		\end{align*}
+	\end{exampleblock}
+\end{frame}
+
+\subsection{Mit Mengen umgehen}
+	\begin{frame}{Mengen}
+		Es gelten das Assoziativ- \\
+			\begin{itemize}
+				\item $(A\cup B) \cup C=A\cup(B\cap C)$
+				\item $(A\cap B) \cap C=A\cap(B\cap C)$
+			\end{itemize}
+		und Distributivgesetz:\\
+			\begin{itemize}
+				\item $A\cup(B \cap C)=(A\cup B)\cap (A\cup C)$
+				\item $A\cap(B \cup C)=(A\cap B)\cup (A\cap C)$
+			\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Potenzmenge}
+		Die \textbf{Potenzmenge} $2^M$ oder auch $\Pot (M)$ ist die Menge aller möglicher Teilmengen von $M$. Es gilt also 
+		\begin{align*}
+			2^M = \{N \mid N \subseteq M\}
+		\end{align*}
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiel}
+		Betrachten wir nun   $M = \left\{ 1,2,0 \right\} $. \\
+		Dann gilt 
+		\begin{align*}
+		2^M &= \left\{ \emptyset, \left\{ 0 \right\}, \left\{ 1 \right\}, \left\{ 2 \right\}, \left\{ 0,1 \right\} , \left\{ 0,2 \right\}, \left\{ 1,2 \right\}, \left\{ 0,1,2 \right\} \right\}
+		\end{align*}
+		
+		Beachte: Es gilt immer $M \in 2^M \ \text{und} \ \emptyset \in 2^M$
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{exampleblock}{Aufgabe}
+		Es sei $M := \set{2,fish, 5}$. Bilde $\Pot (M)$. \\
+		\pause
+		$$\Pot (M) = \set{\emptyset, \set{2}, \set{fish}, \set{5}, \set{2,fish}, \set{2, 5}, \set{fish, 5}, \set{2,fish, 5}}$$
+		\end{exampleblock}
+		\pause
+		\begin{exampleblock}{Aufgabe}
+		Wie viele Elemente enthält $\Pot (M)$? \\
+		\pause
+		$$2^{\setsize{M}}$$
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}[t]\frametitle{bla}
+	    
+	bla
+	
+	\end{frame}
+
+	%TODO: Aufgaben
+\section{Relationen}
+
+%%%%%%%%%% %%%%%%%%%%
+%% Zusammenfassung
+%% Ausblick
+%%%%%%%%%% %%%%%%%%%%
+\section{}
+\questionframe
+\showmessage{Vielen Dank für eure Aufmerksamkeit.\\ Bis zum nächsten Mal\footnote{Nächste Woche bitte wg. Feiertag ein anderes Tutorium besuchen} :)}
+%\lastframe
+\slideThanks
+\end{document}
