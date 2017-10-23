@@ -7,6 +7,9 @@ Thumbs.db
 ### LaTeX ###
 # https://github.com/github/gitignore/blob/master/TeX.gitignore #
 
+*.pdf
+modes.tex
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
