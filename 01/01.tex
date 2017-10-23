@@ -255,7 +255,67 @@
 		\end{exampleblock}
 	\end{frame}
 
-%\section{Relationen}
+\section{Relationen}
+\subsection{Tupel und Paare}
+
+	\begin{frame}{Relationen}
+		\begin{block}{Def.: Tupel bzw. Paare}
+			Ein n-Tupel ist eine Liste von n Elementen. Die Reihenfolge ist dabei wichtig!\\
+			Ein Paar ist ein Tupel der Länge 2, also ein 2-Tupel.			
+		\end{block}
+		\begin{exampleblock}{Beispiele:}
+			\begin{itemize}
+				\item Paare: $(1,2),(5,3),(Apfel, Birne)$
+				\item 3-Tupel: $(1,2,3)$, 4-Tupel: $(4,3,2,1)$, ...
+				\item $\set{1,2}=\set{2,1}$, aber $(1,2)\neq(2,1)$
+			\end{itemize}			
+		\end{exampleblock}	
+	\end{frame}
+
+	\begin{frame}{Relationen}
+		\begin{block}{Def.: Kartesisches Produkt}
+			Das \textbf{kartesische Produkt $A \times B$} der Mengen A und B ist die Menge aller Paare (a,b) mit $a \in A$ und $b \in B$, also:
+			$$A \times B = \setC{(a,b)}{$a \in A$ und $b \in B$}$$
+		\end{block}
+	
+		\begin{exampleblock}{Beispiele:}
+			\begin{itemize}
+				\item $\set{*, +} \times \set{1, 2, 3} = \set{(*,1), (*,2), (*,3), (+,1), (+,2), (+,3)}$
+				\item $\set{0,1}^2 = \set{(0,0),(0,1),(1,0),(1,1)}$ 
+				\item Für $A \neq B$ gilt im Allgemeinen: $A \times B \neq B \times A$
+				\item Ist $A = \emptyset$ oder $B = \emptyset$, so gilt $A \times B = B \times A = \emptyset$
+			\end{itemize}			
+		\end{exampleblock}
+	\end{frame}
+%subsection Tupel und Paare (end)	
+\subsection{Relationen}
+	\begin{frame}{Relationen}
+		\begin{block}{Def.: Relationen}
+			Eine \textbf{binäre Relation R zwischen A und B} ist eine Teilmenge des kartesischen Produktes $A \times B$, also $R \subseteq A \times B$.\\
+			Ist $A=B$, so heißt R eine Relation auf A.\\
+			Erfüllt $(a,b) \in A \times B$ die Relation R, so schreibt man $(a,b) \in R$ oder $aRb$.
+		\end{block}
+	
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize}
+				\item Es sei $M:=\set{1,2,3,4}$. Es bezeichne $R_<$ die \q{kleiner-als}-Relation auf M. Dann ist $R_< = \set{(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)}$.
+				\item Statt $(1,4) \in R_<$ schreibt man auch $1 < 4$.
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Relationen}
+		\begin{exampleblock}{Aufgabe}
+			Seien $A:=\set{2,3,4,75}$ und $B:=\set{1,3,4,10,16}$.\\ 
+			Es sei $R \subseteq A \times B $ definiert durch $R:=\setC{(a,b) \in A \times B}{Die Quersumme von $a \cdot b$ ist gleich 3.}$\\
+			Gib die Relation explizit an.
+		\end{exampleblock}
+	\pause
+		\begin{block}{Lösung}		
+			$R=\set{3,1),(3,4),(3,10),(4,3),(75,4),(75,16)}$
+		\end{block}
+	\end{frame}
+
 
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
