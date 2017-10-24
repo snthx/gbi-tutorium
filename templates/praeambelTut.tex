@@ -4,7 +4,11 @@
 \ifdefined \Moritz
 \input{../config_Moritz.tex} % Moritz mode
 \else
+\ifdefined \Alex
+\input{../config_Alex.tex}
+\else
 \input{../config.tex} % Stephan mode
+\fi
 \fi
 
 %% Beamer-Klasse im korrekten Modus
