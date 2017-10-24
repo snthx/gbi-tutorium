@@ -58,7 +58,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % Libertine font (Original GBI font)
-%\usepackage{libertine}
+\usepackage{libertine}
 %\renewcommand*\familydefault{\sfdefault}  %% Only if the base font of the document is to be sans serif
 
 %% Schönere Schriften
@@ -72,6 +72,9 @@
 
 %% Bibliotheken für viele mathematische Symbole
 \usepackage{amsmath, amsfonts, amssymb}
+
+%Bibliothek für Zusatzparameter bei Aufzählungen
+%\usepackage{enumitem}
 
 %% Anzeigetiefe für Inhaltsverzeichnis: 1 Stufe
 \setcounter{tocdepth}{1}
@@ -114,6 +117,8 @@
 \newcommand{\setC}[2]{\set{#1 \mid \text{ #2 }}}
 
 \newcommand{\setsize}[1]{\; \mid #1 \mid \; }
+
+\newcommand{\q}[1]{\textquotedblleft #1\textquotedblright}
 
 %%%%%%%%%%%% INHALT %%%%%%%%%%%%%%%%
 
