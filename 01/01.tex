@@ -255,6 +255,41 @@
 		\end{exampleblock}
 	\end{frame}
 
+	\begin{frame}{Mengen}
+	\small{
+		\begin{exampleblock}{Aufgabe}
+			Es sei M eine Menge und es seien $A \subseteq M$ und $B \subseteq M$. Zeigen Sie: \\
+			\centering $M \setminus (A \cup B) = (M \setminus A)  \cap (M \setminus B)$
+		\end{exampleblock}
+		}
+	\pause 
+	\small{
+		\begin{block}{Lösung}
+			$\subseteq$:
+				Es sei $x \in M \setminus (A \cup B)$. Dann ist $x \in M$ und $x \notin (A \cup B)$.\\
+				Also ist $x \notin A$ und $x \notin B$, womit:
+				\begin{itemize}[noitemsep, topsep=0pt]
+					\item $x \in M$ und $x \notin A$ $\Longleftrightarrow $ $x \in M \setminus A$
+					\item $x \in M$ und $x \notin B$ $\Longleftrightarrow$ $x \in M \setminus B$
+				\end{itemize}
+				Folglich ist $x \in (M \setminus A)  \cap (M \setminus B)$ \\
+
+			\pause
+
+			$\supseteq$:
+				Es sei $x \in (M \setminus A) \cap (M \setminus B)$. Also gilt:
+				\begin{itemize}[noitemsep, topsep=0pt]
+					\item $x \in M \setminus A$ $\Longleftrightarrow$ $x \in M$ und $x \notin A$
+					\item $x \in M \setminus B$ $\Longleftrightarrow$ $x \in M$ und $x \notin B$
+				\end{itemize}
+				Damit ist $x \in M$, $x \notin A$ und $x \notin B$. \\
+				Dies ist äquivalent zu $x \in M$ und $x \notin A \cup B$.
+				Folglich ist $x \in M \setminus (A \cup B)$.
+
+		\end{block}
+		}
+	\end{frame}
+
 \section{Relationen}
 \subsection{Tupel und Paare}
 
@@ -320,8 +355,28 @@
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
 % TODO
+\section{}
+\subsection{Zusammenfassung}
+	\begin{frame}{Was ihr jetzt kennen und können solltet...}
+			\begin{itemize}
+				\item Die Begriffe Nachricht, Information und Informationsgehalt mal gehört haben
+				\item Die Begriffe Menge, Element einer Menge und set comprehension erklären und ihre Schreibweise kennen
+				\item Vereinigung, Schnitt, Differenz, Kardinalität, Potenzmenge von Mengen bilden
+				\item Mengengleichheit zeigen
+				\item Kartesische Produkte und Relationen explizit schreiben
+			\end{itemize}
+	
+	\end{frame}
 %% Ausblick
 % TODO
+\subsection{Ausblick}
+	\begin{frame}{Ausblick}
+		\begin{itemize}
+			\item linkstotale und rechtseindeutige Relationen $\Rightarrow$ Funktionen
+			\item rechtstotale und linkseindeutige Relationen $\Rightarrow$ Surjektivität und Injektivität
+			\item Alphabete, Wörter, Sprachen
+		\end{itemize}
+	\end{frame}
 %%%%%%%%%% %%%%%%%%%%
 \section{}
 \questionframe
