@@ -10,54 +10,42 @@
 \titleframe
 \roadmap
 
-%%%%%%%%%% %%%%%%%%%%
-\section{Section 1}
-\subsection{Subsection 1.1}
-\begin{frame}{Example slide A}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
+\section{Wiederholung}
+\subsection{Relationen und Abbildungen}
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{block}{Def.: linkstotal}
+	\pause
+		Eine Relation $R \subseteq A \times B$ heißt linkstotal, wenn es für jedes Element $a \in A$ ein zugehöriges Element $b \in B$ gibt, mit $$(a,b) \in R$$.
+	\end{block}
+	\pause
+	\begin{block}{Def.: rechtseindeutig}
+	\pause
+		Eine Relation $R \subseteq A \times B$ heißt rechtseindeutig, wenn für jedes Element $a \in A$ und $b_1, b_2 \in B$ mit $$(a,b_1) \in R \text{ und } (a,b_2) \in R$$ gilt $b_1 = b_2$.
+	\end{block}
 \end{frame}
 
-\subsection{Subsection 1.2}
-\begin{frame}{Example slide B}
-\begin{block}{Block 1}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
-\end{block}
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{block}{Def.: Abbildung/Funktion}
+		Ist eine Relation $f \subseteq A \times B$ rechtseindeutig und linkstotal, so nennt man sie \textbf{Funktion} oder \textbf{Abbildung}.\\
+		Man schreibt
+		\(
+			f : A \to B, a \mapsto b \text{ oder } f(a) = b
+		\)\\
+		Dann ist:
+		\begin{itemize}
+			\item \(A\) der \textbf{Definitionsbereich}
+			\item \(B\) der \textbf{Zielbereich}
+			\item \(f(A) := \setc{f(a)}{a \in A}\) der \textbf{Bildbereich}
+		\end{itemize}\\
+		Für \(x \in A\) und \(y \in B\) mit \(f(x)=y\) heißt \(y\) \textbf{Bild} von \(x\) und \(x\) \textbf{Urbild} von \(y\).
+	\end{block}
+	\begin{alertblock}{Achtung!}
+		Funktionen immer \textbf{vollständig} angeben, also Definitionsbereich, Zielbereich sowie Abbildungsvorschrift. \\
+		Auf die unterschiedlichen Pfeile achten (zwischen Definitions- und Zielbereich kein Strich am Ende des Pfeils)!
+	\end{alertblock}
 \end{frame}
+\subsection{Alphabete, Wörter, Sprachen}
 
-\section{Section 2}
-\subsection{Subsection 2.1}
-\begin{frame}{Example slide C}
-\begin{exampleblock}{Example 1}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
-\end{exampleblock}
-\end{frame}
-
-%\subsection{Subsection 2.2}
-\begin{frame}{Example slide D}
-\begin{alertblock}{Alert 1}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
-\end{alertblock}
-\end{frame}
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
 %% Ausblick
