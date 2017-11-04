@@ -7,6 +7,8 @@
 - Semantik aussagenlogischer Formeln
 - Beweisbarkeit
 
+- Tipps fürs Übungsblatt
+
 # Annotations, comments, notes
 Noch keine vollständige Induktion, da noch nicht in der VL vorgekommen, 
 dafür wird MP etc. gemacht
