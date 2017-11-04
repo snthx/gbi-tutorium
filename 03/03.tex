@@ -15,36 +15,100 @@
 \begin{frame}{Wdh.: Relationen und Abbildungen}
 	\begin{block}{Def.: linkstotal}
 	\pause
-		Eine Relation $R \subseteq A \times B$ heißt linkstotal, wenn es für jedes Element $a \in A$ ein zugehöriges Element $b \in B$ gibt, mit $$(a,b) \in R$$.
+		Eine Relation $R \subseteq A \times B$ heißt linkstotal, wenn es für jedes Element $a \in A$ ein zugehöriges Element $b \in B$ gibt, mit $$(a,b) \in R$$
 	\end{block}
 	\pause
 	\begin{block}{Def.: rechtseindeutig}
 	\pause
-		Eine Relation $R \subseteq A \times B$ heißt rechtseindeutig, wenn für jedes Element $a \in A$ und $b_1, b_2 \in B$ mit $$(a,b_1) \in R \text{ und } (a,b_2) \in R$$ gilt $b_1 = b_2$.
+		Eine Relation $R \subseteq A \times B$ heißt rechtseindeutig, wenn für alle Elemente $a \in A$ und $b_1, b_2 \in B$ gilt: $$(a,b_1) \in R \text{ und } (a,b_2) \in R \Rightarrow  b_1 = b_2$$
 	\end{block}
 \end{frame}
 
 \begin{frame}{Wdh.: Relationen und Abbildungen}
 	\begin{block}{Def.: Abbildung/Funktion}
-		Ist eine Relation $f \subseteq A \times B$ rechtseindeutig und linkstotal, so nennt man sie \textbf{Funktion} oder \textbf{Abbildung}.\\
+		Ist eine Relation $f \subseteq A \times B$ rechtseindeutig und linkstotal, so nennt man sie \textbf{Funktion} oder \textbf{Abbildung}. 
 		Man schreibt
-		\(
-			f : A \to B, a \mapsto b \text{ oder } f(a) = b
-		\)\\
+		\[
+			f : A \to B, a \mapsto b %\, (\text{oder } f(a) = b)
+		\]
+		\pause
 		Dann ist:
 		\begin{itemize}
 			\item \(A\) der \textbf{Definitionsbereich}
 			\item \(B\) der \textbf{Zielbereich}
 			\item \(f(A) := \setc{f(a)}{a \in A}\) der \textbf{Bildbereich}
-		\end{itemize}\\
-		Für \(x \in A\) und \(y \in B\) mit \(f(x)=y\) heißt \(y\) \textbf{Bild} von \(x\) und \(x\) \textbf{Urbild} von \(y\).
+		\end{itemize}
+		Für \(x \in A\), \(y \in B\) mit \(f(x)=y\) heißt \(y\) \textbf{Bild} von \(x\) und \(x\) \textbf{Urbild} von \(y\).
 	\end{block}
+\end{frame}
+
+\begin{frame}{Wdh.: Relationen und Abbildungen}
 	\begin{alertblock}{Achtung!}
 		Funktionen immer \textbf{vollständig} angeben, also Definitionsbereich, Zielbereich sowie Abbildungsvorschrift. \\
-		Auf die unterschiedlichen Pfeile achten (zwischen Definitions- und Zielbereich kein Strich am Ende des Pfeils)!
+		Auf die unterschiedlichen Pfeile achten (zwischen Definitions- und Zielbereich kein Strich am linken Ende des Pfeils)!
 	\end{alertblock}
 \end{frame}
+
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{block}{Def.: linkseindeutig}
+	\pause
+		Eine Relation $R \subseteq A \times B$ heißt linkseindeutig, wenn für alle Elemente $b \in B$ und $a_1, a_2 \in A$ gilt: $$(a_1,b) \in R \text{ und } (a_2,b) \in R \Rightarrow a_1 = a_2$$
+		Eine linkseindeutige Funktion heißt \textbf{injektiv}.
+	\end{block}
+	\pause
+	\begin{block}{Def.: rechtstotal}
+	\pause
+		Eine Relation $R \subseteq A \times B$ heißt rechtstotal, wenn es für jedes Element $b \in B$ ein zugehöriges Element $a \in A$ gibt, mit $$(a,b) \in R$$
+		Eine rechtstotale Funktion heißt \textbf{surjektiv}.
+	\end{block}
+\end{frame}
 \subsection{Alphabete, Wörter, Sprachen}
+\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+	\begin{block}{Def.: Alphabet}
+		Ein Alphabet ist eine endliche, nichtleere Menge von Zeichen.
+	\end{block}
+	\pause
+	\begin{block}{Def.: Wort}
+		Ein Wort über einem Alphabet A ist eine Folge von Zeichen aus A.
+	\end{block}
+	\pause
+	\begin{block}{Def.: leeres Wort}
+		Das leere Wort \(\varepsilon\) ist das Wort, das aus null Zeichen besteht, d.h. es hat die Länge 0.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+	\begin{block}{Def.: \(A^{n}\)}
+	\pause
+		\textbf{\(A^{n}\)} ist die Menge aller Wörter der Länge n über dem Alphabet A.
+	\end{block}
+	\pause
+	\begin{block}{Def.: \(A^{*}\)}
+	\pause
+		\textbf{\(A^{*}\)} ist die Menge aller Wörter beliebiger Länge über dem Alphabet A.		
+		\[
+			A^{*}= \bigcup_{i=0}^{\infty} A^{i}
+		\]
+	\end{block}
+	\pause
+	\begin{exampleblock}{Beispiele}
+		\(A^{0}=\set{\varepsilon}, \quad \set{a,b}^{*} = \set{\varepsilon, a, b, aa, ab, ba, bb, aaa, ...}\)
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+	\begin{block}{Def.: Konkatenation}
+		Konkatenation ist die Operation der Verknüpfung von Wörtern. Jedes Wort kann als Konkatenation seiner Zeichen dargestellt werden, z.B. \(GBI = G \cdot B \cdot I\).
+	\end{block}
+	\pause
+	\begin{exampleblock}{Aufgabe}
+	\begin{itemize}
+		\item Ist die Konkatenation assoziativ?\pause
+		\item Ist die Konkatenation kommutativ?\pause
+		\item \(a\varepsilon\varepsilon\varepsilon\varepsilon\varepsilon\varepsilon b\varepsilon\varepsilon\varepsilon\varepsilon = \, ?\)
+	\end{itemize}		
+	\end{exampleblock}
+\end{frame}
 
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
