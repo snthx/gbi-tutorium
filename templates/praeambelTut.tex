@@ -90,6 +90,11 @@
 %% for invisible pause texts instead of dimming
 \setbeamercovered{invisible}
 
+\usepackage[german=swiss]{csquotes}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+
 %%%%%%%%%%%% Shortcuts %%%%%%%%%%%%%
 \newcommand{\nM}{\mathbb{M}}
 \newcommand{\nR}{\mathbb{R}}
@@ -114,6 +119,9 @@
 \newcommand{\setsize}[1]{\; \mid #1 \mid \; }
 
 \newcommand{\q}[1]{\textquotedblleft #1\textquotedblright}
+
+% Zu zeigen, thx to http://www.matheboard.de/archive/155832/thread.html
+\newcommand{\zz}{\ensuremath{\mathrm{z\kern-.29em\raise-0.44ex\hbox{z}}}:}
 
 %%%%%%%%%%%% INHALT %%%%%%%%%%%%%%%%
 
@@ -176,26 +184,40 @@
 			An der Erstellung des Foliensatzes haben mitgewirkt:\\[1em]
 			\ifdefined \Moritz
 			Stephan Bohr \\
-			Alexander Klug \\
+			% Alexander Klug \\
 			\else
 			\ifdefined \Alex
 			Stephan Bohr \\
 			Moritz Laupichler \\
 			\else
 			Moritz Laupichler \\
-			Alexander Klug \\
+			% Alexander Klug \\
 			\fi
 			\fi
 			Katharina Wurz \\
-			Thassilo Helmold \\
-			Philipp Basler \\
-			Nils Braun \\
-			Dominik Doerner \\
-			Ou Yue \\
+			Thassilo Helmold
+			% Philipp Basler \\
+			% Nils Braun \\
+			% Dominik Doerner \\
+			% Ou Yue \\
 		\end{block}
 	\end{frame}
 }
 
 %% Verbatim
 %\usepackage{moreverb}
+
+% ===== stuff for certain stuff =====
+% Aussagenlogik
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\boder}{\ensuremath{\text{\;}\textcolor{blue}{\vee}}\text{\;}}
+\newcommand{\bund}{\ensuremath{\text{\;}\textcolor{blue}{\wedge}}\text{\;}}
+\newcommand{\bimp}{\ensuremath{\text{\;}\textcolor{blue}{\to}}\text{\;}}
+\newcommand{\bnot}{\ensuremath{\text{\;}\textcolor{blue}{\neg}}\text{}}
+\newcommand{\bgdw}{\ensuremath{\text{\;}\textcolor{blue}{\leftrightarrow}}\text{\;}}
+\newcommand{\bone}{\ensuremath{\textcolor{blue}{1}}\text{}}
+\newcommand{\bzero}{\ensuremath{\textcolor{blue}{0}}\text{}}
+\newcommand{\bleftBr}{\ensuremath{\textcolor{blue}{(}}\text{}}
+\newcommand{\brightBr}{\ensuremath{\textcolor{blue}{)}}\text{}}
+\newcommand{\val}{\hbox{\textit{val}}}
 
