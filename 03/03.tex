@@ -6,6 +6,8 @@
 \subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
 \date{\today}
 
+\usepackage{tikz}
+
 \begin{document}
 \titleframe
 \roadmap
@@ -61,6 +63,56 @@
 		Eine Relation $R \subseteq A \times B$ heißt rechtstotal, wenn es für jedes Element $b \in B$ ein zugehöriges Element $a \in A$ gibt, mit $$(a,b) \in R$$
 		Eine rechtstotale Funktion heißt \textbf{surjektiv}.
 	\end{block}
+\end{frame}
+\begin{frame}{Beispiel \#1 Relationen}
+	\begin{minipage}{0.5\textwidth}
+		\begin{tikzpicture}
+		[scale=0.6,auto=left,every node/.style={circle,fill=blue!20}]
+		\node (a1) at (0,10)  {$a_1$};
+		\node (a2) at (0,8)  {$a_2$};
+		\node (a3) at (0,6)  {$a_3$};
+		\node (b1) at (2,10)  {$b_1$};
+		\node (b2) at (2,8)  {$b_2$};
+		\node (b3) at (2,6)  {$b_3$};
+		
+		
+		\foreach \from/\to in {a1/b3,b1/a2, a1/b1, a3/b3}
+		\draw (\from) -- (\to);
+		\end{tikzpicture}
+	\end{minipage} \hfill
+	\begin{minipage}{0.45\textwidth}
+		\begin{align*}
+		Linkstotal&: \only<2->{Ja} \\
+		Rechtseindeutig&: \only<3->{Nein} \\
+		Rechtstotal bzw. surjektiv&: \only<4->{Nein} \\
+		Linkseindeutig bzw. injektiv&: \only<5->{Nein} \\
+		\end{align*}
+	\end{minipage}
+\end{frame}
+\begin{frame}{Beispiel \#2 Relationen}
+\begin{minipage}{0.5\textwidth}
+	\begin{tikzpicture}
+	[scale=0.6,auto=left,every node/.style={circle,fill=blue!20}]
+	\node (a1) at (0,10)  {$a_1$};
+	\node (a2) at (0,8)  {$a_2$};
+	\node (a3) at (0,6)  {$a_3$};
+	\node (b1) at (2,10)  {$b_1$};
+	\node (b2) at (2,8)  {$b_2$};
+	\node (b3) at (2,6)  {$b_3$};
+	
+	
+	\foreach \from/\to in {b1/a2, a1/b1, a3/b3}
+	\draw (\from) -- (\to);
+	\end{tikzpicture}
+\end{minipage} \hfill
+	\begin{minipage}{0.45\textwidth}
+		\begin{align*}
+		Linkstotal&: \only<2->{Ja} \\
+		Rechtseindeutig&: \only<3->{Ja} \\
+		Rechtstotal bzw. surjektiv&: \only<4->{Nein} \\
+		Linkseindeutig bzw. injektiv&: \only<5->{Nein} \\
+		\end{align*}
+	\end{minipage}
 \end{frame}
 \subsection{Alphabete, Wörter, Sprachen}
 \begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
