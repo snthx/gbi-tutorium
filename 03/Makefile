@@ -2,6 +2,7 @@ all: *.tex
 	pdflatex *.tex
 	pdflatex *.tex
 
+	rm -f *.vrb
 	rm -f *.aux
 	rm -f *.log
 	rm -f *.nav
