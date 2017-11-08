@@ -1,0 +1,74 @@
+\newcommand{\newpar}[1]{\paragraph{#1}\mbox{}\newline}
+
+\newcommand{\nM}{\mathbb{M}}
+\newcommand{\nR}{\mathbb{R}}
+\newcommand{\nN}{\mathbb{N}}
+\newcommand{\nZ}{\mathbb{Z}}
+\newcommand{\nQ}{\mathbb{Q}}
+\newcommand{\nB}{\mathbb{B}}
+\newcommand{\nC}{\mathbb{C}}
+\newcommand{\nK}{\mathbb{K}}
+\newcommand{\nF}{\mathbb{F}}
+\newcommand{\nG}{\mathbb{G}}
+\newcommand{\nullel}{\mathcal{O}}
+\newcommand{\einsel}{\mathds{1}}
+\newcommand{\nP}{\mathbb{P}}
+\newcommand{\Pot}{\mathcal{P}}
+\renewcommand{\O}{\text{O}}
+
+\newcommand{\set}[1]{\{ #1 \}}
+\newcommand{\setc}[2]{\set{#1 \mid #2}}
+\newcommand{\setC}[2]{\set{#1 \mid \text{ #2 }}}
+
+\newcommand{\setsize}[1]{\; \mid #1 \mid \; }
+
+\newcommand{\q}[1]{\textquotedblleft #1\textquotedblright}
+
+% Zu zeigen, thx to http://www.matheboard.de/archive/155832/thread.html
+\newcommand{\zz}{\ensuremath{\mathrm{z\kern-.29em\raise-0.44ex\hbox{z}}}:}
+
+% Text above symbol
+% https://tex.stackexchange.com/a/74132/146825
+%
+% \newcommand{\eqtext}[1]{\stackrel{\mathclap{\normalfont\mbox{#1}}}{=}}
+% \newcommand{\gdwtext}[1]{\stackrel{\mathclap{\normalfont\mbox{#1}}}{\Leftrightarrow}}
+% \newcommand{\imptext}[1]{\stackrel{\mathclap{\normalfont\mbox{#1}}}{\Rightarrow}}
+% \newcommand{\symbtext}[2]{\stackrel{\mathclap{\normalfont\mbox{#2}}}{#1}}
+\newcommand{\eqtext}[1]{\mathrel{\overset{\makebox%[0pt]
+{\mbox{\normalfont\tiny #1}}}{=}}}
+\newcommand{\gdwtext}[1]{\mathrel{\overset{\makebox%[0pt]
+{\mbox{\normalfont\tiny #1}}}{\ensuremath{\Leftrightarrow}}}}
+\newcommand{\imptext}[1]{\mathrel{\overset{\makebox%[0pt]
+{\mbox{\normalfont\tiny #1}}}{\ensuremath{\Rightarrow}}}}
+\newcommand{\symbtext}[2]{\mathrel{\overset{\makebox%[0pt]
+{\mbox{\normalfont\tiny #2}}}{#1}}}
+
+% qed symbol
+\newcommand{\qedsymbol}{\hfill \ensuremath{\blacksquare}}
+\newcommand{\qedwhite}{\hfill \ensuremath{\Box}}
+
+% Aussagenlogik
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\boder}{\ensuremath{\text{\;}\textcolor{blue}{\vee}}\text{\;}}
+\newcommand{\bund}{\ensuremath{\text{\;}\textcolor{blue}{\wedge}}\text{\;}}
+\newcommand{\bimp}{\ensuremath{\text{\;}\textcolor{blue}{\to}}\text{\;}}
+\newcommand{\bnot}{\ensuremath{\text{\;}\textcolor{blue}{\neg}}\text{}}
+\newcommand{\bgdw}{\ensuremath{\text{\;}\textcolor{blue}{\leftrightarrow}}\text{\;}}
+\newcommand{\bone}{\ensuremath{\textcolor{blue}{1}}\text{}}
+\newcommand{\bzero}{\ensuremath{\textcolor{blue}{0}}\text{}}
+\newcommand{\bleftBr}{\ensuremath{\textcolor{blue}{(}}\text{}}
+\newcommand{\brightBr}{\ensuremath{\textcolor{blue}{)}}\text{}}
+\newcommand{\val}{\hbox{\textit{val}}}
+
+\newcommand{\VarAL}{\hbox{\textit{Var}}_{AL}}
+\newcommand{\ForAL}{\hbox{\textit{For}}_{AL}}
+
+% Validierungsfunktion val_i
+\newcommand{\vali}[1]{\ensuremath{\val_I(#1)}}
+
+% Boolsche Funktion b_
+\newcommand{\bfnot}[1]{\ensuremath{b_{\bnot}(#1)}}
+\newcommand{\bfand}[2]{\ensuremath{b_{\bund}(#1,#2)}}
+\newcommand{\bfor}[2]{\ensuremath{b_{\boder}(#1,#2)}}
+\newcommand{\bfimp}[2]{\ensuremath{b_{\bimp}(#1,#2)}}
+%

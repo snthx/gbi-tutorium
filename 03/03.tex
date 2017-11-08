@@ -277,7 +277,7 @@
 
 		  	\begin{tabular}{cc|cccc}
 		    \toprule
-		    $x_1$ & $x_2$ & $b_{\bnot}(x_1)$ & $b_{\bund}(x_1,x_2)$ & $b_{\boder}(x_1,x_2)$ & $b_{\bimp}(x_1,x_2)$ \\
+		    $x_1$ & $x_2$ & $\bfnot{x_1}$ & $\bfand{x_1}{x_2}$ & $\bfor{x_1}{x_2}$ & $\bfimp{x_1}{x_2}$ \\
 		    \midrule
 		    $f$ & $f$ & $w$ & $f$ & $f$ & $w$ \\
 		    $f$ & $w$ & $w$ & $f$ & $w$ & $w$ \\
@@ -299,18 +299,18 @@
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}{Semantik aussagenlogischer Formeln: $\val_I(F)$}
+\begin{frame}{Semantik aussagenlogischer Formeln: $\vali{F}$}
 	\begin{block}{Auswertung/Validierung aussagenlogischer Formeln}
 		Sei \(I: V \to \nB\) eine Interpretation.\\
-		Für jede aussagelogische Formel $F$ definiere $\val_I(F)$ wie folgt:\\[2ex]
+		Für jede aussagelogische Formel $F$ definiere $\vali{F}$ wie folgt:\\[2ex]
 
 		Für jedes $X \in V$, $G$, $H$ weitere aussagelogische Formeln sei:
 		\begin{itemize}
-			\item $\val_I(X)         := I(X) $
-  			\item $\val_I(\bnot G)   := b_{\bnot}(\val_I(G)) $
-  			\item $\val_I(G \bund H) := b_{\bund}(\val_I(G), \val_I(H)) $
-  			\item $\val_I(G \boder H) := b_{\boder}(\val_I(G)  \val_I(H)) $
-  			\item $\val_I(G \bimp H) := b_{\bimp}(\val_I(G), \val_I(H)) $
+			\item $\vali(X)         := I(X) $
+  			\item $\vali(\bnot G)   := \bfnot{\vali(G)} $
+  			\item $\vali(G \bund H) := \bfand{\vali(G)}{\vali(H)}$
+  			\item $\vali(G \boder H) := \bfor{\vali(G)}{\vali(H)}$
+  			\item $\vali(G \bimp H) := \bfimp{\vali(G)}{\vali(H)}$
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -375,7 +375,7 @@
 
 \begin{frame}{Semantik aussagenlogischer Formeln: Modell}
 	\begin{block}{Def.: Modell}
-		Eine Interpretation $I$ heißt \textbf{Modell} einer Formel $G$, wenn $\val_I(G)=\mathbf{w}$.\\[2ex]
+		Eine Interpretation $I$ heißt \textbf{Modell} einer Formel $G$, wenn $\vali{G} =\mathbf{w}$.\\[2ex]
 
 		Eine Interpretation $I$ heißt \textbf{Modell} einer Formelmenge $\Gamma$, wenn $I$ Modell jeder Formel $G\in \Gamma$ ist.
 	\end{block}
@@ -390,7 +390,7 @@
 \begin{frame}{Semantik aussagenlogischer Formeln: Tautologie}
 	\begin{block}{Def.: Tautologie}
 		Eine Formel $G$ heißt \textbf{Tautologie}, wenn jede Interpreation $I$ Modell ist. Das heißt, für jede Belegung (Interpretation $I$) der Aussagevariablen ist die gesamte aussagenlogische Formel wahr:
-			\[	\val_I(G)=\mathbf{w} \quad \text{ für alle } I	\]
+			\[	\vali{G}=\mathbf{w} \quad \text{ für alle } I	\]
 	\end{block}
 
 	\begin{exampleblock}{Beispiel}
@@ -402,14 +402,9 @@
 
 
 \begin{frame}{}
-% Tautologie beweisen kennt drei Möglichkeiten:
-% 1. Modus Ponens
-% 2. Fallunterscheidungen (im Grunde Wahrheitstabelle)
-% 3. Abbildung
-% Im Fall 2. und 3. sollte zumindest formell korrekt abgebildet werden, so lange es geht, und dannach (!) erst gedacht werden, damit die Tutanten mit dem Formalismen-Wahn aus GBI warm werden. Klar machen, dass das wichtig ist, und erst bis zum bitteren Ende durchgeführt werden sollte.
 	\begin{exampleblock}{Aufgabe (WS 16/17)}
 		% Übungsblatt 2016-2, Aufgabe 2
-		Es sei \(Var_{AL}\) eine Menge von Aussagevariablen und \(For_{AL}\) die Menge aller aussagenlogischen Formeln über \(Var_{AL}\). Beweise, dass für alle \(G, H \in For_{AL}\) die aussagenlogische Formel
+		Es sei $\VarAL$ eine Menge von Aussagevariablen und $\ForAL$ die Menge aller aussagenlogischen Formeln über $\VarAL$. Beweise, dass für alle \(G, H \in \ForAL\) die aussagenlogische Formel
 				\[\mathcal{F} :=	\bleftBr{} \bnot{} H\bimp{} \bnot{} G \brightBr{} \bimp{} \bleftBr{} G \bimp{} H \brightBr{}\]
 		eine Tautologie ist. Verwende nicht das aussagenlogische Kalkül, sondern die formellen Definitionen der Auswertung von aussagenlogischen Formeln und boolschen Funktionen.
 	\end{exampleblock}

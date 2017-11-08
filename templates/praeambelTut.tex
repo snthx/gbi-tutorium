@@ -99,35 +99,7 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 
-%%%%%%%%%%%% Shortcuts %%%%%%%%%%%%%
-\newcommand{\nM}{\mathbb{M}}
-\newcommand{\nR}{\mathbb{R}}
-\newcommand{\nN}{\mathbb{N}}
-\newcommand{\nZ}{\mathbb{Z}}
-\newcommand{\nQ}{\mathbb{Q}}
-\newcommand{\nB}{\mathbb{B}}
-\newcommand{\nC}{\mathbb{C}}
-\newcommand{\nK}{\mathbb{K}}
-\newcommand{\nF}{\mathbb{F}}
-\newcommand{\nG}{\mathbb{G}}
-\newcommand{\nullel}{\mathcal{O}}
-\newcommand{\einsel}{\mathds{1}}
-\newcommand{\nP}{\mathbb{P}}
-\newcommand{\Pot}{\mathcal{P}}
-\renewcommand{\O}{\text{O}}
-
-\newcommand{\set}[1]{\{ #1 \}}
-\newcommand{\setc}[2]{\set{#1 \mid #2}}
-\newcommand{\setC}[2]{\set{#1 \mid \text{ #2 }}}
-
-\newcommand{\setsize}[1]{\; \mid #1 \mid \; }
-
-\newcommand{\q}[1]{\textquotedblleft #1\textquotedblright}
-
-% Zu zeigen, thx to http://www.matheboard.de/archive/155832/thread.html
-\newcommand{\zz}{\ensuremath{\mathrm{z\kern-.29em\raise-0.44ex\hbox{z}}}:}
-
-%%%%%%%%%%%% INHALT %%%%%%%%%%%%%%%%
+%%%%%%%%%%%% Slides %%%%%%%%%%%%%%%%
 
 %% Wochennummer
 %\newcounter{weeknum}
@@ -212,17 +184,6 @@
 %% Verbatim
 %\usepackage{moreverb}
 
-% ===== stuff for certain stuff =====
-% Aussagenlogik
-\newcommand{\BB}{\mathbb{B}}
-\newcommand{\boder}{\ensuremath{\text{\;}\textcolor{blue}{\vee}}\text{\;}}
-\newcommand{\bund}{\ensuremath{\text{\;}\textcolor{blue}{\wedge}}\text{\;}}
-\newcommand{\bimp}{\ensuremath{\text{\;}\textcolor{blue}{\to}}\text{\;}}
-\newcommand{\bnot}{\ensuremath{\text{\;}\textcolor{blue}{\neg}}\text{}}
-\newcommand{\bgdw}{\ensuremath{\text{\;}\textcolor{blue}{\leftrightarrow}}\text{\;}}
-\newcommand{\bone}{\ensuremath{\textcolor{blue}{1}}\text{}}
-\newcommand{\bzero}{\ensuremath{\textcolor{blue}{0}}\text{}}
-\newcommand{\bleftBr}{\ensuremath{\textcolor{blue}{(}}\text{}}
-\newcommand{\brightBr}{\ensuremath{\textcolor{blue}{)}}\text{}}
-\newcommand{\val}{\hbox{\textit{val}}}
+% GBI related stuff, but not beamer-stuff
+\input{../templates/gbi-makros.tex}
 

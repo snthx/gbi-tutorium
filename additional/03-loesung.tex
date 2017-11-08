@@ -1,0 +1,60 @@
+\documentclass[a4paper]{article}
+
+\usepackage[TS1,T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{libertine}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[pdftex,%
+	pdfauthor={Stephan Bohr},%
+	pdftitle={Loesung zur Tautologieaufgabe aus Tut 03}%
+		]{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlist[enumerate]{topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex}
+
+\input{../templates/gbi-makros.tex}
+
+% ===== Document =====
+\begin{document}
+\newpar{Aufgabe}
+Es sei $\VarAL$ eine Menge von Aussagevariablen und $\ForAL$ die Menge aller aussagenlogischen Formeln über $\VarAL$. Beweise, dass für alle \(G, H \in \ForAL\) die aussagenlogische Formel
+				\[\mathcal{F} :=	\bleftBr{} \bnot{} H\bimp{} \bnot{} G \brightBr{} \bimp{} \bleftBr{} G \bimp{} H \brightBr{}\]
+		eine Tautologie ist. Verwende nicht das aussagenlogische Kalkül, sondern die formellen Definitionen der Auswertung von aussagenlogischen Formeln und boolschen Funktionen.
+
+\newpar{Lösung}
+\emph{Behauptung:} \(\mathcal{F} :=	\bleftBr{} \bnot{} H\bimp{} \bnot{} G \brightBr{} \bimp{} \bleftBr{} G \bimp{} H \brightBr{}\) ist eine Tautologie.
+
+\emph{Beweis:} Sei $I$ eine bel. Interpretation. Dann gilt:
+\begin{align*}
+	&\vali{\mathcal{F}}\\
+	&=\vali{(\bnot{} H \bimp{} \bnot{} G) \bimp{} (G \bimp{} H)}\\
+	&=\bfimp{\vali{\bnot{} H \bimp{} \bnot{} G}&}{\vali{G\bimp{} H}}\\
+	&=\bfor{\bfnot{\vali{\bnot{} H \bimp{} \bnot{} G}}&}%
+		{\bfimp{\vali{G}}{\vali{H}}}\\
+	&=\bfor{\bfnot{\bfimp{\vali{\bnot{} H}}{\vali{\bnot{} G}}}&}%
+		{\bfor{\bfnot{\vali{G}}}{\vali{H}}}\\
+	&=\bfor{\bfnot{\bfor{\bfnot{\vali{\bnot H}}}{\vali{\bnot G}}}&}%
+	{\bfor{\bfnot{\vali{G}}}{\vali{H}}}\\
+	&=\bfor{\bfnot{\bfor{\bfnot{\bfnot{\vali{H}}}}{\bfnot{\vali{G}}}}&}%
+	{\bfor{\bfnot{\vali{G}}}{\vali{H}}}\\
+	&\eqtext{$\neg\neg$}%
+	\bfor{\bfnot{\bfor{\vali{H}}{\bfnot{\vali{G}}}}&}{\bfor{\bfnot{\vali{G}}}{\vali{H}}}\\
+	&\eqtext{$\vee$ komm.}%
+	\bfor{\bfnot{\underbrace{{\bfor{\bfnot{\vali{G}}}{\vali{H}}}}_{:=E}}&}{\underbrace{{\bfor{\bfnot{\vali{G}}}{\vali{H}}}}_{=E}}\\
+	&\eqtext{Def.} \bfor{\bfnot{\vali{E}}}{\vali{E}}\\
+	&\imptext{Tut.} \text{Tautologie} & \qedwhite
+\end{align*}
+
+% \newpar{Allgemein}
+% Wir kennen für den Beweis von \emph{Tautologien} drei Möglichkeiten:
+% \begin{enumerate}
+% 	\item Modus Ponens
+% 	\item Fallunterscheidung, was im Grunde einer Wahrheitstabelle gleichkommt
+% 	\item Formelles Abbilden, danach dann umformen, substitieren, und auf bekannte Tautologien schließen.
+% \end{enumerate}
+% Im 2. und 3. Fall sollte zumindest formell korrekt abgebildet werden, so lange es geht, und danach (!) erst gedacht werden, damit die Tutanten mit dem Formalismen-Wahn aus GBI warm werden. Klar machen, dass das wichtig ist, und erst bis zum bitteren Ende durchgeführt werden sollte.
+\end{document}
