@@ -5,7 +5,6 @@
 \title[Aussagenlogik]{3. Tutorium\\ Aussagenlogik}
 \subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
 \date{\today}
-
 \usepackage{tikz}
 
 \begin{document}
@@ -138,7 +137,7 @@
 			Rechtseindeutig: & \only<3->{\textcolor{kit-red100}{Nein}}\\ 
 			Rechtstotal: & \only<4->{\textcolor{kit-green100}{Ja}} \\
 			Linkseindeutig: & \only<5->{\textcolor{kit-green100}{Ja}} \\
-			Bijektiv Abbildung: & \only<6->{\textcolor{kit-red100}{Nein}} \\
+			Bijektive Abbildung: & \only<6->{\textcolor{kit-red100}{Nein}} \\
 			\only<7->{Abbildung: }& \only<7->{\textcolor{kit-red100}{Nein}}
 			\end{tabular}
 
@@ -306,11 +305,11 @@
 
 		Für jedes $X \in V$, $G$, $H$ weitere aussagelogische Formeln sei:
 		\begin{itemize}
-			\item $\vali(X)         := I(X) $
-  			\item $\vali(\bnot G)   := \bfnot{\vali(G)} $
-  			\item $\vali(G \bund H) := \bfand{\vali(G)}{\vali(H)}$
-  			\item $\vali(G \boder H) := \bfor{\vali(G)}{\vali(H)}$
-  			\item $\vali(G \bimp H) := \bfimp{\vali(G)}{\vali(H)}$
+			\item $\vali{X}         := I(X) $
+  			\item $\vali{\bnot G}   := \bfnot{\vali{G}} $
+  			\item $\vali{G \bund H} := \bfand{\vali{G}}{\vali{H}}$
+  			\item $\vali{G \boder H} := \bfor{\vali{G}}{\vali{H}}$
+  			\item $\vali{G \bimp H} := \bfimp{\vali{G}}{\vali{H}}$
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -347,7 +346,7 @@
 		    \pause
 		    $ f $ & $ f $ & $ w $ & $ f $ & $ f $ & $ \textcolor{kit-green100}{\mathbf{f}} $ & $ f $ & $ w $ & $ f $ & $ f $\\
 		    $ f $ & $ w $ & $ w $ & $ w $ & $ w $ & $ \textcolor{kit-green100}{\mathbf{w}} $ & $ w $ & $ f $ & $ w $ & $ f $\\
-		    $ w $ & $ f $ & $ f $ & $ w $ & $ w $ & $ \textcolor{kit-green100}{\mathbf{w}} $ & $ w $ & $ f $ & $ w $ & $ w $ \\
+		    $ w $ & $ f $ & $ f $ & $ w $ & $ f $ & $ \textcolor{kit-green100}{\mathbf{w}} $ & $ w $ & $ f $ & $ w $ & $ w $ \\
 		    $ w $ & $ w $ & $ f $ & $ w $ & $ w $ & $ \textcolor{kit-green100}{\mathbf{w}} $ & $ f $ & $ w $ & $ w $ & $ w $ \\
 		    \bottomrule
   			\end{tabular}
