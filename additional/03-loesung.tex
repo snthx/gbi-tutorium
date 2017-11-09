@@ -32,25 +32,24 @@ Es sei $\VarAL$ eine Menge von Aussagevariablen und $\ForAL$ die Menge aller aus
 
 \emph{Beweis:} Sei $I$ eine bel. Interpretation. Dann gilt:
 \begin{align*}
-	&\vali{\mathcal{F}}\\
-	&=\vali{(\bnot{} H \bimp{} \bnot{} G) \bimp{} (G \bimp{} H)}\\
-	&=\bfimp{\vali{\bnot{} H \bimp{} \bnot{} G}&}{\vali{G\bimp{} H}}\\
-	&=\bfor{\bfnot{\vali{\bnot{} H \bimp{} \bnot{} G}}&}%
-		{\bfimp{\vali{G}}{\vali{H}}}\\
-	&=\bfor{\bfnot{\bfimp{\vali{\bnot{} H}}{\vali{\bnot{} G}}}&}%
-		{\bfor{\bfnot{\vali{G}}}{\vali{H}}}\\
-	&=\bfor{\bfnot{\bfor{\bfnot{\vali{\bnot H}}}{\vali{\bnot G}}}&}%
-	{\bfor{\bfnot{\vali{G}}}{\vali{H}}}\\
-	&=\bfor{\bfnot{\bfor{\bfnot{\bfnot{\vali{H}}}}{\bfnot{\vali{G}}}}&}%
-	{\bfor{\bfnot{\vali{G}}}{\vali{H}}}\\
+	&\vali{\mathcal{F}}&\\
+	&=\vali{(\bnot{} H \bimp{} \bnot{} G) \bimp{} (G \bimp{} H)}&\\
+	&=\bfimp{\vali{\bnot{} H \bimp{} \bnot{} G}}{&\vali{G\bimp{} H}}&\\
+	&=\bfor{\bfnot{\vali{\bnot{} H \bimp{} \bnot{} G}}}%
+		{&\bfimp{\vali{G}}{\vali{H}}}&\\
+	&=\bfor{\bfnot{\bfimp{\vali{\bnot{} H}}{\vali{\bnot{} G}}}}%
+		{&\bfor{\bfnot{\vali{G}}}{\vali{H}}}&\\
+	&=\bfor{\bfnot{\bfor{\bfnot{\vali{\bnot H}}}{\vali{\bnot G}}}}%
+	{&\bfor{\bfnot{\vali{G}}}{\vali{H}}}&\\
+	&=\bfor{\bfnot{\bfor{\bfnot{\bfnot{\vali{H}}}}{\bfnot{\vali{G}}}}}%
+	{&\bfor{\bfnot{\vali{G}}}{\vali{H}}}&\\
 	&\eqtext{$\neg\neg$}%
-	\bfor{\bfnot{\bfor{\vali{H}}{\bfnot{\vali{G}}}}&}{\bfor{\bfnot{\vali{G}}}{\vali{H}}}\\
+	\bfor{\bfnot{\bfor{\vali{H}}{\bfnot{\vali{G}}}}}{&\bfor{\bfnot{\vali{G}}}{\vali{H}}}&\\
 	&\eqtext{$\vee$ komm.}%
-	\bfor{\bfnot{\underbrace{{\bfor{\bfnot{\vali{G}}}{\vali{H}}}}_{:=E}}&}{\underbrace{{\bfor{\bfnot{\vali{G}}}{\vali{H}}}}_{=E}}\\
+	\bfor{\bfnot{\underbrace{{\bfor{\bfnot{\vali{G}}}{\vali{H}}}}_{:=E}}}{&\underbrace{{\bfor{\bfnot{\vali{G}}}{\vali{H}}}}_{=E}}&\\
 	&\eqtext{Def.} \bfor{\bfnot{\vali{E}}}{\vali{E}}\\
-	&\imptext{Tut.} \text{Tautologie} & \qedwhite
+	&\imptext{Tut.} \text{Tautologie} & \qedwhite{}
 \end{align*}
-
 % \newpar{Allgemein}
 % Wir kennen für den Beweis von \emph{Tautologien} drei Möglichkeiten:
 % \begin{enumerate}

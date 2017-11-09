@@ -1,14 +1,14 @@
 % by Stephan
 
 %% Moritz mode or Stephan mode
-\ifdefined \Moritz
+\ifdefined \MoritzMode
 \input{../config_Moritz.tex} % Moritz mode
-\else
-\ifdefined \Alex
-\input{../config_Alex.tex} % Alex Mode
-\else
-\input{../config.tex} % Stephan mode
 \fi
+\ifdefined \AlexMode
+\input{../config_Alex.tex} % Alex Mode
+\fi
+\ifdefined \StephanMode
+\input{../config_Stephan.tex} % Stephan mode
 \fi
 
 %% Beamer-Klasse im korrekten Modus
@@ -107,6 +107,24 @@
 % \setlist[enumerate]{noitemsep, nolistsep}
 
 %%%%%%%%%%%% Slides %%%%%%%%%%%%%%%%
+
+\newcommand{\Moritz}[1]{
+	\ifdefined \MoritzMode
+	#1
+	%fi
+}
+
+\newcommand{\Alex}[1]{
+	\ifdefined \AlexMode
+	#1
+	%fi
+}
+
+\newcommand{\Stephan}[1]{
+	\ifdefined \StephanMode
+	#1
+	%fi
+}
 
 %% Wochennummer
 %\newcounter{weeknum}
