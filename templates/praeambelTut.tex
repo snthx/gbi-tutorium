@@ -62,7 +62,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % Libertine font (Original GBI font)
-\usepackage{libertine}
+\usepackage[mono=false]{libertine}
 %\renewcommand*\familydefault{\sfdefault}  %% Only if the base font of the document is to be sans serif
 
 %% Schönere Schriften
@@ -99,12 +99,20 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 
+\usepackage{tikz}
+
 
 % Problem: disabled itemize-icons
 % \usepackage{enumitem}
 % %\setlist[enumerate]{topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex}
 % \setlist[itemize]{noitemsep, nolistsep}
 % \setlist[enumerate]{noitemsep, nolistsep}
+
+% Mathmode no vertical space (https://tex.stackexchange.com/a/47403/146825)
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
 
 %%%%%%%%%%%% Slides %%%%%%%%%%%%%%%%
 

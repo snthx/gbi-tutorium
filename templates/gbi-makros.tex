@@ -48,17 +48,36 @@
 \newcommand{\qedwhite}{\hfill \ensuremath{\Box}}
 
 % Aussagenlogik
+% Worsch
+\colorlet{alcolor}{blue}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta}
+\newcommand{\alimpl}{\mathrel{\tikz[x={(0.1ex,0ex)},y={(0ex,0.1ex)},>={Classical TikZ Rightarrow[]}]{\draw[alcolor,->,line width=0.7pt,line cap=round] (0,0) -- (15,0);\path (0,-6);}}}
+\newcommand{\alimp}{\alimpl}
+\newcommand{\aleqv}{\mathrel{\tikz[x={(0.1ex,0ex)},y={(0ex,0.1ex)},>={Classical TikZ Rightarrow[]}]{\draw[alcolor,<->,line width=0.7pt,line cap=round] (0,0) -- (18,0);\path (0,-6);}}}
+\newcommand{\aland}{\mathbin{\raisebox{-0.6pt}{\rotatebox{90}{\texttt{\color{alcolor}\char62}}}}}
+\newcommand{\alor}{\mathbin{\raisebox{-0.8pt}{\rotatebox{90}{\texttt{\color{alcolor}\char60}}}}}
+%\newcommand{\ali}[1]{_{\mathtt{\color{alcolor}#1}}}
+\newcommand{\alv}[1]{\mathtt{\color{alcolor}#1}}
+\newcommand{\alnot}{\mathop{\tikz[x={(0.1ex,0ex)},y={(0ex,0.1ex)}]{\draw[alcolor,line width=0.7pt,line cap=round,line join=round] (0,0) -- (10,0) -- (10,-4);\path (0,-8) ;}}}
+\newcommand{\alP}{\alv{P}} %ali{#1}}
+%\newcommand{\alka}{\negthinspace\hbox{\texttt{\color{alcolor}(}}}
+\newcommand{\alka}{\negthinspace\text{\texttt{\color{alcolor}(}}}
+%\newcommand{\alkz}{\texttt{\color{alcolor})}}\negthinspace}
+\newcommand{\alkz}{\text{\texttt{\color{alcolor})}}\negthinspace}
+
+% Thassilo
 \newcommand{\BB}{\mathbb{B}}
-\newcommand{\boder}{\ensuremath{\text{\;}\textcolor{blue}{\vee}}\text{\;}}
-\newcommand{\bund}{\ensuremath{\text{\;}\textcolor{blue}{\wedge}}\text{\;}}
-\newcommand{\bimp}{\ensuremath{\text{\;}\textcolor{blue}{\to}}\text{\;}}
-\newcommand{\bnot}{\ensuremath{\text{\;}\textcolor{blue}{\neg}}\text{}}
-\newcommand{\bgdw}{\ensuremath{\text{\;}\textcolor{blue}{\leftrightarrow}}\text{\;}}
+\newcommand{\boder}{\alor}%{\ensuremath{\text{\;}\textcolor{blue}{\vee}}\text{\;}}
+\newcommand{\bund}{\aland}%{\ensuremath{\text{\;}\textcolor{blue}{\wedge}}\text{\;}}
+\newcommand{\bimp}{\alimp}%{\ensuremath{\text{\;}\textcolor{blue}{\to}}\text{\;}}
+\newcommand{\bnot}{\alnot}%{\ensuremath{\text{\;}\textcolor{blue}{\neg}}\text{}}
+\newcommand{\bgdw}{\alimp}%{\ensuremath{\text{\;}\textcolor{blue}{\leftrightarrow}}\text{\;}}
 \newcommand{\bone}{\ensuremath{\textcolor{blue}{1}}\text{}}
 \newcommand{\bzero}{\ensuremath{\textcolor{blue}{0}}\text{}}
-\newcommand{\bleftBr}{\ensuremath{\textcolor{blue}{(}}\text{}}
-\newcommand{\brightBr}{\ensuremath{\textcolor{blue}{)}}\text{}}
-\newcommand{\val}{\hbox{\textit{val}}}
+\newcommand{\bleftBr}{\alka}%{\ensuremath{\textcolor{blue}{(}}\text{}}
+\newcommand{\brightBr}{\alkz}%{\ensuremath{\textcolor{blue}{)}}\text{}}
+\newcommand{\val}{}%{\hbox{\textit{val}}}
 
 \newcommand{\VarAL}{\hbox{\textit{Var}}_{AL}}
 \newcommand{\ForAL}{\hbox{\textit{For}}_{AL}}
@@ -71,4 +90,9 @@
 \newcommand{\bfand}[2]{\ensuremath{b_{\bund}(#1,#2)}}
 \newcommand{\bfor}[2]{\ensuremath{b_{\boder}(#1,#2)}}
 \newcommand{\bfimp}[2]{\ensuremath{b_{\bimp}(#1,#2)}}
-%
+
+% Aussagenkalkül
+\newcommand{\AAL}{A_{AL}}
+\newcommand{\LAL}{\hbox{\textit{For}}_{AL}}
+\newcommand{\AxAL}{\hbox{\textit{Ax}}_{AL}}
+\newcommand{\MP}{\hbox{\textit{MP}}}
