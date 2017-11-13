@@ -26,13 +26,54 @@
     }
 	\end{frame}
 
-\section[Boolsche Algebra]{Aussagenlogik: Wiederholung, Beweisbarkeit}
+\section[Aussagenlogik]{Aussagenlogik: Wiederholung, Beweisbarkeit}
 \subsection{Wiederholung}
-	% Vor allem Tautologie wiederholen!
+\begin{frame}{Aussagenlogik: Wiederholung}
+	\begin{block}{Def.: Interpretation}
+		Für eine Menge \(V\) von Aussagevariablen ist eine \textbf{Interpretation} ist eine Abbildung \(I: V \to \nB\), wobei \( \BB = \set{w, f} \). % Man sagt auch "Belegung"
+	\end{block}
+
+	\begin{block}{Auswertung/Validierung aussagenlogischer Formeln}
+		Sei \(I: V \to \nB\) eine Interpretation.\\
+		Für jede aussagelogische Formel $F$ definiere $\vali{F}$ wie folgt:\\[2ex]
+
+		Für jedes $X \in V$, $G$, $H$ weitere aussagelogische Formeln sei:
+		\begin{itemize}
+			\item $\vali{X}         := I(X) $
+  			\item $\vali{\bnot G}   := \bfnot{\vali{G}} $
+  			\item $\vali{G \bund H} := \bfand{\vali{G}}{\vali{H}}$
+  			\item $\vali{G \boder H} := \bfor{\vali{G}}{\vali{H}}$
+  			\item $\vali{G \bimp H} := \bfimp{\vali{G}}{\vali{H}}$
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Wiederholung}
+	\begin{block}{Def.: Modell}
+		Eine Interpretation $I$ heißt \textbf{Modell} einer Formel $G$, wenn $\vali{G} =\mathbf{w}$.\\
+
+		Eine Interpretation $I$ heißt \textbf{Modell} einer Formelmenge $\Gamma$, wenn $I$ Modell jeder Formel $G\in \Gamma$ ist.
+	\end{block}
+
+	\begin{exampleblock}{}
+	Wir sagen:\\
+	\textcolor{black!50!red}{$\Gamma \models G$}, wenn jedes Modell von $\Gamma$ auch ein Modell von $G$ ist.\\
+	\textcolor{black!50!red}{$\models G$} (statt \textcolor{black!50!red}{$\set{}\models G$}), wenn $G$ für \emph{alle} Interpretationen wahr ist.
+	\end{exampleblock}
+
+	\begin{block}{Def.: Tautologie}
+		Eine Formel $G$ heißt \textbf{Tautologie}, wenn jede Interpreation $I$ Modell ist. Das heißt, für jede Belegung (Interpretation $I$) der Aussagevariablen ist die gesamte aussagenlogische Formel wahr:
+			\[	\vali{G}=\mathbf{w} \quad \text{ für alle } I	\]
+	\end{block}
+\end{frame}
+
+
+
+
 \subsection{Beweisbarkeit}
 \begin{frame}{Aussagenlogik: Beweisbarkeit}
-	\begin{block}{Aussagenkalkül der Aussagenlogik}
-		Das \textbf{Aussagenkalkül der Aussagenlogik} besteht aus
+	\begin{block}{Hilbertkalkül für die Aussagenlogik}
+		Das \textbf{Hilbertkalkül für die Aussagenlogik}, (vereinfacht) auch \textbf{Aussagenkalkül}, besteht aus
 		\begin{itemize}
 			\item dem Alphabet $\AAL$,
 			\item der Menge der syntakisch korrekten Formeln $\LAL \subseteq \AAL^*$,
@@ -92,8 +133,8 @@
 
 \begin{frame}{Aussagenlogik: Beweisbarkeit}
 	\begin{block}{Def.: Ableitung}
-		Sei $Gamma \subseteq \LAL$ eine \textbf{Hypotese} oder \textbf{Prämisse} und $G$ eine Formel.\\
-		Eine \textbf{Ableitung} von $G$ aus $Gamma$ ist eine endliche Folge $(G_1, \dots, G_n)$ mit
+		Sei $\Gamma \subseteq \LAL$ eine \textbf{Hypotese} oder \textbf{Prämisse} und $G$ eine Formel.\\
+		Eine \textbf{Ableitung} von $G$ aus $\Gamma$ ist eine endliche Folge $(G_1, \dots, G_n)$ mit
 		\begin{itemize}
 			\item $G_n = G$ und 
 			\item für jedes $G_i (1 \leq i \leq n)$ gilt einer der folgenden Fälle:
@@ -107,7 +148,7 @@
 		Geschrieben: $\Gamma\vdash G$
 	\end{block}
 
-	\begin{block}{Def.: Beweis}
+	\begin{block}{Def.: Beweis und Theorem}
 	Ist $\Gamma=\{\}$, so heißt eine entsprechende Ableitung auch ein \textbf{Beweis} von $G$ und $G$ ein \textbf{Theorem} des Kalküls, in Zeichen: $\vdash G$
 	\end{block}
 \end{frame}
@@ -121,8 +162,10 @@
 			2. & $\alka \alP \alimpl \alka \alka \alP \alimpl  \alP \alkz\alimpl  \alP \alkz\alkz$ & $\AxAL{}_1$ \\
 			3. & $\alka \alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz\alimpl \alka \alP \alimpl  \alP \alkz\alkz$ & $\MP(1,2)$ \\
 			4. & $\alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz$ & $\AxAL{}_1$ \\
-			5. & $\alka \alP \alimpl  \alP \alkz$ & $\MP(3,4)$ 
+			5. & $\alka \alP \alimpl  \alP \alkz$ & $\MP(3,4)$
 			\end{tabular}
+
+			\qedwhite{}
 	\end{exampleblock}
 \end{frame}
 
