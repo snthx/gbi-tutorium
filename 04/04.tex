@@ -114,12 +114,12 @@
 	\end{block}
 
 	\begin{exampleblock}{Beispiel}
-		\begin{itemize}
+		\begin{description}
 			\item[\emph{Prämissen}:] $G \alimpl H$: \enquote{Wenn es regnet, wird die Straße nass},\\
 								 $G$: \enquote{Es regnet}
 			% Sind diese beiden Prämissen gültig, so ist auch der Schluss "Conclusio" gültig.
 			\item[\emph{Conclusio}:] $H$: \enquote{Die Straße wird nass}.
-		\end{itemize}
+		\end{description}
 	\end{exampleblock}
 
 	% \begin{exampleblock}{Beispiel}
@@ -133,7 +133,7 @@
 
 \begin{frame}{Aussagenlogik: Beweisbarkeit}
 	\begin{block}{Def.: Ableitung}
-		Sei $\Gamma \subseteq \LAL$ eine \textbf{Hypotese} oder \textbf{Prämisse} und $G$ eine Formel.\\
+		Sei $\Gamma \subseteq \LAL$ eine Menge von \textbf{Hypothesen} oder \textbf{Prämissen} und $G$ eine Formel.\\
 		Eine \textbf{Ableitung} von $G$ aus $\Gamma$ ist eine endliche Folge $(G_1, \dots, G_n)$ mit
 		\begin{itemize}
 			\item $G_n = G$ und 
@@ -185,11 +185,11 @@
 		Vollständige Induktion beschreibt ein Beweisverfahren, das man verwendet um die Gültigkeit einer Aussage \(A(n)\) für alle \(n \in \nN_{0} \text{ (oder } \nN\)) zu beweisen.\\
 		
 		Sie besteht aus:
-		\begin{itemize}
+		\begin{description}
 			\item [\textbf{Induktionsanfang (I.A.):}] Zeige, dass \(A(n)\) für \(n=0\) (bzw. \(n=1\)) gilt.
 			\item [\textbf{Induktionsvoraussetzung (I.V.):}] Stelle die Annahme auf, dass \(A(n)\) für \textcolor{red}{ein beliebiges, aber festes} \(n \in \nN_{0}\) (oder \(n \in \nN\)) gilt.
 			\item [\textbf{Induktionsschritt (I.S.):}] Zeige, dass, wenn \(A(n)\) gilt, auch \(A(n+1)\) gilt. Verwende hierbei die Induktionsvorraussetzung!
-		\end{itemize}
+		\end{description}
 	\end{block}
 
 	\begin{alertblock}{}
@@ -235,8 +235,46 @@
 \subsection{Einfaches Mathematisches Beispiel zum Selberrechnen}
 
 \section{Formale Sprachen}
-\subsection{Wiederholung Wort} % Sollen wir das machen?
 \subsection{Wiederholung Sprachen} % Produkt v. Sprachen, Potenzen, L^*, L^+ und dabei induktives Definieren klarmachen
+\begin{frame}{Wdh.: Formale Sprachen}
+	\begin{block}{Def.: Formale Sprache}
+		Eine \textbf{formale Sprache} L über einem Alphabet A ist eine Teilmenge der Wörter über A, also \(L \subseteq A^{*}\).
+	\end{block}
+
+	\begin{block}{Def.: Produkt formaler Sprachen}
+		Es sei $A$ ein Alphabet, sowie $L,S \subseteq A^*$ formale Sprachen.\\
+		Das \textbf{Produkt} der Sprachen ist definiert durch
+		\[
+			L \cdot S := \setc{u \cdot v}{u \in L \text{ und } v \in S}
+		\]
+	\end{block}
+
+	\begin{exampleblock}{Beispiel}
+		Es sei $L:=\set{\texttt{aa}, \texttt{bb}}$. Dann ist $L\cdot L = \set{\texttt{aaaa}, \texttt{aabb}, \texttt{bbbb}, \texttt{bbaa}}$
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wdh.: Formale Sprachen}
+	\begin{block}{Def.: Potenzen von Sprachen}
+		Die \textbf{Potenzen} einer formalen Sprache $L$ sind induktiv definiert:
+		\begin{align*}
+			L^0 &= \set{\varepsilon} \\
+			\text{Für alle $n \in \nN_0$ gilt: } L^{n+1} &= L^n \cdot L
+		\end{align*}
+	\end{block}
+
+	\begin{block}{Def.: Konkatenationsabschluss}
+		Sei $L$ eine formale Sprache. Dann ist \\
+		$L^* = \bigcup_{i=0}^{\infty} L^{i}$ der \textbf{Konkatenationsabschluss} $L^*$ von $L$ und \\
+		$L^+ = \bigcup_{i=1}^{\infty} L^{i}$ der \textbf{$\varepsilon$-freie Konkatenationsabschluss} $L^+$ von $L$.
+	\end{block}
+
+	\begin{alertblock}{Achtung}
+		Auch beim $\varepsilon$-freien Konkatenationsabschluss kann $\varepsilon$ enthalten sein, nämlich gdw. $\varepsilon \in L$
+	\end{alertblock}
+\end{frame}
+
+
 
 \section{Übungsaufgaben}
 \subsection{Ein leichter induktiver Beweis auf einer Sprache}
@@ -280,13 +318,16 @@
 		\begin{enumerate}
 			\item $ T(2)=5,T(3)=9, T(4)=17, T(5)=33, T(6)=65$
 			\item $F(n) = 2^n+1$
-			\item s. nächste Folien
+			\newcounter{kevin}
+			\setcounter{kevin}{\value{enumi}}
 		\end{enumerate}
 	\end{block}
 \end{frame}
 \begin{frame}{Induktiv Beweisen II.: Schwieriger}
 	\begin{block}{Lösung}
-		 	\begin{itemize}
+		\begin{enumerate}
+			\setcounter{enumi}{\value{kevin}}
+			\item \begin{itemize}
 		 		\item Beh.: Für alle $n \in \nN_0$ gilt $F(n) = T(n)$.
 		 		\item Bew. (induktiv): 
 				\begin{itemize}
@@ -296,13 +337,15 @@
 							 	Sei $n=1$. Dann gilt: \\
 							 	\qquad $F(n)=F(1)=2^1+1=2+1=3=T(1)=T(n)$.
 				\end{itemize}
-		 	\end{itemize}				  
+		 	\end{itemize}
+		\end{enumerate}		 					  
 	\end{block}
 \end{frame}
 \begin{frame}{Induktiv Beweisen II.: Schwieriger}
 	\begin{block}{Lösung}
-	\begin{itemize}
-		\item 
+	\begin{enumerate}
+		\setcounter{enumi}{\value{kevin}}
+		\item
 		\begin{itemize}
 				\item[I.V.:] Für ein bel., aber festes $n \in \nN_0$ gelte: \\
 				 $T(n)=F(n)=2^n+1$ und $T(n+1)=F(n+1)=2^{n+1}+1$.
@@ -318,7 +361,7 @@
 						   &=F(n+2)
 				\end{align*}
 			\end{itemize}
-	\end{itemize}
+		\end{enumerate}
 	\end{block}
 \end{frame}
 \subsection{Eine Knobelaufgabe}
@@ -343,20 +386,23 @@
 				\item 3 Paare $\rightarrow$ 12 Begrüßungen
 				\item 4 Paare $\rightarrow$ 24 Begrüßungen
 				\item 5 Paare $\rightarrow$ 40 Begrüßungen
-			\end{itemize}
-			\item $p_n = 2 \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$
+			\end{itemize} \pause
+			\item $p_n = 2 \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$ \pause
 			\item Jedes Paar, das neu hinzukommt, muss die $n$ sich im Raum befindenden Paare begrüßen. Das bedeutet $2n$ Begrüßungen (ein Paar besteht aus $2$ Partnern) pro neu hinzugekommenen Partner, also insgesamt $4n$ Begrüßungen. Formal heißt das: 
 			\begin{align*}
 				q_1 &= 0 \\
 				\text{Für alle } n \in \nN_+ \text{ gilt: } q_{n+1} &= q_n + 4n
 			\end{align*}
+			\setcounter{kevin}{\value{enumi}}
 		\end{enumerate}
 	\end{block}
 \end{frame}
 
 \begin{frame}{Induktiv Beweisen III.: Zum Knoblen}
 	\begin{block}{Lösung}
-		\begin{itemize}
+	\begin{enumerate}
+		\setcounter{enumi}{\value{kevin}}
+		\item \begin{itemize}
 			\item[I.A.] $n=1: p_n = p_1 = 2 \cdot (1^2 -1 ) = 0 = q_1 = q_n \quad \checkmark$
 			\item[I.V.] Für ein beliebiges, aber festes $n \in \nN_+$ gelte $p_n=q_n$.
 			\item[I.S.] \zz $p_{n+1}=q_{n+1}$, also $n \notStephan{\leadsto} \Stephan{\curvearrowright} n+1$
@@ -369,8 +415,8 @@
 						&\eqtext{I.V.} q_n + 4n \\
 						&\eqtext{Def.} q_{n+1} & \qedwhite{}
 			\end{align*}
-
 		\end{itemize}
+	\end{enumerate}		
 	\end{block}
 \end{frame}
 
