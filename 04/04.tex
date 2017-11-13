@@ -114,20 +114,20 @@
 	\end{block}
 
 	\begin{exampleblock}{Beispiel}
-		\begin{description}
+		\begin{itemize}
 			\item[\emph{Prämissen}:] $G \alimpl H$: \enquote{Wenn es regnet, wird die Straße nass},\\
 								 $G$: \enquote{Es regnet}
 			% Sind diese beiden Prämissen gültig, so ist auch der Schluss "Conclusio" gültig.
 			\item[\emph{Conclusio}:] $H$: \enquote{Die Straße wird nass}.
-		\end{description}
+		\end{itemize}
 	\end{exampleblock}
 
 	% \begin{exampleblock}{Beispiel}
-	% 	\begin{description}
+	% 	\begin{itemize}
 	% 		\item[Prämissen:] $G \alimpl H$: \enquote{Wenn du Mensch bist, stirbst du},\\
 	% 							 $G$: \enquote{Du bist ein Mensch}
 	% 		\item[Conclusio:] $H$: \enquote{Du stirbst}.
-	% 	\end{description}
+	% 	\end{itemize}
 	% \end{exampleblock}
 \end{frame}	
 
@@ -155,7 +155,7 @@
 
 \begin{frame}{Aussagenlogik: Beweisbarkeit}
 	\begin{exampleblock}{Beispiel zum Modus Ponens}
-		Beweis des Theorems $\alka\alP\alimpl\alP\alkz$:\\[1em]
+		Ableitung/Beweis des Theorems $\alka\alP\alimpl\alP\alkz$:\\[1em]
 		\begin{tabular}{rll}
 			1. & $\alka \alka \alP \alimpl \alka \alka \alP \alimpl  \alP \alkz\alimpl  \alP \alkz\alkz\alimpl 
        			\alka \alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz\alimpl \alka \alP \alimpl  \alP \alkz\alkz\alkz$ & $\AxAL{}_2$ \\
@@ -180,7 +180,58 @@
 
 \section[Vollständige Induktion]{Beweisverfahren d. vollständigen Induktion}
 \subsection{Einstieg u. Definition}
+\begin{frame}{Vollständige Induktion}
+	\begin{block}{Vollständige Induktion}
+		Vollständige Induktion beschreibt ein Beweisverfahren, das man verwendet um die Gültigkeit einer Aussage \(A(n)\) für alle \(n \in \nN_{0} \text{ (oder } \nN\)) zu beweisen.\\
+		
+		Sie besteht aus:
+		\begin{itemize}
+			\item [\textbf{Induktionsanfang (I.A.):}] Zeige, dass \(A(n)\) für \(n=0\) (bzw. \(n=1\)) gilt.
+			\item [\textbf{Induktionsvoraussetzung (I.V.):}] Stelle die Annahme auf, dass \(A(n)\) für \textcolor{red}{ein beliebiges, aber festes} \(n \in \nN_{0}\) (oder \(n \in \nN\)) gilt.
+			\item [\textbf{Induktionsschritt (I.S.):}] Zeige, dass, wenn \(A(n)\) gilt, auch \(A(n+1)\) gilt. Verwende hierbei die Induktionsvorraussetzung!
+		\end{itemize}
+	\end{block}
+
+	\begin{alertblock}{}
+		Es gibt einige Varianten vollständiger Induktion. Immer darauf achten, was man braucht und will. Tipp: \textbf{Nachdenken!}
+	\end{alertblock}
+\end{frame}
 \subsection{Vorgerechnetes Beispiel}
+\begin{frame}{Vollständige Induktion - Ein dummes Beispiel}
+	\begin{exampleblock}{Aufgabe}
+		Sei $x_n$ für $x \in \nN_0$ wie folgt definiert:
+		\[
+			x_n := (-1)^n.
+		\]
+		Zeige mit vollständiger Induktion, dass 
+		$x_n = 
+		\begin{cases}
+			-1, &\text{ falls $n$ ungerade}\\
+			1, &\text{ sonst}
+		\end{cases}$
+	\end{exampleblock}
+\end{frame}
+\begin{frame}{Vollständige Induktion - Ein dummes Beispiel}
+	\begin{block}{Lösung}
+		\begin{itemize}
+			\item[I.A.] $n=0: (-1)^0=1 \quad \checkmark$
+			\item[I.V.:] Für ein bel., aber festes $n \in \nN_0$ gelte: \\
+				 			$x_n = 
+					\begin{cases}
+						-1, &\text{ falls $n$ ungerade}\\
+						1, &\text{ sonst}
+					\end{cases}.$
+			\item[I.S.:] $n \notStephan{\leadsto} \Stephan{\curvearrowright} n+1$.\\
+			\begin{itemize}
+				\item Fall 1: $x_{n+1} \text{ ist ungerade } \Rightarrow x_n \text{ ist gerade}$\\
+					$x_{n+1} = (-1)^{n+1} = (-1) \cdot (-1)^n \eqtext{I.V.} (-1) \cdot 1 = -1 \quad \checkmark$
+				\item Fall 1: $x_{n+1} \text{ ist gerade } \Rightarrow x_n \text{ ist ungerade}$\\
+					$x_{n+1} = (-1)^{n+1} = (-1) \cdot (-1)^n \eqtext{I.V.} (-1) \cdot (-1) = 1 \quad \checkmark$
+			\end{itemize}
+			Mit Fall 1 und 2 folgt die Behauptung. \qedwhite{}
+		\end{itemize}
+	\end{block}
+\end{frame}
 \subsection{Einfaches Mathematisches Beispiel zum Selberrechnen}
 
 \section{Formale Sprachen}
@@ -223,6 +274,7 @@
 		\end{enumerate}
 	\end{exampleblock}
 \end{frame}
+\subsection{Ein schwieriger mathematischer Beweis}
 \begin{frame}{Induktiv Beweisen II.: Schwieriger}
 	\begin{block}{Lösung}
 		\begin{enumerate}
@@ -271,22 +323,52 @@
 	\end{itemize}
 	\end{block}
 \end{frame}
-\subsection{Ein schwieriger mathematischer Beweis}
+\subsection{Eine Knobelaufgabe}
+\begin{frame}{Induktiv Beweisen III.: Zum Knoblen}
+	\begin{exampleblock}{Aufgabe}
+		Alice und Bob feiern ihren Hochzeitstag. Auf ihrer Party befinden sich $n \in \nN_+$ Paare. Dabei begrüßen sich alle Paare mit Ausnahme des eigenen Partners.\\
+		\begin{enumerate}
+			\item Gib die Anzahl der Begrüßungen $x_i$ für $i \in \set{1,2,3,4,5}$ Paaren an
+			\item Stelle für $x_n$ einen geschlossenen Ausdruck auf
+			\item Beweise deinen geschlossenen Ausdruck durch vollständige Induktion
+		\end{enumerate}
+	\end{exampleblock}
+\end{frame}
 
-% \section{Vollständige Induktion}
-% \subsection{Vollständige Induktion}
-% \begin{frame}{Vollständige Induktion}
-% 	\begin{block}{Def.: Vollständige Induktion}
-% 		Vollständige Induktion beschreibt ein Beweisverfahren, das man verwendet um die Gültigkeit einer Aussage \(A(n)\) für alle \(n \in \nN_{0} \text{ (oder } \nN\)) zu beweisen.\\
-% 		\pause
-% 		Sie besteht aus:
-% 		\begin{description}
-% 			\item [\textbf{Induktionsanfang (I.A.):}] Zeige, dass \(A(n)\) für \(n=0\) (bzw. \(n=1\)) gilt.\pause
-% 			\item [\textbf{Induktionsvoraussetzung (I.V.):}] Stelle die Annahme auf, dass \(A(n)\) für \textcolor{red}{ein beliebiges, aber festes} \(n \in \nN_{0}\) (oder \(n \in \nN\)) gilt.\pause
-% 			\item [\textbf{Induktionsschritt (I.S.):}] Zeige, dass, wenn \(A(n)\) gilt, auch \(A(n+1)\) gilt.
-% 		\end{description}
-% 	\end{block}
-% \end{frame}
+\begin{frame}{Induktiv Beweisen III.: Zum Knoblen}
+	\begin{block}{Lösung}
+		\begin{enumerate}
+			\item \begin{itemize}
+				\item $x_1 = 0$
+				\item $x_2 = 4$
+				\item $x_3 = 12$
+				\item $x_4 = 24$
+				\item $x_5 = 40$
+			\end{itemize}
+			\item $x_n = 2 \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Induktiv Beweisen III.: Zum Knoblen}
+	\begin{block}{Lösung}
+		\begin{itemize}
+			\item[I.A.] $n=1: x_n = x_1 = 2 \cdot (1^2 -1 ) = 2 \cdot (n^2 -n) \quad \checkmark$
+			\item[I.V.] Für ein beliebiges, aber festes $n \in \nN_+$ gelte $x_n = 2 \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$.
+			\item[I.S.] \zz $x_{n+1} \eqtext{!} 2 \cdot (n+1) \cdot ((n+1)-1) = 2(n+1)n$, also $n \notStephan{\leadsto} \Stephan{\curvearrowright} n+1$\\
+			Jedes Paar, das neu hinzukommt, muss die $n$ sich im Raum befindenden Paare begrüßen. Das bedeutet $2n$ Begrüßungen (ein Paar besteht aus $2$ Partnern) pro neu hinzugekommenen Partner, also insgesamt $4n$ Begrüßungen. Formal heißt das $x_{n+1} = x_n + 4n$.\\
+			\begin{align*}
+				x_n+1 	&\eqtext{Def.} x_n + 4n \\
+						&\eqtext{I.V.} 2n \cdot (n-1) + 4n = 2n^2 - 2n +4n\\
+						&= 2n^2 + 2n = 2 \cdot (n+1) \cdot n &\qedwhite{}
+			\end{align*}
+
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+
 
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung

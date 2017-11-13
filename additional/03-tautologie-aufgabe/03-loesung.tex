@@ -7,7 +7,7 @@
 \usepackage{amsmath, amsfonts, amssymb}
 \usepackage[pdftex,%
 	pdfauthor={Stephan Bohr},%
-	pdftitle={Loesung zur Tautologieaufgabe aus Tut 03}%
+	pdftitle={Lösung zur Tautologieaufgabe aus Tut 03}%
 		]{hyperref}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{parskip}
@@ -18,10 +18,14 @@
 \setlist[itemize]{noitemsep, nolistsep}
 \setlist[enumerate]{noitemsep, nolistsep}
 
-\input{../templates/gbi-makros.tex}
+\input{../../templates/gbi-makros.tex}
 
+\title{Lösung zur Tautologieaufgabe aus Tut 03}
+\author{Stephan Bohr (\href{mailto:stephan.bohr@student.kit.edu}{stephan.bohr@student.kit.edu})}
+\date{}
 % ===== Document =====
 \begin{document}
+\maketitle
 \newpar{Aufgabe}
 Es sei $\VarAL$ eine Menge von Aussagevariablen und $\ForAL$ die Menge aller aussagenlogischen Formeln über $\VarAL$. Beweise, dass für alle \(G, H \in \ForAL\) die aussagenlogische Formel
 				\[\mathcal{F} :=	\bleftBr{} \bnot{} H\bimp{} \bnot{} G \brightBr{} \bimp{} \bleftBr{} G \bimp{} H \brightBr{}\]
@@ -50,12 +54,13 @@ Es sei $\VarAL$ eine Menge von Aussagevariablen und $\ForAL$ die Menge aller aus
 	&\eqtext{Def.} \bfor{\bfnot{\vali{E}}}{\vali{E}}\\
 	&\imptext{Tut.} \text{Tautologie} & \qedwhite{}
 \end{align*}
-% \newpar{Allgemein}
-% Wir kennen für den Beweis von \emph{Tautologien} drei Möglichkeiten:
-% \begin{enumerate}
-% 	\item Modus Ponens
-% 	\item Fallunterscheidung, was im Grunde einer Wahrheitstabelle gleichkommt
-% 	\item Formelles Abbilden, danach dann umformen, substitieren, und auf bekannte Tautologien schließen.
-% \end{enumerate}
-% Im 2. und 3. Fall sollte zumindest formell korrekt abgebildet werden, so lange es geht, und danach (!) erst gedacht werden, damit die Tutanten mit dem Formalismen-Wahn aus GBI warm werden. Klar machen, dass das wichtig ist, und erst bis zum bitteren Ende durchgeführt werden sollte.
+\newpar{Allgemein}
+Wir kennen für den Beweis von \emph{Tautologien} drei Möglichkeiten:
+\begin{enumerate}
+	% \item Modus Ponens % Für Theoreme, nicht Tautologien
+	\item Wahrheitstabellen
+	\item Fallunterscheidung, was im Grunde einer Wahrheitstabelle gleichkommt
+	\item Formelles Abbilden, danach dann umformen, substitieren, und auf bekannte Tautologien schließen.
+\end{enumerate}
+Im 2. und 3. Fall sollte zumindest formell korrekt abgebildet werden, so lange es geht, und danach (!) erst gedacht werden, damit die Tutanten mit dem Formalismen-Wahn aus GBI warm werden. Klar machen, dass das wichtig ist, und erst bis zum bitteren Ende durchgeführt werden sollte.
 \end{document}
