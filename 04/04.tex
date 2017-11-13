@@ -14,16 +14,169 @@
 \section*{Übungsblatt}
 \subsection{Rückmeldungen, Statikstik, whatever}
 	\begin{frame}{Zum 1. Übungsblatt}
-	    \begin{itemize}
-	    	\Stephan{\item lul}
-	    	\Moritz{\item bitte in der modes.tex \Moritz in \MoritzMode umbenennen}
-	    	\Alex{\item bitte in der modes.tex \Alex in \AlexMode umbenennen}
-	    \end{itemize}
+	    \Alex{
+	    	\begin{alertblock}{Aufgabe 1.4 b)}
+	    		A und B waren beliebig, d.h. kein konkretes Beispiel!
+	    	\end{alertblock}
+    	\pause
+			\begin{alertblock}{Aufgabe 1.5}				
+				Beim Widerlegen: Möglichst einfaches Gegenbeispiel finden. \\
+				Beim Zeigen: Formaler Beweis (Bitte mit $\subseteq$ und  $\supseteq$).
+			\end{alertblock}    
+    }
 	\end{frame}
 
-\section[Boolsche Algebra]{Wiederholung d. Boolschen Algebra, Beweisbarkeit (Ableitung u. Modus Ponens)}
+\section[Aussagenlogik]{Aussagenlogik: Wiederholung, Beweisbarkeit}
 \subsection{Wiederholung}
+\begin{frame}{Aussagenlogik: Wiederholung}
+	\begin{block}{Def.: Interpretation}
+		Für eine Menge \(V\) von Aussagevariablen ist eine \textbf{Interpretation} ist eine Abbildung \(I: V \to \nB\), wobei \( \BB = \set{w, f} \). % Man sagt auch "Belegung"
+	\end{block}
+
+	\begin{block}{Auswertung/Validierung aussagenlogischer Formeln}
+		Sei \(I: V \to \nB\) eine Interpretation.\\
+		Für jede aussagelogische Formel $F$ definiere $\vali{F}$ wie folgt:\\[2ex]
+
+		Für jedes $X \in V$, $G$, $H$ weitere aussagelogische Formeln sei:
+		\begin{itemize}
+			\item $\vali{X}         := I(X) $
+  			\item $\vali{\bnot G}   := \bfnot{\vali{G}} $
+  			\item $\vali{G \bund H} := \bfand{\vali{G}}{\vali{H}}$
+  			\item $\vali{G \boder H} := \bfor{\vali{G}}{\vali{H}}$
+  			\item $\vali{G \bimp H} := \bfimp{\vali{G}}{\vali{H}}$
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Wiederholung}
+	\begin{block}{Def.: Modell}
+		Eine Interpretation $I$ heißt \textbf{Modell} einer Formel $G$, wenn $\vali{G} =\mathbf{w}$.\\
+
+		Eine Interpretation $I$ heißt \textbf{Modell} einer Formelmenge $\Gamma$, wenn $I$ Modell jeder Formel $G\in \Gamma$ ist.
+	\end{block}
+
+	\begin{exampleblock}{}
+	Wir sagen:\\
+	\textcolor{black!50!red}{$\Gamma \models G$}, wenn jedes Modell von $\Gamma$ auch ein Modell von $G$ ist.\\
+	\textcolor{black!50!red}{$\models G$} (statt \textcolor{black!50!red}{$\set{}\models G$}), wenn $G$ für \emph{alle} Interpretationen wahr ist.
+	\end{exampleblock}
+
+	\begin{block}{Def.: Tautologie}
+		Eine Formel $G$ heißt \textbf{Tautologie}, wenn jede Interpreation $I$ Modell ist. Das heißt, für jede Belegung (Interpretation $I$) der Aussagevariablen ist die gesamte aussagenlogische Formel wahr:
+			\[	\vali{G}=\mathbf{w} \quad \text{ für alle } I	\]
+	\end{block}
+\end{frame}
+
+
+
+
 \subsection{Beweisbarkeit}
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{block}{Hilbertkalkül für die Aussagenlogik}
+		Das \textbf{Hilbertkalkül für die Aussagenlogik}, (vereinfacht) auch \textbf{Aussagenkalkül}, besteht aus
+		\begin{itemize}
+			\item dem Alphabet $\AAL$,
+			\item der Menge der syntakisch korrekten Formeln $\LAL \subseteq \AAL^*$,
+			\item einer Menge von \textbf{Axiomen} $\AxAL \subseteq \LAL$,
+			\item der (einzigen) \textbf{Schlussregel} \textbf{Modus Ponens} $\MP \subseteq \LAL^3$
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{block}{Axiome}
+		\begin{align*}
+  			\AxAL &= \bigl\{\alka G\alimpl \alka H\alimpl  G\alkz\alkz
+          			\bigm| G,H\in\LAL \bigr\} \\
+        		&\mathrel{\hphantom{=}} \cup \bigl\{\alka G\alimpl \alka H\alimpl  K\alkz\alkz
+          			\alimpl \alka\alka G\alimpl H\alkz\alimpl \alka G\alimpl  K\alkz\alkz \bigm| G,H,K\in\LAL \bigr\}\\
+        		&\mathrel{\hphantom{=}} \cup \bigl\{
+          			\alka\alnot H\alimpl \alnot G\alkz\alimpl \alka\alka\alnot H\alimpl G\alkz\alimpl  H\alkz
+          			\bigm| G,H \in\LAL 
+          			\bigr\}
+		\end{align*}
+
+		Kurz: $\AxAL{}_1$, $\AxAL{}_2$ und $\AxAL{}_3$ für die drei Zeilen.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{block}{Modus Ponens $\MP \subseteq \LAL^3$ (Schlussregel)}
+		\begin{itemize}
+			\item $\MP = \{ (G\alimpl H, G, H) \mid  G, H \in\LAL \}$
+			\item $\MP:$ \quad \begin{tabular}{c}
+                $G \alimpl H$ \qquad $G$ \\
+                \midrule
+                $H$
+              \end{tabular}
+             \item Aus einer Formel der Form $G \alimp H$ und einer Formel der Form $G$ darf man auf eine Formel der Form $H$ schließen.
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Beispiel}
+		\begin{description}
+			\item[\emph{Prämissen}:] $G \alimpl H$: \enquote{Wenn es regnet, wird die Straße nass},\\
+								 $G$: \enquote{Es regnet}
+			% Sind diese beiden Prämissen gültig, so ist auch der Schluss "Conclusio" gültig.
+			\item[\emph{Conclusio}:] $H$: \enquote{Die Straße wird nass}.
+		\end{description}
+	\end{exampleblock}
+
+	% \begin{exampleblock}{Beispiel}
+	% 	\begin{description}
+	% 		\item[Prämissen:] $G \alimpl H$: \enquote{Wenn du Mensch bist, stirbst du},\\
+	% 							 $G$: \enquote{Du bist ein Mensch}
+	% 		\item[Conclusio:] $H$: \enquote{Du stirbst}.
+	% 	\end{description}
+	% \end{exampleblock}
+\end{frame}	
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{block}{Def.: Ableitung}
+		Sei $\Gamma \subseteq \LAL$ eine \textbf{Hypotese} oder \textbf{Prämisse} und $G$ eine Formel.\\
+		Eine \textbf{Ableitung} von $G$ aus $\Gamma$ ist eine endliche Folge $(G_1, \dots, G_n)$ mit
+		\begin{itemize}
+			\item $G_n = G$ und 
+			\item für jedes $G_i (1 \leq i \leq n)$ gilt einer der folgenden Fälle:
+			\begin{itemize}
+				\item $G_i\in\AxAL$ oder% $G_i$ ist ein Axiom
+				\item $G_i\in\Gamma$ oder% $G_i$ ist eine Prämisse
+				\item es gibt $i_1,i_2 < i$ mit $(G{i_1},G_{i_2},G_i)\in\MP$.
+			\end{itemize}
+		\end{itemize}
+
+		Geschrieben: $\Gamma\vdash G$
+	\end{block}
+
+	\begin{block}{Def.: Beweis und Theorem}
+	Ist $\Gamma=\{\}$, so heißt eine entsprechende Ableitung auch ein \textbf{Beweis} von $G$ und $G$ ein \textbf{Theorem} des Kalküls, in Zeichen: $\vdash G$
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{exampleblock}{Beispiel zum Modus Ponens}
+		Beweis des Theorems $\alka\alP\alimpl\alP\alkz$:\\[1em]
+		\begin{tabular}{rll}
+			1. & $\alka \alka \alP \alimpl \alka \alka \alP \alimpl  \alP \alkz\alimpl  \alP \alkz\alkz\alimpl 
+       			\alka \alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz\alimpl \alka \alP \alimpl  \alP \alkz\alkz\alkz$ & $\AxAL{}_2$ \\
+			2. & $\alka \alP \alimpl \alka \alka \alP \alimpl  \alP \alkz\alimpl  \alP \alkz\alkz$ & $\AxAL{}_1$ \\
+			3. & $\alka \alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz\alimpl \alka \alP \alimpl  \alP \alkz\alkz$ & $\MP(1,2)$ \\
+			4. & $\alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz$ & $\AxAL{}_1$ \\
+			5. & $\alka \alP \alimpl  \alP \alkz$ & $\MP(3,4)$
+			\end{tabular}
+
+			\qedwhite{}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}    
+	\begin{alertblock}{Achtung}
+		\begin{itemize}
+			\item \emph{Tautologie}, \emph{Modell} und \emph{Theorem} sind unterschiedliche Wörter
+			\item $\models$ und $\vdash$ sind unterschiedliche Symbole
+		\end{itemize}
+	\end{alertblock}
+\end{frame}
 
 \section[Vollständige Induktion]{Beweisverfahren d. vollständigen Induktion}
 \subsection{Einstieg u. Definition}
@@ -141,7 +294,9 @@
 %\subsection{Zusammenfassung}
 	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
 			\begin{itemize}
-				\item Todo
+				\item mit dem Aussagenkalkül arbeiten
+				\item Induktionsbeweise, auch in Varianten
+				\item Mit formalen Sprachen umgehen
 			\end{itemize}
 	
 	\end{frame}
