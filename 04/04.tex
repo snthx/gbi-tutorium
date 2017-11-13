@@ -259,14 +259,14 @@
 \begin{frame}{Induktiv Beweisen II.: Schwieriger}
 	\begin{exampleblock}{Aufgabe}
 		Eine Funktion $T:\nN_0 \rightarrow \nN_0$ sei wie folgt definiert:
-		\begin{equation}
+		\begin{equation*}
 		T(n) = 
 			\begin{cases}
 			 2, &\text{ wenn } n=0 \\
 			 3, &\text{ wenn } n=1 \\
 			 3 \cdot T(n-1) - 2 \cdot T(n-2), &\text{ wenn }n \in \nN_0 \setminus \set{0,1}
 		\end{cases} \pause
-		\end{equation}
+		\end{equation*}
 		\begin{enumerate}
 			\item Gib die Funktionswerte $T(n)$ für $n \in \set{2,3,4,5,6}$ an.
 			\item Gib eine geschlossene Formel $F(n)$ (einen arithmetischen Ausdruck ohne Rekursion) für $T(n)$ an.
@@ -290,12 +290,11 @@
 		 		\item Beh.: Für alle $n \in \nN_0$ gilt $F(n) = T(n)$.
 		 		\item Bew. (induktiv): 
 				\begin{itemize}
-					\item[I.A.:]\begin{align*} 
-											\text{Sei }n=0 \text{. Dann gilt: } \\ 
-												F(n)&=F(0)=2^0+1=1+1=2=T(0)=T(n).\\
-							 				\text{Sei }n=1 \text{. Dann gilt:  } \\
-							 					F(n)&=F(1)=2^1+1=2+1=3=T(1)=T(n).
-							 \end{align*}
+					\item[I.A.:]
+								Sei $n=0$. Dann gilt: \\ 
+								\qquad $F(n)=F(0)=2^0+1=1+1=2=T(0)=T(n)$.\\
+							 	Sei $n=1$. Dann gilt: \\
+							 	\qquad $F(n)=F(1)=2^1+1=2+1=3=T(1)=T(n)$.
 				\end{itemize}
 		 	\end{itemize}				  
 	\end{block}
@@ -315,8 +314,7 @@
 						   &= 3 \cdot 2^{n+1} + 3 - 2 \cdot 2^n - 2 \\
 						   &= 3 \cdot 2^{n+1} - 2 \cdot 2^n + 1 \\
 						   &= 3 \cdot 2^{n+1} - 2^{n+1} +1 \\
-						   &= 2 \cdot 2^{n+1} + 1 \\
-						   &= 2^{n+2} + 1 \\
+						   &= 2 \cdot 2^{n+1} + 1 = 2^{n+2} + 1 \\
 						   &=F(n+2)
 				\end{align*}
 			\end{itemize}
@@ -328,9 +326,10 @@
 	\begin{exampleblock}{Aufgabe}
 		Alice und Bob feiern ihren Hochzeitstag. Auf ihrer Party befinden sich $n \in \nN_+$ Paare. Dabei begrüßen sich alle Paare mit Ausnahme des eigenen Partners.\\
 		\begin{enumerate}
-			\item Gib die Anzahl der Begrüßungen $x_i$ für $i \in \set{1,2,3,4,5}$ Paaren an
-			\item Stelle für $x_n$ einen geschlossenen Ausdruck auf
-			\item Beweise deinen geschlossenen Ausdruck durch vollständige Induktion
+			\item Gib die Anzahl der Begrüßungen für $i \in \set{1,2,3,4,5}$ Paare an.
+			\item Stelle für die Anzahl der Begrüßungen einen geschlossenen Ausdruck $p_n$ auf.
+			\item Gib für die Anzahl der Begrüßungen eine induktive Definiton $q_n$ an.
+			\item Zeige per vollständiger Induktion, dass für alle $n \in \nN_+$ gilt: $p_n$ = $q_n$.
 		\end{enumerate}
 	\end{exampleblock}
 \end{frame}
@@ -339,13 +338,18 @@
 	\begin{block}{Lösung}
 		\begin{enumerate}
 			\item \begin{itemize}
-				\item $x_1 = 0$
-				\item $x_2 = 4$
-				\item $x_3 = 12$
-				\item $x_4 = 24$
-				\item $x_5 = 40$
+				\item 1 Paar $\rightarrow$ 0 Begrüßungen
+				\item 2 Paare $\rightarrow$ 4 Begrüßungen
+				\item 3 Paare $\rightarrow$ 12 Begrüßungen
+				\item 4 Paare $\rightarrow$ 24 Begrüßungen
+				\item 5 Paare $\rightarrow$ 40 Begrüßungen
 			\end{itemize}
-			\item $x_n = 2 \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$
+			\item $p_n = 2 \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$
+			\item Jedes Paar, das neu hinzukommt, muss die $n$ sich im Raum befindenden Paare begrüßen. Das bedeutet $2n$ Begrüßungen (ein Paar besteht aus $2$ Partnern) pro neu hinzugekommenen Partner, also insgesamt $4n$ Begrüßungen. Formal heißt das: 
+			\begin{align*}
+				q_1 &= 0 \\
+				\text{Für alle } n \in \nN_+ \text{ gilt: } q_{n+1} &= q_n + 4n
+			\end{align*}
 		\end{enumerate}
 	\end{block}
 \end{frame}
@@ -353,14 +357,17 @@
 \begin{frame}{Induktiv Beweisen III.: Zum Knoblen}
 	\begin{block}{Lösung}
 		\begin{itemize}
-			\item[I.A.] $n=1: x_n = x_1 = 2 \cdot (1^2 -1 ) = 2 \cdot (n^2 -n) \quad \checkmark$
-			\item[I.V.] Für ein beliebiges, aber festes $n \in \nN_+$ gelte $x_n = 2 \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$.
-			\item[I.S.] \zz $x_{n+1} \eqtext{!} 2 \cdot (n+1) \cdot ((n+1)-1) = 2(n+1)n$, also $n \notStephan{\leadsto} \Stephan{\curvearrowright} n+1$\\
-			Jedes Paar, das neu hinzukommt, muss die $n$ sich im Raum befindenden Paare begrüßen. Das bedeutet $2n$ Begrüßungen (ein Paar besteht aus $2$ Partnern) pro neu hinzugekommenen Partner, also insgesamt $4n$ Begrüßungen. Formal heißt das $x_{n+1} = x_n + 4n$.\\
+			\item[I.A.] $n=1: p_n = p_1 = 2 \cdot (1^2 -1 ) = 0 = q_1 = q_n \quad \checkmark$
+			\item[I.V.] Für ein beliebiges, aber festes $n \in \nN_+$ gelte $p_n=q_n$.
+			\item[I.S.] \zz $p_{n+1}=q_{n+1}$, also $n \notStephan{\leadsto} \Stephan{\curvearrowright} n+1$
 			\begin{align*}
-				x_n+1 	&\eqtext{Def.} x_n + 4n \\
-						&\eqtext{I.V.} 2n \cdot (n-1) + 4n = 2n^2 - 2n +4n\\
-						&= 2n^2 + 2n = 2 \cdot (n+1) \cdot n &\qedwhite{}
+				p_{n+1} &= 2 \cdot (n+1) \cdot (n+1-1) \\
+						&= 2n^2 + 2n \\
+						&= 2n^2 -2n + 4n \\
+						&= 2 \cdot n \cdot (n-1) + 4n \\
+						&= p_n + 4n \\
+						&\eqtext{I.V.} q_n + 4n \\
+						&\eqtext{Def.} q_{n+1} & \qedwhite{}
 			\end{align*}
 
 		\end{itemize}
