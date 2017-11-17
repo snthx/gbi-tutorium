@@ -6,14 +6,517 @@
 \subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
 \date{\today}
 
+\usepackage[normalem]{ulem}
+
 \begin{document}
 \titleframe
 \roadmap
 
 %%%%%%%%%% %%%%%%%%%%
 
-% Mod/Div, Num/Repr, ZKPL, Homomorphismen/Code, Huffmann-Codes (evtl. Blockcodierung)
+\section{Darstellung von Zahlen}
 
+\subsection{Num}
+\begin{frame}{Von Wörtern zu Zahlen}
+	\begin{block}{Def.: $\text{Num}_b$}
+		Zu einer Zahlenbasis $k$ definiere die Abbildung $\text{Num}_k : Z_k^* \to \nZ$ 
+
+		\begin{align*}
+			\text{Num}_k(\varepsilon) &= 0 \\
+			\text{Num}_k(wx) &= b\cdot \text{Num}_k(w) + \text{num}_k(x) \text{ für alle } w\in Z_k^*, x\in Z_k\\[2ex]
+			\text{wobei }\text{num}_k(x) &= x \text{ für alle } x \in \set{1,\dots,k-1}
+		\end{align*}
+	\end{block}
+	\pause
+	\begin{exampleblock}{Beispiel}
+		\begin{align*}
+			\text{Num}_2(11) &= 2\cdot \text{Num}_2(1) + \text{num}_2(1) \\
+				&= 2\cdot 1 + 1 \\
+				&= 3
+		\end{align*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Von Wörtern zu Zahlen}
+	\begin{exampleblock}{Aufgabe: Berechne die Zahlenwerte von $321_4, B2_{16}$}
+	\begin{align*}
+	\text{Num}_4(321) &= \visible<2->{ 4\cdot \text{Num}_4(32) + \text{num}_4(1) \\
+	&= 4\cdot \left( 4\cdot \text{Num}_4(3) + \text{num}_4(2) \right) + \text{num}_4(1) \\
+	&= 4^2\cdot \text{num}_4(3) + 4 \cdot \text{num}_4(2) + \text{num}_4(1) \\
+	&= 57 \\}
+	\visible<3->{\text{Num}_{16}(B2) &=} \visible<4->{ 16 \cdot \text{Num}_{16}(B) + \text{num}_{16}(2) \\
+	&= 16\cdot 11 + 2 \\
+	&= 178}
+	\end{align*}
+	\end{exampleblock}
+	\visible<5->{
+	\begin{exampleblock}{Aufgabe}
+		$\text{Num}_2(1), \text{ Num}_2(11), \text{ Num}_2(111), \text{ Num}_2(1111)$\\
+		Was gilt allgemein für $\text{Num}_2(1^m)$ für $m \in \nN_0$?
+	\end{exampleblock}}
+\end{frame}
+
+\subsection{mod und div}
+\begin{frame}{Division und Modulo}
+	\begin{block}{\div und \mod}
+		$ x \div y$ ist die ganzzahlige Division von x durch y.\\
+		$ x \mod y$ liefert den Rest dieser Division.
+	\end{block} 
+	\begin{block}{Beobachtung}
+		$$ 0 \leq (x \mod y ) < y$$
+	\end{block}
+	\begin{block}{Lemma}
+		$$ x = y \cdot (x \div y ) + \left( x \mod y \right)$$ 
+	\end{block}
+\end{frame}
+
+\begin{frame}{Division und Modulo}
+	\begin{exampleblock}{Beispiel}
+		\begin{table}[h!]
+			\begin{tabular}{c|cc}
+				& $x\div y$ & $x\mod y$ \\ \hline
+				$x=2,y=3$ \only<2->{&  0 & 2 } \only<1>{&&}\\
+				$x=5 ,y=2$ \only<3->{ & 2 & 1 } \only<1-2>{&&} \\
+				$x=8,y=2$ \only<4->{ & 4 & 0 } \only<1-3>{&&} \\	
+			\end{tabular}
+		\end{table}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Division und Modulo}
+	\begin{exampleblock}{Aufgabe}
+		Fülle die folgende Tabelle aus
+		\begin{table}[h!]
+		\begin{tabular}{c|cccccccccccc}
+			$x$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\ \hline
+			$x\div 4 $ & \only<1>{ &&&&&&&&&&} \only<2->{0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 2 & 2 & 2 & 2}\\
+			$4\left( x\div 4\right) $ & \only<1-2>{&&&&&&&&&&} \only<3->{0&0&0&0&4&4&4&4&8&8&8&8}\\
+			$x\mod 4$ & \only<1-3>{&&&&&&&&&&} \only<4->{0&1&2&3&0&1&2&3&0&1&2&3}
+		\end{tabular}
+		\end{table}
+	\end{exampleblock}
+\end{frame}
+
+\subsection{Repr}
+\begin{frame}{Repräsentation}
+	\begin{block}{Def.: $Repr_k$}
+		\begin{align*}
+			Repr_k : \; &\nN_0 \to Z_k  \\
+			n&\mapsto \begin{cases} repr_k(n) & \text{, falls } n<k \\
+				Repr_k\left( n\div k \right) \cdot repr_k\left( n \mod 	k \right) & \text{, falls } n\geq k 
+			\end{cases}\\
+			\text{Wobei für alle } &x \in \nZ_k : \text{repr}_k(x) = x.
+		\end{align*}
+	\end{block}
+	\pause
+	\begin{exampleblock}{Aufgabe}
+		Berechne folgende Darstellungen:\\
+		$Repr_2(42) = \pause 101010$ \\
+		$Repr_4(42) = \pause 222$ \\
+		$Repr_8(42) = \pause 52$ \\
+		$Repr_{16}(42) = \pause 2A$
+	\end{exampleblock}
+\end{frame}
+
+% \begin{frame}{Beispiel: Lösung}
+% 	\begin{align*}
+% 		Repr_8(42) &= Repr_8(42 \div 8) \cdot repr_8(42 \mod 8) \\
+% 		&= Repr_8(5) \cdot repr_8(2)\\
+% 		&= repr_8(5) \cdot 2\\
+% 		&= 5 \cdot 2\\
+% 		&= 52_8
+% 	\end{align*}
+% \end{frame}
+
+\begin{frame}{Repräsentation}
+	\begin{block}{Korrolar}
+		$Repr_k(n)$ ist das kürzeste Wort $w\in Z_k^\ast$ mit $Num_k(w)=n$, also 
+		$$ Num_k\left( Repr_k(n)\right) = n $$
+	\end{block}
+
+	\begin{alertblock}{Anmerkung}
+		Im Allgemeinen  $Repr_k\left(Num_k(w)\right) \neq w $, da überflüssige Nullen wegfallen.
+	\end{alertblock}
+	
+	\Stephan{
+	\begin{exampleblock}{Schaubild}
+		s. Tafel
+	\end{exampleblock}
+	}
+	%TODO
+	% \begin{exampleblock}{Zusammenhang}
+	% 	\begin{tikzpicture}[
+ %    		node distance=2mm,
+ %    		>=stealth, auto,
+	% 		every state/.style={draw=none, inner sep=0pt}
+ %                		]
+
+	% 			\node[state] (q1) {Dezimaldarstellung};
+	% 			\node[state] (q2) [above right=of q1] {$\text{Repr}_k$};
+	% 			\node[state] (q3) [below right=of q2] {k-äre Darstellung};
+	% 			\node[state] (q4) [below right=of q1] {$\text{Num}_k$};
+
+ %    		\begin{scope}[bend left]%
+	% 	\path[->]   (q1) edge node {c} (q2)
+ %            		(q2) edge node {c} (q3)
+ %            		(q3) edge node {c} (q4)
+ %            		(q4) edge node {c} (q1);
+ %    		\end{scope}
+	% 	\end{tikzpicture}
+	% \end{exampleblock}	 
+\end{frame}
+
+\subsection{Zweierkomplement}
+\begin{frame}{Ein asymetrischer Zahlenbereich}
+	\[
+	\nK_{\ell} := \{ x\in \nZ\mid -2^{\ell-1} \leq x \leq 2^{\ell-1} -1 \} \;.
+	\]
+	\\[0.2cm]
+	
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.45]{ZK_K4}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Zweierkomplement} % TODO nötig?
+    Das Zweierkomplement ist eine Möglichkeit, negative Zahlen binär darzustellen. Im Vergleich zu anderen Darstellungsarten ist es besonders vorteilhaft bei arithmetischen Rechnungen mit Hardware \textit{(mehr dazu in Technischer Informatik)}.
+\end{frame}
+
+\begin{frame}{Zweierkomplement}
+	\begin{block}{Def.: $\text{Zkpl}_\ell$}
+		Die Zweierkomplementdarstellung $ \text{Zkpl}_\ell: \nK \to \set{\texttt{0}, \texttt{1}}^\ell$ der Länge $\ell$:
+		$$\text{Zkpl}_\ell(x) = \begin{cases} 0 \text{bin}_{l-1}(x) & \text{falls } x \geq 0 \\ 1 \text{bin}_{l-1}(2^{l-1}+x) & \text{falls } x < 0\end{cases}$$
+		Äquivalent:
+		$$\text{Zkpl}_\ell(x) = \begin{cases} \text{bin}_{l}(x) & \text{, falls } x \geq 0 \\ \text{bin}_{l}(2^{l}+x) & \text{, falls } x < 0\end{cases}$$
+		wobei
+		\[
+			\text{bin} \colon \nZ_{2^{\ell}} \to \{\texttt{0},\texttt{1}\}^{\ell}, n \mapsto \texttt{0}^{\ell- |\text{Repr}_2(n)|} \text{Repr}_2(n) 
+		\]
+	\end{block}
+\end{frame}
+\subsection{Trick}
+\begin{frame}{Zweierkomplement}
+	\begin{exampleblock}{Ein Trick}
+		Zum ``intuitiven'' Berechnen des Zweierkomplement können wir so vorgehen (für $x < 0$):
+		\begin{enumerate}
+			\item Binärdarstellung von $|x|$ berechnen: $\text{Repr}_2(|x|)$
+			\item Mit führenden Nullen auffüllen bis zur Länge $\ell$
+			\item Alle binären Ziffern negieren
+			\item 1 addieren
+		\end{enumerate}
+	\end{exampleblock}
+
+	\begin{exampleblock}{Beispiel}
+		$$\text{Zkpl}_4(-2): 2 \rightarrow 10 \rightarrow 0010 \rightarrow 1101 \rightarrow 1110 = \text{Zkpl}_4(-2)$$
+	\end{exampleblock}
+\end{frame}
+\subsection{Aufgabe}
+\begin{frame}{Zweierkomplement}
+	\begin{exampleblock}{Aufgaben}
+	Berechne
+		\begin{itemize}
+			\item $\text{Zkpl}_5(0) \only<2->{= 00000}$ \\
+			\item $\text{Zkpl}_5(2) \only<3->{= 00010}$ \\
+			\item $\text{Zkpl}_5(15) \only<4->{= 01111}$ \\
+			\item $\text{Zkpl}_5(-1) \only<5->{= 11111} $\\
+			\item $\text{Zkpl}_5(-6) \only<6->{= 11010} $\\
+			\item $\text{Zkpl}_5(-16) \only<7->{= 10000}$
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Darstellung von Zahlen}
+    \begin{exampleblock}{Aufgabe}
+    	Es seien die Wörter $u := \texttt{10010}, v := \texttt{01011}$ aus $Z_2^*$.
+    	\begin{enumerate}
+     		\item Gib die Dezimaldarstellung an, die $u$ und $v$ als Binärdarstellung haben. Gib die Binärdarstellung von $u+v=:w \in Z_2^*$ an.
+    		\item Gib die Zweierkomplementdarstellung der Zahlen $u, v, w$ an.
+    		\item Ist $w$ die Zweierkomplementdarstellung der Summe der Zahlen mit den Zweierkomplementdarstellungen $u$ und $v$?
+  		\end{enumerate}
+    \end{exampleblock}
+    \pause
+    \begin{block}{Lösung}
+    	\begin{enumerate}
+     		\item $\text{Num}_2(u)=18, \text{Num}_2(v)=11, \text{Num}_2(w) = \text{Num}_2(u)+\text{Num}_2(v)=29, w=\texttt{11101}$
+    		\pause \item $\text{Num}_{Zkpl}(u)=-14, \text{Num}_{Zkpl}(v)=\text{Num}_2(v)=11, \text{Num}_{Zkpl}(w)=-3$
+    		\pause \item Ja, denn $-14+11=-3$.
+  		\end{enumerate}
+    \end{block}
+\end{frame}
+
+
+% \begin{frame}{ZK: Einfache Berechnung}
+% 	Die einzelnen Schritte können wir auch formal angeben:\\
+% 	(Wir operieren jeweils auf Wörtern aus $\{0, 1\}^* = Z_2^*$) \\[0.5em]
+% 	1. Binärdarstellung von $\setsize{x}$ berechnen: $Repr_2(\setsize{\cdot})$ \\
+% 	2. Mit führenden Nullen auffüllen bis zur Länge $\ell$\\ \pause
+% 	\begin{align*}
+% 		Fill_\ell : Z_2^m &\to Z_2^\ell \qquad (m \le \ell) \\ \visible<3-> {
+% 		w &\mapsto \begin{cases}
+% 		0^\ell & w = \varepsilon \\
+% 		Fill_{\ell-1}(w') \cdot \mu & w = w' \cdot \mu, w' \in Z_2^*, \mu \in Z_2
+% 		\end{cases} \\
+% 		&\text{oder deutlich einfacher} \\
+% 		w &\mapsto \begin{cases}
+% 		w & \setsize{w} = \ell \\
+% 		Fill_\ell(0w) & \text{sonst}
+% 		\end{cases} \\
+% 	}
+% 	\end{align*}
+% 	\pause[4] 3. / 4. Analog %TODO
+% \end{frame}
+
+\section{Homomorphismen}
+
+% \begin{frame}
+% 	\textbf{Übersetzung:} Bedeutungserhaltende Abbildung \\[0.5em] \pause
+% 	\textbf{Codierung:} Injektive Übersetzung \\ \pause
+% 	Es reicht eine injektive Abbildung: Dann können wir für jedes $f(w)$ eindeutig das erzeugende $w$ angeben und somit die Bedeutung von $f(w)$ als die Bedeutung von $w$ festlegen. \\[1em]
+	
+% 	\pause
+% 	\emph{Beliebige }Codierungen zu speichern ist sehr aufwendig, bei unendlichem Definitionsbereich sogar unmöglich.\\
+% 	Also bringen wir etwas Struktur ins Spiel!
+% \end{frame}
+
+% \begin{frame}{Homomorphismen}
+% 	Ein Homomorphismus ist eine strukturerhaltende Abbildung. \\
+% 	\begin{align*}
+% 		\Phi : A &\to B \\
+% 		\text{ mit } \forall a \in A, b \in B: \Phi(a \; \square \; b) &= \Phi(a) \; \triangle \; \Phi(b)
+% 	\end{align*} 
+% \end{frame}
+\subsection{Definitionen und alles}
+\begin{frame}{Homomorphismen}
+	\begin{block}{Def.: Homomorphismus}
+		Ein \textbf{Homomorphismus} ist eine strukturerhaltende Abbildung. Wir betrachten Homomorphismen auf Wörtern, dabei muss die Konkatenation erhalten werden.\\
+		Seien $A, B$ Alphabete, dann ist Abbildung $h: A^* \to B^*$ ein \textbf{Homomorphismus}, wenn
+		$$ \forall\ x, y\in A^* : h(x \cdot y) = h(x) \cdot h(y) $$
+	\end{block}
+	
+	\begin{exampleblock}{Beispiel}
+		Sei $h$ ein Homomorphismus mit $h(a) = 2, h(b) = 3$. \\
+		Dann gilt $h(aba) = h(a) \cdot h(b) \cdot h(a) = 232 $
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Homomorphismen}
+	\begin{exampleblock}{Aufgabe}
+		Gegeben sei die folgende Abbildung über dem Alphabet $A:=\set{a, b, c, \dots, z}$:
+		\begin{align*}
+			R(\varepsilon) &= \varepsilon,\\
+			\text{für alle } w \in A^* gilt: R(wx) &= x \cdot R(w).
+		\end{align*}
+		\begin{enumerate}
+			\item Ist $R$ ein Homomorphismus?
+			\item \only<2->{Gib ein Alphabet $A'$ an, sodass $R$ ein Homomorphismus ist.}
+		\end{enumerate}
+	\end{exampleblock}
+
+	\begin{block}{Lösung}
+		\begin{enumerate}
+			\item \only<2->{$R$ ist kein Homomorphismus, denn $R(a \cdot b) = ba \neq ab = R(a) \cdot R(b)$.}
+			\item \only<3->{$R$ ist ein Homomorphismus, wenn $\setsize{A'}=1$.}
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+% \begin{frame}{Homomorphismen konstruieren}
+% 	Wir können uns aber aus einer Abbildung der einzelnen Zeichen einen Homomorphismus auf Wörtern konstruieren.
+% 	\begin{Definition}
+% 		Sei $f: A \to B^*,$ \pause definiere $f^{**}:A^* \to B^*$ als
+% 		\begin{align*}
+% 		f^{**}(\varepsilon) &= \varepsilon  \\
+% 		\forall w\in A^*, x\in A: f^{**}(wx) &= f^{**}(w) f(x)       
+% 		\end{align*}
+% 	\end{Definition}
+
+% 	$f^{**}$ ist der durch $f$ \textbf{induzierte} Homomorphismus.
+% \end{frame}
+
+\begin{frame}{Homomorphismen}
+	\begin{block}{$\varepsilon$-freier Homomorphismus}
+		Ein Homomorphismus heißt \textbf{$\mathbf{\varepsilon}$-frei}, wenn für jedes $\ x\in A$ gilt:
+		$$ h(x) \neq \varepsilon. $$
+	\end{block}
+
+	\begin{exampleblock}{Vorteil}
+		\pause Es gehen keine Informationen verloren:\\
+		\begin{itemize}
+			\item Betrachte $h: \set{a,b}^* \to \set{0,1}^*$ mit $h(a)=001, h(b)=\varepsilon$
+			\item Für welches $w$ gilt $h(w)=001$?
+			\item Klar: in $w$ muss ein $a$ sein, aber wie viele $b$s?
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Homomorphismen}
+	\begin{exampleblock}{Wann gehen noch Informationen verloren?}
+		\begin{itemize}
+			\item Betrachte $h: \set{a, b, c}^* \to \set{0,1}^*$ mit $h(a)=0, h(b)=1, h(c)=10$
+			\item Für welches $w$ gilt $h(w)=10$?
+			\item \pause Für $w=ba$ und $w=c$
+		\end{itemize}
+	\end{exampleblock}
+	\pause
+	\begin{block}{Def.: Präfixfreier Homomorphismus}
+		Sei $h: A^* \to B^* $ ein Homomorphismus. h heißt \textbf{präfixfrei}, wenn für
+		keine zwei verschiedenen Symbole $x_1,x_2\in A$ gilt: $h(x_1)$
+		ist ein Präfix von $h(x_2)$.
+	\end{block}
+	\begin{exampleblock}{Beispiele}
+		\begin{itemize}
+			\item $h(a)=001, h(b)=1101$ ist präfixfrei
+			\item $h(a)=01, h(b)=011$ ist nicht präfixfrei 
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Homomorphismen}
+	\begin{exampleblock}{Beobachtung}
+		Präfixfreie Homomorphismen sind $\varepsilon-$frei
+	\end{exampleblock}
+
+	\begin{block}{Def.: Codierung}
+		Präfixfreie Homomorphismen sind injektiv. Das wollen wir \textbf{Codierungen} nennen.
+	\end{block}
+
+	\begin{exampleblock}{Beobachtung}
+		Präfixfreie Codes kann man einfach decodieren\footnote{Das liegt daran, dass zu injektiven Abbildungen  Umkehrabbildung existieren}:
+		\[
+		u(w) = 
+		\begin{cases}
+		\varepsilon, & \text{ falls } w=\varepsilon\\
+		x\,u(w'), & \text{ falls } w=h(x)w' \text{ für ein } x\in A \\
+		\bot,  & \text{ sonst }\\
+		\end{cases}
+		\]
+	\end{exampleblock}
+\end{frame}
+
+\section{Huffman-Codierung}
+\subsection{Definition}
+% \begin{frame}
+% 	Kann man mit einer Codierung die benötigte Anzahl der Zeichen für ein Wort reduzieren und trotzdem den Sinn erhalten?\\[0.5em]
+% 	\pause
+% 	Natürlich geht das (manchmal), dieses Verfahren ist überall im Einsatz:\\
+% 	Komprimierung!
+% \end{frame}
+
+\begin{frame}{Huffman-Codierung}
+	\textbf{Ziel}: möglichst kurze, präfixfreie Codierungen für beliebige Wörter.
+	\pause
+	\begin{exampleblock}{}
+		Eine Huffman-Codierung ist ein präfixfreier (und demnach einfach zu decodierenden) Homomorphismus, bei der die Codierung eines Zeichens umso länger wird, je seltener das Zeichen vorkommt.
+	
+		Die Huffman-Codierung für ein Wort ist dabei nicht eindeutig, wie wir gleich im Konstruktionsverfahren sehen werden.
+	\end{exampleblock}
+	% \begin{block}{Lemma}
+	% 	Unter allen präfixfreien Codes führen Huffman-Codes zu kürzesten Codierungen
+	% 	\textbf{des Wortes, für das die Huffman-Codierung konstruiert wurde.}
+	% \end{block}
+\end{frame}
+\begin{frame}
+	\begin{block}{Nützliche (informelle) Definitionen zu Bäumen}
+		\begin{itemize}
+			\item \textbf{Baum}: besteht aus Knoten, die über Kanten miteinander verbunden sind
+			\item \textbf{Wurzel}: Knoten, von dem aus alle anderen Knoten erreichbar sind
+			\item \textbf{Blatt}: Ein Knoten ohne ausgehende Kanten
+			\item \textbf{Innerer Knoten}: Alle Knoten, die keine Blätter sind
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Huffman-Codierung}
+	\begin{block}{Baum konstruieren (informell)}
+		\begin{enumerate}
+			\item \textbf{Alle Zeichen} mit ihrer \textbf{Häufigkeit} als Blätter in die unterste Ebene zeichnen.
+			\item Jeweils zwei Knoten/Bäume (nicht unbeding Blätter!) mit den \textbf{geringsten Häufigkeiten} verbinden, indem man ihnen eine gemeinsame Wurzel gibst, die die Summe der Häufigkeiten erhält.
+			\item Fortfahren, bis nur noch \textbf{ein Baum} übrig ist.
+			\item Die linken Äste jeweils mit \bzero \ beschriften, die rechten Äste mit \bone.
+			\item Die Codierung einzelner Zeichen kann man entlang der Pfade von der Wurzel zum jeweiligen Zeichen ablesen.
+		\end{enumerate}
+	\end{block}
+	\begin{exampleblock}{Am Beispiel}
+		Codiere das Wort $w= cabadcdaac $
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Huffman-Codierung}
+    \begin{block}{Lösung}
+    \begin{columns}[T] % align columns
+    	\begin{column}{.58\textwidth}
+			\begin{figure}[b]
+				%\centering
+				\begin{tikzpicture}
+				[level 1/.style={sibling distance=40mm},
+				level 2/.style={sibling distance=20mm},
+				level 3/.style={sibling distance=15mm}]
+				\node {$10$}
+				child {
+					node{$6$}
+					child{
+						node{$3$}
+						child{
+							node{$1,b$}
+							edge from parent node[left] {\bzero}
+						}
+						child {
+							node{$2,d$}
+							edge from parent node[right] {\bone}
+						}
+						edge from parent node[left] {\bzero};
+					}
+					child{
+						node{$3,c$}
+						edge from parent node[right] {\bone}
+					}
+					edge from parent node[left] {\bzero};
+				}
+				child{
+					node{$4,a$}
+					edge from parent node[right] {\bone}
+				};
+				\end{tikzpicture}
+			\end{figure}  
+		\end{column}
+			\hfill
+		\begin{column}{.44\textwidth}
+			\hfill
+			\hfill 
+			\vspace*{0.1\linewidth}
+			\begin{table}[H]
+				\begin{tabular}{c|cccc}
+					\hline
+					x & a & b & c & d  \\ \hline
+					$|w|_x$  & 4 & 1 & 3 & 2 \\ \hline
+					h(x) & 1 & 000 & 01 & 001 \\ \hline 
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Huffman-Codierung}
+	\begin{block}{``Operator'' Huffman-Codierung}
+		\begin{enumerate}
+			\item Häufigkeiten zählen
+			\item Baum konstruieren
+			\item Abbildung definieren
+			\item Codierung des Wortes
+		\end{enumerate}
+	\end{block}
+
+	\begin{exampleblock}{Aufgabe}
+		Betrachte das Alphabet $A:=\set{a,b,c,d,e}.$
+		\begin{enumerate}
+			\item Bestimme die Huffman-Codierung $h_1(w)$ des Wortes $w:=bbeacdbbea$. Wie ist $|h_1(w)|?$
+			\pause \item Bestimme die Huffman-Codierung $h_2(u)$ mit $u:=a^2 b^4 c^8 d^{16} e^{32}$.
+			\pause \item Zerlege $w$ in Zweierblöcke und fasse diese als Zeichen auf. Wie ist nun die Blockcodierung $h_3(w)$? Wie verhält sich $|h_1(w)|$ zu $|h_3(w)|$?
+		\end{enumerate}
+	\end{exampleblock}
+\end{frame}
 
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
@@ -21,7 +524,8 @@
 %\subsection{Zusammenfassung}
 	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
 			\begin{itemize}
-				\item Todo
+				\item Zwischen Zahlensystemen und Darstellungen jonglieren
+				\item Codieren
 			\end{itemize}
 	
 	\end{frame}
@@ -29,7 +533,8 @@
 %\subsection{Ausblick}
 	\begin{frame}{Ausblick}
 		\begin{itemize}
-			\item Todo
+			\item Never forgetti - \sout{Moms Spaghetti} \textbf{Speicher}
+			\item Die Bits beim Arbeiten beobachten - \textbf{MIMA}
 		\end{itemize}
 	\end{frame}
 %%%%%%%%%% %%%%%%%%%%

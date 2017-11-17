@@ -100,6 +100,7 @@
 \usepackage{booktabs}
 
 \usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
 
 
 % Problem: disabled itemize-icons
@@ -109,11 +110,21 @@
 % \setlist[enumerate]{noitemsep, nolistsep}
 
 % Mathmode no vertical space (https://tex.stackexchange.com/a/47403/146825)
-\setlength{\abovedisplayskip}{0pt}
-\setlength{\belowdisplayskip}{0pt}
-\setlength{\abovedisplayshortskip}{0pt}
-\setlength{\belowdisplayshortskip}{0pt}
+% and https://tex.stackexchange.com/a/28253/146825
+% \setlength{\abovedisplayskip}{0pt}
+% \setlength{\belowdisplayskip}{0pt}
+% \setlength{\abovedisplayshortskip}{0pt}
+% \setlength{\belowdisplayshortskip}{0pt}
+%
+% https://tex.stackexchange.com/a/3324/146825
+%
 
+\AtBeginDocument{
+\abovedisplayskip=0pt
+\belowdisplayskip=0pt
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+}
 %%%%%%%%%%%% Slides %%%%%%%%%%%%%%%%
 
 \newcommand{\Moritz}[1]{
