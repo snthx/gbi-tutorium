@@ -28,19 +28,32 @@
 \begin{frame}{Funktionsception${}^2$: Funktionen als Argument von Funktionen}
 
 	\begin{exampleblock}{Beispiel}
-		\small Es sei $M$ eine Menge. Jede Teilmenge $L_i \subseteq M$ kann man bijektiv mit einer Abbildung $f_i \colon M \to \set{0,1}$, also einem $f_i \in \set{0,1}^M$ in Beziehung setzen.
+		\small Es sei $M$ eine Menge. Jede Teilmenge $L \subseteq M$ kann man bijektiv mit einer Abbildung $f_L \colon M \to \set{0,1}$, also einem $f_L \in \set{0,1}^M$ in Beziehung setzen.
 
-		Dann kann man die Vereinigung $\bigcup$ als Abbildung darstellen:
-		$$V\colon \{0,1\}^M \times \{0,1\}^M\to \{0,1\}^M$$
+		Für die Teilmenge $L \subseteq M$ ist 
+		\begin{equation*} 
+			f_L \colon M \to \set{0,1}, x \mapsto
+			\begin{cases}
+				1 & \text{, falls } x \in L \\
+				0 & \text{, falls } x \notin L
+			\end{cases}
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Funktionsception${}^2$: Funktionen als Argument von Funktionen}
+	\begin{exampleblock}{Beispiel}
+		Dann kann man die Vereinigung $\sqcup$ als Abbildung darstellen:
+		$$\sqcup \colon \{0,1\}^M \times \{0,1\}^M\to \{0,1\}^M$$
 		\pause
 		\begin{columns}
 			\begin{column}{0.4\textwidth}
-				Beispielbild für $L_1=\{a,c,d\}$ \\ und $L_2=\{b,c\}$
+				Beispielbild für $A=\{a,c,d\}$ \\ und $B=\{b,c\}$
 			\end{column}
 			\begin{column}{0.4\textwidth}
 				\begin{tabular}{*{4}{>{$}c<{$}}}
-					& L_1 & L_2 & L_1\cup L_2 \\
-					x & f_1(x) & f_2(x) & V(f_1,f_2) \\
+					& A & B & A\cup B \\
+					x & f_A(x) & f_B(x) & (\sqcup(f_A,f_B))(x) \\
 					\hline
 					a & 1 & 0 & 1 \\
 					b & 0 & 1 & 1 \\
@@ -51,15 +64,15 @@
 			\end{column}
 			\end{columns}	
 		\medskip
-		\pause \centering Wie könnte nun eine Abbildungsvorschrift aussehen?
+		\centering Wie könnte nun eine Abbildungsvorschrift aussehen?
 	\end{exampleblock}
 \end{frame}
 \begin{frame}{Funktionsception${}^2$: Funktionen als Argument von Funktionen}
 	\begin{exampleblock}{Wie könnte eine Abbildungsvorschrift aussehen?}
 	\begin{align*}
-		V\colon \{0,1\}^M \times \{0,1\}^M &\to \{0,1\}^M \\
-		(f_1,f_2) &\mapsto (x \mapsto \max(f_1(x),f_2(x))) \\[2ex]
-		\text{äquivalent }  V(f_1,f_2) (x) &= \max(f_1(x),f_2(x)) \\
+		\sqcup\colon \{0,1\}^M \times \{0,1\}^M &\to \{0,1\}^M \\
+		(f_A,f_B) &\mapsto (x \mapsto \max(f_A(x),f_B(x))) \\[2ex]
+		\text{äquivalent }  \sqcup(f_A,f_B) (x) &= \max(f_A(x),f_B(x)) \\
 	\end{align*}
 	\end{exampleblock}
 \end{frame}
@@ -68,7 +81,7 @@
 
 \begin{frame}{Bits und Bytes}
 	\begin{block}{Def.: Bit und Byte}
-		Eine \textbf{Bit} ist ein Zeichen des Alphabets $\set{0,1}$ \\
+		Ein \textbf{Bit} ist ein Zeichen des Alphabets $\set{0,1}$. \\
 		Ein Wort aus 8 Bits wird \textbf{Byte} genannt. 
 	\end{block}
 \end{frame}
@@ -82,7 +95,7 @@
 		\begin{itemize}
 			\item Statt ``Speicher'' trifft es \textbf{aktueller Zustand des Speichers} besser.
 			\item Vorstellung als Tabelle. Linke Spalte Adressen, rechte Spalte Werte.
-			\item (Noch) interessiert nicht die konkrete Realisierung, sondern nur die abstrakte Funktionsweise.
+			\item Uns interessiert (noch) nicht die konkrete Realisierung, sondern nur die abstrakte Funktionsweise.
 			\item Im Umgang mit Speicher benutzen wir hier nur Zahlen im Binärsystem, d.h.
 				$$Adr = 2^k, Val = 2^l \quad k,l \in \nN_+$$
 				Bei der \emph{MIMA}: $k=20, l=24$.
@@ -98,15 +111,16 @@
 									(m,a) &\mapsto m(a)
 	\end{align*}
 	\end{block}
-% \end{frame}
+\end{frame}
 
-% \begin{frame}{Speicher - Methoden}
+\begin{frame}{Speicher - Methoden}
 	\begin{block}{Def.: $memwrite$}
 		Speichert einen Wert $v$ in die Adresse $a$.
 		\begin{align*}
 			memwrite : Val^{Adr} \times Adr \times Val &\to Val^{Adr} \\
-			(m,a,v) &\mapsto m'
+			(m,a,v) &\mapsto m' \\
 		\end{align*}
+
 		$m'$ ist nun ein neuer Speicherzustand, für den gilt:
 		\begin{equation*}
 			m'(a') =
@@ -116,7 +130,7 @@
 				\end{cases}
 		\end{equation*}
 		%\phantom{Moritz ist ein kek}\\
-		Das Resultat ist eine neue Abbildung, bei der ich nur der Funktionswert an $a$ geändert hat.			
+		Das Resultat ist eine neue Abbildung, bei der sich nur der Funktionswert an $a$ geändert hat.			
 	\end{block}
 \end{frame}
 
@@ -147,12 +161,12 @@
 % \end{frame}
 
 \begin{frame}{Speicher - Methoden}
-	\begin{exampleblock}{Aufgabe}
-		Gib an: \\
+	\begin{exampleblock}{Aufgabe}		
+		Sei $m \in Val^{Adr}$. Seien $ a,a' \in Adr \text{ und } v,v' \in Val$. Gib an: \\
 		\begin{itemize}
 			\item $memread(memwrite(m,a,v),a)$
-			\item $memread(memwrite(memwrite(m,a,v)a',v'),a)$
-			\item $memread(memwrite(memwrite(m,a,v)a,v')a)$
+			\item $memread(memwrite(memwrite(m,a,v),a',v'),a)$
+			\item $memread(memwrite(memwrite(m,a,v),a,v'),a)$
 		\end{itemize}
 	\end{exampleblock}
 	\pause
@@ -160,16 +174,17 @@
 	\small
 		\begin{itemize}
 			\item $memread(memwrite(m,a,v),a) = v$
-			\item $memread(memwrite(memwrite(m,a,v)a',v'),a) = \begin{cases}
+			\item $memread(memwrite(memwrite(m,a,v),a',v'),a) = \begin{cases}
 																	v' & \text{, falls } a = a' \\
 																	v  & \text{, falls } a \neq a' \\
 																\end{cases}$
-			\item $memread(memwrite(memwrite(m,a,v)a,v')a) = v' $
+			\item $memread(memwrite(memwrite(m,a,v),a,v'),a) = v' $
 		\end{itemize}
 	\end{block}
 \end{frame}
 
 \section[MIMA]{Minimalmaschine}
+\subsection{Grundlagen}
 \begin{frame}{Minimalmaschine - ein idealisierter Prozessor}
 	\only<1|handout:1>{\includegraphics[width=\linewidth]{MIMA_simple.png}} \only<2|handout:2>{\includegraphics[width=\linewidth]{MIMA.png}}
 \end{frame}
@@ -245,22 +260,22 @@
 \subsection{Aufgaben}
 \begin{frame}{Minimalmaschine}
 	\begin{exampleblock}{Aufgabe}
-		Schreibe ein Programm, das von einer an Adresse $a_1$ gegebenen positiven Zahl das Zweierkomplement berechnet und in Adresse $a_2$ speichert.
+		Schreibe ein Programm, das eine an Adresse $a$ gegebene Zahl negiert und wieder in $a$ speichert.
 	\end{exampleblock}
 	\pause
 	\begin{block}{Lösung}
-			LDV $a_1$\\
+			LDV $a$\\
 			NOT\\
-			STV $a_2$\\
+			STV $R$\\
 			LDC 1\\
-			ADD $a_2$\\
-			STV $a_2$
+			ADD $R$\\
+			STV $a$
 		\end{block}
 \end{frame}
 
 \begin{frame}{}
 	\begin{exampleblock}{Aufgabe}
-		Seien $0 < b \leq a$ mit  $a,b \in \nN_+$. Schreibe ein Programm, das $a-b$ berechnet und das Ergebnis in $a$ speichert.
+		An den Adressen $a$ und $b$ liegen zwei ganze Zahlen in Zweierkomplementdarstellung. Schreibe ein Programm, das $M(a)-M(b)$ errechnet und das Ergebnis an Adresse $c$ speichert.
 	\end{exampleblock}
 
 	% \begin{block}{Lösung}
@@ -270,15 +285,37 @@
 
 \begin{frame}{Minimalmaschine}
 	\begin{exampleblock}{Aufgabe}
-		Schreibe ein Programm, das eine an Speicheradresse $a_1$ gegebenen Zahl Modulo R rechnet und an Adresse $a_2$ ablegt.
-	\begin{itemize}
-		\item Modulo 2
-		\item Modulo 3
-	\end{itemize}
+		Sei $n \in \nN_+$. Schreibe ein Programm, das eine an Speicheradresse $a_1$ gegebene, positive, ganze Zahl Modulo $n$ errechnet und an Adresse $a_2$ ablegt.
 	\end{exampleblock}
 \end{frame}
 
 \begin{frame}{Minimalmaschine}
+	\begin{block}{Lösung: Modulo $n$}\small
+		start: LDC $n$\\
+		$\qquad$ NOT\\
+		$\qquad$ STV $R$\\
+		$\qquad$ LDC 1\\
+		$\qquad$ ADD $R$\\
+		$\qquad$ STV $NEGN$\\
+		$\qquad$ LDV $a_1$ \\
+		\medskip
+		while:   ADD $NEGN$\\
+		$\qquad$ JMN ende\\
+		$\qquad$ JMP while\\
+		\medskip
+		ende:    STV $LOOPRESULT$\\
+		$\qquad$ LDC $n$\\
+		$\qquad$ ADD $LOOPRESULT$\\
+		$\qquad$ STV $a_2$\\
+		$\qquad$ HALT\\
+	\end{block}
+\end{frame}
+
+\begin{frame}{}
+	\begin{exampleblock}{Aufgabe}
+		Wie kann man das für $n=2$ besser, d.h. mit weniger Anweisungen, machen?
+	\end{exampleblock}
+\pause
 	\begin{block}{Lösung: Modulo 2}
 		start:   LDC 1 //000000000000000000000001 \\
 		$\qquad$ AND $a_1$ \\
@@ -287,41 +324,10 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{Minimalmaschine}
-	\begin{block}{Lösung: Modulo 3}\small
-		start:   LDC 1 \\
-		$\qquad$ STV One\\
-		$\qquad$ LDC 3\\
-		$\qquad$ NOT\\
-		$\qquad$ ADD One\\
-		$\qquad$ STV MThree\\
-		\medskip
-		while:   LDV MThree\\
-		$\qquad$ ADD $a_1$\\
-		$\qquad$ JMN abschluss\\
-		$\qquad$ STV $a_1$\\
-		$\qquad$ JMP while\\
-		\medskip
-		ende:    LDC 3\\
-		$\qquad$ ADD $a_1$\\
-		$\qquad$ HALT\\
-	\end{block}
-\end{frame}
-
-\begin{frame}{Minimalmaschine}
-	\begin{exampleblock}{Aufgabe (Fibonacci-Folge)}
-		Für $n \in \nN_0$ sei $\mathcal{F}(n)$ rekursiv definiert durch\\
-		\begin{align*}
-			 \mathcal{F}(0) &=  \mathcal{F}(1) = 1\\
-			\text{für alle }n>1: \mathcal{F}(n) &= \mathcal{F}(n-1) + \mathcal{F}(n-2)\\
-		\end{align*}
-		Schreibe ein Maschinenprogramm, dass $\mathcal{F}(n)$ für ein gegebenes $n \in \nN_0$ berechnet.
-	\end{exampleblock}
 
 	% \begin{block}{Lösung}
 	% 	% TODO
 	% \end{block}
-\end{frame}
 
 %%%%%%%%%% %%%%%%%%%%
 \section{}
