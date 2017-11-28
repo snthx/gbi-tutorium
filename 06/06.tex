@@ -28,7 +28,7 @@
 \begin{frame}{Funktionsception${}^2$: Funktionen als Argument von Funktionen}
 
 	\begin{exampleblock}{Beispiel}
-		\small Es sei $M$ eine Menge. Jede Teilmenge $L \subseteq M$ kann man bijektiv mit einer Abbildung $f_L \colon M \to \set{0,1}$, also einem $f_L \in \set{0,1}^M$ in Beziehung setzen.
+		\small Es sei $M$ eine Menge. Jede Teilmenge $L \subseteq M$ kann man mit einer Abbildung $f_L \colon M \to \set{0,1}$, also einem $f_L \in \set{0,1}^M$ in Beziehung setzen.
 
 		Für die Teilmenge $L \subseteq M$ ist 
 		\begin{equation*} 
@@ -72,7 +72,7 @@
 	\begin{align*}
 		\sqcup\colon \{0,1\}^M \times \{0,1\}^M &\to \{0,1\}^M \\
 		(f_A,f_B) &\mapsto (x \mapsto \max(f_A(x),f_B(x))) \\[2ex]
-		\text{äquivalent }  \sqcup(f_A,f_B) (x) &= \max(f_A(x),f_B(x)) \\
+		\text{also }  \sqcup(f_A,f_B) (x) &= \max(f_A(x),f_B(x)) \\
 	\end{align*}
 	\end{exampleblock}
 \end{frame}
@@ -196,8 +196,8 @@
 			\toprule
 				% Zugriffsoperationen
 				LDC $c$ & $c \rightarrow Akku$ \\
-				LDV $c$ & $M(a) \rightarrow Akku$ \\
-				STV $c$ & $M(a) \leftarrow Akku$ \\
+				LDV $a$ & $M(a) \rightarrow Akku$ \\
+				STV $\alpha$ & $M(a) \leftarrow Akku$ \\
 				LDIV $a$ & $M(M(a)) \rightarrow Akku$ \\
 				STIV $a$ &$M(M(a)) \leftarrow Akku$ \\
 				\midrule
@@ -269,7 +269,8 @@
 			STV $R$\\
 			LDC 1\\
 			ADD $R$\\
-			STV $a$
+			STV $a$\\
+			HALT
 		\end{block}
 \end{frame}
 
