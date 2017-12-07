@@ -103,3 +103,51 @@
 \newcommand{\LAL}{\hbox{\textit{For}}_{AL}}
 \newcommand{\AxAL}{\hbox{\textit{Ax}}_{AL}}
 \newcommand{\MP}{\hbox{\textit{MP}}}
+
+% Prädikatenlogik
+% die nachfolgenden Sachen angepasst an cmtt
+\newlength{\ttquantwd}
+\setlength{\ttquantwd}{1ex}
+\newlength{\ttquantht}
+\setlength{\ttquantht}{6.75pt}
+\def\plall{%
+  \tikz[line width=0.67pt,line cap=round,line join=round,baseline=(B),alcolor] {
+    \draw (-0.5\ttquantwd,\ttquantht) -- node[coordinate,pos=0.4] (lll){} (-0.25pt,-0.0pt) -- (0.25pt,-0.0pt) -- node[coordinate,pos=0.6] (rrr){} (0.5\ttquantwd,\ttquantht);
+    \draw (lll) -- (rrr);
+    \coordinate (B) at (0,-0.35pt);
+  }%
+}
+\def\plexist{%
+  \tikz[line width=0.67pt,line cap=round,line join=round,baseline=(B),alcolor] {
+    \draw (-0.9\ttquantwd,\ttquantht) -- (0,\ttquantht) -- node[coordinate,pos=0.5] (mmm){} (0,0) --  (-0.9\ttquantwd,0);
+    \draw (mmm) -- ++(-0.75\ttquantwd,0);
+    \coordinate (B) at (0,-0.35pt);
+  }\ensuremath{\,}%
+}
+\let\plexists=\plexist
+\newcommand{\NT}[1]{\ensuremath{\langle\mathrm{#1} \rangle}}
+\newcommand{\CPL}{\text{\itshape Const}_{PL}}
+\newcommand{\FPL}{\text{\itshape Fun}_{PL}}
+\newcommand{\RPL}{\text{\itshape Rel}_{PL}}
+\newcommand{\VPL}{\text{\itshape Var}_{PL}}
+\newcommand{\plka}{\alka}
+\newcommand{\plkz}{\alkz}
+%\newcommand{\plka}{\plfoo{(}}
+%\newcommand{\plkz}{\plfoo{)}}
+\newcommand{\plcomma}{\hbox{\texttt{\color{alcolor},}}}
+\newcommand{\pleq}{{\color{alcolor}\,\dot=\,}}
+
+\newcommand{\plfoo}[1]{\mathtt{\color{alcolor}#1}}
+\newcommand{\plc}{\plfoo{c}}
+\newcommand{\pld}{\plfoo{d}}
+\newcommand{\plf}{\plfoo{f}}
+\newcommand{\plg}{\plfoo{g}}
+\newcommand{\plh}{\plfoo{h}}
+\newcommand{\plx}{\plfoo{x}}
+\newcommand{\ply}{\plfoo{y}}
+\newcommand{\plz}{\plfoo{z}}
+\newcommand{\plR}{\plfoo{R}}
+\newcommand{\plS}{\plfoo{S}}
+\newcommand{\ar}{\mathrm{ar}}
+\newcommand{\bv}{\mathrm{bv}}
+\newcommand{\fv}{\mathrm{fv}}
