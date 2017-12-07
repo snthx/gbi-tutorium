@@ -1,0 +1,448 @@
+% ===== handout mode =====
+% Comment/uncomment this line to toggle handout mode
+% \newcommand{\handout}{}
+
+\input{../modes.tex}
+
+\input{../templates/praeambelTut.tex}
+
+\title[Relationen, Prädikatenlogik]{8. Tutorium\\ Relationen, Prädikatenlogik}
+\subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
+\date{\today}
+
+\begin{document}
+\titleframe
+\roadmap
+
+%%%%%%%%%% %%%%%%%%%%
+\section[Kontextfreie Grammatiken]{Wdh.: Kontextfreie Grammatiken}
+\subsection{Aufgabe}
+
+\begin{frame}{Kontextfreie Grammatiken}
+	\begin{block}{Definition: kontextfreie Grammatik}
+		Eine \textbf{kontextfreie Grammatik} ist ein 4-Tupel $G = (N, T, S ,P)$ mit
+		\begin{itemize}
+			\item[N] Alphabet von Nichtterminalsymbolen
+			\item[T] Alphabet von Terminalsymbolen ($N \cap T = \emptyset$)
+			\item[S] Startsymbol ($S \in N$)
+			\item[P] Produktionsmenge ($P \subseteq N \times (N \cup T)^\ast$)
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Beispiel}
+		Sei $A$ das deutsche Alphabet (mit Klein-/Großbuchstaben).\\
+		Sei $G_{MI} = (\{S, M, I, N\}, A \cup \nN_+, S, P)$ mit
+		\[
+			P = \{S \to \text{M I N}, \qquad M \to \text{monkey}, \qquad I \to \text{island}, \qquad N \to 1 \mid 2 \mid 3 \}
+		\]
+	\end{exampleblock}
+\end{frame}
+\begin{frame}
+	\frametitle{Klausuraufgabe (WS 2008)}
+	\begin{exampleblock}{Klausuraufgabe}
+	\begin{itemize}
+		\item[(a)] Geben Sie eine kontextfreie Grammatik $$G = (N, \{a, b\}, S, P )$$ an, für die $L(G)$ die Menge aller Palindrome über dem Alphabet $\{a, b\}$ ist.
+		\item[(b)] Geben Sie eine Ableitung der Wörter \emph{baaab} und \emph{abaaaba} aus dem Startsymbol Ihrer Grammatik an.
+		\item[(c)] Beweisen Sie, dass Ihre Grammatik jedes Palindrom über dem Alphabet $\{a, b\}$ erzeugt.\\
+		Tipp: Induktion: Wenn $n$ und $n+1$ gelten, dann gilt auch $n+2$
+	\end{itemize}		
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Klausuraufgabe (WS 2008)}
+	\begin{block}{Lösung}
+	\begin{itemize}
+		\item[(a)] Die Grammatik $$G = (\{S\}, \{a, b\}, S, P = \{S \to aSa \ | \ bSb \ | \ a \ | \ b \ | \varepsilon \})$$ erzeugt gerade die Menge der Palindrome.
+		\item[(b)] Die Ableitungen der Wörter mit dieser Grammatik sind 
+				$$S \Rightarrow bSb \Rightarrow baSab \Rightarrow baaab$$
+				$$S \Rightarrow aSa \Rightarrow abSba \Rightarrow abaSaba \Rightarrow abaaaba$$
+		\item[(c)] Siehe folgende Folien.
+	\end{itemize}	
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Klausuraufgabe (WS 2008)}
+
+	\begin{block}{Lösung (c): I.A. und I.V.}
+	Sei $w$ ein Palindrom über $\{a, b\}$. Wir zeigen durch Induktion über $n = \vert w \vert$, dass alle Palindrome aus $S$ abgeleitet werden können.
+	\begin{description}
+		\item[I.A.] \begin{description}
+						\item[$n = 0$] Das leere Wort $\varepsilon$ ist in einem Schritt aus $S$ ableitbar.
+						\item[$n = 1$] Die einzigen Wörter aus $\{a, b\}^\ast$ der Länge 1 sind $a$ und $b$. Auch diese sind offensichtlich aus $S$ ableitbar. 
+					\end{description}
+		\item[I.V.] Für ein festes, aber beliebiges $n \in \nN_0$ gelte, dass alle Palindrome der Länge $n$ aus S abgeleitet werden können. 
+		
+	\end{description}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Klausuraufgabe (WS 2008)}
+	\begin{block}{Lösung (c): I.S.}
+		\begin{description}
+			\item[I.S.] Sei $w$ ein Palindrom der Länge $n + 2$. Das erste (und damit auch das letzte) Zeichen sei oBdA ein $a$. Dann gibt es ein $w' \in \{a, b\}^\ast$, so dass $w = aw'a$ ist. Da $w$ ein Palindrom ist, muss auch $w'$ ein Palindrom sein. Weiterhin gilt $|w'| = n$. \pause Nach IV gibt es somit eine Ableitung $S \Rightarrow^\ast w'$. Somit gibt es die Ableitung $$S \Rightarrow aSa \overset{IV}{\Rightarrow^\ast} aw'a = w$$ Es folgt $w \in L(G)$. \pause Entsprechendes gilt, wenn das erste Zeichen von w ein b ist. \\ 
+		\end{description}
+		Mit dem doppelten I.A. haben wir also gezeigt, dass alle Palindrome beliebiger Menge aus $S$ ableitbar sind.
+	\end{block}
+
+\end{frame}
+
+\section{Relationen}
+\subsection{Relationen}
+\begin{frame}{Eigenschaften}
+	\begin{Definition}
+		Sei $R \subseteq A \times A$ eine (binäre) Relation auf der Menge $A$. Wir nennen $R$
+		\begin{itemize}[<+->]
+			\item \textbf{reflexiv} falls gilt $$\forall x \in A: (x,x) \in R$$
+			\item \textbf{symmetrisch} falls gilt $$\forall x,y \in A: (x,y) \in R \implies (y,x) \in R$$
+			\item \textbf{transitiv} falls gilt $$\forall x,y,z \in A: (x,y) \in R \text{ und } (y,z) \in R \implies (x,z) \in R$$
+		\end{itemize}
+	\end{Definition}
+\end{frame}
+
+\begin{frame}{Beispiele}
+	\begin{itemize}
+		\item Die Relation $=$ ist \pause reflexiv, symmetrisch und transitiv. Man nennt so etwas auch Äquivalenzrelation
+		\item \pause Die Relation $<$ ist \pause nicht reflexiv und nicht symmetrisch, aber transitiv
+		\item \pause Die Relation $\leq$ ist \pause reflexiv, nicht symmetrisch, aber transitiv
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Produkt}
+	\begin{Definition}
+		Das \textbf{Produkt} von zwei Relationen $R \subseteq M \times N, S \subseteq N \times L$ definieren wir als $$S \circ R = \{(x,z) \in M \times L \mid \exists y \in N \ : \ (x,y) \in R \text{ und } (y,z) \in S \}$$
+	\end{Definition}	
+	\pause
+	
+	\begin{Definition}
+		Die \textbf{Potenz} einer Relation $R \subseteq M \times M$ definieren wir als
+		\begin{align*}
+			R^0 &= I_M = \{(x,x) \mid x \in M \} \\
+			R^{i+1} &= R^i \circ R
+		\end{align*}
+	\end{Definition}
+
+	\pause
+	\begin{block}{Beobachtung}
+		Wenn $f$ und $g$ Funktionen sind (also linkstotale, rechtseindeutige Relationen), entspricht $f \circ g$ der Hintereinanderausführung von $f$ nach $g$.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Reflexiv-transitive Hülle}
+	\begin{Definition}
+		Die \textbf{reflexiv-transitive Hülle} einer Relation $R$ ist
+		$$R^\ast = \bigcup \limits_{i=0}^\infty R^i$$
+	\end{Definition}
+
+	\pause
+	\begin{block}{Satz}
+		$R^*$ ist die kleinste Relation, die $R$ umfasst und reflexiv und
+		transitiv ist.
+	\end{block}
+
+	\pause
+	\begin{Beispiel}
+		Sei $A = \{a, b, c, d, e\}$ und R = $\{(a, b), (b, c), (c, e)\} \subseteq A \times A$\\ \pause
+		%TODO Align
+		$R^*=\{(a,a), (b,b), (c,c), (d,d), (e,e),$ \\
+		$(a,b), (b,c), (c,e),$ \\
+		$(a,c), (b,e),(a,e)\}$
+	\end{Beispiel}
+	
+\end{frame}
+
+\section{Prädikatenlogik}
+\newcommand{\plB}{\plfoo{B}}
+\newcommand{\plE}{\plfoo{E}}
+
+\subsection{Einstieg}
+\begin{frame}{}
+	\begin{block} {Aussagenlogik}
+	\begin{itemize}
+		\item \enquote{Es regnet und alle Vögel sind grau.}
+		\item atomar: \enquote{Es regnet.}, \enquote{ Alle Vögel sind grau.}
+		\item Diese beiden Aussagen lassen sich ihrerseits nicht in weitere Teilaussagen zerlegen!
+	\end{itemize}
+	\end{block}
+
+	\pause
+	\begin{block} {Prädikatenlogik}	
+		\begin{itemize}
+		\item In der Prädikatenlogik werden atomare Aussagen hinsichtlich ihrer inneren Struktur untersucht.
+		\item \enquote{Alle Vögel sind grau}
+		\item lässt sich in : \enquote{Alle Vögel}, \enquote{sind grau} zerlegen.
+	\end{itemize}
+	
+	\end{block}
+\end{frame}
+
+\section{Prädikatenlogik: Syntax}
+
+\begin{frame}{Aufgabe 1 (15/16, Blatt 7)}
+	  Es seien $\CPL = \{ \}$, $\VPL = \{ \plx, \ply, \plz \}$, $\FPL = \{ \}$ und $\RPL = \{ \plE, \pleq \}$ mit $\ar(\plE) = 2$, und es sei $F$ die prädikatenlogische Formel
+	\begin{equation*}
+	\alnot \plexist \plx
+	{\plka
+		\plE{\plka \plx \plcomma \ply \plkz}
+		\alor
+		\alnot \plall \plz \plall \plx \plall \ply
+		{\plka
+			\plE{\plka \plx \plcomma \plz \plkz} \aland \plE{\plka \ply \plcomma \plz \plkz} \alimpl \plx \pleq \ply
+			\plkz}
+		\plkz}
+	\end{equation*}
+	
+	\begin{block}{Aufgabe 1.0}
+	Ist diese prädikatenlogische Formel syntaktisch korrekt?\\ \pause
+	Ja
+	\end{block}
+\end{frame}
+
+\begin{frame}{Syntax}
+	\begin{block}{Aufbau von prädikatenlogischen Formeln}
+	\begin{itemize}[<+->]
+		\item \textbf{Terme}: Liefern \enquote{Werte}; Aus Konstanten, Variablen und Funktionssymbolen zusammengesetzt.
+		\item \textbf{Atomare Formeln}: Liefern \enquote{Wahrheitswerte}; Aus Termen und Relationssymbolen zusammengesetzt.
+		\item \textbf{Prädikatenlogische Formeln}: Verknüpfen und Quantifizieren atomare Formeln; Aus atomaren Formeln und aussagenlogischen Konnektiven sowie Quantoren zusammengesetzt. 
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Terme - Alphabet}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.2]{TermeAlphabet.png} \hspace{2em} 
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Terme - Grammatik}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.2]{TermeGrammatik.png} \hspace{2em} 
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Atomare Formeln}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.2]{AFormeln.png} \hspace{2em} 
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Atomare Formeln - Beispiel}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.2]{AFormelnBsp.png} \hspace{2em} 
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Prädikatenlogische Formeln}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.2]{PFormeln.png} \hspace{2em} 
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Quiz}
+\begin{figure}[h!]
+	\centering
+	\only<1|handout:1>{\includegraphics[scale=0.2]{q1.png}}
+	\only<2|handout:2>{\includegraphics[scale=0.2]{q2.png}} 
+	\only<3|handout:3>{\includegraphics[scale=0.2]{q3.png}}
+	\only<4|handout:4>{\includegraphics[scale=0.2]{q4.png}}
+	\only<5|handout:5>{\includegraphics[scale=0.2]{q5.png}}
+	\only<6|handout:6>{\includegraphics[scale=0.2]{q6.png}}
+	\only<7|handout:7>{\includegraphics[scale=0.2]{q7.png}}
+	\hspace{2em}
+\end{figure} 
+\end{frame}
+
+\begin{frame}{Freie und gebundene Variablenvorkommen}
+	\begin{equation*}
+	F = \alnot \plexist \plx
+	{\plka
+		\plE{\plka \plx \plcomma \ply \plkz}
+		\alor
+		\alnot \plall \plz \plall \plx \plall \ply
+		{\plka
+			\plE{\plka \plx \plcomma \plz \plkz} \aland \plE{\plka \ply \plcomma \plz \plkz} \alimpl \plx \pleq \ply
+			\plkz}
+		\plkz}
+	\end{equation*}
+	
+	\begin{block}{Aufgabe 1.1}
+		Welche Variablenvorkommen sind frei ($\fv$) und welche gebunden ($\bv$)?\\
+		Ist die Formel geschlossen?
+	\end{block}
+
+	\pause
+	\begin{block}{Lösung}
+		Nur die Variable $\fv(F) = \{\ply\}$ kommt frei in $F$ vor.\\
+		Genau die Variablen $\bv(F) = \{\plx, \ply, \plz\}$ kommen gebunden in $F$ vor.\\
+		Da $\fv(F) \neq \emptyset$ ist $F$ nicht geschlossen.
+	\end{block}
+	
+\end{frame}
+
+
+\begin{frame}{Substitutionen}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{subs.png} \hspace{2em} 
+	\end{figure} 
+\end{frame}
+
+\begin{frame}{Substitutionen}
+	Ersetzt werden nur \textbf{freie Variablenvorkommen}!\\
+	Gebundene Vorkommen, also Variablen im Wirkungsbereich eines Quantors, werden \textbf{nicht} ersetzt.
+	
+	\pause
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.5]{subs_bsp.png} \hspace{2em} 
+	\end{figure} 
+\end{frame}
+
+\begin{frame}{Substitutionen: Kollisionsfreiheit}
+	Bei einer \textbf{kollisionsfreien} Substitution werden keine Variablen \enquote{aus Versehen} gebunden.\\[1em]
+	Ersetzen wir eine freie Variable $x$ durch einen Term, in dem die Variable $y$ frei vorkommt, so darf sich $x$ nicht im Wirkungsbereich eines Quantors über $y$ befinden.
+	
+	\pause
+	\begin{Beispiel}
+		$L = \plall \plx (\plx \aland \ply)$\\
+		Kollisionsfrei: $\sigma_{\{\ply/\plz\}}$\\
+		Nicht kollisionsfrei: $\sigma_{\{\ply/\plx\}}$
+	\end{Beispiel}
+\end{frame}
+
+\begin{frame}{Substitutionen}
+	\begin{equation*}
+	F = \alnot \plexist \plx
+	{\plka
+		\plE{\plka \plx \plcomma \ply \plkz}
+		\alor
+		\alnot \plall \plz \plall \plx \plall \ply
+		{\plka
+			\plE{\plka \plx \plcomma \plz \plkz} \aland \plE{\plka \ply \plcomma \plz \plkz} \alimpl \plx \pleq \ply
+			\plkz}
+		\plkz}
+	\end{equation*}
+	
+	\begin{block}{Aufgabe 1.2}
+		Geben sie eine Substitution $\sigma$ an, die \emph{nicht} kollisionsfrei für $F$ ist.\\[1em] \pause
+		
+		Die Substitution $\sigma_{\{(\ply/\plx)\}}$ leistet das Gewünschte.
+	\end{block}
+	
+\end{frame}
+
+
+\section{Prädikatenlogik: Semantik}
+
+\begin{frame}{Interpretation}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{int.png} \hspace{2em} 
+	\end{figure} 
+\end{frame}
+
+\begin{frame}{Aufgabe 1 (15/16, Blatt 7)}
+	  \begin{equation*}
+	\alnot \plexist \plx
+	{\plka
+		\plE{\plka \plx \plcomma \ply \plkz}
+		\alor
+		\alnot \plall \plz \plall \plx \plall \ply
+		{\plka
+			\plE{\plka \plx \plcomma \plz \plkz} \aland \plE{\plka \ply \plcomma \plz \plkz} \alimpl \plx \pleq \ply
+			\plkz}
+		\plkz}
+	\end{equation*}\\[1em]
+	
+	\begin{block}{Aufgabe 1.3}
+		Geben Sie eine Interpretation $(D_1, I_1)$ und eine Variablenbelegung $\beta_1$ so an, dass $val_{D_1, I_1, \beta_1}(F) = \textbf{W}$ gilt.\\[0.5em]
+		
+		\visible<2-|handout:2>{Die Interpretation $(D_1, I_1) = (\{ 0, 1 \}, {<})$ und die Variablenbelegung $\beta_1 \colon \VPL \to D$, $v \mapsto 0$, leisten das Gewünschte.}
+	\end{block}
+
+	\begin{block}{Aufgabe 1.4}
+		Geben Sie eine Interpretation $(D_2, I_2)$ und eine Variablenbelegung $\beta_2$ so an, dass $val_{D_2, I_2, \beta_2}(F) = \textbf{F}$ gilt.\\[0.5em]
+		
+		\visible<3-|handout:2>{Die Interpretation $(D_2, I_2) = (\{ 0, 1 \}, {<})$ und die Variablenbelegung $\beta_2 \colon \VPL \to D$, $v \mapsto 1$, leisten das Gewünschte.}
+	\end{block}
+\end{frame}
+
+
+
+\section{Prädikatenlogik: Aufgaben}
+
+\begin{frame}{Prädikatenlogische Formeln aufstellen}
+	% TODO Übung einbinden
+	Vgl. Übung WS 15/16
+\end{frame}
+
+\begin{frame}{Aufgabe 2 (15/16, Blatt 7)}
+	\begin{block}{Aufgabe}
+		Formulieren Sie die folgenden Aussagen als Formeln in Prädikatenlogik:
+		\begin{enumerate}
+			\item Nicht alle Vögel können fliegen.
+			\item Wenn es irgendjemand kann, dann kann es Donald Ervin Knuth.
+			\item John liebt jeden, der sich nicht selbst liebt.
+		\end{enumerate}
+	\end{block}
+	
+	\only<2-|handout:2>{
+	\begin{block}{Lösung}
+		\begin{enumerate}
+				\item
+				\begin{equation*}
+				\plexist \plx {\plka \plfoo{Vogel}{\plka \plx \plkz} \aland \alnot \plfoo{flugfaehig}{\plka \plx \plkz} \plkz}
+				\end{equation*}
+			\only<3-|handout:2>{
+				\item
+				\begin{equation*}
+				\plexist \plx {\plka \plfoo{kann\_es}{\plka \plx \plkz} \plkz}
+				\alimpl
+				\plfoo{kann\_es}{\plka \plfoo{knuth} \plkz}
+				\end{equation*}
+			}
+			\only<4-|handout:2>{
+				\item
+				\begin{equation*}
+				\plall \plx {\plka \alnot \plfoo{liebt}{\plka \plx \plcomma \plx \plkz} \alimpl \plfoo{liebt}{\plka \plfoo{John} \plcomma \plx \plkz} \plkz}
+				\end{equation*}
+			}
+		\end{enumerate}
+	\end{block}
+	}
+\end{frame}
+
+\begin{frame}{Weitere Aufgaben}
+	Siehe Übung WS 15/16
+\end{frame}
+%%%%%%%%%% %%%%%%%%%%
+%% Zusammenfassung
+\section{}
+%\subsection{Zusammenfassung}
+	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
+			\begin{itemize}
+				\item Todo
+			\end{itemize}
+	
+	\end{frame}
+%% Ausblick
+%\subsection{Ausblick}
+	\begin{frame}{Ausblick}
+		\begin{itemize}
+			\item Todo
+		\end{itemize}
+	\end{frame}
+%%%%%%%%%% %%%%%%%%%%
+\section{}
+\questionframe
+\lastframe
+\mode<handout>{\slideThanks}
+\end{document}
