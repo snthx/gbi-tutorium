@@ -149,5 +149,41 @@
 \newcommand{\plR}{\plfoo{R}}
 \newcommand{\plS}{\plfoo{S}}
 \newcommand{\ar}{\mathrm{ar}}
+
 \newcommand{\bv}{\mathrm{bv}}
 \newcommand{\fv}{\mathrm{fv}}
+
+\def\word#1{\hbox{\textcolor{blue}{\texttt{#1}}}}
+\let\literal\word
+\def\mword#1{\hbox{\textcolor{blue}{$\mathtt{#1}$}}}  % math word
+\def\sp{\scalebox{1}[.5]{\textvisiblespace}}
+\def\wordsp{\word{\sp}}
+
+
+\newcommand{\W}{\ensuremath{\hbox{\textbf{w}}}\xspace}
+\newcommand{\F}{\ensuremath{\hbox{\textbf{f}}}\xspace}
+\newcommand{\WF}{\ensuremath{\{\W,\F\}}\xspace}
+\newcommand{\valDIb}{\val_{D,I,\beta}}
+
+\newcommand{\impl}{\ifmmode\ensuremath{\mskip\thinmuskip\Rightarrow\mskip\thinmuskip}\else$\Rightarrow$\fi\xspace}
+\newcommand{\Impl}{\ifmmode\implies\else$\Longrightarrow$\fi\xspace}
+
+\newcommand{\derives}{\Rightarrow}
+
+\newcommand{\gdw}{\ifmmode\mskip\thickmuskip\Leftrightarrow\mskip\thickmuskip\else$\Leftrightarrow$\fi\xspace}
+\newcommand{\Gdw}{\ifmmode\iff\else$\Longleftrightarrow$\fi\xspace}
+
+\newcommand*{\from}{\colon}
+\newcommand{\functionto}{\longrightarrow}
+
+
+\newcommand{\LTer}{L_{\text{\itshape Ter}}}
+\newcommand{\LRel}{L_{\text{\itshape Rel}}}
+\newcommand{\LFor}{L_{\text{\itshape For}}}
+\newcommand{\NTer}{N_{\text{\itshape Ter}}}
+\newcommand{\NRel}{N_{\text{\itshape Rel}}}
+\newcommand{\NFor}{N_{\text{\itshape For}}}
+\newcommand{\PTer}{P_{\text{\itshape Ter}}}
+\newcommand{\PRel}{P_{\text{\itshape Rel}}}
+\newcommand{\PFor}{P_{\text{\itshape For}}}
+
