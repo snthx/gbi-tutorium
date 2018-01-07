@@ -20,14 +20,38 @@
 	Es gibt einige ``Regeln'' im Hoare-Kalkül, die für gültige Hoare-Tripel gelten.
 
 	\begin{block}{HT-E: Verstärkung der Vorbedingung und Abschwächung der Nachbedingung}
-		Es gelte $P' \vdash P$ und $Q\vdash Q'$.\\[18pt]
-		Dann gilt: \begin{tabular}{c}
+		Es gelte $P' \vdash P$ und $Q\vdash Q'$. Dann gilt:
+		 \begin{center}\begin{tabular}{c}
 						$\set{P} \, S \, \set{Q}$\\
 						\midrule
 						$\set{P'} \, S \, \set{Q'}$
-					\end{tabular}
+		\end{tabular}\end{center}
 	\end{block}
 
+\end{frame}
+
+\begin{frame}{Regeln im Hoare-Kalkül}
+
+	\begin{block}{HT-S: Hintereinanderausführung}
+		Es gilt: \begin{center}\begin{tabular}{c}
+			$\set{P} \, S_1 \, \set{Q}$ \qquad $\set{Q} \, S_2 \, \set{R}$\\
+			\midrule
+			$\set{P} \, S_1 ; S_2 \, \set{R}$
+		\end{tabular}\end{center}
+		Das heißt die Gültigkeit von Hoare-Tripeln ist transitiv. 
+		
+	\end{block}
+\end{frame}
+
+\begin{frame}{Regeln im Hoare-Kalkül}
+	\begin{block}{HT-A: Zuweisungen}
+		\begin{itemize}
+			\item Zuweisung $x \leftarrow E$ ($x$ wird durch Ausdruck $E \in L_Ter$ ``ersetzt'')
+			\item $Q$ sei Nachbedingung zu $x \leftarrow E$
+			\item $\sigma_{\set{x/E}}$ sei auf $Q$ kollisionsfrei.
+			\item Dann ist \quad $\set{\sigma_{\set{x/E}}(Q)} \, x\leftarrow E \, \set{Q}$ \quad gültig.
+		\end{itemize}
+	\end{block}
 \end{frame}
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
