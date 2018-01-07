@@ -1,0 +1,54 @@
+% ===== handout mode =====
+% Comment/uncomment this line to toggle handout mode
+% \newcommand{\handout}{}
+
+\input{../modes.tex}
+
+\input{../templates/praeambelTut.tex}
+
+\title[Short Title]{\#. Tutorium\\ Short Title}
+\subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
+\date{\today}
+
+\begin{document}
+\titleframe
+\roadmap
+
+%%%%%%%%%% %%%%%%%%%%
+\section{Hoare-Kalkül}
+\begin{frame}{Regeln im Hoare-Kalkül}
+	Es gibt einige ``Regeln'' im Hoare-Kalkül, die für gültige Hoare-Tripel gelten.
+
+	\begin{block}{HT-E: Verstärkung der Vorbedingung und Abschwächung der Nachbedingung}
+		Es gelte $P' \vdash P$ und $Q\vdash Q'$.\\[18pt]
+		Dann gilt: \begin{tabular}{c}
+						$\set{P} \, S \, \set{Q}$\\
+						\midrule
+						$\set{P'} \, S \, \set{Q'}$
+					\end{tabular}
+	\end{block}
+
+\end{frame}
+%%%%%%%%%% %%%%%%%%%%
+%% Zusammenfassung
+\section{}
+%\subsection{Zusammenfassung}
+	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
+			\begin{itemize}
+				\item Todo
+			\end{itemize}
+	
+	\end{frame}
+%% Ausblick
+%\subsection{Ausblick}
+	\begin{frame}{Ausblick}
+		\begin{itemize}
+			\item Todo
+		\end{itemize}
+	\end{frame}
+%%%%%%%%%% %%%%%%%%%%
+\section{}
+\questionframe
+\lastframe
+\mode<handout>{\slideThanks}
+\end{document}
