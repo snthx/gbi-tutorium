@@ -6,7 +6,7 @@
 
 \input{../templates/praeambelTut.tex}
 
-\title[Short Title]{\#. Tutorium\\ Short Title}
+\title[Algorithmen]{10. Tutorium\\ Algorithmen, Hoare-Kalkül, Schleifeninvariante}
 \subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
 \date{\today}
 
@@ -15,6 +15,116 @@
 \roadmap
 
 %%%%%%%%%% %%%%%%%%%%
+\section{Organisatorisches}
+\subsection{Übungsklausur, Übungsschein}
+\begin{frame}{Organisatorisches}
+\begin{itemize}
+	\item Probeklausur morgen in der Vorlesung
+	% Probeklausur:
+	% Simulation einer Klausursituation
+	% Nur 1 Stunde statt 2
+	% Korrektur durch die Tutoren
+	% Nur in einem Hörsaal
+	% Ort und Zeit:
+	% 10.01.2017, 09:45h, Audimax
+	\item Anmeldung für den Übungsschein ist freigeschaltet\\
+			\centerline{\textbf{Anmelden!}}
+\end{itemize}
+\end{frame}
+
+\subsection{Übungsblatt}
+\begin{frame}{Übungsblatt}
+    \Stephan{}
+    \Moritz{}
+    \Alex{}
+\end{frame}
+
+
+
+\section{Algorithmen}
+\subsection{Alogrithmusbegriff}
+
+\begin{frame}{Algorithmen}
+\begin{block}{Eigenschaften eines Algorithmus}
+\begin{itemize}
+  \item endliche Beschreibung
+  \item elementare Anweisungen
+  \item Determinismus
+  \item zu endlichen Eingabe wird endliche Ausgabe berechnet
+  \item endliche viele Schritte
+  \item funktioniert für beliebig große Eingaben
+  \item Nachvollziehbarkeit/Verständlichkeit für jeden (mit der Materie vertrauten)
+  \end{itemize}
+\end{block}
+    
+
+
+\end{frame}
+
+
+\subsection{Pseudocode}
+\begin{frame}{Pseudocode}
+\begin{block}{Zuweisung}
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+   			\begin{tabular}{ll}
+   				Java: & $a = b + c$
+   			\end{tabular}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+    		\begin{tabular}{ll}
+   				GBI: & $a \leftarrow b + c$
+   			\end{tabular}
+		\end{column}
+	\end{columns}
+\end{block}
+
+\begin{block}{Kontrollstrukturen}
+	\small
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+   			\begin{tabular}[t]{ll}
+   				Java: & $\text{\textbf{for }} (i=0;i<10;i++) \{ $\\
+   				& $\dots$ \\
+   				& $\}$\\
+   				& \\
+   				& \textbf{if} (\dots) \\
+   				& \\
+   				& $\{\dots\}$ \\
+   				& \textbf{else} \\
+   				& $\{\dots\}$ \\
+   				& \\
+   			\end{tabular}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+    		\begin{tabular}[t]{ll}
+   				GBI: & $\text{\textbf{for }} (i \leftarrow 0 \text{ to } 9) \text{\textbf{ do}}$ \\
+   				& \dots \\
+   				& \textbf{od}\\
+   				& \\
+   				& \textbf{if} $\dots$ \\
+   				& \textbf{then} \\
+   				& $\dots$ \\
+   				& \textbf{else}\\
+   				& $\dots$\\
+   				& \textbf{fi}
+
+
+
+   			\end{tabular}
+		\end{column}
+	\end{columns}
+
+	Schaut in den Folien, macht es eindeutig, schreibt Kommentare!
+\end{block}
+    
+
+
+\end{frame}
+
+
+
+
 \section{Hoare-Kalkül}
 \begin{frame}{Regeln im Hoare-Kalkül}
 	Es gibt einige ``Regeln'' im Hoare-Kalkül, die für gültige Hoare-Tripel gelten.
