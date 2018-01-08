@@ -14,7 +14,7 @@
 
 \newcolumntype{C}{>{$}c<{$}} % math-mode version of "C" column type
 
-\title[Hoare-Kalkül]{10. Tutorium\\ Hoare-Kalkül}
+\title[Algorithmen]{10. Tutorium\\ Algorithmen, Hoare-Kalkül, Schleifeninvariante}
 \subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
 \date{\today}
 
@@ -23,7 +23,154 @@
 \roadmap
 
 %%%%%%%%%% %%%%%%%%%%
+\section{Organisatorisches}
+\subsection{Übungsklausur, Übungsschein}
+\begin{frame}{Organisatorisches}
+\begin{itemize}
+	\item Probeklausur morgen in der Vorlesung
+	% Probeklausur:
+	% Simulation einer Klausursituation
+	% Nur 1 Stunde statt 2
+	% Korrektur durch die Tutoren
+	% Nur in einem Hörsaal
+	% Ort und Zeit:
+	% 10.01.2017, 09:45h, Audimax
+	\item Anmeldung für den Übungsschein ist freigeschaltet\\
+			\centerline{\textbf{Anmelden!}}
+\end{itemize}
+\end{frame}
+
+\subsection{Übungsblatt}
+\begin{frame}{Übungsblatt}
+    \Stephan{}
+    \Moritz{\begin{itemize}
+    	\item Ableiten bei Grammatiken: $\varepsilon$ nicht aufschreiben
+    	\item MIMA-Aufgaben: Sprungmarken vor die Zeile (\texttt{marke: LDC 0}), HALT am Ende nicht vergessen
+    \end{itemize}}
+    \Alex{}
+\end{frame}
+
+
+
+\section{Algorithmen}
+\subsection{Algorithmusbegriff}
+
+\begin{frame}{Algorithmen}
+\begin{block}{Eigenschaften eines Algorithmus}
+\begin{itemize}
+  \item endliche Beschreibung
+  \item elementare Anweisungen
+  \item Determinismus
+  \item zu endlichen Eingabe wird endliche Ausgabe berechnet
+  \item endliche viele Schritte
+  \item funktioniert für beliebig große Eingaben
+  \item Nachvollziehbarkeit/Verständlichkeit für jeden (mit der Materie vertrauten)
+  \end{itemize}
+\end{block}
+    
+
+
+\end{frame}
+
+
+\subsection{Pseudocode}
+\begin{frame}{Pseudocode}
+\begin{block}{Zuweisung}
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+   			\begin{tabular}{ll}
+   				Java: & $a = b + c$
+   			\end{tabular}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+    		\begin{tabular}{ll}
+   				GBI: & $a \leftarrow b + c$
+   			\end{tabular}
+		\end{column}
+	\end{columns}
+\end{block}
+
+\begin{block}{Kontrollstrukturen}
+	\small
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+   			\begin{tabular}[t]{ll}
+   				Java: & $\text{\textbf{for }} (i=0;i<10;i++) \{ $\\
+   				& $\dots$ \\
+   				& $\}$\\
+   				& \\
+   				& \textbf{if} (\dots) \\
+   				& \\
+   				& $\{\dots\}$ \\
+   				& \textbf{else} \\
+   				& $\{\dots\}$ \\
+   				& \\
+   			\end{tabular}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+    		\begin{tabular}[t]{ll}
+   				GBI: & $\text{\textbf{for }} (i \leftarrow 0 \text{ to } 9) \text{\textbf{ do}}$ \\
+   				& \dots \\
+   				& \textbf{od}\\
+   				& \\
+   				& \textbf{if} $\dots$ \\
+   				& \textbf{then} \\
+   				& $\dots$ \\
+   				& \textbf{else}\\
+   				& $\dots$\\
+   				& \textbf{fi}
+
+
+
+   			\end{tabular}
+		\end{column}
+	\end{columns}
+
+	Schaut in den Folien, macht es eindeutig, schreibt Kommentare!
+\end{block}
+    
+
+
+\end{frame}
+
+
+
+
 \section{Hoare-Kalkül}
+\subsection{Einführung}
+\begin{frame}{Hoare-Kalkül}
+	\begin{block}{Def.: Hoare-Tripel}
+		Ein \textbf{Hoare-Tripel} hat die Form \textcolor{kit-red100}{$\set{P}$} {$\set{S}$} \textcolor{kit-red100}{$\set{Q}$}.
+		\begin{itemize}
+			\item \textcolor{kit-red100}{$P$}: Vorbedingung
+			\item $S$: Programmstück
+			\item \textcolor{kit-red100}{$Q$}: Nachbedingung
+		\end{itemize}
+		$P$ und $Q$ sind sog. Zusicherungen.
+	\end{block}
+
+	\begin{block}{Def.: Zusicherung}
+		\textbf{Zusicherungen} sind prädikatenlogische Formeln, deren Wahrheit von Interpretationen und Variablenbelegungen abhängt.\\
+		Achtung: Variablen in Zusicherungen kommen nur frei vor!
+	\end{block}
+\end{frame}
+
+\begin{frame}{Hoare-Kalkül}
+	\begin{block}{Gültigkeit v. Hoare-Tripeln}
+		$\set{P} \, S \, \set{Q}$ ist \textbf{gültig}, wenn für jede relevante (passende) Interpretation $(D,I)$ und jede Variablenbelegung $\beta$ gilt:
+		\begin{itemize}
+			\item wenn $\valDIb(P) = \mathbf{w}$ und
+			\item wenn die Ausführung von $S$ für $(D,I)$ und $\beta$ terminiert und hinterher die Variablenbelegung $\beta'$ vorliegt
+			\item dann $\val_{D,I,\beta'}(Q) = \mathbf{w}$
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+
+
+\subsection{Ableitungsregeln}
+
 \begin{frame}{Regeln im Hoare-Kalkül}
 	Es gibt einige ``Regeln'' im Hoare-Kalkül, die für gültige Hoare-Tripel gelten.
 
