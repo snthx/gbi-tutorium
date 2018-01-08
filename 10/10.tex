@@ -126,6 +126,40 @@
 
 
 \section{Hoare-Kalkül}
+\subsection{swinago}
+\begin{frame}{Hoare-Kalkül}
+	\begin{block}{Def.: Hoare-Tripel}
+		Ein \textbf{Hoare-Tripel} hat die Form \textcolor{kit-red100}{$\set{P}$} {$\set{S}$} \textcolor{kit-red100}{$\set{Q}$}.
+		\begin{itemize}
+			\item \textcolor{kit-red100}{$P$}: Vorbedingung
+			\item $S$: Programmstück
+			\item \textcolor{kit-red100}{$Q$}: Nachbedingung
+		\end{itemize}
+		$P$ und $Q$ sind sog. Zusicherungen.
+	\end{block}
+
+	\begin{block}{Def.: Zusicherung}
+		\textbf{Zusicherungen} sind prädikatenlogische Formeln, deren Wahrheit von Interpretationen und Variablenbelegungen abhängt.\\
+		Achtung: Variablen in Zusicherungen kommen nur frei vor!
+	\end{block}
+\end{frame}
+
+\begin{frame}{Hoare-Kalkül}
+	\begin{block}{Gültigkeit v. Hoare-Tripeln}
+		$\set{P} \, S \, \set{Q}$ ist \textbf{gültig}, wenn für jede relevante (passsende) Interpretation $(D,I)$ und jede Variablenbelegung $\beta$ gilt:
+		\begin{itemize}
+			\item wenn $\valDIb(P) = \mathbf{w}$ und
+			\item wenn die Ausführung von $S$ für $(D,I)$ und $\beta$ u terminiert und hinterher die Variablenbelegung $\beta'$ vorliegt
+			\item dann $\val_{D,I,\beta'} = \mathbf{w}$
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+
+
+
+
 \begin{frame}{Regeln im Hoare-Kalkül}
 	Es gibt einige ``Regeln'' im Hoare-Kalkül, die für gültige Hoare-Tripel gelten.
 
