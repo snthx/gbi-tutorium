@@ -171,6 +171,13 @@
 %% Titel einfügen
 \newcommand{\titleframe}{\frame{\titlepage}\addtocounter{framenumber}{-1}}
 
+%% Emph be queen
+\setbeamercolor{emph}{fg=kit-green100}
+\renewcommand<>{\emph}[1]{%
+  {\usebeamercolor[fg]{emph}\only#2%{\itshape}
+  #1}%
+}
+
 
 %% Alles starten mit \starttut{X}
 %\newcommand{\starttut}[1]{\setcounter{weeknum}{#1}\titleframe\frame{\frametitle{Inhalt}\tableofcontents} \AtBeginSection[]{%
