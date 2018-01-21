@@ -83,25 +83,25 @@
   \ifdim\wd\bmb@box=0pt%
   \else%
   \hbox{%
-    \begin{pgfpicture}{0pt}{0pt}{\bmb@width}{6pt}
-      \bmb@dima=\bmb@width%
-      \advance\bmb@dima by8bp%
-      \pgfpathrectangle{\pgfpoint{-4bp}{-1bp}}{\pgfpoint{\bmb@dima}{8bp}}
-      \pgfusepath{clip}
-      {\pgftransformshift{\pgfpoint{-4bp}{0bp}}\pgftext[left,base]{\pgfuseshading{bmb@transition}}}%
+    \begin{pgfpicture}{0pt}{0pt}{\bmb@width}{3pt}
+      %\bmb@dima=\bmb@width%
+      %\advance\bmb@dima by8bp%
+      %\pgfpathrectangle{\pgfpoint{-4bp}{-1bp}}{\pgfpoint{\bmb@dima}{8bp}}
+      %\pgfusepath{clip}
+      %{\pgftransformshift{\pgfpoint{-4bp}{0bp}}\pgftext[left,base]{\pgfuseshading{bmb@transition}}}%
     \end{pgfpicture}%
   }%
   \nointerlineskip%
-  \vskip-0.5pt%
+  %\vskip-0.5pt%
   \fi%
   \ifbmb@shadow%
-    \setbox\bmb@boxshadow=\hbox{\pgfuseshading{bmb@shadow}}%
-    \setbox\bmb@boxshadowball=\hbox{\pgfuseshading{bmb@shadowball}}%
-    \setbox\bmb@boxshadowballlarge=\hbox{\pgfuseshading{bmb@shadowballlarge}}%
+    %\setbox\bmb@boxshadow=\hbox{\pgfuseshading{bmb@shadow}}%
+    %\setbox\bmb@boxshadowball=\hbox{\pgfuseshading{bmb@shadowball}}%
+    %\setbox\bmb@boxshadowballlarge=\hbox{\pgfuseshading{bmb@shadowballlarge}}%
   \fi%
   \setbox\bmb@colorbox=\hbox{{\pgfpicturetrue\pgfsetcolor{lower.bg}}}%
   \setbox\bmb@box=\hbox\bgroup\begin{minipage}[b]{\bmb@width}%
-    \vskip2pt%
+    \vskip3pt%
     \usebeamercolor[fg]{\bmb@lower}%
     \colorlet{beamerstructure}{upper.bg}%
     \colorlet{structure}{upper.bg}%

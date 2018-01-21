@@ -1,0 +1,43 @@
+\begin{frame}{Kantenrelation}
+	\begin{block}{Kantenmenge als Relation}
+		Sei $G$ ein gerichteter Graph mit der Knotenmenge $V$. Die Kantenmenge ist wie folgt definiert:\\
+		Sei $E \subseteq V \times V$ eine Relation auf $V$ definiert durch $x,y \in E \gdw \text{es gibt eine Kante von}x \text{ nach }y \text{ in } G$.
+	\end{block}
+
+	\begin{exampleblock}{Beobachtungen}
+		\begin{itemize}
+			\item Was gilt für $E^2$? \pause $\Rightarrow$ Knoten, die über einen Pfad der Länge 2 verbunden sind
+			\item Analog $E^3$, $E^4$, \dots
+			\item Also $(x,y) \in E^*$ genau dann, wenn es einen Pfad (beliebiger Länge) von $x$ nach $y$ gibt.
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Berechnung der Erreichbarkeitsrelation}
+    \begin{block}{Erreichbarkeitsrelation}
+    	\[
+    		E^* = \bigcup_{i=0}^{\infty} E^i = \bigcup_{i=0}^{n-1} E^i
+    	\]
+    \end{block}
+
+    \begin{block}{Matrizen für die Relation $E^k$}
+    	Sei $G$ ein gerichteter Graph mit Adjazenzmatrix $A$. Für alle $k \in \nN_0$ gilt:
+    	\[
+    		\sgn((A^k)_{ij}):=
+    		\begin{cases}
+      		1 & \text{ falls in $G$ ein Pfad der Länge $k$ von $i$ nach $j$ existiert}\\
+      		0 & \text{ falls in $G$ kein Pfad der Länge $k$ von $i$ nach $j$ existiert}\\
+    		\end{cases}
+    	\]
+    \end{block}
+\end{frame}
+
+\begin{frame}{Berrechnung der Wegematrix}	
+    \begin{block}{Berrechnung der Wegematrix}
+    	Es sei $G$ ein gerichteter Graph mit Adjazenzmatrix $A$. Dann gilt für alle $k\geq n-1$: 
+    	\[
+    		W = \sgn\left(\sum_{i=0}^{k} A^i\right) 
+    	\]
+    	ist die Wegematrix des Graphen $G$.
+    \end{block}
+\end{frame}

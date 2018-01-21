@@ -1,0 +1,100 @@
+\begin{frame}{O-Notation}
+	\begin{block}{Def. Asymptotisches Wachstum $\asymp$}
+		Seien $f,g \from \nN_0 \to \Rnullplus$. Dann gilt
+		\[
+			f \asymp g \Leftrightarrow \exists c,c'\in \Rplus: \exists n_0\in \nN_0: \forall n\geq n_0: c f(n) \leq g(n) \leq c' f(n)
+		\]
+		Man sagt auch $g$ wächst genauso schnell wie $f$. $\asymp$ ist eine Äquivalenzrelation.
+	\end{block}
+
+	\begin{exampleblock}{Beispiele}
+		\begin{itemize}
+			\item $42n^6-33n^3+222n^2 -15 \asymp 66n^6+55555n^5$
+			\item $n^{3+1}+5n^2\asymp 3n^3-n$
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{$O$-Notation}
+    \begin{block}{$\Theta$-Kalkül}
+    	\begin{align*}
+  			\Theta(f) &= \{ g \mid f \asymp g \} \\
+  				   &= \{ g \mid \exists c,c'\in \Rplus: \exists n_0\in \nN_0: \forall  n\geq n_0: c f(n) \leq g(n) \leq c' f(n) \} 
+		\end{align*}
+    \end{block}
+
+    \begin{exampleblock}{Bemerkungen}
+    	\begin{itemize}
+    		\item Im $\Theta$-Kalkül von $f(n)$ sind genau die Funktionen enthalten, die asymptotisch gleich schnell wachsen wie $f(n)$.
+    		\item Schreibe $g(n) \in \Theta(f(n))$, wenn $g(n)$ asymptotisch gleichschnell wächst wie $g(n)$.
+    		\item Ist $f$ ein Polynom, so sind insbesondere in $\Theta(f(n))$ alle Polynome enthalten, die den gleichen Grad wie $f$ haben.
+    		\item Es gilt $\log_b(n) \in\Theta(\log_a(n))$. Die Basis ist also egal und man kann auch $\Theta(\log n)$ schreiben. % TODO Aufgabe und Beweis hierzu
+    		% TODO Theta ist != Average Case
+    	\end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{$O$-Notation}
+    \begin{block}{Def.: $O$-Kalkül}
+    	\[
+    		O(f) = \{ g \mid \exists c\in \Rplus:\exists n_0\in\nN_0: \forall n\geq n_0: g(n) \leq c f(n)\}
+    	\]
+
+    	$g(n) \in O(f(n))$ (oder $g \preceq f$) genau dann, wenn $g$ asymptotisch höchstens so schnell wächst wie $f$.
+    \end{block}
+
+    \begin{block}{Def.: $\Omega$-Kalkül}
+    	\[
+    		\Omega(f) = \{ g \mid \exists c\in \Rplus:\exists n_0\in\nN_0: \forall n\geq n_0: g(n) \geq c f(n)\}
+    	\]
+    	
+    	$g(n) \in \Omega(f(n))$ (oder $g \succeq f$) genau dann, wenn $g$ asymptotisch höchstens so schnell wächst wie $f$.
+    \end{block}
+
+    Beobachtung: $\Theta(f) = O(f) \cap \Omega(f)$
+\end{frame}
+
+\begin{frame}{$O$-Notation}
+	\begin{exampleblock}{Aufgabe}
+		\begin{enumerate}
+			\item Für welches $c \in \Rplus$ gilt $5n^4 \in O(n^c)$ bzw $5n^4 \in \Omega(n^c)$?
+			\item Für welches $c \in \Rplus$ gilt $5n^4 \in O(c^n)$ bzw $5n^4 \in \Omega(c^n)$?
+			\item Für welches $c \in \Rplus$ gilt $2^n \in O(c^n)$ bzw $2^n \in \Omega(c^n)$?
+			\item Zeige oder widerlege: $n \in \Theta(\sqrt{n})$
+		\end{enumerate}
+	\end{exampleblock}
+\pause
+	\begin{block}{Lösung}
+		\begin{enumerate}
+			\item Es gilt: $\forall c \geq 4$ bzw. $\forall c \leq 4$.
+			\item Es gilt: $\forall c > 1$ bzw. $\forall c \leq 1$.
+			\item Es gilt: $\forall c \geq 2$ bzw. $\forall c < 2$.
+			\item \small Annahme: Die Behauptung ist richtig.\\
+				Dann gilt: $n \in O(\sqrt{n})  n \in \Omega(\sqrt{n})$, insbesondere $n \in \Omega(\sqrt{n})$.\\
+				$\Rightarrow \exists c\in \Rplus:\exists n_0\in\nN_0: \forall n\geq n_0: n \leq c \sqrt{n} \Leftrightarrow \frac{n}{\sqrt{n}} \leq c \Leftrightarrow \sqrt{n} \leq c$. Widerspruch.
+				
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}{$O$-Notation}
+    \begin{exampleblock}{Aufgabe}
+    	Zeige oder widerlege:
+    	\[
+    		f(n) + g(n) \in O(g(f(n)))
+    	\]
+    \end{exampleblock}
+\pause
+	\begin{block}{Lösung}
+		Die Behauptung stimmt nicht. Wähle z.B. $f(n) = n^2$ und $g(n) = \sqrt{n}$ und führe dies zu einem Widerspruch.
+	\end{block}
+\end{frame}
+
+\begin{frame}{$O$-Notation}
+    \begin{itemize}[<+->]
+    	\item $\Theta$ entspricht \emph{nicht} dem average case.
+    	\item $O(1)$ bedeutet konstante Laufzeit
+    	\item Beachtet den \emph{Trick} mit den Limites\only<3->{\footnote{Ich weiß nicht, ob ihr den als Beweis in der Klausur oder auf dem Blättern verwenden dürft. Zur Kontrolle sollte man ihn aber kennen.}}
+    \end{itemize}
+\end{frame}
+
