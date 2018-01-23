@@ -19,7 +19,7 @@
 		\begin{itemize}
 			\item \textbf{Fall 1:} \\ Wenn $f \in O(n^{\log_b a -\varepsilon})$ für ein $\varepsilon>0$ ist, dann ist $T\in \Theta(n^{\log_b a})$.
 			\item \textbf{Fall 2:} \\ Wenn $f \in \Theta(n^{\log_b a})$ ist, dann ist $T\in \Theta(n^{\log_b a}\log n)$.
-			\item\textbf{Fall 3:} \\  Wenn $f \in \Omega(n^{\log_b a +\varepsilon})$ für ein $\varepsilon>0$ ist, und wenn es eine Konstante $d$ gibt mit $0<d<1$, so dass für alle hinreichend großen $n$ gilt $af\left(\frac{n}{n}\right)\leq d f$, dann ist $T\in \Theta(f)$.
+			\item\textbf{Fall 3:} \\  Wenn $f \in \Omega(n^{\log_b a +\varepsilon})$ für ein $\varepsilon>0$ ist, und wenn es eine Konstante $d$ gibt mit $0<d<1$, so dass für alle hinreichend großen $n$ gilt $af\left(\frac{n}{b}\right)\leq d f(n)$, dann ist $T\in \Theta(f)$.
 		\end{itemize}
     \end{block}
 \end{frame}
@@ -69,7 +69,7 @@
     			$\log_b a = \log_2 2 = 1 \Rightarrow n^{\log_b a} = n^1$
     		\item $n^{\log_b a}$ mit $f(n)$ vergleichen: $n^2 \in \Omega(n^{1+\varepsilon})$?\\
     			Ja, für $\varepsilon = 1$ gilt $n^2 \in \Omega(n^2)$.
-    		\item Zusatzbedingung überprüfen: Ist $af\left(\frac{n}{n}\right)\leq d f$?\\
+    		\item Zusatzbedingung überprüfen: Ist $af\left(\frac{n}{b}\right)\leq d f(n)$?\\
     			Ja, für $d = \frac{1}{2}$ gilt $\forall n \geq 1 \; : \; \frac{1}{2}n^2 \leq \frac{1}{2}n^2$
     		\item Mit dem Mastertheorem folgt:\\
     			$T(n) = \Theta(n^2)$
