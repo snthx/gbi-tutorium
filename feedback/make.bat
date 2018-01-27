@@ -1,8 +1,8 @@
 @echo off
-	set SOURCE=12
+	set SOURCE=feedback
 
 	pdflatex .\%SOURCE%.tex
-	pdflatex .\%SOURCE%.tex
+	rem pdflatex .\%SOURCE%.tex
 
 	del -f .\*.vrb
 	del -f .\*.aux
