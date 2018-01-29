@@ -1,0 +1,64 @@
+\section{Reguläre Ausdrücke}
+\subsection{Reguläre Ausdrücke}
+
+\begin{frame}{Reguläre Ausdrücke}
+\begin{block}{Def.: Regulärer Ausdruck}
+	Es sei $A$ ein Alphabet, das keines der Symbole aus $Z := \set{\mid, (, ), *, \emptyset}$ enthält.
+	Ein \emph{regulärer Ausdruck} über $A$ ist eine Zeichenfolge über $A \cup Z$, das gewissen Vorschriften genügt.\\
+	Die \emph{Menge der regulären Ausdrücke} ist wie folgt festgelegt:
+	\begin{itemize}
+		\item $\emptyset$ ist ein regulärer Ausdruck
+		\item Für jedes $x \in A$ ist $x$ ein regulärer Ausdruck
+		\item Sind $R_1$ und $R_2$ reguläre Ausdrücke, dann auch $(R_1 | R_2 )$ und $(R_1R_2)$
+		%\item Ist $R$ ein regulärer Ausdruck, dann auch $\(R*\)$
+		\item Nichts anderes sind reguläre Ausdrücke
+	\end{itemize}
+	Die durch $R$ beschriebene formale Sprache ist $\lang{R}$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Reguläre Ausdrücke}
+\begin{exampleblock}{Aufgabe}
+	Gib einen regulären Ausdruck $R_i$ an, für den gilt:
+	\begin{enumerate}
+		\item $\lang{R_\theenumi}$ enthält genau die Wörter, in denen das Teilwort $\texttt{baa}$ vorkommt,
+		\item $\lang{R_\theenumi}$ enthält genau die Wörter, in denen das Teilwort $\texttt{baa}$ nicht vorkommt,
+		\item $\lang{R_\theenumi}$ enthält genau die Wörter, in denen das Teilwort $\texttt{baa}$ genau zweimal vorkommt,
+		\item $\lang{R_\theenumi}$ enthält genau die Wörter, in denen mindestens drei $\texttt{b}$s vorkommen,
+		\item \emph{Wichtig!} $\lang{R_\theenumi} = \set{\varepsilon}$,
+	\end{enumerate}
+	mit $i \in \set{1,2,3,4,5}$ und $A := \set{\texttt{a}, \texttt{b}}$.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Reguläre Ausdrücke}
+\newcommand{\any}{(\texttt{a} | \texttt{b}) *}
+\begin{block}{Lösung}
+	\begin{enumerate}
+		\item $R_\theenumi := \any \texttt{baa} \any $
+		\item Die Aussage bedeutet umformuliert, dass nach jedem $\texttt{b}$ höchstens ein $\texttt{a}$ kommt, also $R_\theenumi := \texttt{a} * (\texttt{b} | \texttt{ba} ) * $
+		\item In jedem Wort muss genau zweimal $\texttt{baa}$ vorkommen. Davor, dazwischen und danach dürfen Teilworte stehen, in denen das Teilwort $\texttt{baa}$ nicht vorkommt (wie in 2.). Also $R_\theenumi := R_2 \texttt{baa} R_2 \texttt{baa} R_2$.
+		\item z.B. $R_\theenumi := \any \texttt{b} \any \texttt{b}\any \texttt{b} \any $
+		oder $R_\theenumi := \texttt{a} * \texttt{ba} * \texttt{ba} * \texttt{b} \any$
+		\item Für $R_\theenumi := \emptyset *$ ist $\lang{R_\theenumi} = \lang{\emptyset *} = \lang{\emptyset}^* = \lang{}^* = \set{}^* = \set{\varepsilon}$
+	\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{Reguläre Ausdrücke}
+\begin{exampleblock}{Aufgabe}
+	Wenn $R$ ein regulärer Ausdruck für die Sprache $L$ ist, wie sieht dann ein regulärer Ausdruck für
+	\begin{enumerate}
+		\item $L^*$,
+		\item $L^+$
+	\end{enumerate}
+	aus?
+\end{exampleblock}
+\pause
+\begin{block}{Lösung}
+	\begin{enumerate}
+		\item $(R*)$
+		\item $R(R*)$
+	\end{enumerate}
+\end{block}
+\end{frame}
