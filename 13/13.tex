@@ -10,58 +10,160 @@
 \subtitle{Grundbegriffe der Informatik, Tutorium \#\mytutnumber}
 \date{\today}
 
+
+\def\mybox#1{\hbox{\vrule height 2ex width 0pt depth 0.6ex#1}}
+\def\taste[#1]#2{%
+  \tikz[x=8mm,y=8mm,baseline=(N.base)] \tasteinnerx[#1]{#2};%
+}
+\def\tasteinnerx[#1]#2{%
+  \node[midway,inner sep=0mm,draw,rounded corners,anchor=base,minimum width=10mm,#1] (N) {\mybox{#2}}%
+}
+\def\tasteinner[#1]#2{%
+  node[midway,inner sep=0mm,draw,rounded corners,minimum width=10mm,#1] (N) {\mybox{#2}}%
+}
+\def\tasteinnerOK{\tasteinner[fill=green!20]{OK}}
+\def\tasteOK{\taste[fill=green!20]{OK}}
+\def\tasteC{\taste[fill=red!20]{C}}
+\def\tasteinnerC{\tasteinner[fill=red!20]{C}}
+\def\tasteRein{\taste[fill=blue!10]{rein}}
+\def\tasteinnerRein{\tasteinner[fill=blue!10]{rein}}
+\def\tasteZitro{\taste[fill=yellow!10]{zitro}}
+\def\tasteinnerZitro{\tasteinner[fill=yellow!10]{zitro}}
+
 \begin{document}
 \titleframe
 \roadmap
 
 %%%%%%%%%% %%%%%%%%%%
-\section{Section 1}
-\subsection{Subsection 1.1}
-\begin{frame}{Example slide A}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
+\section{Organisatorisches}
+\begin{frame}{Organisatorisches}
+	\begin{itemize}
+		\item Für Übungsschein angemeldet?
+		\item Für Klausur angemeldet?
+		\item Nach Blatt 6 kommt noch ein Bonusblatt mit ausschließlich Bonuspunkten
+	\end{itemize}
 \end{frame}
 
-\subsection{Subsection 1.2}
-\begin{frame}{Example slide B}
-\begin{block}{Block 1}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
-\end{block}
+\Moritz{
+	\begin{frame}{Übungsblatt 5}
+		Achten auf:
+		\begin{itemize}
+			\item Ableitungspfeil: $\Rightarrow$
+			\item Bei Grammatiken auf genaue Notation achten: $G=(N,T,S,P)$: N, T und P sind \textbf{Mengen}.
+		\end{itemize}
+	\end{frame}
+}
+
+\section{Endliche Automaten}
+\subsection{Mealy-Automat}
+\begin{frame}{Mealy-Automat}
+	\begin{block}{Def.: Mealy-Automat}
+		Ein (endlicher) \textbf{Mealy-Automat} $A=(Z, z_0, X, f, Y, g)$ ist bestimmt durch:
+		\begin{itemize}
+			\item endliche Zustandsmenge $Z$,
+			\item Anfangszustand $z_0 \in Z$,
+			\item Eingabealphabet $X$,
+			\item Zustandsüberführungsfunktion $f: Z \times X \rightarrow Z$,
+			\item Ausgabealphabet $Y$,
+			\item Ausgabefunktion $g: Z \times X \rightarrow Y^{\ast}$
+		\end{itemize}
+	\end{block}
+
 \end{frame}
 
-\section{Section 2}
-\subsection{Subsection 2.1}
-\begin{frame}{Example slide C}
-\begin{exampleblock}{Example 1}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
-\end{exampleblock}
+\begin{frame}{Mealy-Automat}
+
+	\begin{exampleblock}{Beispiel} \small
+		Betrachte einen Getränkeautomaten:
+		Man kann nur 1-Euro"=Stücke einwerfen und vier Tasten drücken: Es gibt
+		zwei Auswahltasten für Mineralwasser \tasteRein{} und Zitronensprudel
+		\tasteZitro{}, eine Abbruch"=Taste \tasteC{} und eine \tasteOK-Taste.
+
+	
+	\begin{itemize}
+	\item Jede Flasche Sprudel kostet 1 Euro.
+	\item Es kann ein Guthaben von 1 Euro gespeichert werden. Wirft man
+	  weitere Euro"=Stücke ein, werden sie sofort wieder ausgegeben.
+	\item Wenn man mehrfach Auswahltasten drückt, wird der letzte Wunsch
+	  gespeichert.
+	\item Bei Drücken der Abbruch"=Taste wird alles bereits eingeworfenen
+	  Geld wieder zurückgegeben und kein Getränkewunsch mehr gespeichert.
+	\item Drücken der OK-Taste wird ignoriert, solange noch kein Euro
+	  eingeworfen wurde oder keine Getränkesorte ausgewählt wurde.
+
+	  Andernfalls wird das gewünschte Getränk ausgeworfen.
+	\end{itemize} 
+	\end{exampleblock}
 \end{frame}
 
-%\subsection{Subsection 2.2}
-\begin{frame}{Example slide D}
-\begin{alertblock}{Alert 1}
-\begin{itemize}
-\item Bullet point 1
-\pause
-\item Bullet point 2
-\item \dots
-\end{itemize}
-\end{alertblock}
+\begin{frame}{Mealy-Automat}
+
+	\begin{exampleblock}{Beispiel}
+		\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[x=8mm,y=8mm]
+    % Rahmen
+    \draw (0,0) -- (8,0) -- (8,8) .. controls  (3,9) and (5,9) .. (0,8) -- cycle;
+    % Geldschlitz 
+    \draw (1.4,5.5) rectangle ++(0.2,1) ++(-0.1,0) node[anchor=south] {\vbox{\hbox{Geld-}\hbox{Einwurf}}};
+    % Geldrückgabe 
+    \draw (1,1) rectangle ++(1,1) ++(-0.5,0) node[anchor=south] {\vbox{\hbox{Geld-}\hbox{Rückgabe}}};
+    % Warenauswurf
+    \draw (4,1) rectangle ++(3.5,1) ++(-1.75,0) node[anchor=south] {Ware};
+    
+    % Tasten
+    \draw (2.75,3) ++(3,3.5) node[anchor=south] {Sprudel};
+    \draw (4,5.5) rectangle ++(1.5,1)\tasteinnerRein;
+    \draw (6,5.5) rectangle ++(1.5,1) \tasteinnerZitro;
+    \draw (4,4) rectangle ++(1.5,1) \tasteinnerOK;
+    \draw (6,4) rectangle ++(1.5,1) \tasteinnerC;
+  \end{tikzpicture}
+  \caption{Ein primitiver Getr"ankeautomat}
+  \label{fig:getraenkeautomat}
+\end{figure}
+	\end{exampleblock}
 \end{frame}
+
+\begin{frame}{Mealy-Automat}
+
+	\begin{exampleblock}{Beispiel}
+		\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[->,>=stealth]
+    \matrix[matrix of math nodes,column sep=25mm,row sep=25mm,nodes={circle,draw,inner sep=1pt}]   {
+      |(0-)| (0,\#-) & |(0R)| (0,\#R) & |(0Z)| (0,\#Z) \\
+      |(1-)| (1,\#-) & |(1R)| (1,\#R) & |(1Z)| (1,\#Z) \\
+    };
+    \draw (0-) -- node[right,pos=0.14] {\#{1}} (1-);
+    \draw (0R) -- node[right,pos=0.14] {\#{1}} (1R);
+    \draw (0Z) -- node[right,pos=0.14] {\#{1}} (1Z);
+
+    \draw (0-) -- node[above,pos=0.2] {\#{R}} (0R);
+    \draw (0-) to[bend left] node[above,pos=0.2] {\#{Z}} (0Z);
+    \draw (0R) to[bend left=22] node[above,pos=0.2] {\#{Z}} (0Z);
+    \draw (0Z) to[bend left=22] node[above,pos=0.2] {\#{R}} (0R);
+    \draw (1-) -- node[above,pos=0.2] {\#{R}} (1R);
+    \draw (1-) to[bend right] node[above,pos=0.2] {\#{Z}} (1Z);
+    \draw (1R) to[bend right=22] node[below,pos=0.2] {\#{Z}} (1Z);
+    \draw (1Z) to[bend right=22] node[above,pos=0.2] {\#{R}} (1R);
+
+    \draw (1-) edge[loop below] node[right,pos=0.1] {\#1} ();
+    \draw (1R) edge[loop below] node[right,pos=0.1] {\#1} ();
+    \draw (1Z) edge[loop below] node[right,pos=0.1] {\#1} ();
+
+    \draw (0R) edge[loop right] node[pos=0.5] {\#R} ();
+    \draw (1R) edge[loop right] node[pos=0.5] {\#R} ();
+    \draw (0Z) edge[loop right] node[above,pos=0.1] {\#Z} ();
+    \draw (1Z) edge[loop right] node[above,pos=0.1] {\#Z} ();
+  \end{tikzpicture}
+  
+  \caption{Graphische Darstellung der Zustandsübergänge des
+    Getränkeautomaten für die drei Eingabesymbole \protect\#1, \protect\#R und \protect\#Z.}
+  \label{fig:getraenke-zustaende}
+\end{figure}
+	\end{exampleblock}
+\end{frame}
+
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
 \section{}
