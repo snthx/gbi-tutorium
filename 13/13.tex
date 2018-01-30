@@ -54,6 +54,21 @@
 	\end{itemize}
 \end{frame}
 
+\Stephan{
+	\begin{frame}{Übungsblatt 5}
+	    \begin{itemize}
+	    	\item Prädikatenlogik: $\rightarrow$ statt $\wedge$ in Erwägung ziehen, wenn das Universum nicht eingeschränkt ist
+	    	\item Variablenbelegungs\textbf{funktion} muss für alle $x \in \VPL$ definiert sein
+	    	\item $\varepsilon \notin A$. Niemals. 
+	    \end{itemize}
+	
+	
+	\end{frame}
+
+
+
+
+}
 \Moritz{
 	\begin{frame}{Übungsblatt 5}
 		Achten auf:
@@ -66,25 +81,11 @@
 
 \section{Endliche Automaten}
 \subsection{Mealy-Automat}
-\begin{frame}{Mealy-Automat}
-	\begin{block}{Def.: Mealy-Automat}
-		Ein (endlicher) \textbf{Mealy-Automat} $A=(Z, z_0, X, f, Y, g)$ ist bestimmt durch:
-		\begin{itemize}
-			\item endliche Zustandsmenge $Z$,
-			\item Anfangszustand $z_0 \in Z$,
-			\item Eingabealphabet $X$,
-			\item Zustandsüberführungsfunktion $f: Z \times X \rightarrow Z$,
-			\item Ausgabealphabet $Y$,
-			\item Ausgabefunktion $g: Z \times X \rightarrow Y^{\ast}$
-		\end{itemize}
-	\end{block}
-
-\end{frame}
 
 
 
 
-\begin{frame}{Mealy-Automat}
+\begin{frame}{Der Getränkeautomat}
 
 	\begin{exampleblock}{Beispiel} \small
 		Betrachte einen Getränkeautomaten:
@@ -109,7 +110,7 @@
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}{Mealy-Automat}
+\begin{frame}{Der Getränkeautomat}
 
 	\begin{exampleblock}{Beispiel}
 		\begin{figure}[ht]
@@ -137,7 +138,7 @@
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Mealy-Automat}
+\begin{frame}[fragile]{Der Getränkeautomat}
 
 	\begin{exampleblock}{Beispiel}
 		\begin{figure}[ht]
@@ -185,6 +186,26 @@
 \end{figure}
 	\end{exampleblock}
 \end{frame}
+
+\begin{frame}{Mealy-Automat}
+	\begin{block}{Def.: Mealy-Automat}
+		Ein (endlicher) \textbf{Mealy-Automat} $A=(Z, z_0, X, f, Y, g)$ ist bestimmt durch:
+		\begin{itemize}
+			\item endliche Zustandsmenge $Z$,
+			\item Anfangszustand $z_0 \in Z$,
+			\item Eingabealphabet $X$,
+			\item Zustandsüberführungsfunktion $f: Z \times X \rightarrow Z$,
+			\item Ausgabealphabet $Y$,
+			\item Ausgabefunktion $g: Z \times X \rightarrow Y^{\ast}$
+		\end{itemize}
+	\end{block}
+\pause
+	\begin{alertblock}{Achtung!}
+	$f$ ist eine \textbf{Funktion}, also muss man von jedem Zustand mit allen Eingaben ``irgendwohin'' gelangen! Stichwort: Müllzustand.
+	\end{alertblock}
+\end{frame}
+
+
 
 \begin{frame}{Mealy-Automat}
 	\begin{block}{Def.: Verallgemeinerte Zustandsübergangsfunktion $f_{\ast}$}
@@ -626,8 +647,8 @@
 %\subsection{Ausblick}
 	\begin{frame}{Ausblick}
 		\begin{itemize}
-			\item Turing Maschinen
-			\item Noch mehr Relationen
+			\item Turingmaschinen
+			% \item Noch mehr Relationen
 		\end{itemize}
 	\end{frame}
 %%%%%%%%%% %%%%%%%%%%
