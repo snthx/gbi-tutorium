@@ -1,0 +1,113 @@
+% ===== Set up =================
+\documentclass[%
+  parskip,
+  a4paper, %A4-Papier. Optional?
+  fontsize=12pt, % Schriftgröße
+  %version=last, % Neueste Version von KOMA-Skript verwenden
+  %twoside % oneside  (optional?) vs twoside as described here: https://www.sharelatex.com/learn/Single_sided_and_double_sided_documents
+]{scrartcl}
+
+% ===== Deutsche Sprache ========
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% ===========================
+
+
+% ===== Basic information ====
+\newcommand\getAuthor{Stephan Bohr}
+\newcommand\getTopic{GBI Tutorium}
+\newcommand\getTitle{Feedback}
+\newcommand\getDate{\today}
+% ============================
+
+% ===== PDF functionality =========
+\usepackage[pdftex,%
+	pdfauthor={\getAuthor},%
+	pdftitle={\getTopic : \getTitle}%
+		]{hyperref}
+% ===========================
+
+% ===== Basic packages ==========
+% Check if needed!
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{framed}
+% ===========================
+
+% ===== Look =====
+\usepackage[margin=2.5cm]{geometry} %layout
+% ================
+
+% ===== Headline / Footline ===
+% https://esc-now.de/_/latex-individuelle-kopf--und-fusszeilen/?lang=en
+\usepackage[headsepline,%footsepline
+  ]{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{\getTopic} % inner
+\chead{\getTitle} % center
+\ohead{\getDate} % outer
+%\ifoot{Fußzeile innen} % inner
+%\cfoot{Fußzeile mitte} % center
+%\ofoot{\pagemark} % outer
+% =============================
+
+% ===== Custom packages ========
+
+% ===========================
+
+% === Basic document information ===
+    \title{\getTopic : \getTitle}    
+    \date{\getDate}
+    \author{\getAuthor}
+% ===========================
+
+% ===========================
+% ========= Document ========
+% ===========================
+
+\begin{document}
+\newcommand{\punkte}{& $\circ$ & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\}
+\begin{tabularx}{\textwidth}{X|ccccc}
+\hfill & \makebox[0pt]{\footnotesize$++$} & \makebox[0pt]{\footnotesize$+$} & & \makebox[0pt]{\footnotesize$-$} & \makebox[0pt]{\footnotesize$--$} \\
+\midrule
+Ich besuche dieses Tutorium gerne. \punkte
+Ich fühle mich frei, Fragen und Anmerkungen zu äußern. \punkte
+Fragen werden zufriedenstellend beantwortet. \punkte
+Ich fühle mich in das Tutorium mit einbezogen. \punkte
+Das Tutorium ist zu schnell (+) / zu langsam (-). \punkte
+Die Aufgaben im Tutorium sind zu leicht (+) / zu schwer (-). \punkte
+Der Tutor spricht klar und deutlich. \punkte
+Das Gesprochene des Tutors ist inhaltlich verständlich. \punkte
+Der Stoff wird anschaulich vermittelt. \punkte
+Das Tutorium weckt mein Interesse an theoretischer Informatik. \punkte
+Die Folien sind für das Tutorium geeignet. \punkte
+Ich verwende die Folien zum Nachbereiten / Nachsehen. \punkte
+Ich fühle mich durch das Tutorium gut auf die ÜB vorbereitet. \punkte
+\small Die Übungsblätter werden zu ausführlich (+) / zu wenig (-) besprochen. \punkte
+Die Korrektur der Übungsblätter ist hilfreich und angemessen. \punkte
+\end{tabularx}
+
+\small Gut gefallen hat mir
+\begin{framed}
+  \hfill\vspace{2.5cm}
+\end{framed}
+
+\small Nicht gefallen hat mir
+\begin{framed}
+  \hfill\vspace{2.5cm}
+\end{framed}
+
+\small Sonstiges: Ideen, Änderungswünsche, Tipps (z.B. zu Inhalt, Erklärweise, Vortragsstil)
+\begin{framed}
+  \hfill\vspace{2.5cm}
+\end{framed}
+
+Ich gebe dem Tutorium folgende \textbf{Gesamtnote}:
+
+Vielen Dank für Deine Teilnahme! :)
+
+
+
+\end{document}
