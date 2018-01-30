@@ -89,17 +89,18 @@
 \subsection{Regex-Bäume}
 \begin{frame}{Kantorowitsch-/Regex-Bäume}
     \begin{block}{Def.: Kantorowitsch-/Regex-Baum}
+    \small
     	Es sei $A$ ein beliebiges Alphabet. Dann heißt ein Baum \textbf{Regex-Baum}, falls:
     	\begin{itemize}
-    		\item Entweder ist es ein Baum, dessen Wurzel zugleich Blatt ist, und das ist mit einem $x\in A$ oder $\emptyset$ beschriftet,
-    		\item oder es ist ein Baum, dessen Wurzel mit $*$ beschriftet ist und die genau einen Nachfolgeknoten hat, der Wurzel eines Regex-Baumes ist
-    		\item oder es ist ein Baum, dessen Wurzel mit $\cdot$ oder mit $|$ beschriftet ist und die genau zwei Nachfolgeknoten hat, die Wurzeln zweier Regex-Bäume sind. 
+    		\item Entweder ist es ein Baum, dessen Wurzel zugleich Blatt ist und mit einem $x\in A$ oder $\emptyset$ beschriftet ist,
+    		\item oder es ist ein Baum, dessen Wurzel mit $*$ beschriftet ist und genau einen Nachfolgeknoten hat, der Wurzel eines Regex-Baumes ist
+    		\item oder es ist ein Baum, dessen Wurzel mit $\cdot$ oder mit $|$ beschriftet ist und genau zwei Nachfolgeknoten hat, die Wurzeln zweier Regex-Bäume sind. 
     	\end{itemize}
     \end{block}
 
     \only<1|handout:1>{
     \begin{exampleblock}{Beispiel}
-    	Zeichne den Kantorowitschbaum zum arithmetische Ausdruck
+    	Zeichne den Kantorowitschbaum zum arithmetischen Ausdruck
     	\[
     		3+(a+b)*(-c)
     	\]
