@@ -1,6 +1,6 @@
 % ===== handout mode =====
 % Comment/uncomment this line to toggle handout mode
-% \newcommand{\handout}{}
+ \newcommand{\handout}{}
 
 \input{../modes.tex}
 
@@ -59,7 +59,8 @@
 	    \begin{itemize}
 	    	\item Prädikatenlogik: $\rightarrow$ statt $\wedge$ in Erwägung ziehen, wenn das Universum nicht eingeschränkt ist
 	    	\item Variablenbelegungs\textbf{funktion} muss für alle $x \in \VPL$ definiert sein
-	    	\item $\varepsilon \notin A$. Niemals. 
+	    	\item $\varepsilon \notin A$. Niemals.
+	    	\item $ \text{mag}(\text{John},x)$ ist richtig, da John $\in \CPL$. Wer die Punkte haben möchte, soll sich bei mir melden :)
 	    \end{itemize}
 	
 	
@@ -381,8 +382,8 @@
 			\small
 				Gib an:
 				\begin{enumerate}
-					\item $g_{\ast}((0,-), R10)$
-					\item $g_{\ast\ast}((0,-), R10)$
+					\item $g_{\ast}((0,-), R1O)$
+					\item $g_{\ast\ast}((0,-), R1O)$
 					\item $g_{\ast\ast}((0,-), R11O)$
 					\item $g_{\ast}((0,-), C1Z)$
 					\item $g_{\ast\ast}((0,-), RZO)$
@@ -472,7 +473,7 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Mealy-Automat}
+\begin{frame}[fragile]{Moore-Automat}
 
 	\begin{exampleblock}{Aufgabe zu $f_{\ast}$, $f_{\ast\ast}$, $g_{\ast}$ und $g_{\ast\ast}$}
 		\begin{columns}
@@ -514,7 +515,7 @@
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}{Mealy-Automat}
+\begin{frame}{Moore-Automat}
 	\begin{block}{Lösung zur Aufgabe zu $f_{\ast}$, $f_{\ast\ast}$, $g_{\ast}$ und $g_{\ast\ast}$}
 		\begin{enumerate}
 					\item $f_{\ast}(q_{\varepsilon}, aab) = q_{f}$
