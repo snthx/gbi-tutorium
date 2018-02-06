@@ -1,0 +1,205 @@
+\section{Turingmaschinen}
+\subsection{kekekekke}
+
+\begin{frame}[fragile]{Turingmaschine}
+   \begin{figure}[ht]
+  		\centering
+  		\begin{tikzpicture}[node distance=0mm,->,>={Latex[open]},thin]
+    		\matrix[matrix of math nodes,column sep=0mm,minimum size=8mm,row sep=10mm,nodes={every rectangle node/.style={rectangle,draw,anchor=center}}]   {
+      		& & & && \node[circle,draw] (z) {z}; & \\
+      		\node[circle] {\cdots}; & \blank & \blank & |(x)| \#a & \#b & \#b & \#a & \#a & \blank & \node[circle] {\cdots};\\
+    		};
+    		\path[<->] (z) edge [out=270,in=90] (x);
+  		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Turingmaschine}
+	\begin{block}{Def.: Turingmaschine}
+		Eine \textbf{Turingmaschine} $T=(Z,z_0,X,f,$ $g,m)$ ist festgelegt durch
+			\begin{itemize}
+			\item eine \textbf{Zustandsmenge} $Z$
+			\item einen \textbf{Anfangszustand} $z_0\in Z$
+			\item ein \textbf{Bandalphabet} $X$
+			\item eine partielle \textbf{Zustandsüberführungsfunktion} $f:Z\times X \dashrightarrow Z$
+			\item eine partielle \textbf{Ausgabefunktion} $g:Z\times X \dashrightarrow X$ und
+			\item eine partielle \textbf{Bewegungsfunktion} $m:Z\times X \dashrightarrow \{ -1, 0, 1\}$
+			\begin{itemize}
+				\item $f$, $g$ und $m$ seien für die gleichen Paare $(z,x)\in Z\times X$ definiert bzw. nicht definiert
+			\end{itemize}
+			\item[]
+			\item Darstellung einer konkreten Turingmaschine:\\
+					Tabelle oder graphisch (ähnlich wie bei Mealy-Automaten)
+			\end{itemize} 
+	\end{block}
+\end{frame}
+
+\begin{frame}{Turingmaschine}
+	\dots Und was das ganze soll:\\
+
+	\begin{itemize}
+		\item \textbf{Bandalphabet} $X$
+		\begin{itemize}
+			\item meist mit Blanksymbol \blank
+		\end{itemize}
+		\item partielle \textbf{Zustandsüberführungsfunktion} $f:Z\times X \dashrightarrow Z$
+		\begin{itemize}
+			\item in neuen Zustand übergehen
+		\end{itemize}
+		\item \textbf{Ausgabefunktion} $g:Z\times X \dashrightarrow X$
+		\begin{itemize}
+			\item Band mit neuem Symbol beschriften
+		\end{itemize}
+		\item \textbf{Bewegungsfunktion} $m:Z\times X \dashrightarrow \{ -1, 0, 1\} \text{ bzw. } \{ L,0,R\}$
+		\begin{itemize}
+			\item Kopf bewegen
+		\end{itemize}
+		\item[]
+		\item TM liest von Band, schreibt auf Band und kann ihren Kopf bewegen
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Turingmaschine}
+    \begin{columns}\footnotesize
+    	\begin{column}{0.4\textwidth}
+    		\begin{tikzpicture}[shorten >=1pt,initial text=,node distance=1.7cm,auto,->,>=stealth,baseline=(B.base)]
+          		% \node[state,initial]  (S)                       {$S$};
+          		\node[state,initial]  (A)          {$A$};
+          		% \node (nix) [right of=A] {};
+          		\node[state]          (B) [above right of=A] {$B$};
+          		\node[state]          (C) [right of=B] {$C$};
+          		\node[state]          (E) [below right of=A] {$E$};
+          		\node[state]          (D) [right of=E] {$D$};
+          		\path[->]
+          		% (S) edge              node  {$\9\io\9R$} (A)
+          		(A) edge              node  {$\#1\io\#XR$} (B)
+          		(B) edge [loop above] node  {$\#1\io\#1R$} ()
+          		edge              node  {$\9\io\9R$} (C)
+          		(C) edge [loop above] node  {$\#1\io\#1R$} ()
+          		edge              node  {$\9\io\#1L$} (D)
+          		(D) edge [loop below] node  {$\#1\io\#1L$} ()
+          		edge              node  {$\9\io\9L$} (E)
+          		(E) edge [loop below] node  {$\#1\io\#1L$} ()
+          		edge              node  {$\#X\io\#1R$} (A)
+          		% (B) edge              node        {$\9\io\9R$} (B)
+          		% edge [loop right] node        {$\#1\io\#1R$} ()
+          		% (B) edge [loop right] node {$\9\io\#1L$} ()
+          		% edge  node [pos=0.3]       {$\#1\io\#1L$} (A)
+          		;
+        \end{tikzpicture}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{tabular}[t]{>{$}c<{$}@{\quad}*{6}{>{$}c<{$}}}
+          		\toprule
+          		& A       & B      & C       & D       & E \\
+          		\midrule
+          		\9       
+          		&         & \9,R,C & \#1,L,D & \9,L,E  &  \\
+          		\#1         & \#X,R,B & \#1,R,B& \#1,R,C & \#1,L,D & \#1,L,E \\
+          		\#X         &         &        &         &         & \#1,R,A \\
+          		\bottomrule
+        	\end{tabular}
+        	\normalsize
+        	\begin{exampleblock}{Aufgabe}
+        		\begin{enumerate}
+        			\item Was steht bei der Eingabe von \#{111} auf dem Band?
+        			\item Was macht die TM allgemein, wenn man auf der ersten \#1 startet?
+        		\end{enumerate}
+        	\end{exampleblock}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Turingmaschinen}
+    \begin{block}{Lösung}
+    	\begin{enumerate}
+    		\item $\dots \blank \#{111} \blank \#{111} \blank \dots$
+    		\item diese TM kopiert ein Wort $\#1^k$ auf einem leeren Band, so dass hinterher $\cdots \blank \#1^k \blank \#1^k \blank \cdots$ da steht
+    	\end{enumerate}
+    \end{block}
+
+    \textbf{Verallgemeinerung} fürs Kopieren von Wörtern über $\{\#0,\#1\}$:\\
+    \begin{itemize}
+    	\item auf dem Weg nach rechts merken, was mit \#X überschrieben wurde
+    	\item auf dem Weg nach rechts und
+    zurück sowohl \#1 als auch \#0 überlaufen
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Turingmaschinen}
+	\begin{block}{Def.: Konfiguration}
+		Die \textbf{Konfiguration} $c = (z,b,p)$ beschreibt den „Gesamtzustand“ in dem sich die TM zu einem bestimmten Zeitpunkt befindet. Sie wird vollständig beschrieben durch:
+			\begin{itemize}
+			\item den aktuellen Zustand $z\in Z$ der Steuereinheit
+			\item die aktuelle Beschriftung des gesamten Bandes, die man als
+  			Abbildung $b:\nZ \to X$ formalisieren kann
+			\item die aktuelle Position $p\in \nZ$ des Kopfes.
+			\end{itemize}
+	\end{block}
+
+	\begin{block}{Def.: Endkonfiguration}
+		Falls für eine Konfiguration $c$ die Nachfolgekonfiguration nicht definiert ist, heißt $c$ auch eine \textbf{Endkonfiguration} und man sagt, die Turingmaschine habe \textbf{gehalten}.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Turingmaschine}
+    \begin{block}{Def.: $\Delta_t$ und $\Delta_*$}
+    	Für $t\in \nN_0$ liefert $\Delta_t(c)$ die ausgehend von Konfiguration $c$ nach $t$ Schritten erreichte Konfiguration.
+
+    		\[
+			\Delta_*(c) =
+			\begin{cases}
+  			\Delta_t(c) & \text{, falls $\Delta_t(c)$ definiert und Endkonfiguration ist} \\
+  			\text{undefiniert} & \text{, falls $\Delta_t(c)$ für alle $t\in \nN_0$ definiert ist} \\
+			\end{cases}
+			\]
+    \end{block}
+\end{frame}
+
+\begin{frame}{Turingmaschinen}
+    \begin{alertblock}{Achtung!}
+    	\begin{itemize}
+    		\item Turingmaschinen halten \textbf{nicht immer}!
+    		\item es gibt auch unendliche Berechnungen, genauso wie z.B. in Java
+    	\end{itemize}
+    \end{alertblock}
+
+    \begin{block}{Weitere Definitionen}
+    	\begin{itemize}
+    		\item \textbf{Endliche Berechnung}: endliche Folge von Konfigurationen $(c_0, c_1, c_2,$ $\dots, c_t)$ mit $c_i = \Delta_1(c_{i-1})$ für alle $0<i\leq t$ 
+    		\item \textbf{Haltende Berechnung}: endliche Berechung, deren letzte Konfiguration eine Endkonfiguration ist
+    		\item \textbf{Unendliche Berechnung/Nicht haltende Berechnung}: für jede Konfiguration ist immer die Nachfolgekonfiguration definiert
+    	\end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Turingmaschinen}
+	\begin{exampleblock}{Aufgabe}
+		 \begin{tabular}[t]{>{$}c<{$}@{\qquad}*{4}{>{$}c<{$}}}
+      		\toprule
+      		& r & c_0 & c_1 & h \\
+      		\midrule
+      		\#0 & \#0,R,r   & \#0,L,c_0 & \#1,L,c_0 \\
+      		\#1 & \#1,R,r   & \#1,L,c_0 & \#0,L,c_1 \\
+      		\9  & \9, L,c_1 & \9 ,R,h   & \#1,L,c_0 & \hphantom{\#1,L,C} \\
+      		\bottomrule
+    		\end{tabular}\\[2em]
+
+    		$r$ ist der Anfangszustand.
+    		\begin{enumerate}
+    			\item Stelle diese Turingmaschine graphisch dar
+    			\item Gib die Endkonfiguration für die Eingaben \#{100} und \#{111} an
+    			\item Was macht die Turingmaschine?
+    		\end{enumerate}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Turingmaschinen}
+	\begin{block}{Lösung}
+		\begin{enumerate}
+			\item s. Tafel
+			\item $\9 h \#{101} \9 $, $\9 h \#{1000} \9 $
+			\item Die TM erhöht eine binär dargestellte Zahl um 1
+		\end{enumerate}
+	\end{block}
+\end{frame}

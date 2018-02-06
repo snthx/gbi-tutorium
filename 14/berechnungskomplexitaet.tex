@@ -1,0 +1,82 @@
+\section{Berechnungskomplexität}
+\subsection{kekekek}
+\begin{frame}{Komplexitätsmaße}
+	\begin{block}{Def.: Zeitkomplexität $\ftime_T$ und $\fTime_t$}
+		Für die Beurteilung des \textbf{Zeitbedarfs} definiert man zwei Funktionen \\
+		$\ftime_T:A^+ \to \nN_+$ und $\fTime_T:\nN_+ \to \nN_+$ wie folgt:
+		\begin{align*}
+  			\ftime_T(w) &= \text{das $t$, für das $\Delta_t(c_0(w))$ Endkonfiguration ist} \\
+  			\fTime_T(n)   &= \max \{\ftime_T(w) \mid w\in A^n\}
+		\end{align*}
+	\end{block}
+
+	Also: $\fTime_T(n)$ maximale Anzahl Schritte, die bei einer Eingabe der Länge $n$ gemacht werden
+\end{frame}
+
+\begin{frame}{Komplexitätsmaße}
+    \begin{block}{Def.: Raumkomplexität}
+    	Für die Beurteilung des Speicherplatzbedarfs definiert man zwei
+		Funktionen $\fspace_T(w):A^+ \to \nN_+$ und $\fSpace_T(n):\nN_+ \to \nN_+$ wie folgt:
+			\begin{align*}
+  			\fspace_T(w) &= \text{die Anzahl der Felder, die während der }\\
+               			&\quad  \text{Berechnung für Eingabe $w$ benötigt werden}\\
+  			\fSpace_T(n)   &= \max \{\fspace_T(w) \mid w\in A^n\} 
+			\end{align*}
+    \end{block}
+
+    Also: $\fSpace_T(n)$ maximale Anzahl Felder, die bei einer Eingabe der Länge $n$ besucht werden\\[1em]
+    Bemerkung:\\
+    Ein Feld gilt als „benötigt“, wenn es zu Beginn ein Eingabesymbol enthält oder irgendwann vom Kopf der Turingmaschine besucht wird. 
+\end{frame}
+
+\begin{frame}{Komplexitätsmaße}
+    \textbf{Zusammenhang zwischen Zeit- und Raumkomplexität:}
+    \begin{itemize}
+    	\item Polynomielle Zeitkomplexität:\\
+    	es existiert ein Polynom $p(n)$, sodass $\fTime(n) \in O(p(n))$
+    	\item Polynomielle Raumkomplexität:\\
+    	es existiert ein Polynom $p(n)$, sodass $\fSpace(n) \in O(p(n))$
+    	\pause
+    	\item[]
+    	\item Welcher Zusammenhang gilt?
+    	\begin{itemize}
+    		\item Polynomielle Laufzeit $\Rightarrow$ Polynomieller Platzbedarf?
+    		\item Polynomieller Platzbedarf $\Rightarrow$ Polynomielle Laufzeit ?
+    	\end{itemize}
+    	\pause
+    	\item[]
+    	\item Es gilt:
+    	\begin{itemize}
+    		\item TM mit polynomieller Laufzeit hat auch nur polynomiellen Platzbedarf
+    		\item Umkehrung gilt nicht!
+    	\end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Turingmaschine}
+	\begin{exampleblock}{Aufgabe (WS 2015)}
+		Konstruiere eine Turingmaschine $T$ mit Zuständen $A,B,C,D$ und Bandalphabet $X\set{\#0, \#1, \blank}$, die für jede Eingabe $w \in X^+$ hält und am Ende das Wort $w'\in X^+$ auf dem Band steht, für das gilt:
+		\begin{itemize}
+			\item $|w|=|w'|$
+			\item $\fNum_2(w')=\fNum_2(w)-1$, falls $\fNum_2(w)>0$
+			\item $w' = \#0 \cdot ... \cdot \#0$ sonst
+		\end{itemize}
+		Wo bei der Endkonfiguration der Kopf steht, ist nicht wichtig.\\
+		Zeige an Eingabe $w = 010$, dass die TM funktioniert, indem du alle Konfigurationen angibst, die deine TM durchläuft.\\
+		Gib außerdem zwei Funktionen $f,g$ an, für die gilt: $\fTime_T(n) \notin O(f(n))$ und $\fTime_T(n)\notin \Omega(g(n))$
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Komplexitätsklassen}
+    \begin{block}{Def.: Komplexitätsklasse}
+        Eine \textbf{Komplexitätsklasse} ist eine \textbf{Menge von Problemen}.\\
+        Wir beschränken uns auf Entscheidungsprobleme, also auf formale Sprachen.
+    \end{block}
+
+    \begin{block}{Def.: \Pclass und \PSPACE}
+        \Pclass: Menge aller Entscheidungsprobleme, die von TMs entschieden werden können, deren Zeitkomplexität polynomiell ist\\[1ex]
+        \PSPACE: Menge aller Entscheidungsprobleme, die von TMs entschieden werden können, deren Raumkomplexität polynomiell ist 
+    \end{block}
+
+    Es gilt: $\Pclass \subseteq \PSPACE$
+\end{frame}

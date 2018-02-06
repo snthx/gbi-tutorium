@@ -1,0 +1,44 @@
+\section{Entscheidbarkeit}
+\subsection{kekekekek}
+
+\begin{frame}{Entscheidbarkeit}
+	\begin{block}{Def.: Turingmaschine als Akzeptor}
+		Eine TM $T$ kann analog zu endlichen Automaten als Akzeptor für formale Sprachen genutzt werden. Es gilt dann:
+		\begin{itemize}
+			\item Teilmenge $F \subset Z$ \textbf{akzeptierende} Zustände
+			\item $T$ akzeptiert Eingabewort $w$, wenn gilt:
+			\begin{itemize}
+				\item $T$ \textbf{hält} für die Eingabe $w$ \textbf{und}
+				\item der Zustand der Endkonfiguration $\Delta_*(c_0(w))$ ist akzeptierend
+			\end{itemize}
+			\item $L(T)$ ist die Menge der von $T$ akzeptierten Wörter
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Entscheidbarkeit}
+    \begin{block}{Def.: Entscheidbarkeit}
+    	Eine Sprache $L \subseteq A^*$ heißt \textbf{entscheidbar}, wenn es eine TM gibt, die auf \textbf{allen} Eingaben stoppt und eine Eingabe $w$ genau dann akzeptiert, wenn $w\in L$ gilt.
+    \end{block}
+\pause
+    \begin{block}{Def.: Semi-Entscheidbarkeit}
+    	Eine Sprache $L \subseteq A^*$ heißt \textbf{semi-etscheidbar} (rekursiv aufzählbar), wenn es eine TM gibt, die die Eingaben $w$ akzeptiert, für die $w\in L$ gilt.\\
+    	Für Eingaben $w$ mit $w \notin L$ ist das Verhalten nicht definiert, d.h. die TM stoppt entweder in einem nicht akzeptierenden Zustand oder sie läuft endlos.
+    \end{block} 
+\end{frame}
+
+\begin{frame}{Unentscheidbarkeit}
+    \begin{block}{Def.: Codierung von Turingmaschinen}
+    	Ja, das gibt es, wen's interessiert $\rightarrow$ Vorlesungsfolien\\
+    	Schreibe $T_w$ für die TM mit Codierung $w$.
+    \end{block}
+\pause
+    \begin{block}{Def.: Halteproblem}
+    	Das \textbf{Halteproblem} ist die formale Sprache
+    	\[
+			H = \{ w\in A^* \mid \text{$w$ ist eine TM-Codierung und $T_w(w)$ hält} \}
+		\]
+
+		Das \textbf{Halteproblem ist unentscheidbar}, d.h. es gibt keine TM, die $H$ entscheidet.
+    \end{block}
+\end{frame}

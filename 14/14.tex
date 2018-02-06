@@ -1,0 +1,89 @@
+% ===== handout mode =====
+% Comment/uncomment this line to toggle handout mode
+% \newcommand{\handout}{}
+
+\input{../modes.tex}
+
+\input{../templates/praeambelTut.tex}
+
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{automata}
+\usetikzlibrary{tikzmark}
+
+\title[Turingmaschinen]{14 . Tutorium\\ Turingmaschinen, Berechnungskomplexität und Unentscheidbarkeit}
+\subtitle{Grundbegriffe der Informatik, Tutorium \mytutnumber}
+\date{\today}
+
+\begin{document}
+\titleframe
+
+%\section{Organisatorisches}
+\begin{frame}{Organisatorisches}
+	\begin{itemize}
+		\item Für Übungsschein angemeldet?
+		\item Für Klausur angemeldet?
+		\notStephan{\item Alle noch nicht abgeholten Übungsblätter und das korrigierte Bonusübungsblatt könnt ihr beim Übungsleiter\footnote{
+	    	Thomas Zenkel, Gebäude 50.20 (ehem. Kinderklinik), Raum 239} abholen
+	    \item Das Bonusübungsblatt müsst ihr aber nicht machen, wenn ihr keine Punkte mehr braucht, ich schreibe auch Klausuren und eine Musterlösung wird es online geben ;)}
+	\end{itemize}
+\end{frame}
+
+\Stephan{
+\begin{frame}[plain]{Übungsbetrieb}
+    \centering\includegraphics[height=4cm]{statistiken}
+    \begin{itemize}\small
+    	\item Alle noch nicht abgeholten Übungsblätter und das korrigierte Bonusübungsblatt könnt ihr beim Übungsleiter\footnote{
+	    	Thomas Zenkel, Gebäude 50.20 (ehem. Kinderklinik), Raum 239} abholen
+	    \item \textbf{\emph{Bonus-ÜB}} müsst ihr \textbf{\emph{nicht machen}}, wenn ihr keine Punkte mehr braucht, ich schreibe auch Klausuren und eine Musterlösung wird es online geben ;)
+	    \item Jeder, der das dritte Übungsblatt abgegeben hat, hat den Schein
+	    \item Aufgabe 6.4: Ein gerichteter Baum mit $k$ Knoten hat genau $k-1$ Kanten
+    \end{itemize}
+\end{frame}
+}
+
+\roadmap
+
+%%%%%%%%%% %%%%%%%%%%
+\input{fortsetzung_endl-automaten}
+\def\parfunc{\dashedrightarrow}
+\input{turingmaschine}
+\input{berechnungskomplexitaet}
+\input{entscheidbarkeit}
+%%%%%%%%%% %%%%%%%%%%
+%% Zusammenfassung
+\section{}
+%\subsection{Zusammenfassung}
+	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
+			\begin{itemize}
+				\item Turingmaschinen
+				\begin{itemize}
+					\item konstruieren
+					\item verstehen
+				\end{itemize}
+				\item Berechnungskomplexität
+				\begin{itemize}
+					\item Zeit- u. Raumkomplexität sowie versch. Komplexitätsklassen
+					\item Diese bei TMs abschätzen
+				\end{itemize}
+				\item Entscheidbarkeit
+				\begin{itemize}
+					\item Die TM als Akzeptor
+					\item Das Halteproblem ist unentscheidbar
+				\end{itemize}
+			\end{itemize}
+	
+	\end{frame}
+%% Ausblick
+%\subsection{Ausblick}
+	\begin{frame}{Ausblick}
+		\begin{itemize}
+			\item Semesterferien *intense partying*
+		\end{itemize}
+	\end{frame}
+%%%%%%%%%% %%%%%%%%%%
+\section{}
+\questionframe
+\showmessage{Vielen Dank für Eure Aufmerksamkeit!\\ Viel Erfolg bei der Klausur und vlt bis nächstes Semester! :)}
+\mode<handout>{\slideThanks}
+\end{document}

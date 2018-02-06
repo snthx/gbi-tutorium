@@ -154,7 +154,7 @@
 \newcommand{\fv}{\mathrm{fv}}
 
 \def\word#1{\hbox{\textcolor{blue}{\texttt{#1}}}}
-\let\literal\word
+%\let\literal\word
 \def\mword#1{\hbox{\textcolor{blue}{$\mathtt{#1}$}}}  % math word
 \def\sp{\scalebox{1}[.5]{\textvisiblespace}}
 \def\wordsp{\word{\sp}}
@@ -190,3 +190,22 @@
 \newcommand{\sgn}{\mathop{\text{sgn}}}
 
 \newcommand{\lang}[1]{\ensuremath{\langle#1\rangle}}
+
+\newcommand{\literal}[1]{\hbox{\textcolor{blue!95!white}{\textup{\texttt{\scalebox{1.11}{#1}}}}}}
+\renewcommand{\#}[1]{\literal{#1}}
+
+\def\blank{\ensuremath{\openbox}}
+\def\9{\blank}
+\newcommand{\io}{\!\mid\!}
+
+
+\providecommand{\fspace}{\mathord{\text{space}}}
+\providecommand{\fSpace}{\mathord{\text{Space}}}
+\providecommand{\ftime}{\mathord{\text{time}}}
+\providecommand{\fTime}{\mathord{\text{Time}}}
+
+\newcommand{\fnum}{\text{num}}
+\newcommand{\fNum}{{\text{Num}}}
+
+\def\Pclass{\text{\bfseries P}}
+\def\PSPACE{\text{\bfseries PSPACE}}
