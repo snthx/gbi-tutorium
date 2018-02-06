@@ -13,5 +13,6 @@ all:
 	rm -f *.blg
 	rm -f *.zip
 	rm -f *~
+
 	open *.pdf
 
