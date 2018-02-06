@@ -55,7 +55,7 @@
 
 \begin{frame}{Turingmaschine}
 	\begin{exampleblock}{Aufgabe (WS 2015)}
-		Konstruiere eine Turingmaschine $T$ mit Zuständen $A,B,C,D$ und Bandalphabet $X\set{\#0, \#1, \blank}$, die für jede Eingabe $w \in X^+$ hält und am Ende das Wort $w'\in X^+$ auf dem Band steht, für das gilt:
+		Konstruiere eine Turingmaschine $T$ mit Zuständen $A,B,C,D$ und Bandalphabet $X := \set{\#0, \#1, \blank}$, die für jede Eingabe $w \in X^+$ hält und am Ende das Wort $w'\in X^+$ auf dem Band steht, für das gilt:
 		\begin{itemize}
 			\item $|w|=|w'|$
 			\item $\fNum_2(w')=\fNum_2(w)-1$, falls $\fNum_2(w)>0$
@@ -73,7 +73,7 @@
         Wir beschränken uns auf Entscheidungsprobleme, also auf formale Sprachen.
     \end{block}
 
-    \begin{block}{Def.: \Pclass und \PSPACE}
+    \begin{block}{Def.: $\Pclass$ und $\PSPACE$}
         \Pclass: Menge aller Entscheidungsprobleme, die von TMs entschieden werden können, deren Zeitkomplexität polynomiell ist\\[1ex]
         \PSPACE: Menge aller Entscheidungsprobleme, die von TMs entschieden werden können, deren Raumkomplexität polynomiell ist 
     \end{block}
