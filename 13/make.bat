@@ -1,5 +1,5 @@
 @echo off
-	set SOURCE=13
+	set SOURCE=slides
 
 	pdflatex .\%SOURCE%.tex
 	pdflatex .\%SOURCE%.tex

@@ -1,17 +1,18 @@
-all: *.tex
-	pdflatex *.tex
-	pdflatex *.tex
+DOKUMENT = slides
 
-	rm -f *.aux
-	rm -f *.log
-	rm -f *.nav
-	rm -f *.out
-	rm -f *.snm
-	rm -f *.toc
-	rm -f *.bbl
-	rm -f *.blg
-	rm -f *.zip
-	rm -f *~
+make:
+	pdflatex $(DOKUMENT).tex -output-format=pdf -shell-escape
 
-	open *.pdf
+clean:
+	rm -f *.vrb *.aux *.log *.nav *.out *.snm *.toc *.bbl *.blg *.zip *~
 
+full:
+	make
+	make
+	make clean
+
+handout:
+	pdflatex  '\def\handout{1} \input{$(DOKUMENT).tex}' -output-format=pdf -shell-escape
+	pdflatex  '\def\handout{1} \input{$(DOKUMENT).tex}' -output-format=pdf -shell-escape
+	make clean
+	mv $(DOKUMENT).pdf $(DOKUMENT)-handout.pdf

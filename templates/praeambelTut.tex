@@ -1,6 +1,6 @@
 % by Stephan
 
-%% Moritz mode or Stephan mode
+%% Chose mode
 \ifdefined \MoritzMode
 \input{../config_Moritz.tex} % Moritz mode
 \fi
@@ -9,6 +9,9 @@
 \fi
 \ifdefined \StephanMode
 \input{../config_Stephan.tex} % Stephan mode
+\fi
+\ifdefined \KilianMode
+\input{../config_Kilian.tex} % Alex Mode
 \fi
 
 %% Beamer-Klasse im korrekten Modus
@@ -91,6 +94,8 @@
 %% switch between "ngerman" and "english" for German/English style date and logos
 \selectlanguage{ngerman}
 
+\usepackage{xcolor}
+
 %% for invisible pause texts instead of dimming
 \setbeamercovered{invisible}
 
@@ -103,6 +108,14 @@
 \usetikzlibrary{arrows,automata,positioning}
 
 \usepackage{xspace}
+
+\usepackage{graphicx}
+
+\usepackage{verbatim}
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill\(//\) #1}
 
 % Problem: disabled itemize-icons
 %\usepackage{enumitem}
@@ -146,16 +159,10 @@
 	\fi
 }
 
-\newcommand{\notMoritz}[1]{
-	\Alex{#1} \Stephan{#1}
-}
-
-\newcommand{\notAlex}[1]{
-	\Moritz{#1} \Stephan{#1}
-}
-
-\newcommand{\notStephan}[1]{
-	\Alex{#1} \Moritz{#1}
+\newcommand{\Kilian}[1]{
+	\ifdefined \KilianMode
+	#1
+	\fi
 }
 
 %% Wochennummer
@@ -223,13 +230,25 @@
 		\begin{block}{}
 			An der Erstellung des Foliensatzes haben mitgewirkt:\\[1em]
 			\Moritz{Moritz Laupichler \\
-			Stephan Bohr \\}
-			\notMoritz{Stephan Bohr\\
-			Moritz Laupichler\\}
-			Alexander Klug \\
+			Stephan Bohr\\
+			Kilian Wurm\\
+			}
+			\Alex{Alexander Klug\\
+			Stephan Bohr\\
+			Moritz Laupichler\\
+			Kilian Wurm\\
+			}
+			\Kilian{Kilian Wurm\\
+			Stephan Bohr\\
+			Moritz Laupichler\\
+			}
+			\Stephan{Stephan Bohr\\
+			Moritz Laupichler\\
+			Kilian Wurm\\
+			}
 			Katharina Wurz \\
 			Thassilo Helmold \\
-			Daniel Jungkind \\
+			Daniel Jungkind
 			% Philipp Basler \\
 			% Nils Braun \\
 			% Dominik Doerner \\
