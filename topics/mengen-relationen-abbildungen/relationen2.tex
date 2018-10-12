@@ -1,0 +1,132 @@
+\subsection{Relationen und Abbildungen}
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{block}{Def.: linkstotal}
+	\pause
+		Eine Relation $R \subseteq A \times B$ heißt \textbf{linkstotal}, wenn es für jedes Element $a \in A$ ein zugehöriges Element $b \in B$ gibt, mit $$(a,b) \in R$$
+		Sprich: \enquote{Jedes Element aus A hat mind. einen Partner in B}
+	\end{block}
+	\pause
+	\begin{block}{Def.: rechtseindeutig}
+	\pause
+		Eine Relation $R \subseteq A \times B$ heißt \textbf{rechtseindeutig}, wenn für alle Elemente $a \in A$ und $b_1, b_2 \in B$ gilt: $$\text{Aus }(a,b_1) \in R \text{ und } (a,b_2) \in R \text{ folgt }  b_1 = b_2$$
+		Sprich: \enquote{Jedes Element aus A hat höchstens einen Partner in B}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{block}{Def.: Abbildung/Funktion}
+		Ist eine Relation $f \subseteq A \times B$ rechtseindeutig und linkstotal, so nennt man sie \textbf{Funktion} oder \textbf{Abbildung}. 
+		Man schreibt
+		\[
+			f : A \to B, a \mapsto b %\, (\text{oder } f(a) = b)
+		\]
+		\pause
+		Dann ist:
+		\begin{itemize}
+			\item \(A\) der \textbf{Definitionsbereich}
+			\item \(B\) der \textbf{Zielbereich}
+			\item \(f(A) := \setc{f(a)}{a \in A}\) der \textbf{Bildbereich}
+		\end{itemize}
+		Für \(x \in A\), \(y \in B\) mit \(f(x)=y\) heißt \(y\) \textbf{Bild} von \(x\) und \(x\) \textbf{Urbild} von \(y\).
+	\end{block}
+\end{frame}
+
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{alertblock}{Achtung!}
+		Funktionen immer \textbf{vollständig} angeben, also Definitionsbereich, Zielbereich sowie Abbildungsvorschrift. \\
+		Auf die unterschiedlichen Pfeile achten (zwischen Definitions- und Zielbereich kein Strich am linken Ende des Pfeils)!
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{}%Wdh.: Relationen und Abbildungen}
+	\begin{block}{Def.: linkseindeutig}
+	\pause
+		Eine Relation $R \subseteq A \times B$ heißt \textbf{linkseindeutig}, wenn für alle Elemente $b \in B$ und $a_1, a_2 \in A$ gilt: $$\text{Aus } (a_1,b) \in R \text{ und } (a_2,b) \in R \text{ folgt } a_1 = a_2$$
+		Sprich: \enquote{Jedes Element aus B hat höchstens einen Partner in A}\\
+		Eine linkseindeutige Funktion heißt \textbf{injektiv}.
+	\end{block}
+	\pause
+	\begin{block}{Def.: rechtstotal}
+	\pause
+		Eine Relation $R \subseteq A \times B$ heißt \textbf{rechtstotal}, wenn es für jedes Element $b \in B$ ein zugehöriges Element $a \in A$ gibt, mit $$(a,b) \in R$$
+		Sprich: \enquote{Jedes Element aus B hat mind. einen Partner in A}\\
+		Eine rechtstotale Funktion heißt \textbf{surjektiv}.
+	\end{block}
+\end{frame}
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{block}{Def.: bijektiv}
+		\pause
+		Eine Funktion heißt \textbf{bijektiv}, wenn sie linkseindeutig und rechtstotal ist.
+	\end{block}
+\end{frame}
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{exampleblock}{Beispiel \#1}
+		\begin{minipage}{0.5\textwidth}
+			\begin{tikzpicture}
+			[scale=0.6,auto=left,every node/.style={circle,fill=kit-blue30}]
+			\node (a1) at (0,10)  {$a_1$};
+			\node (a2) at (0,8)  {$a_2$};
+			\node (a3) at (0,6)  {$a_3$};
+			\node (b1) at (2,10)  {$b_1$};
+			\node (b2) at (2,8)  {$b_2$};
+			\node (b3) at (2,6)  {$b_3$};
+			
+			
+			\foreach \from/\to in {b1/a2, a1/b1, a3/b3}
+			\draw (\from) -- (\to);
+			\end{tikzpicture}
+		\end{minipage} \hfill
+		\begin{minipage}{0.45\textwidth}
+			\raggedright
+			% \begin{align*}
+			% Linkstotal&: \only<2->{Ja} \\
+			% Rechtseindeutig&: \only<3->{Ja} \\
+			% Rechtstotal bzw. surjektiv&: \only<4->{Nein} \\
+			% Linkseindeutig bzw. injektiv&: \only<5->{Nein} \\
+			% \end{align*}
+			\begin{tabular}{rl}
+			Linkstotal: & \only<2->{\textcolor{kit-green100}{Ja}} \\
+			Rechtseindeutig: & \only<3->{\textcolor{kit-green100}{Ja}} \\ 
+			Rechtstotal: & \only<4->{\textcolor{kit-red100}{Nein}} \\
+			Linkseindeutig: & \only<5->{\textcolor{kit-red100}{Nein}} \\
+			\end{tabular}
+		\end{minipage}
+	\end{exampleblock}
+\end{frame}
+\begin{frame}{Wdh.: Relationen und Abbildungen}
+	\begin{exampleblock}{Beispiel \#2}
+		\begin{minipage}{0.5\textwidth}
+			\begin{tikzpicture}
+			[scale=0.6,auto=left,every node/.style={circle,fill=kit-blue30}]
+			\node (a1) at (0,10)  {$a_1$};
+			\node (a2) at (0,8)  {$a_2$};
+			% \node (a3) at (0,6)  {$a_3$};
+			\node (b1) at (2,10)  {$b_1$};
+			\node (b2) at (2,8)  {$b_2$};
+			\node (b3) at (2,6)  {$b_3$};
+			
+			
+			\foreach \from/\to in {a1/b2, a2/b3, a2/b1}
+			\draw (\from) -- (\to);
+			\end{tikzpicture}
+		\end{minipage} \hfill
+		\begin{minipage}{0.45\textwidth}
+			\raggedright
+			% \begin{align*}
+			% Linkstotal&: \only<2->{Ja} \\
+			% Rechtseindeutig&: \only<3->{Nein} \\
+			% Rechtstotal bzw. surjektiv&: \only<4->{Nein} \\
+			% Linkseindeutig bzw. injektiv&: \only<5->{Nein} \\
+			% \end{align*}
+			\begin{tabular}{rl}
+			Linkstotal: & \only<2->{\textcolor{kit-green100}{Ja}} \\
+			Rechtseindeutig: & \only<3->{\textcolor{kit-red100}{Nein}}\\ 
+			Rechtstotal: & \only<4->{\textcolor{kit-green100}{Ja}} \\
+			Linkseindeutig: & \only<5->{\textcolor{kit-green100}{Ja}} \\
+			Bijektive Abbildung: & \only<6->{\textcolor{kit-red100}{Nein}} \\
+			\only<7->{Abbildung: }& \only<7->{\textcolor{kit-red100}{Nein}}
+			\end{tabular}
+
+		\end{minipage}
+	\end{exampleblock}
+\end{frame}

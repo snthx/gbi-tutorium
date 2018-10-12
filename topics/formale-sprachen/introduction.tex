@@ -1,0 +1,67 @@
+\subsection{Alphabete, Wörter, Sprachen}
+\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+	\begin{block}{Def.: Alphabet}
+		Ein \textbf{Alphabet} ist eine endliche, nichtleere Menge von Zeichen.
+	\end{block}
+	\pause
+	\begin{block}{Def.: Wort}
+		Ein \textbf{Wort} über einem Alphabet A ist eine Folge von Zeichen aus A.
+	\end{block}
+	\pause
+	\begin{block}{Def.: leeres Wort}
+		Das \textbf{leere Wort} \(\varepsilon\) ist das Wort, das aus null Zeichen besteht, d.h. es hat die Länge 0.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+	\begin{block}{Def.: \(A^{n}\)}
+	\pause
+		\textbf{\(A^{n}\)} ist die Menge aller Wörter der Länge n über dem Alphabet A.
+	\end{block}
+	\pause
+	\begin{block}{Def.: \(A^{*}\)}
+	\pause
+		\textbf{\(A^{*}\)} ist die Menge aller Wörter beliebiger Länge über dem Alphabet A.		
+		\[
+			A^{*}= \bigcup_{i=0}^{\infty} A^{i}
+		\]
+	\end{block}
+	\pause
+	\begin{exampleblock}{Beispiele}
+		\(A^{0}=\set{\varepsilon}, \quad \set{a,b}^{*} = \set{\varepsilon, a, b, aa, ab, ba, bb, aaa, ...}\)
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+	\begin{block}{Def.: Konkatenation}
+		Die \textbf{Konkatenation} ist die Operation der Verknüpfung von Wörtern. Jedes Wort kann als Konkatenation seiner Zeichen dargestellt werden, z.B. \(GBI = G \cdot B \cdot I\).
+	\end{block}
+	\pause
+	\begin{block}{Induktive Def.: Potenz von Wörtern}
+		Die n-te \textbf{Potenz} eines Wortes w ist induktiv definiert durch:
+		\begin{align*}
+				w^{0} &= \varepsilon \hphantom{000000000000}\\
+				\text{Für jedes } n \in \nN_{0}: \; w^{n+1} & = w^{n} \cdot w
+		\end{align*}
+	\end{block}
+	\pause
+	\begin{exampleblock}{Aufgabe}
+	\begin{itemize}
+		\item Ist die Konkatenation assoziativ?\pause
+		\item Ist die Konkatenation kommutativ?\pause
+		\item \(a\varepsilon\varepsilon\varepsilon\varepsilon\varepsilon\varepsilon b\varepsilon\varepsilon\varepsilon\varepsilon = \, ?\)
+	\end{itemize}		
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+	\begin{block}{Def.: Formale Sprache}
+		Eine \textbf{formale Sprache} L über einem Alphabet A ist eine Teilmenge der Wörter über A, also \(L \subseteq A^{*}\).
+	\end{block}
+
+	\begin{exampleblock}{Aufgabe}
+		Gib die Sprache L über dem Alphabet \(\set{a,b}\) an, die alle Wörter enthält, in denen die Zeichenfolge \q{ab} nicht vorkommt.\\
+		\pause
+		\textbf{Lösung:} \(L = \setc{w_{1}w_{2}}{w_{1} \in \set{b}^{*} \text{ und } w_{2} \in \set{a}^{*}}\)
+	\end{exampleblock}
+\end{frame}

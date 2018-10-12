@@ -1,0 +1,202 @@
+\subsection{Grundlagen: Aussage, Syntax}
+
+\begin{frame}{Grundlagen}
+	\begin{block}{Def.: Aussage}
+		\textbf{Aussagen} sind Sätze, die "`objektiv"' wahr oder falsch sind. Man spricht auch von der Zweiwertigkeit der Aussagenlogik.
+	\end{block}
+	\pause
+	\begin{block}{Def.: Aussagenvariable}
+		Eine \textbf{Aussagenvariable} steht für eine (elementare) Aussage. Sie kann entweder \emph{wahr} oder \emph{falsch} sein.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Grundlagen}
+	\begin{block}{Aussagenlogische Konnektive}
+		Seien \(G\) und \(H\) Aussagevariablen. Dann kann man wie folgt größere Formeln konstruieren:
+		\pause
+		\begin{itemize}[<+->]
+			\item \(	\bleftBr 	\bnot  G \brightBr 	\) heißt \enquote{\textcolor{blue}{nicht} \(G\)}
+			\item \(	\bleftBr 	G \bund  H		\brightBr 	\)	heißt \enquote{\(G\) \textcolor{blue}{und} \(H\)}
+			\item \(	\bleftBr 	G \boder H		\brightBr 	\)	heißt \enquote{\(G\) \textcolor{blue}{oder} \(H\)}
+			\item \(	\bleftBr 	G  \bimp H		\brightBr 	\)	heißt \enquote{\(G\) \textcolor{blue}{impliziert} \(H\)}
+			\item \(	\bleftBr 	G  \bgdw H		\brightBr := \bleftBr	G  \bimp H		\brightBr  \bund  \bleftBr 	H  \bimp G		\brightBr	\)	heißt \\ \enquote{\(G\) \textcolor{blue}{impliziert} \(H\) und \(H\) \textcolor{blue}{impliziert} \(G\)}
+		\end{itemize}
+	\end{block}
+	\pause
+	\begin{alertblock}{Beachte}
+		Hinter dieser Syntax steckt natürlich viel Formalismus. Die Vorlesung kennt \(\bgdw\) nur als Abkürzung, nicht als aussagenlogisches Symbol.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{Grundlagen}
+	\begin{block}{Bindungsstärken}
+		\begin{itemize}
+			\item $\bnot$ bindet am stärksten
+  			\item $\bund$ bindet am zweitstärksten
+			\item $\boder$ bindet am drittstärksten
+			\item $\bimp$ bindet am viertstärksten
+			\item $\bgdw$ bindet am schwächsten
+		\end{itemize}
+	\end{block}
+	\pause
+	\begin{exampleblock}{Aufgabe}
+		Finde die Klammern für \\
+		\(	P	\bimp	Q \bund \bnot R \bgdw Q \boder R	\)\\[1ex]
+		\pause
+		\(	\bleftBr \bleftBr  P	\bimp	\bleftBr  Q \bund \bleftBr  \bnot R \brightBr \brightBr \brightBr \bgdw \bleftBr Q \boder R	\brightBr \brightBr \)
+	\end{exampleblock}
+\end{frame}
+
+\subsection{Semantik}
+
+\begin{frame}{Semantik aussagenlogischer Formeln}
+	\begin{block}{Def.: Boolsche Funktionen}
+		Für ``Wahrheitswerte'' \( \BB = \set{\mathbf{w}, \mathbf{f}} \)
+		 ist eine \textbf{boolsche Funktion} eine Funktion
+		 $f: \BB^n \to \BB$
+	\end{block}
+	\pause
+	\begin{exampleblock}{Beispiele}
+		\begin{center}
+
+		  	\begin{tabular}{cc|cccc}
+		    \toprule
+		    $x_1$ & $x_2$ & $\bfnot{x_1}$ & $\bfand{x_1}{x_2}$ & $\bfor{x_1}{x_2}$ & $\bfimp{x_1}{x_2}$ \\
+		    \midrule
+		    $f$ & $f$ & $w$ & $f$ & $f$ & $w$ \\
+		    $f$ & $w$ & $w$ & $f$ & $w$ & $w$ \\
+		    $w$ & $f$ & $f$ & $f$ & $w$ & $f$ \\
+		    $w$ & $w$ & $f$ & $w$ & $w$ & $w$ \\
+		    \bottomrule
+  			\end{tabular}
+		\end{center}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Semantik aussagenlogischer Formeln}
+	\begin{block}{Def.: Interpretation}
+		Für eine Menge \(V\) von Aussagevariablen ist eine \textbf{Interpretation} ist eine Abbildung \(I: V \to \nB\), wobei \( \BB = \set{w, f} \). 
+	\end{block}
+
+	\begin{exampleblock}{Beim Aufstellen einer Wahrheitstabelle}
+		Anzahl Interpretationen für eine Variablenmenge mit \(k \in \nN_+ \) Aussagevariablen: \(2^k\).
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Semantik aussagenlogischer Formeln: $\vali{F}$}
+	\begin{block}{Auswertung/Validierung aussagenlogischer Formeln}
+		Sei \(I: V \to \nB\) eine Interpretation.\\
+		Für jede aussagelogische Formel $F$ definiere $\vali{F}$ wie folgt:\\[2ex]
+
+		Für jedes $X \in V$, $G$, $H$ weitere aussagelogische Formeln sei:
+		\begin{itemize}
+			\item $\vali{X}         := I(X) $
+  			\item $\vali{\bnot G}   := \bfnot{\vali{G}} $
+  			\item $\vali{G \bund H} := \bfand{\vali{G}}{\vali{H}}$
+  			\item $\vali{G \boder H} := \bfor{\vali{G}}{\vali{H}}$
+  			\item $\vali{G \bimp H} := \bfimp{\vali{G}}{\vali{H}}$
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+% TODO: Aufgabe zum formellen Vorgehen, mit konkreter Interpretation?
+
+\begin{frame}{Semantik aussagenlogischer Formeln: Wahrheitstabellen}
+	\begin{exampleblock}{Aufgabe}
+		Stelle für eine aussagenlogische Formel eine Wahrheitstabelle auf.
+	\end{exampleblock}
+
+	\begin{exampleblock}{Vorgehen}
+	\pause
+		\begin{enumerate}[<+->]
+			\item Wahrheitswerte für Variablen
+			\item Wahrheitswerte für Teilformeln
+			\item Wahrheitswerte für ganze Formeln
+		\end{enumerate}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Semantik aussagenlogischer Formeln: Wahrheitstabellen}
+	\begin{exampleblock}{Aufgabe}
+	Stelle für folgende aussagenlogische Formel eine Wahrheitstabelle auf: \( \bleftBr{} \bleftBr{} \bnot{} A \bimp{} B \brightBr{} \bund \bleftBr{} \bnot{} \bleftBr{} A \bgdw{} B \brightBr{} \boder{} A \brightBr{} \brightBr{}\).
+	\end{exampleblock}
+	%\pause
+	\begin{block}{Lösung}
+\begin{center}
+
+		  	\begin{tabular}{cc|cccccccc}
+		    \toprule
+		    $A$ & $B$ & $\bleftBr{} \bleftBr{} \bnot{} A$ & $\bimp{}$ & $B\brightBr{}$ & $\bund $ & $\bleftBr{} \bnot{}$ & $\bleftBr{} A \bgdw{} B \brightBr{}$ & $\boder{}$ & $A \brightBr{} \brightBr{}$\\
+		    \midrule
+		    \pause
+		    $ f $ & $ f $ & $ w $ & $ f $ & $ f $ & $ \textcolor{kit-green100}{\mathbf{f}} $ & $ f $ & $ w $ & $ f $ & $ f $\\
+		    $ f $ & $ w $ & $ w $ & $ w $ & $ w $ & $ \textcolor{kit-green100}{\mathbf{w}} $ & $ w $ & $ f $ & $ w $ & $ f $\\
+		    $ w $ & $ f $ & $ f $ & $ w $ & $ f $ & $ \textcolor{kit-green100}{\mathbf{w}} $ & $ w $ & $ f $ & $ w $ & $ w $ \\
+		    $ w $ & $ w $ & $ f $ & $ w $ & $ w $ & $ \textcolor{kit-green100}{\mathbf{w}} $ & $ f $ & $ w $ & $ w $ & $ w $ \\
+		    \bottomrule
+  			\end{tabular}
+		\end{center}
+
+		\pause
+		Beobachtung: \( \bleftBr{} \bleftBr{} \bnot{} A \bimp{} B \brightBr{} \bund \bleftBr{} \bnot{} \bleftBr{} A \bgdw{} B \brightBr{} \boder{} A \brightBr{} \brightBr{}\) und \(\bleftBr{} A \boder B \brightBr{}\) sind äquivalent.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Semantik aussagenlogischer Formeln: Äquivalenz}
+	\begin{block}{Def.: äquivalente Formeln}
+		Zwei Formeln $A$ und $B$ heißen \textbf{äquivalent}, wenn für jede Interpretation $I$ gilt
+		\[\val_I(A)=\val_I(B)\]
+		Man schreibt auch $A\equiv B$.
+	\end{block}
+
+	\begin{exampleblock}{Beispiele}
+		\begin{itemize}
+			\item \( \bleftBr{} \bleftBr{} \bnot{} A \bimp{} B \brightBr{} \bund \bleftBr{} \bnot{} \bleftBr{} A \bgdw{} B \brightBr{} \boder{} A \brightBr{} \brightBr{} \equiv \bleftBr{} A \boder B \brightBr{}\)
+			\item \( \bleftBr{} A \bimp{} B \brightBr{} \equiv \bleftBr{} \bnot{} A \boder{} B \brightBr{} \)
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Semantik aussagenlogischer Formeln: Modell}
+	\begin{block}{Def.: Modell}
+		Eine Interpretation $I$ heißt \textbf{Modell} einer Formel $G$, wenn $\vali{G} =\mathbf{w}$.\\[2ex]
+
+		Eine Interpretation $I$ heißt \textbf{Modell} einer Formelmenge $\Gamma$, wenn $I$ Modell jeder Formel $G\in \Gamma$ ist.
+	\end{block}
+
+	\begin{exampleblock}{}
+	Wir sagen:\\
+	\textcolor{black!50!red}{$\Gamma \models G$}, wenn jedes Modell von $\Gamma$ auch ein Modell von $G$ ist.\\
+	\textcolor{black!50!red}{$\models G$} (statt \textcolor{black!50!red}{$\set{}\models G$}), wenn $G$ für \emph{alle} Interpretationen wahr ist.
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Semantik aussagenlogischer Formeln: Tautologie}
+	\begin{block}{Def.: Tautologie}
+		Eine Formel $G$ heißt \textbf{Tautologie}, wenn jede Interpreation $I$ Modell ist. Das heißt, für jede Belegung (Interpretation $I$) der Aussagevariablen ist die gesamte aussagenlogische Formel wahr:
+			\[	\vali{G}=\mathbf{w} \quad \text{ für alle } I	\]
+	\end{block}
+
+	\begin{exampleblock}{Beispiel}
+		\begin{itemize}
+			\item \( \bnot{} P \boder P \)
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+
+\begin{frame}{}
+	\begin{exampleblock}{Aufgabe (WS 16/17)}
+		% Übungsblatt 2016-2, Aufgabe 2
+		Es sei $\VarAL$ eine Menge von Aussagevariablen und $\ForAL$ die Menge aller aussagenlogischen Formeln über $\VarAL$. Beweise, dass für alle \(G, H \in \ForAL\) die aussagenlogische Formel
+				\[\mathcal{F} :=	\bleftBr{} \bnot{} H\bimp{} \bnot{} G \brightBr{} \bimp{} \bleftBr{} G \bimp{} H \brightBr{}\]
+		eine Tautologie ist. Verwende nicht das aussagenlogische Kalkül, sondern die formellen Definitionen der Auswertung von aussagenlogischen Formeln und boolschen Funktionen.
+	\end{exampleblock}
+	\begin{block}{Ansatz:}
+		\zz Für alle Interpretationen $I$ ist die aussagenlogische Formel wahr.\\[1ex]
+		Durch \emph{Abbilden}, \emph{Umformen} und \emph{Substituieren} (\emph{Ersetzen}) auf bekannte Tautologien schließen.\\[1ex]
+		\textbf{Lösung:} s. Tafel.
+	\end{block}
+\end{frame}
+
+\subsection{Beweisbarkeit}
