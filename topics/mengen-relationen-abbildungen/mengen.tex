@@ -1,0 +1,190 @@
+\subsection{Basics}
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Menge}
+			Eine \textbf{Menge} ist eine Zusammenfassung wohlunterschiedener Objekte zu einer Gesamtheit.\\
+			Die leere Menge wird mit $\emptyset$ bezeichnet.\\
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize}
+				\item Aus der Schule kennen wir \qquad $\nN, \nZ, \nQ, \nR \qquad \nN_+, \nN_0$.
+				\item Menge der natürlichen positven Zahlen $\nN_+ = \{1,2,3,\dots\}$
+				\item Menge d. Star-Wars-Filme: $\text{SW}:=\{4,5,6,1,2,3,7,\text{RO},8,\text{Solo}\} = \{1,2,3,\text{Solo},\text{RO},4,5,6,7,8\}$
+				\item $\{1,1,2,3\} = \{1,2,3\}$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Element}
+			Ein Objekt $x$, dass in einer Menge $M$ enthalten ist, heißt \textbf{Element} von $M$. Man schreibt $x \in M$ (bzw. falls nicht: $x \notin M$).			
+		\end{block}
+
+		\begin{block}{Def.: Teilmenge}
+			Sind alle Elemente einer Menge $A$ auch in einer Menge $B$ enthalten, so heißt $A$ \textbf{Teilmenge} von $B$. Man schreibt $A \subseteq B$.\\
+			Es gilt für jede Menge $M$: $\emptyset \subseteq M$ und $M \subseteq M$.
+		\end{block}
+		\pause
+		\begin{block}{set comprehension}
+			Eine \textbf{set comprehension} ist eine Möglichkeit, eine Menge mit Bedingungen zu definieren:\\
+			$\set{x \in \text{SW} \mid x \text{ ist vor 2010 erschienen}} = \set{1,2,3,4,5,6} \subseteq SW$.
+		\end{block}
+	\end{frame}
+
+\subsection{Operationen}
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Kardinalität}
+			Unter \textbf{Kardinalität} einer Menge $M$ versteht man die Anzahl der Elemente der Menge. Man schreibt $\setsize{M}$ .
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize}
+				\item $\setsize{SW} = \only<3->{8}$
+				\item $\setsize{\emptyset} = \only<4->{0}$
+				\item $\setsize{\{1,2,2,3\}} = \only<5->{3}$
+				\item $\setsize{\set{1, 2, \set{}, \set{3,4}}} = \only<6->{4}$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Vereinigung}
+			Die \textbf{Vereinigung} $A \cup B$ der Mengen $A$ und $B$ ist die Menge aller Elemente, die Elemente der Menge $A$ oder der Menge $B$ sind: $A \cup B = \{x \mid x \in A \text{ oder } x \in B\}$.
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize}
+				\item $\{1,3,5\}\cup\{2,4,6\} = \only<3->{\{1,2,3,4,5,6\}}$
+				\item $\{4,5,6\}\cup\{1,2,3\}\cup\{7\}\cup\{RO\} = \only<4->{\{1,2,3,RO,4,5,6,7\}}$
+				\item $\{1,2,3\}\cup\{2,3,4\} = \only<5->{\{1,2,3,4\}}$
+				\item Für jede Menge $M$ gilt: $M \cup \emptyset = \only<6->{M}$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Schnitt}
+			Der (Durch-)\textbf{Schnitt} $A \cap B$ der Mengen $A$ und $B$ ist die Menge aller Elemente, die sowohl Elemente der Menge $A$ als auch der Menge $B$ sind: $A \cap B = \{x \mid x \in A \text{ und } x \in B\}$.\\
+			Zwei Mengen heißen disjunkt, wenn ihr Schnitt leer ist, also $A \cap B = \emptyset$
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize}
+				\item $\{1,2,3\}\cap\{1,2\} = \only<3->{\{1,2\}}$
+				\item Für jede Menge $M$ gilt: $M \cap \emptyset = \only<4->{\emptyset}$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}	
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Differenz}
+			Die \textbf{Differenz} der Mengen $A$ und $B$ sind die Elemente, die in $A$ sind, aber nicht in $B$.
+			$$A \setminus B = \{x \mid x \in A \text{ und } x \notin B\}$$
+		\end{block}		
+		\pause
+		\begin{exampleblock}{Beispiele}
+			\begin{itemize}
+				\item $\set{1,2,3}\setminus\set{1} = \pause \set{2,3}$
+			\end{itemize}
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+	\begin{exampleblock}{Aufgabe}
+		Seien $A = \{1, 2\}, B = \{3\}, C = \{1, 3\}  \subseteq M = \{1, 2, 3\}$ Mengen.\\
+		Berechne folgende Mengen:
+		\begin{align*}
+		A \cup B &= \visible<2->{ \{1, 2, 3\} }  \\
+		A \cap C &= \visible<3->{ \{1\} }\\
+		A \setminus C &= \visible<4->{ \{2\} }\\
+		B \setminus A &= \visible<5->{ \{3\} }\\
+		A \cup (B \setminus C) &= \visible<6->{ \{1, 2\} }\\
+		(A \setminus C) \cup B &= \visible<7->{ \{2, 3\} }\\
+		A \cap B &= \visible<8->{ \emptyset }
+		\end{align*}
+	\end{exampleblock}
+\end{frame}
+
+\subsection{Mit Mengen umgehen}
+	\begin{frame}{Mengen}
+		Es gelten das Assoziativ- \\
+			\begin{itemize}
+				\item $(A\cup B) \cup C=A\cup(B\cup C)$
+				\item $(A\cap B) \cap C=A\cap(B\cap C)$
+			\end{itemize}
+		und Distributivgesetz:\\
+			\begin{itemize}
+				\item $A\cup(B \cap C)=(A\cup B)\cap (A\cup C)$
+				\item $A\cap(B \cup C)=(A\cap B)\cup (A\cap C)$
+			\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{block}{Def.: Potenzmenge}
+		Die \textbf{Potenzmenge} $2^M$ oder auch $\Pot (M)$ ist die Menge aller möglicher Teilmengen von $M$. Es gilt also 
+		\begin{align*}
+			2^M = \{N \mid N \subseteq M\}
+		\end{align*}
+		\end{block}
+		\pause
+		\begin{exampleblock}{Beispiel}
+		Betrachten wir nun   $M = \left\{ 1,2,0 \right\} $. \\
+		Dann gilt 
+		\begin{align*}
+		2^M &= \left\{ \emptyset, \left\{ 0 \right\}, \left\{ 1 \right\}, \left\{ 2 \right\}, \left\{ 0,1 \right\} , \left\{ 0,2 \right\}, \left\{ 1,2 \right\}, \left\{ 0,1,2 \right\} \right\}
+		\end{align*}
+		
+		Beachte: Es gilt immer $M \in 2^M \ \text{und} \ \emptyset \in 2^M$
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+		\begin{exampleblock}{Aufgabe}
+		Es sei $M := \set{2,fish, 5}$. Bilde $\Pot (M)$. \\
+		\pause
+		$$\Pot (M) = \set{\emptyset, \set{2}, \set{fish}, \set{5}, \set{2,fish}, \set{2, 5}, \set{fish, 5}, \set{2,fish, 5}}$$
+		\end{exampleblock}
+		\pause
+		\begin{exampleblock}{Aufgabe}
+		Wie viele Elemente enthält $\Pot (M)$? \\
+		\pause
+		$$2^{\setsize{M}}$$
+		\end{exampleblock}
+	\end{frame}
+
+	\begin{frame}{Mengen}
+	\small{
+		\begin{exampleblock}{Aufgabe}
+			Es sei M eine Menge und es seien $A \subseteq M$ und $B \subseteq M$. Zeigen Sie: \\
+			\centering $M \setminus (A \cup B) = (M \setminus A)  \cap (M \setminus B)$
+		\end{exampleblock}
+		}
+	\pause 
+	\tiny{
+		\begin{block}{Lösung}
+			$\subseteq$:
+				Es sei $x \in M \setminus (A \cup B)$. Dann ist $x \in M$ und $x \notin (A \cup B)$.\\
+				Also ist $x \notin A$ und $x \notin B$, womit:
+				\begin{itemize}
+					\itemsep0pt
+					\item $x \in M$ und $x \notin A$ $\Longleftrightarrow $ $x \in M \setminus A$
+					\item $x \in M$ und $x \notin B$ $\Longleftrightarrow$ $x \in M \setminus B$
+				\end{itemize}
+				Folglich ist $x \in (M \setminus A)  \cap (M \setminus B)$ \\
+
+			\pause
+
+			$\supseteq$:
+				Es sei $x \in (M \setminus A) \cap (M \setminus B)$. Also gilt:
+				\begin{itemize}
+					\itemsep0pt
+					\item $x \in M \setminus A$ $\Longleftrightarrow$ $x \in M$ und $x \notin A$
+					\item $x \in M \setminus B$ $\Longleftrightarrow$ $x \in M$ und $x \notin B$
+				\end{itemize}
+				Damit ist $x \in M$, $x \notin A$ und $x \notin B$. \\
+				Dies ist äquivalent zu $x \in M$ und $x \notin A \cup B$.
+				Folglich ist $x \in M \setminus (A \cup B)$.
+
+		\end{block}
+		}
+	\end{frame}
