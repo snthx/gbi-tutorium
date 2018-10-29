@@ -1,5 +1,5 @@
 \subsection{Alphabete, Wörter, Sprachen}
-\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+\begin{frame}{Alphabete, Wörter, Sprachen}
 	\begin{block}{Def.: Alphabet}
 		Ein \textbf{Alphabet} ist eine endliche, nichtleere Menge von Zeichen.
 	\end{block}
@@ -13,14 +13,27 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+\begin{frame}{Alphabete, Wörter, Sprachen}
+	\begin{block}{Def.: Wort (formell)}
+		Ein \textbf{Wort} $w$ über einem Alphabet $A$ ist eine surjektive Abbildung $w \from \nZ_n \to B \subseteq A$ mit $\nZ_n := \setc{i \in \nN_0}{0 \le i < n}$.
+	\end{block}
+
+	\begin{block}{Def.: leeres Wort (formell)}
+		Das \textbf{leere Wort} $\varepsilon$ ist die Abbildung $\varepsilon \from \nZ_0 = \set{} \to \set{}$.	
+	\end{block}
+
+	\begin{alertblock}{Beachte}
+		$\set{\varepsilon} \neq \emptyset$	
+	\end{alertblock}
+
+\end{frame}
+
+\begin{frame}{Alphabete, Wörter, Sprachen}
 	\begin{block}{Def.: \(A^{n}\)}
-	\pause
 		\textbf{\(A^{n}\)} ist die Menge aller Wörter der Länge n über dem Alphabet A.
 	\end{block}
 	\pause
 	\begin{block}{Def.: \(A^{*}\)}
-	\pause
 		\textbf{\(A^{*}\)} ist die Menge aller Wörter beliebiger Länge über dem Alphabet A.		
 		\[
 			A^{*}= \bigcup_{i=0}^{\infty} A^{i}
@@ -28,11 +41,12 @@
 	\end{block}
 	\pause
 	\begin{exampleblock}{Beispiele}
+		$anna \in \set{a,n}^{4}$, \quad $ana \notin \set{a,n}^{4}$
 		\(A^{0}=\set{\varepsilon}, \quad \set{a,b}^{*} = \set{\varepsilon, a, b, aa, ab, ba, bb, aaa, ...}\)
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+\begin{frame}{Alphabete, Wörter, Sprachen}
 	\begin{block}{Def.: Konkatenation}
 		Die \textbf{Konkatenation} ist die Operation der Verknüpfung von Wörtern. Jedes Wort kann als Konkatenation seiner Zeichen dargestellt werden, z.B. \(GBI = G \cdot B \cdot I\).
 	\end{block}
@@ -54,7 +68,37 @@
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}{Wdh.: Alphabete, Wörter, Sprachen}
+\begin{frame}{Alphabete, Wörter, Sprachen}
+	\begin{exampleblock}{Aufgabe}
+		Es sei $A$ ein Alphabet.
+		\begin{enumerate}
+			\item Geben Sie eine Abbildung $f \from A^{\ast} \to A^{\ast}$, die injektiv, aber nicht surjektiv ist.
+			\item Geben Sie eine Abbildung $g \from A^{\ast} \to A^{\ast}$, die surjektiv, aber nicht injektiv ist.
+			\item Geben Sie eine Abbildung $h \from A^{\ast} \to A^{\ast}$, die bijektiv ist , aber nicht die Identität ist.
+		\end{enumerate}
+	\end{exampleblock}
+\end{frame}
+	
+\begin{frame}
+	\begin{block}{Lösung}
+		Mögliche Abbildungen sind:
+		\begin{enumerate}
+			\item \[f \from A^{\ast} \to A^{\ast}, w \mapsto w^2\]
+			\item \begin{align*}
+				g \from A^{\ast} &\to A^{\ast} \\
+				\varepsilon &\mapsto \varepsilon \\
+				x \cdot w &\mapsto w \text{ mit } x \in A, w\in A^{\ast}
+			\end{align*}
+			\item \begin{align*}
+				h \from A^{\ast} &\to A^{\ast} \\
+				\varepsilon &\mapsto \varepsilon \\
+				w \cdot x &\mapsto x \cdot h(w) \text{ mit } x \in A, w\in A^{\ast}
+			\end{align*}
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Alphabete, Wörter, Sprachen}
 	\begin{block}{Def.: Formale Sprache}
 		Eine \textbf{formale Sprache} L über einem Alphabet A ist eine Teilmenge der Wörter über A, also \(L \subseteq A^{*}\).
 	\end{block}
