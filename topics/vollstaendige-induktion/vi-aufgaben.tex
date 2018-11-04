@@ -28,7 +28,7 @@
 			\begin{cases}
 			 2, &\text{ wenn } n=0 \\
 			 3, &\text{ wenn } n=1 \\
-			 3 \cdot T(n-1) - 2 \cdot T(n-2), &\text{ wenn }n \in \nN_0 \setminus \set{0,1}
+			 3 \cdot T(n-1) - 2 \cdot T(n-2) &\text{ sonst}
 		\end{cases} \pause
 		\end{equation*}
 		\begin{enumerate}
@@ -76,7 +76,7 @@
 				\item[I.S.:] $A(n) \wedge A(n+1) \rightarrow A(n+2)$ %\zz $T(n+2) = F(n+2)$, also $n \leadsto n+2$.
 					\begin{itemize}
 						\item Sei $n \in \nN_{0}$ beliebig.
-						\item \textbf{I.V.:} Für ein bel., aber festes $n \in \nN_0$ gelte:
+						\item \textbf{I.V.:} Es gelte
 				 					\[T(n)=F(n)=2^n+1 \text{ und } T(n+1)=F(n+1)=2^{n+1}+1\]
 				 		\item \zz $T(n+2) = F(n+2)$
 				 		\begin{align*}
