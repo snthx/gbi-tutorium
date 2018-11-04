@@ -1,0 +1,38 @@
+\subsection{Sprachen} % Produkt v. Sprachen, Potenzen, L^*, L^+ und dabei induktives Definieren klarmachen
+\begin{frame}{Formale Sprachen}
+	\begin{block}{Def.: Formale Sprache}
+		Eine \textbf{formale Sprache} L über einem Alphabet A ist eine Teilmenge der Wörter über A, also \(L \subseteq A^{*}\).
+	\end{block}
+
+	\begin{block}{Def.: Produkt formaler Sprachen}
+		Es sei $A$ ein Alphabet, sowie $L,S \subseteq A^*$ formale Sprachen.\\
+		Das \textbf{Produkt} der Sprachen ist definiert durch
+		\[
+			L \cdot S := \setc{u \cdot v}{u \in L \text{ und } v \in S}
+		\]
+	\end{block}
+
+	\begin{exampleblock}{Beispiel}
+		Es sei $L:=\set{\texttt{aa}, \texttt{bb}}$. Dann ist $L\cdot L = \set{\texttt{aaaa}, \texttt{aabb}, \texttt{bbbb}, \texttt{bbaa}}$
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Formale Sprachen}
+	\begin{block}{Def.: Potenzen von Sprachen}
+		Die \textbf{Potenzen} einer formalen Sprache $L$ sind induktiv definiert:
+		\begin{align*}
+			L^0 &= \set{\varepsilon} \\
+			\text{Für alle $n \in \nN_0$ gilt: } L^{n+1} &= L^n \cdot L
+		\end{align*}
+	\end{block}
+
+	\begin{block}{Def.: Konkatenationsabschluss}
+		Sei $L$ eine formale Sprache. Dann ist \\
+		$L^* = \bigcup_{i=0}^{\infty} L^{i}$ der \textbf{Konkatenationsabschluss} $L^*$ von $L$ und \\
+		$L^+ = \bigcup_{i=1}^{\infty} L^{i}$ der \textbf{$\varepsilon$-freie Konkatenationsabschluss} $L^+$ von $L$.
+	\end{block}
+
+	\begin{alertblock}{Achtung}
+		Auch beim $\varepsilon$-freien Konkatenationsabschluss kann $\varepsilon$ enthalten sein, nämlich gdw. $\varepsilon \in L$
+	\end{alertblock}
+\end{frame}

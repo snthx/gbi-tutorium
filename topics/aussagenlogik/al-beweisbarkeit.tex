@@ -1,0 +1,107 @@
+\subsection{Beweisbarkeit}
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{block}{Hilbertkalkül für die Aussagenlogik}
+		Das \textbf{Hilbertkalkül für die Aussagenlogik}, (vereinfacht) auch \textbf{Aussagenkalkül}, besteht aus
+		\begin{itemize}
+			\item dem Alphabet $\AAL$,
+			\item der Menge der syntakisch korrekten Formeln $\LAL \subseteq \AAL^*$,
+			\item einer Menge von \textbf{Axiomen} $\AxAL \subseteq \LAL$,
+			\item der (einzigen) \textbf{Schlussregel} \textbf{Modus Ponens} $\MP \subseteq \LAL^3$
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{block}{Axiome}
+		\begin{align*}
+  			\AxAL &= \bigl\{\alka G\alimpl \alka H\alimpl  G\alkz\alkz
+          			\bigm| G,H\in\LAL \bigr\} \\
+        		&\mathrel{\hphantom{=}} \cup \bigl\{\alka G\alimpl \alka H\alimpl  K\alkz\alkz
+          			\alimpl \alka\alka G\alimpl H\alkz\alimpl \alka G\alimpl  K\alkz\alkz \bigm| G,H,K\in\LAL \bigr\}\\
+        		&\mathrel{\hphantom{=}} \cup \bigl\{
+          			\alka\alnot H\alimpl \alnot G\alkz\alimpl \alka\alka\alnot H\alimpl G\alkz\alimpl  H\alkz
+          			\bigm| G,H \in\LAL 
+          			\bigr\}
+		\end{align*}
+
+		Kurz: $\AxAL{}_1$, $\AxAL{}_2$ und $\AxAL{}_3$ für die drei Zeilen.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{block}{Modus Ponens $\MP \subseteq \LAL^3$ (Schlussregel)}
+		\begin{itemize}
+			\item $\MP = \{ (G\alimpl H, G, H) \mid  G, H \in\LAL \}$
+			\item $\MP:$ \quad \begin{tabular}{c}
+                $G \alimpl H$ \qquad $G$ \\
+                \midrule
+                $H$
+              \end{tabular}
+             \item Aus einer Formel der Form $G \alimp H$ und einer Formel der Form $G$ darf man auf eine Formel der Form $H$ schließen.
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Beispiel}
+		\begin{description}
+			\item[\emph{Prämissen}:] $G \alimpl H$: \enquote{Wenn es regnet, wird die Straße nass},\\
+								 $G$: \enquote{Es regnet}
+			% Sind diese beiden Prämissen gültig, so ist auch der Schluss "Conclusio" gültig.
+			\item[\emph{Conclusio}:] $H$: \enquote{Die Straße wird nass}.
+		\end{description}
+	\end{exampleblock}
+
+	% \begin{exampleblock}{Beispiel}
+	% 	\begin{itemize}
+	% 		\item[Prämissen:] $G \alimpl H$: \enquote{Wenn du Mensch bist, stirbst du},\\
+	% 							 $G$: \enquote{Du bist ein Mensch}
+	% 		\item[Conclusio:] $H$: \enquote{Du stirbst}.
+	% 	\end{itemize}
+	% \end{exampleblock}
+\end{frame}	
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{block}{Def.: Ableitung}
+		Sei $\Gamma \subseteq \LAL$ eine Menge von \textbf{Hypothesen} oder \textbf{Prämissen} und $G$ eine Formel.\\
+		Eine \textbf{Ableitung} von $G$ aus $\Gamma$ ist eine endliche Folge $(G_1, \dots, G_n)$ mit
+		\begin{itemize}
+			\item $G_n = G$ und 
+			\item für jedes $G_i (1 \leq i \leq n)$ gilt einer der folgenden Fälle:
+			\begin{itemize}
+				\item $G_i\in\AxAL$ oder% $G_i$ ist ein Axiom
+				\item $G_i\in\Gamma$ oder% $G_i$ ist eine Prämisse
+				\item es gibt $i_1,i_2 < i$ mit $(G_{i_1},G_{i_2},G_i)\in\MP$.
+			\end{itemize}
+		\end{itemize}
+
+		Geschrieben: $\Gamma\vdash G$
+	\end{block}
+
+	\begin{block}{Def.: Beweis und Theorem}
+	Ist $\Gamma=\{\}$, so heißt eine entsprechende Ableitung auch ein \textbf{Beweis} von $G$ und $G$ ein \textbf{Theorem} des Kalküls, in Zeichen: $\vdash G$
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}
+	\begin{exampleblock}{Beispiel zum Modus Ponens}
+		Ableitung/Beweis des Theorems $\alka\alP\alimpl\alP\alkz$:\\[1em]
+		\begin{tabular}{rll}
+			1. & $\alka \alka \alP \alimpl \alka \alka \alP \alimpl  \alP \alkz\alimpl  \alP \alkz\alkz\alimpl 
+       			\alka \alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz\alimpl \alka \alP \alimpl  \alP \alkz\alkz\alkz$ & $\AxAL{}_2$ \\
+			2. & $\alka \alP \alimpl \alka \alka \alP \alimpl  \alP \alkz\alimpl  \alP \alkz\alkz$ & $\AxAL{}_1$ \\
+			3. & $\alka \alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz\alimpl \alka \alP \alimpl  \alP \alkz\alkz$ & $\MP(1,2)$ \\
+			4. & $\alka \alP \alimpl \alka \alP \alimpl  \alP \alkz\alkz$ & $\AxAL{}_1$ \\
+			5. & $\alka \alP \alimpl  \alP \alkz$ & $\MP(3,4)$
+			\end{tabular}
+
+			\qedwhite{}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Aussagenlogik: Beweisbarkeit}    
+	\begin{alertblock}{Achtung}
+		\begin{itemize}
+			\item \emph{Tautologie}, \emph{Modell} und \emph{Theorem} sind unterschiedliche Wörter
+			\item $\models$ und $\vdash$ sind unterschiedliche Symbole
+		\end{itemize}
+	\end{alertblock}
+\end{frame}
