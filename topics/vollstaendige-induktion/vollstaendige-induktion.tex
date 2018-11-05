@@ -1,0 +1,56 @@
+\subsection{Einstieg u. Definition}
+\begin{frame}{Vollständige Induktion}
+	\begin{block}{Vollständige Induktion}
+		Vollständige Induktion beschreibt ein Beweisverfahren, das man verwendet um die Gültigkeit einer Aussage \(A(n)\) für alle \(n \in \nN_+ \text{ (oder } \nN_{0}\)) zu beweisen. Sie besteht aus: \\[.5em]
+		\begin{description}
+			\item [\textbf{Induktionsanfang (I.A.):}] Zeige, dass \(A(n)\) für \(n=1\) (bzw. \(n=0\)) gilt.
+			\item [\textbf{Induktionsschritt (I.S.):}] Zeige, dass, wenn \(A(n)\) gilt, auch \(A(n+1)\) gilt.
+				\begin{enumerate}
+					\item \enquote{Sei $n \in \nN_+$ (oder $n \in \nN_0$) \textcolor{red}{beliebig}.}
+					\item \textbf{Induktionsvoraussetzung (I.V.):} $A(n)$ sei wahr.
+					\item Zeige mit der \textbf{I.V.}, dass dann auch $A(n+1)$ wahr ist.
+				\end{enumerate}
+		\end{description}
+	\end{block}
+
+	\begin{alertblock}{}
+		Es gibt einige Varianten vollständiger Induktion. Immer darauf achten, was man braucht und will. Tipp: \textbf{Nachdenken!}
+	\end{alertblock}
+\end{frame}
+\subsection{Vorgerechnetes Beispiel}
+\begin{frame}{Vollständige Induktion - Ein dummes Beispiel}
+	\begin{exampleblock}{Aufgabe}
+		Sei $x_n$ für $x \in \nN_0$ wie folgt definiert:
+		\[
+			x_n := (-1)^n.
+		\]
+		Zeige mit vollständiger Induktion, dass 
+		$x_n = 
+		\begin{cases}
+			-1, &\text{ falls $n$ ungerade}\\
+			1, &\text{ sonst}
+		\end{cases}$
+	\end{exampleblock}
+\end{frame}
+\begin{frame}{Vollständige Induktion - Ein dummes Beispiel}
+	\begin{block}{Lösung}
+		\begin{itemize}
+			\item[I.A.] $n=0: (-1)^0=1 \quad \checkmark$
+			\item[I.S.:] $A(n) \rightarrow A(n+1)$.\\
+			\begin{itemize}
+				\item Sei $n \in \nN_{0}$ beliebig.
+				\item \textbf{I.V.:} Es gelte: 
+				 			$x_n = 
+					\begin{cases}
+						-1, &\text{ falls $n$ ungerade}\\
+						1, &\text{ sonst}
+					\end{cases}$\\[1.5em]
+				\item Fall 1: $x_{n+1} \text{ ist ungerade } \Rightarrow x_n \text{ ist gerade}$\\
+					$x_{n+1} = (-1)^{n+1} = (-1) \cdot (-1)^n \eqtext{\textbf{I.V.}} (-1) \cdot 1 = -1 \quad \checkmark$
+				\item Fall 2: $x_{n+1} \text{ ist gerade } \Rightarrow x_n \text{ ist ungerade}$\\
+					$x_{n+1} = (-1)^{n+1} = (-1) \cdot (-1)^n \eqtext{\textbf{I.V.}} (-1) \cdot (-1) = 1 \quad \checkmark$
+			\end{itemize}
+			Mit Fall 1 und 2 folgt die Behauptung. \qedwhite{}
+		\end{itemize}
+	\end{block}
+\end{frame}
