@@ -96,7 +96,7 @@
 \subsection{Eine Knobelaufgabe}
 \begin{frame}{Induktiv Beweisen III.: Zum Knobeln}
 	\begin{exampleblock}{Aufgabe}
-		Alice und Bob feiern ihren Hochzeitstag. Auf ihrer Party befinden sich $n \in \nN_+$ Paare. Dabei begrüßen sich alle Paare mit Ausnahme des eigenen Partners.\\
+		Alice und Bob feiern ihren Hochzeitstag. Auf ihrer Party befinden sich $n \in \nN_+$ Paare. Dabei begrüßen\footnote{Eine Begrüßung ist das gegenseitige Händeschütteln. Mit einer Begrüßung haben sich beide Personen begrüßt.} sich alle Paare mit Ausnahme des eigenen Partners.\\
 		\begin{enumerate}
 			\item Gib die Anzahl der Begrüßungen für $i \in \set{1,2,3,4,5}$ Paare an.
 			\item Stelle für die Anzahl der Begrüßungen einen geschlossenen Ausdruck $p_n$ auf.
@@ -116,7 +116,7 @@
 				\item 4 Paare $\rightarrow$ 24 Begrüßungen
 				\item 5 Paare $\rightarrow$ 40 Begrüßungen
 			\end{itemize} \pause
-			\item $p_n = 2 \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$ \pause
+			\item $p_n = 4 \cdot \frac{1}{2} \cdot n \cdot (n-1) = 2 \cdot (n^2 -n)$ \pause
 			\item Jedes Paar, das neu hinzukommt, muss die $n$ sich im Raum befindenden Paare begrüßen. Das bedeutet $2n$ Begrüßungen (ein Paar besteht aus $2$ Partnern) pro neu hinzugekommenen Partner, also insgesamt $4n$ Begrüßungen. Formal heißt das: 
 			\begin{align*}
 				q_1 &= 0 \\
