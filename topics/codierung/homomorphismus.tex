@@ -1,0 +1,125 @@
+
+% \begin{frame}
+% 	\textbf{Übersetzung:} Bedeutungserhaltende Abbildung \\[0.5em] \pause
+% 	\textbf{Codierung:} Injektive Übersetzung \\ \pause
+% 	Es reicht eine injektive Abbildung: Dann können wir für jedes $f(w)$ eindeutig das erzeugende $w$ angeben und somit die Bedeutung von $f(w)$ als die Bedeutung von $w$ festlegen. \\[1em]
+	
+% 	\pause
+% 	\emph{Beliebige }Codierungen zu speichern ist sehr aufwendig, bei unendlichem Definitionsbereich sogar unmöglich.\\
+% 	Also bringen wir etwas Struktur ins Spiel!
+% \end{frame}
+
+% \begin{frame}{Homomorphismen}
+% 	Ein Homomorphismus ist eine strukturerhaltende Abbildung. \\
+% 	\begin{align*}
+% 		\Phi : A &\to B \\
+% 		\text{ mit } \forall a \in A, b \in B: \Phi(a \; \square \; b) &= \Phi(a) \; \triangle \; \Phi(b)
+% 	\end{align*} 
+% \end{frame}
+\subsection{Definitionen und alles}
+\begin{frame}{Homomorphismen}
+	\begin{block}{Def.: Homomorphismus}
+		Ein \textbf{Homomorphismus} ist eine strukturerhaltende Abbildung. Wir betrachten Homomorphismen auf Wörtern, dabei muss die Konkatenation erhalten werden.\\
+		Seien $A, B$ Alphabete, dann ist Abbildung $h: A^* \to B^*$ ein \textbf{Homomorphismus}, wenn
+		$$ \forall\ x, y\in A^* : h(x \cdot y) = h(x) \cdot h(y) $$
+	\end{block}
+	
+	\begin{exampleblock}{Beispiel}
+		Sei $h$ ein Homomorphismus mit $h(a) = 2, h(b) = 3$. \\
+		Dann gilt $h(aba) = h(a) \cdot h(b) \cdot h(a) = 232 $
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Homomorphismen}
+	\begin{exampleblock}{Aufgabe}
+		Gegeben sei die folgende Abbildung über dem Alphabet $A:=\set{a, b, c, \dots, z}$:
+		\begin{align*}
+			R(\varepsilon) &= \varepsilon,\\
+			\text{für alle } w \in A^* gilt: R(wx) &= x \cdot R(w).
+		\end{align*}
+		\begin{enumerate}
+			\item Ist $R$ ein Homomorphismus?
+			\item \only<2->{Gib ein Alphabet $A'$ an, sodass $R$ ein Homomorphismus ist.}
+		\end{enumerate}
+	\end{exampleblock}
+
+	\begin{block}{Lösung}
+		\begin{enumerate}
+			\item \only<2->{$R$ ist kein Homomorphismus, denn $R(a \cdot b) = ba \neq ab = R(a) \cdot R(b)$.}
+			\item \only<3->{$R$ ist ein Homomorphismus, wenn $\setsize{A'}=1$.}
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+% \begin{frame}{Homomorphismen konstruieren}
+% 	Wir können uns aber aus einer Abbildung der einzelnen Zeichen einen Homomorphismus auf Wörtern konstruieren.
+% 	\begin{Definition}
+% 		Sei $f: A \to B^*,$ \pause definiere $f^{**}:A^* \to B^*$ als
+% 		\begin{align*}
+% 		f^{**}(\varepsilon) &= \varepsilon  \\
+% 		\forall w\in A^*, x\in A: f^{**}(wx) &= f^{**}(w) f(x)       
+% 		\end{align*}
+% 	\end{Definition}
+
+% 	$f^{**}$ ist der durch $f$ \textbf{induzierte} Homomorphismus.
+% \end{frame}
+
+\begin{frame}{Homomorphismen}
+	\begin{block}{$\varepsilon$-freier Homomorphismus}
+		Ein Homomorphismus heißt \textbf{$\mathbf{\varepsilon}$-frei}, wenn für jedes $\ x\in A$ gilt:
+		$$ h(x) \neq \varepsilon. $$
+	\end{block}
+
+	\begin{exampleblock}{Vorteil}
+		\pause Es gehen keine Informationen verloren:\\
+		\begin{itemize}
+			\item Betrachte $h: \set{a,b}^* \to \set{0,1}^*$ mit $h(a)=001, h(b)=\varepsilon$
+			\item Für welches $w$ gilt $h(w)=001$?
+			\item Klar: in $w$ muss ein $a$ sein, aber wie viele $b$s?
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Homomorphismen}
+	\begin{exampleblock}{Wann gehen noch Informationen verloren?}
+		\begin{itemize}
+			\item Betrachte $h: \set{a, b, c}^* \to \set{0,1}^*$ mit $h(a)=0, h(b)=1, h(c)=10$
+			\item Für welches $w$ gilt $h(w)=10$?
+			\item \pause Für $w=ba$ und $w=c$
+		\end{itemize}
+	\end{exampleblock}
+	\pause
+	\begin{block}{Def.: Präfixfreier Homomorphismus}
+		Sei $h: A^* \to B^* $ ein Homomorphismus. h heißt \textbf{präfixfrei}, wenn für
+		keine zwei verschiedenen Symbole $x_1,x_2\in A$ gilt: $h(x_1)$
+		ist ein Präfix von $h(x_2)$.
+	\end{block}
+	\begin{exampleblock}{Beispiele}
+		\begin{itemize}
+			\item $h(a)=001, h(b)=1101$ ist präfixfrei
+			\item $h(a)=01, h(b)=011$ ist nicht präfixfrei 
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Homomorphismen}
+	\begin{exampleblock}{Beobachtung}
+		Präfixfreie Homomorphismen sind $\varepsilon-$frei
+	\end{exampleblock}
+
+	\begin{block}{Def.: Codierung}
+		Präfixfreie Homomorphismen sind injektiv. Das wollen wir \textbf{Codierungen} nennen.
+	\end{block}
+
+	\begin{exampleblock}{Beobachtung}
+		Präfixfreie Codes kann man einfach decodieren\footnote{Das liegt daran, dass zu injektiven Abbildungen  Umkehrabbildung existieren}:
+		\[
+		u(w) = 
+		\begin{cases}
+		\varepsilon, & \text{ falls } w=\varepsilon\\
+		x\,u(w'), & \text{ falls } w=h(x)w' \text{ für ein } x\in A \\
+		\bot,  & \text{ sonst }\\
+		\end{cases}
+		\]
+	\end{exampleblock}
+\end{frame}
