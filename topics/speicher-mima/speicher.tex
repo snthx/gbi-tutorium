@@ -1,0 +1,170 @@
+\subsection{Funktionen von Funktionen}
+
+\begin{frame}{Funktionsception: Funktionen von Funktionen}
+	\begin{block}{Def.: $B^A$}
+		Seien A und B Mengen. Mit $B^A$ bezeichnen wir die Menge aller Abbildungen von $A$ nach $B$, also $$B^A = \set{f \mid f : A \to B }$$
+	\end{block}
+
+	\begin{block}{Beobachtung}
+		Für endliche Mengen $A$ und $B$ gilt:
+		$$|B^A| = |B|^{|A|}$$
+	\end{block}
+\end{frame}
+
+\begin{frame}{Funktionsception${}^2$: Funktionen als Argument von Funktionen}
+
+	\begin{exampleblock}{Beispiel}
+		\small Es sei $M$ eine Menge. Jede Teilmenge $L \subseteq M$ kann man mit einer Abbildung $f_L \colon M \to \set{0,1}$, also einem $f_L \in \set{0,1}^M$ in Beziehung setzen.
+
+		Für die Teilmenge $L \subseteq M$ ist 
+		\begin{equation*} 
+			f_L \colon M \to \set{0,1}, x \mapsto
+			\begin{cases}
+				1 & \text{, falls } x \in L \\
+				0 & \text{, falls } x \notin L
+			\end{cases}
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Funktionsception${}^2$: Funktionen als Argument von Funktionen}
+	\begin{exampleblock}{Beispiel}
+		Dann kann man die Vereinigung $\sqcup$ als Abbildung darstellen:
+		$$\sqcup \colon \{0,1\}^M \times \{0,1\}^M\to \{0,1\}^M$$
+		\pause
+		\begin{columns}
+			\begin{column}{0.4\textwidth}
+				Beispielbild für $A=\{a,c,d\}$ \\ und $B=\{b,c\}$
+			\end{column}
+			\begin{column}{0.4\textwidth}
+				\begin{tabular}{*{4}{>{$}c<{$}}}
+					& A & B & A\cup B \\
+					x & f_A(x) & f_B(x) & (\sqcup(f_A,f_B))(x) \\
+					\hline
+					a & 1 & 0 & 1 \\
+					b & 0 & 1 & 1 \\
+					c & 1 & 1 & 1 \\
+					d & 1 & 0 & 1 \\
+					e & 0 & 0 & 0 \\
+				\end{tabular}
+			\end{column}
+			\end{columns}	
+		\medskip
+		\centering Wie könnte nun eine Abbildungsvorschrift aussehen?
+	\end{exampleblock}
+\end{frame}
+\begin{frame}{Funktionsception${}^2$: Funktionen als Argument von Funktionen}
+	\begin{exampleblock}{Wie könnte eine Abbildungsvorschrift aussehen?}
+	\begin{align*}
+		\sqcup\colon \{0,1\}^M \times \{0,1\}^M &\to \{0,1\}^M \\
+		(f_A,f_B) &\mapsto (x \mapsto \max(f_A(x),f_B(x))) \\[2ex]
+		\text{also }  \sqcup(f_A,f_B) (x) &= \max(f_A(x),f_B(x)) \\
+	\end{align*}
+	\end{exampleblock}
+\end{frame}
+
+\subsection{Speicher}
+
+\begin{frame}{Bits und Bytes}
+	\begin{block}{Def.: Bit und Byte}
+		Ein \textbf{Bit} ist ein Zeichen des Alphabets $\set{0,1}$. \\
+		Ein Wort aus 8 Bits wird \textbf{Byte} genannt. 
+	\end{block}
+\end{frame}
+\begin{frame}{Speicher}
+	\begin{block}{Speicher}
+		Ein \textbf{Speicher} $m$ bildet Adressen ($Adr$) auf Werte ($Val$) ab.\\
+		Also $m \in Val^{Adr}$ bzw. $m \colon Adr \to Val$.
+	\end{block}
+
+	\begin{exampleblock}{Dazu sei einiges gesagt:}
+		\begin{itemize}
+			\item Statt ``Speicher'' trifft es \textbf{aktueller Zustand des Speichers} besser.
+			\item Vorstellung als Tabelle. Linke Spalte Adressen, rechte Spalte Werte.
+			\item Uns interessiert (noch) nicht die konkrete Realisierung, sondern nur die abstrakte Funktionsweise.
+			\item Im Umgang mit Speicher benutzen wir hier nur Zahlen im Binärsystem, d.h.
+				$$Adr = 2^k, Val = 2^l \quad k,l \in \nN_+$$
+				Bei der \emph{MIMA}: $k=20, l=24$.
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Speicher - Methoden}
+	\begin{block}{Def.: $memread$}
+		Gibt im aktuellen Speicherzustand $m$ den Wert an der Adresse $a$ zurück.
+		\begin{align*}
+			memread : Val^{Adr} \times Adr &\to Val \\
+									(m,a) &\mapsto m(a)
+	\end{align*}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Speicher - Methoden}
+	\begin{block}{Def.: $memwrite$}
+		Speichert einen Wert $v$ in die Adresse $a$.
+		\begin{align*}
+			memwrite : Val^{Adr} \times Adr \times Val &\to Val^{Adr} \\
+			(m,a,v) &\mapsto m' \\
+		\end{align*}
+
+		$m'$ ist nun ein neuer Speicherzustand, für den gilt:
+		\begin{equation*}
+			m'(a') =
+				\begin{cases}
+					v & \text{, falls } a'=a \\
+					m(a') & \text{, sonst}
+				\end{cases}
+		\end{equation*}
+		%\phantom{Moritz ist ein kek}\\
+		Das Resultat ist eine neue Abbildung, bei der sich nur der Funktionswert an $a$ geändert hat.			
+	\end{block}
+\end{frame}
+
+% \begin{frame}{Speicher}
+% 	\begin{block}{Beispiel}
+		
+% 	$memread(m, 01) = \only<2->{00000111}$\\
+% 	\visible<2-|handout:2>{$memwrite(m, 01, 11111100)$\\}
+% 	\visible<4-|handout:2>{$memread(memwrite(m, 01, 11111100), 01) = 11111100$\\}
+% 	\bigskip
+	
+% 	\begin{table}
+% 		\begin{tabular}{|c|c|}
+% 			\hline
+% 			\multicolumn{2}{|c|}{Speicher $m$} \\
+% 			\hline
+% 			00 & 00101000 \\
+% 			\only<-2|handout:1>{01 & 00000111}\only<3-|handout:2>{\color{blue} 01 & \color{blue} 11111100}  \\
+% 			10 & 10010110 \\
+% 			11 & 00100101 \\
+% 			\hline
+% 		\end{tabular} \par
+% 		\bigskip
+% 		Zustand bei \only<-2|handout:1>{$t=0$}\only<3-|handout:2>{\color{blue}$t=1$}
+% 	\end{table}
+
+% 	\end{block}
+% \end{frame}
+
+\begin{frame}{Speicher - Methoden}
+	\begin{exampleblock}{Aufgabe}		
+		Sei $m \in Val^{Adr}$. Seien $ a,a' \in Adr \text{ und } v,v' \in Val$. Gib an: \\
+		\begin{itemize}
+			\item $memread(memwrite(m,a,v),a)$
+			\item $memread(memwrite(memwrite(m,a,v),a',v'),a)$
+			\item $memread(memwrite(memwrite(m,a,v),a,v'),a)$
+		\end{itemize}
+	\end{exampleblock}
+	\pause
+	\begin{block}{Lösung}
+	\small
+		\begin{itemize}
+			\item $memread(memwrite(m,a,v),a) = v$
+			\item $memread(memwrite(memwrite(m,a,v),a',v'),a) = \begin{cases}
+																	v' & \text{, falls } a = a' \\
+																	v  & \text{, falls } a \neq a' \\
+																\end{cases}$
+			\item $memread(memwrite(memwrite(m,a,v),a,v'),a) = v' $
+		\end{itemize}
+	\end{block}
+\end{frame}
