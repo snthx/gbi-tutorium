@@ -156,4 +156,43 @@
 	\item \only<-2>{Was ist falsch?} \only<3>{Beachtet die \emph{schöne Gleichungskette}}
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Viertes Übungsblatt}
+	\begin{itemize}
+		\item Schnitt: 83\% (Das zweitbeste ÜB bisher!)
+		\item Viele schöne Lösungen
+		\item Das selbe wie im dritten ÜB: Definitionen und Formalismen einhalten, nicht abschreiben
+		\item[]
+		\item Unnötig: $M := \{x \in A^*\}$ statt $M := A*$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Viertes Übungsblatt}
+	\emph{Aufgabe 4.1 + 4.2}
+	\begin{itemize}
+		\item Operationen auf Sprachen ergeben wieder Sprachen: \\ Konkatenation ($\cdot$), Potenzieren, Mengenoperationen ($\cup,\cap,\setminus$) und Konkatenationsabschluss
+		\item $\Rightarrow$ Keine weiteren Mengenklammern um Sprachen!
+		\only<2>{
+			\item \textcolor{red}{\textbf{Falsch:} $L_{1} = \set{ \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba} }$
+		}}
+		\only<3-|handout:0>{
+			\item \textcolor{red}{\sout{$L_{1} = \set{ \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba} }$}} 
+			\item \textcolor{kit-green100}{\textbf{Korrekt: } $L_{1} = \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba}$}
+		}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{zu ÜB 4 Aufg. 1 + 2}
+	\begin{itemize}
+		\item Entweder Konkatenation von Sprachen oder Konkatenation von Wörtern, nicht Sprachen mit Wörtern konkatenieren!
+		\item Beispiel: Sei $A=\set{a,b}$ ein Alphabet.
+		\only<1>{
+			\item \textcolor{red}{\textbf{Falsch:} $aa \cdot \set{b}^{k}$, $\varepsilon \cdot A^{+}$}
+		}
+		\only<2-|handout:0>{
+			\item \textcolor{red}{\sout{\textbf{Falsch:} $aa \cdot \set{b}^{k}$, $\varepsilon \cdot A^{+}$}}
+			\item \textcolor{kit-green100}{\textbf{Korrekt:}} $aa \cdot b^{k}$, $\set{\varepsilon} \cdot A^{+}$
+		}
+	\end{itemize}
+\end{frame}
 }
