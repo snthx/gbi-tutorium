@@ -202,27 +202,52 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{Stack-Implementierung}
+\begin{frame}{Stack-Implementierung (ÜB5, 2015)}
 	Wir wollen in unserem formalisierten Speicher einen Stack implementieren, der maximal $2^8 - 1$ Elemente enthält. Wir wählen eine Adresse $a$, in der immer steht, wie viele Elemente aktuell im Stack enthalten sind. Die Elemente des Stacks stehen dann in den auf $a$ folgenden Addressen.
 \end{frame}
 	
-\begin{frame}{Stack-Implementierung}
+\begin{frame}{Stack-Implementierung (ÜB5, 2015)}
 	\emph{Überlegungen:}
 	\begin{enumerate}
 		\item Um den Stack zu initialisieren, müssen wir nur den Wert $0$ für keine Elemente in $a$ speichern. Also:
-			\[init: Mem \times Adr \to Mem, (m,a) \mapsto memwrite(m,a,bin_8(0))\]
+			\[init: Mem \times Adr \to Mem, (m,a) \mapsto memwrite(m,a,0\]
 		\item Das oberste Element des Stack befindet sich immer bei der Addresse: $Add_{adr}(a, memread(m,a))$
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}{Stack-Implementierung}
+\begin{frame}{Stack-Implementierung (ÜB5, 2015)}
 	\begin{exampleblock}{Aufgabe}
-		Implementiere die Methoden \textbf{peek}, \textbf{push} und \textbf{pop} mit den folgenden Funktionsköpfen:
+		Implementiere die Methoden \textbf{peek}, \textbf{pop} und \textbf{push} mit den folgenden Funktionsköpfen:
 		\begin{enumerate}
 			\item $peek: Mem \times Adr \to Val$
-			\item $push: Mem \times Adr \times Val \to Mem$
 			\item $pop: Mem \times Adr \to Mem$
+			\item $push: Mem \times Adr \times Val \to Mem$
 		\end{enumerate}
 		Der Wert in $Adr$ ist dabei immer die Addresse $a$.
 	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Stack-Implementierung (ÜB5, 2015)}
+	\begin{block}{Lösung}
+		\begin{enumerate}
+			\item $peek: Mem \times Adr \to Val,$ 
+				\[(m,a) \mapsto memread(m, Add_{adr}(a, memread(m,a)))\]
+			\item $pop: Mem \times Adr \to Mem,$
+				\small{ \[(m,a) \mapsto \begin{cases}
+					m & \text{, wenn } memread(m,a) = 0\\
+					memwrite(m, a, memread(m,a)-1) & \text{, sonst}
+				\end{cases}\]}
+			\item $push: Mem \times Adr \times Val \to Mem$, \begin{align*}
+						(m,a,v) \mapsto& memwrite(m', Add_{adr}(a, memread(m',a)), v) \text{, wobei } \\
+						m' =& memwrite(m, a, memread(m,a)+1) 
+					\end{align*}
+				
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Stack-Implementierung (ÜB5, 2015)}
+	\begin{alertblock}{Vorsischt!}
+		Hier werden viele Formalismen nicht eingehalten, zum Beispiel, wie wir mit den Werten und Addressen rechnen können, oder was hier Wörter und was Zahlenwerte sind. Achtet in Aufgaben auf dem ÜB oder den Klausuren darauf!
+	\end{alertblock}
 \end{frame}
