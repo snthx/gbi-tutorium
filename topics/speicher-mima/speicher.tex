@@ -168,3 +168,61 @@
 		\end{itemize}
 	\end{block}
 \end{frame}
+
+\begin{frame}{Schnittstellen}
+	Man kann die Formalisierung des Speichers verwenden, um unterschiedliche \emph{Schnittstellen} zu implementieren.\\[1em]
+
+	\begin{block}{Def.: Schnittstelle}
+		Schnittstellen sind abstrakte Sammlungen von Funktionalitäten, die ein Ganzes ergeben. Das heißt alle \textbf{Implementierungen} einer Schnittstelle, setzen die in der Schnittstelle vorgegebenen Funktionalitäten praktisch um. 
+	\end{block}
+
+	\begin{exampleblock}{Beispiel: Fahrzeug}
+		Ein Fahrzeug sollte folgende Funktionalitäten haben:
+		\begin{enumerate}
+			\item Beschleunigen
+			\item Bremsen
+		\end{enumerate}
+
+		Ein Fahrrad implementiert die Schnittstelle Fahrzeug, indem es z.B. mit den Pedalen und dem Getriebe das Beschleunigen umsetzt.
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Schnittstelle Stack}
+	\begin{block}{Def.: Stack}
+		Ein \textbf{Stack} ist eine Schnittstelle für eine Datenstruktur, die folgende Funktionalitäten vorgibt:
+		\begin{enumerate}
+			\item peek(): Element  -  Gib das oberste Element des Stapels aus.
+			\item push(Element e)  -  Schiebe ein Element oben auf den Stapel.
+			\item pop()  -  Nimm das oberste Element des Stapels herunter.
+		\end{enumerate}
+
+		\medskip
+
+		Man kann also neue Elemente mit \textit{push} nur oben auf den Stapel schreiben, mit \textit{pop} nur Elemente oben von Stapel löschen und nur auf das zuletzt geschriebene Element mit \textit{peek} zugreifen. Insgesamt ist \textbf{Lesen}, \textbf{Schreiben} und \textbf{Entfernen} also nur an einer bestimmten Stelle möglich.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Stack-Implementierung}
+	Wir wollen in unserem formalisierten Speicher einen Stack implementieren, der maximal $2^8 - 1$ Elemente enthält. Wir wählen eine Adresse $a$, in der immer steht, wie viele Elemente aktuell im Stack enthalten sind. Die Elemente des Stacks stehen dann in den auf $a$ folgenden Addressen.
+\end{frame}
+	
+\begin{frame}{Stack-Implementierung}
+	\emph{Überlegungen:}
+	\begin{enumerate}
+		\item Um den Stack zu initialisieren, müssen wir nur den Wert $0$ für keine Elemente in $a$ speichern. Also:
+			\[init: Mem \times Adr \to Mem, (m,a) \mapsto memwrite(m,a,bin_8(0))\]
+		\item Das oberste Element des Stack befindet sich immer bei der Addresse: $Add_{adr}(a, memread(m,a))$
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Stack-Implementierung}
+	\begin{exampleblock}{Aufgabe}
+		Implementiere die Methoden \textbf{peek}, \textbf{push} und \textbf{pop} mit den folgenden Funktionsköpfen:
+		\begin{enumerate}
+			\item $peek: Mem \times Adr \to Val$
+			\item $push: Mem \times Adr \times Val \to Mem$
+			\item $pop: Mem \times Adr \to Mem$
+		\end{enumerate}
+		Der Wert in $Adr$ ist dabei immer die Addresse $a$.
+	\end{exampleblock}
+\end{frame}
