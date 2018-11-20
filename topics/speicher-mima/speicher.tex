@@ -210,7 +210,7 @@
 	\emph{Überlegungen:}
 	\begin{enumerate}
 		\item Um den Stack zu initialisieren, müssen wir nur den Wert $0$ für keine Elemente in $a$ speichern. Also:
-			\[init: Mem \times Adr \to Mem, (m,a) \mapsto memwrite(m,a,0\]
+			\[init: Mem \times Adr \to Mem, (m,a) \mapsto memwrite(m,a,0)\]
 		\item Das oberste Element des Stack befindet sich immer bei der Addresse: $Add_{adr}(a, memread(m,a))$
 	\end{enumerate}
 \end{frame}
