@@ -11,7 +11,7 @@
 				% Zugriffsoperationen
 				LDC $c$ & $c \rightarrow Akku$ \\
 				LDV $a$ & $M(a) \rightarrow Akku$ \\
-				STV $\alpha$ & $M(a) \leftarrow Akku$ \\
+				STV $a$ & $M(a) \leftarrow Akku$ \\
 				LDIV $a$ & $M(M(a)) \rightarrow Akku$ \\
 				STIV $a$ &$M(M(a)) \leftarrow Akku$ \\
 				\midrule
@@ -134,7 +134,7 @@
 	\begin{block}{Lösung: Modulo 2}
 		start:   LDC 1 //000000000000000000000001 \\
 		$\qquad$ AND $a_1$ \\
-		$\qquad$ STV $a_1$ \\
+		$\qquad$ STV $a_2$ \\
 		$\qquad$ HALT
 	\end{block}
 \end{frame}
