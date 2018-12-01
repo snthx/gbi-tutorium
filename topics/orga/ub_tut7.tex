@@ -1,0 +1,32 @@
+\Moritz{
+	
+\subsection{Übungsblatt 5}
+\begin{frame}{Zum 5. Übungsblatt}
+	\emph{Homomorphismen}
+	\begin{itemize}
+		\item Homomorphismen sind bei Wörtern immer als $h:A^{\ast} \to B^{\ast}$ definiert (mit $A,B$ Alphabete).
+		\item Man kann einen Homorphismus definieren, indem man nur eine Funktion $g:A\to B^{\ast}$ angibt, die einzelne Zeichen abbildet. 
+		\item \textbf{ABER:} Dann muss man den induzierten Homomorphismus $g^{\ast\ast}$ von $g$ als gesuchten Homomorphismus angeben!
+		\item Beispiel (Aufg 5.3):
+		\[ g_1: \set{0,1}^\ast \to \set{0,1}^\ast, \; g_1(0)=1, \; g_1(0)=0\]
+		\[ h_1 = g^{\ast\ast}\]
+	\end{itemize}
+\end{frame}
+
+\subsection{Übungsblatt 6}
+\begin{frame}{Zum 6. Übungsblatt}
+	\emph{MIMA ist eine Maschine!}
+	\begin{itemize}
+		\item Die MIMA verhält sich anders, als die mathematischen Algorithmen, die sie versucht zu berechnen.
+		\item Insbesondere gibt es \textbf{Overflows und Underflows}, so wie beim echten Computer auch.
+		\item Die MIMA hat Werte mit 24 Bit Länge: \begin{equation}
+			\text{\textit{Nimm an in Adresse x steht }} Zkpl_{24}(-2^{23}) \\
+			LDC 0 \\
+			NOT \\
+			ADD x \\
+		\end{equation}
+		liefert $Akku = Zkpl_{24}(2^{23}-1)$
+	\end{itemize}
+\end{frame}
+
+}
