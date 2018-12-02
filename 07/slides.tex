@@ -6,7 +6,7 @@
 
 \input{../templates/praeambelTut.tex}
 
-\title[Grammatiken]{7. Tutorium\\ Wiederholungen und Grammatiken}
+\title[Grammatiken]{7. Tutorium\\Kontextfreie Grammatiken}
 \subtitle{Grundbegriffe der Informatik, Tutorium \hashtag\mytutnumber}
 \date{\today}
 
@@ -15,73 +15,13 @@
 \roadmap
 
 %%%%%%%%%% %%%%%%%%%%
-\section{Wdh. MIMA}
-\subsection{MIMA}
-\begin{frame}{Minimalmaschine}
-	\begin{exampleblock}{Aufgabe (Fibonacci-Folge)}
-		Für $n \in \nN_0$ sei $\mathcal{F}(n)$ rekursiv definiert durch\\
-		\begin{align*}
-			 \mathcal{F}(0) &=  \mathcal{F}(1) = 1\\
-			\text{für alle }n>1: \mathcal{F}(n) &= \mathcal{F}(n-1) + \mathcal{F}(n-2)\\
-		\end{align*}
-		Schreibe ein MIMA-Programm, dass $\mathcal{F}(n)$ für ein gegebenes $n \in \nN$ mit $n>=2$ berechnet und an Adresse $a$ ablegt.
-	\end{exampleblock}
-\end{frame}
-	
-\begin{frame}{Aufgabe (Fibonacci-Folge)}
-	\begin{block}{Lösung}
 
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-		\begin{tabular}{rl}
-			start: & LDC $1$\\
-			& STV $n_1$\\
-			& STV $n_2$\\
-			& LDC $2$\\
-			& STV $count$\\
-			schleife: & LDV $count$\\
-			& EQL $n$\\
-			& JMN $ende$\\
-			& LDV $n_2$\\
-			& STV $r$\\
-			& LDV $n_1$\\			
-		\end{tabular}
-		\end{column}
+\section{Organisatorisches}
+\input{../topics/orga/ub_tut7}
 
-		\begin{column}{0.4\textwidth}
-		\begin{tabular}{rl}
-			& STV $n_2$\\
-			& ADD $r$\\
-			& STV $n_1$\\
-			& LDC $1$\\
-			& ADD $count$\\
-			& STV $count$\\
-			& JMP $schleife$\\
-			ende: & LDV $n_1$\\
-			& ADD $n_2$\\
-			& STV $a$\\
-			& HALT			
-		\end{tabular}
-		\end{column}
-	\end{columns}	
-	\end{block}
-\end{frame}
-\notStephan{
-\subsection{Huffman}
-\begin{frame}{Wdh. Huffmann}
-	\begin{exampleblock}{Aufgabe}
-		Sei $w = aabc fghd eebd aabc ceef fghd cbbe ceef bbgh ceef$.\\
-		\begin{enumerate}
-			\item[(a)] Konstruiere einen Huffman-Baum für $w$.
-			\item[(b)] Gib die Huffman-Codierung an, die aus dem Baum aus (a) entsteht.
-			\item[(c)] Konstruiere einen Huffman-Baum für einen Block-Code mit Blocklänge 4 für $w$.
-			\item[(d)] Gib die Huffman-Block-Codierung an, die aus dem Baum zu den Blöcken aus (c) entsteht.
-		\end{enumerate}
-	\end{exampleblock}
-\end{frame}
-}
+\section{Kontextfreie Grammatiken}
+\input{../topics/grammatiken/grammatiken.tex}
 
-\input{Grammatiken-angepasst.tex}
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
 
