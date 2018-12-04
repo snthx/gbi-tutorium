@@ -1,4 +1,3 @@
-\section{Kontextfreie Grammatiken}
 \subsection{Einführung}
 \begin{frame}{Kontextfreie Grammatiken}
 	
@@ -113,7 +112,7 @@
 	
 \end{frame}
 
-\begin{frame}{Musikgrammatik}
+\begin{frame}{Beispielgrammatik}
 \begin{exampleblock}{Beispiel}
 	
 	Wir betrachten die Grammatik $G = (\{X\}, \{A, B, C, D\}, X, \{X \to \varepsilon \mid AX \mid BX \mid CX \mid DX\})$
@@ -133,7 +132,7 @@
 		
 \end{frame}
 
-\begin{frame}{Musikgrammatik}
+\begin{frame}{Beispielgrammatik}
 	\begin{exampleblock}{Aufgabe}
 		\[G = (\{X\}, \{A, B, C, D\}, X, \{X \to \varepsilon \mid AX \mid BX \mid CX \mid DX\})\]	
 		Welche Wörter kann man nicht ableiten?
@@ -141,13 +140,16 @@
 \pause
 	\begin{block}{Lösungsbeispiel}
 		\centering
-		\begin{figure}
-			\includegraphics[scale=0.3]{../figures/bigshaq}
-		\end{figure}
+		%\begin{figure}
+		%	\includegraphics[scale=0.3]{../figures/bigshaq}
+		%\end{figure}
+		Alle Wörter, die Zeichen enthalten, die nicht in $\set{A, B, C, D}$ vorkommen. Beispiele:\\[1em]
+
+		\centering GBI, Worsch, abcd, a, reddit.com/r/ggggg
 	\end{block}
 \end{frame}
 
-\begin{frame}{Musikgrammatik}
+\begin{frame}{Beispielgrammatik}
 	\begin{exampleblock}{Speziellere Aufgabe}
 		\[G = (\{X\}, \{A, B, C, D\}, X, \{X \to \varepsilon \mid AX \mid BX \mid CX \mid DX\})\]	
 		Welche Wörter über $\{A, B, C, D\}$ kann man nicht ableiten?
@@ -278,8 +280,8 @@
 	\end{block}
 \end{frame}
 
-\notStephan{
-\subsection{Aufgabe 1}
+
+\subsection{Klausuraufgaben}
 \begin{frame}
 	\frametitle{Klausuraufgabe (WS 2008)}
 	\begin{exampleblock}{Klausuraufgabe}
@@ -346,4 +348,3 @@
 		Soon\\[1em]
 	\end{block}
 \end{frame}
-}
