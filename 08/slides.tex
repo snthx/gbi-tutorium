@@ -15,84 +15,9 @@
 \roadmap
 
 %%%%%%%%%% %%%%%%%%%%
-\section[Kontextfreie Grammatiken]{Wdh.: Kontextfreie Grammatiken}
-\subsection{Wiederholung}
+\section[Orga]{Organisatorisches}
+\input{../topics/orga/ub_tut8.tex}
 
-\begin{frame}{Kontextfreie Grammatiken}
-	\begin{block}{Definition: kontextfreie Grammatik}
-		Eine \textbf{kontextfreie Grammatik} ist ein 4-Tupel $G = (N, T, S ,P)$ mit
-		\begin{itemize}
-			\item[N] Alphabet von Nichtterminalsymbolen
-			\item[T] Alphabet von Terminalsymbolen ($N \cap T = \emptyset$)
-			\item[S] Startsymbol ($S \in N$)
-			\item[P] Produktionsmenge ($P \subseteq N \times (N \cup T)^\ast$)
-		\end{itemize}
-	\end{block}
-
-	\begin{exampleblock}{Beispiel}
-		Sei $A$ das deutsche Alphabet (mit Klein-/Großbuchstaben).\\
-		Sei $G_{MI} = (\{S, M, I, N\}, A \cup \nN_+, S, P)$ mit
-		\[
-			P = \{S \to \text{M I N}, \qquad M \to \text{monkey}, \qquad I \to \text{island}, \qquad N \to 1 \mid 2 \mid 3 \}
-		\]
-	\end{exampleblock}
-\end{frame}
-
-\Stephan{
-\subsection{Aufgabe}
-\begin{frame}
-	\frametitle{Klausuraufgabe (WS 2008)}
-	\begin{exampleblock}{Klausuraufgabe}
-	\begin{itemize}
-		\item[(a)] Geben Sie eine kontextfreie Grammatik $$G = (N, \{a, b\}, S, P )$$ an, für die $L(G)$ die Menge aller Palindrome über dem Alphabet $\{a, b\}$ ist.
-		\item[(b)] Geben Sie eine Ableitung der Wörter \emph{baaab} und \emph{abaaaba} aus dem Startsymbol Ihrer Grammatik an.
-		\item[(c)] Beweisen Sie, dass Ihre Grammatik jedes Palindrom über dem Alphabet $\{a, b\}$ erzeugt.\\
-		Tipp: Induktion: Wenn $n$ und $n+1$ gelten, dann gilt auch $n+2$
-	\end{itemize}		
-	\end{exampleblock}
-\end{frame}
-\mode<handout>{
-\begin{frame}
-	\frametitle{Klausuraufgabe (WS 2008)}
-	\begin{block}{Lösung}
-	\begin{itemize}
-		\item[(a)] Die Grammatik $$G = (\{S\}, \{a, b\}, S, P = \{S \to aSa \ | \ bSb \ | \ a \ | \ b \ | \varepsilon \})$$ erzeugt gerade die Menge der Palindrome.
-		\item[(b)] Die Ableitungen der Wörter mit dieser Grammatik sind 
-				$$S \Rightarrow bSb \Rightarrow baSab \Rightarrow baaab$$
-				$$S \Rightarrow aSa \Rightarrow abSba \Rightarrow abaSaba \Rightarrow abaaaba$$
-		\item[(c)] Siehe folgende Folien.
-	\end{itemize}	
-	\end{block}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Klausuraufgabe (WS 2008)}
-
-	\begin{block}{Lösung (c): I.A. und I.V.}
-	Sei $w$ ein Palindrom über $\{a, b\}$. Wir zeigen durch Induktion über $n = \vert w \vert$, dass alle Palindrome aus $S$ abgeleitet werden können.
-	\begin{description}
-		\item[I.A.] \begin{description}
-						\item[$n = 0$] Das leere Wort $\varepsilon$ ist in einem Schritt aus $S$ ableitbar.
-						\item[$n = 1$] Die einzigen Wörter aus $\{a, b\}^\ast$ der Länge 1 sind $a$ und $b$. Auch diese sind offensichtlich aus $S$ ableitbar. 
-					\end{description}
-		\item[I.V.] Für ein festes, aber beliebiges $n \in \nN_0$ gelte, dass alle Palindrome der Länge $n$ aus S abgeleitet werden können. 
-		
-	\end{description}
-	\end{block}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Klausuraufgabe (WS 2008)}
-	\begin{block}{Lösung (c): I.S.}
-		\begin{description}
-			\item[I.S.] Sei $w$ ein Palindrom der Länge $n + 2$. Das erste (und damit auch das letzte) Zeichen sei oBdA ein $a$. Dann gibt es ein $w' \in \{a, b\}^\ast$, so dass $w = aw'a$ ist. Da $w$ ein Palindrom ist, muss auch $w'$ ein Palindrom sein. Weiterhin gilt $|w'| = n$. \pause Nach IV gibt es somit eine Ableitung $S \Rightarrow^\ast w'$. Somit gibt es die Ableitung $$S \Rightarrow aSa \overset{IV}{\Rightarrow^\ast} aw'a = w$$ Es folgt $w \in L(G)$. \pause Entsprechendes gilt, wenn das erste Zeichen von w ein b ist. \\ 
-		\end{description}
-		Mit dem doppelten I.A. haben wir also gezeigt, dass alle Palindrome beliebiger Menge aus $S$ ableitbar sind.
-	\end{block}
-
-\end{frame}
-}
-}
 
 \section{Relationen}
 \subsection{Relationen}
