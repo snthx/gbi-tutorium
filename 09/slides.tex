@@ -5,8 +5,15 @@
 \input{../modes.tex}
 
 \input{../templates/praeambelTut.tex}
+\usepackage{tcolorbox}
 
-\title[Weihnachtstutorium]{9. Tutorium\\ Weihnachtstutorium}
+%Hoare-Tripel Commands
+\newcommand{\HTB}[1]{\ensuremath{\colorbox{lightgray!90}{\{ #1 \}}}}
+\newcommand{\HT}[3]{\ensuremath{\HTB{#1} \; #2 \; \HTB{#3}}}
+
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "C" column type
+
+\title[Algorithmen, Hoare-Kalkül]{9. Tutorium\\ Algorithmen, Hoare-Kalkül}
 \subtitle{Grundbegriffe der Informatik, Tutorium \hashtag\mytutnumber}
 \date{\today}
 
@@ -16,8 +23,28 @@
 
 %%%%%%%%%% %%%%%%%%%%
 
-\section{Aufgaben}
-\input{../topics/weihnachtstut-aufgaben/weihnachtstut.tex}
+\Moritz{
+	
+\section{Organisatorisches}
+\subsection{Zum 8. Übungsblatt}
+\begin{frame}{Zum 8. Übungsblatt}
+
+	\begin{figure}[h!]
+		\includegraphics[width = 0.85\textwidth]{../topics/orga/loesung_8_1.png}
+	\end{figure}
+	
+\end{frame}
+
+}
+
+\section{Algorithmen}
+\input{../topics/algorithmen/algorithmen.tex}
+
+\section{Hoare-Kalkül}
+\input{../topics/algorithmen/hoare.tex}
+
+%\section{Aufgaben}
+%\input{../topics/weihnachtstut-aufgaben/weihnachtstut.tex}
 
 %%%%%%%%%% %%%%%%%%%%
 
