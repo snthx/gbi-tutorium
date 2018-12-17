@@ -93,7 +93,7 @@
 
 \begin{frame}{Aufgabe zum Finden einer schwächsten Vorbedingung}
 	\begin{exampleblock}{Aufgabe}
-		Es seien $y$ und $z$ zwei verschiedene Variablen und es seien $b$ und $c$ zwei ganze
+		Es seien $x$ und $y$ zwei verschiedene Variablen und es seien $a$ und $b$ zwei ganze
 		Zahlen. Bestimme anhand des Hoare-Kalküls eine schwächste Vorbedingung von
 		\begin{align*}
 			& x \leftarrow x+y\\
@@ -327,7 +327,7 @@
 		\begin{tabular}{rl}
 			&\HTB{$x=a \wedge y=b$}\\
 			&\HTB{...}\\
-			&\textbf{while} $y \neq 0$\\
+			&\textbf{while} $y > 0$\\
 			&\textbf{do}\\
 			&\qquad \HTB{...}\\
 			&\qquad \HTB{...}\\
@@ -349,7 +349,7 @@
 		\begin{tabular}{rl}
 			&\HTB{$x=a \wedge y=b$}\\
 			&\HTB{$x+y=a+b$}\\
-			&\textbf{while} $y \neq 0$\\
+			&\textbf{while} $y > 0$\\
 			&\textbf{do}\\
 			&\qquad \HTB{$x+y=a+b \wedge y \neq 0$}\\
 			&\qquad \HTB{$x+1+y-1=a+b$}\\
