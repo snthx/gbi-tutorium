@@ -1,0 +1,84 @@
+\subsection{Relationen}
+\begin{frame}{Eigenschaften}
+	\begin{Definition}
+		Sei $R \subseteq A \times A$ eine (binäre) Relation auf der Menge $A$. Wir nennen $R$
+		\begin{itemize}[<+->]
+			\item \textbf{reflexiv} falls gilt $$\forall x \in A: (x,x) \in R$$
+			\item \textbf{symmetrisch} falls gilt $$\forall x,y \in A: (x,y) \in R \implies (y,x) \in R$$
+			\item \textbf{transitiv} falls gilt $$\forall x,y,z \in A: (x,y) \in R \text{ und } (y,z) \in R \implies (x,z) \in R$$
+		\end{itemize}
+	\end{Definition}
+
+	\pause
+	\begin{exampleblock}{Aufgabe}
+		Welche Eigenschaften haben die Relationen $=$, $<$ und $\leq$
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Beispiele}
+	\begin{itemize}
+		\item Die Relation $=$ ist \pause reflexiv, symmetrisch und transitiv. Man nennt so etwas auch Äquivalenzrelation.
+		\item \pause Die Relation $<$ ist \pause nicht reflexiv und nicht symmetrisch, aber transitiv.
+		\item \pause Die Relation $\leq$ ist \pause reflexiv, nicht symmetrisch, aber transitiv.
+	\end{itemize}
+
+	% TODO: Grafische Darstellung von Relationen
+\end{frame}
+
+\begin{frame}{Produkt}
+	\begin{Definition}
+		Das \textbf{Produkt} von zwei Relationen $R \subseteq M \times N, S \subseteq N \times L$ definieren wir als $$S \circ R = \{(x,z) \in M \times L \mid \exists y \in N \ : \ (x,y) \in R \text{ und } (y,z) \in S \}$$
+	\end{Definition}	
+	\pause
+	
+	\begin{Definition}
+		Die \textbf{Potenz} einer Relation $R \subseteq M \times M$ definieren wir als
+		\begin{align*}
+			R^0 &= I_M = \{(x,x) \mid x \in M \} \\
+			R^{i+1} &= R^i \circ R
+		\end{align*}
+	\end{Definition}
+\end{frame}
+
+\begin{frame}{Produkt}
+	\begin{exampleblock}{Bemerkung}
+		Wenn $f$ und $g$ Funktionen sind (also linkstotale, rechtseindeutige Relationen), entspricht $f \circ g$ der Hintereinanderausführung von $f$ nach $g$.
+	\end{exampleblock}
+
+	\begin{exampleblock}{Bemerkung}
+		$\circ$ ist eine assoziative Operation, d.h. $(R \circ S) \circ T = R \circ (S \circ T)$,\\
+		im Allg. aber keine kommutative, d.h. $R \circ S \neq S \circ R$
+	\end{exampleblock}
+
+	\begin{exampleblock}{Bemerkung}
+		Das neutrale Element bzgl. $\circ$ ist die identische Abbildung auf $M$ als Relation $I_M := \setc{(x,x)}{x \in M}$. Es gilt also für jede Relation R:
+		\[
+			R \circ I_M = R = I_M \circ R
+		\]
+	\end{exampleblock}
+
+	
+\end{frame}
+
+\begin{frame}{Reflexiv-transitive Hülle}
+	\begin{Definition}
+		Die \textbf{reflexiv-transitive Hülle} einer Relation $R$ ist
+		$$R^\ast = \bigcup \limits_{i=0}^\infty R^i$$
+	\end{Definition}
+
+	\pause
+	\begin{block}{Satz}
+		$R^*$ ist die kleinste Relation, die $R$ umfasst und reflexiv und
+		transitiv ist.
+	\end{block}
+
+	\pause
+	\begin{Beispiel}
+		Sei $A = \{a, b, c, d, e\}$ und R = $\{(a, b), (b, c), (c, e)\} \subseteq A \times A$\\ \pause
+		%TODO Align
+		$R^*=\{(a,a), (b,b), (c,c), (d,d), (e,e),$ \\
+		$(a,b), (b,c), (c,e),$ \\
+		$(a,c), (b,e),(a,e)\}$
+	\end{Beispiel}
+	
+\end{frame}
