@@ -1,3 +1,4 @@
+\subsection{Von der Adjazenz- zur Wegematrix, Ausblick Warshall-Algorithmus}
 \begin{frame}{Kantenrelation}
 	\begin{block}{Kantenmenge als Relation}
 		Sei $G$ ein gerichteter Graph mit der Knotenmenge $V$. Die Kantenmenge ist wie folgt definiert:\\
@@ -15,13 +16,14 @@
 
 \begin{frame}{Berechnung der Erreichbarkeitsrelation}
     \begin{block}{Erreichbarkeitsrelation}
+        Sei $n = |V|$
     	\[
     		E^* = \bigcup_{i=0}^{\infty} E^i = \bigcup_{i=0}^{n-1} E^i
     	\]
     \end{block}
 
     \begin{block}{Matrizen für die Relation $E^k$}
-    	Sei $G$ ein gerichteter Graph mit Adjazenzmatrix $A$. Für alle $k \in \nN_0$ gilt:
+    	Sei $G$ ein gerichteter Graph mit Adjazenzmatrix $A$. Für alle $k \in \nN_0$ gilt:\\
     	\[
     		\sgn((A^k)_{ij}):=
     		\begin{cases}
@@ -32,8 +34,8 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{Berrechnung der Wegematrix}	
-    \begin{block}{Berrechnung der Wegematrix}
+\begin{frame}{Berechnung der Wegematrix}	
+    \begin{block}{Berechnung der Wegematrix}
     	Es sei $G$ ein gerichteter Graph mit Adjazenzmatrix $A$. Dann gilt für alle $k\geq n-1$: 
     	\[
     		W = \sgn\left(\sum_{i=0}^{k} A^i\right) 
