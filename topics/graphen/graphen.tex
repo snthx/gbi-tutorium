@@ -57,12 +57,14 @@
 
 \begin{frame}{Gerichtete Graphen: Pfade}
 	\begin{block}{Def.: Pfad}
-		Sei $G=(V,E)$ ein gerichteter Graph. Ein n-Tupel $p=(v_0,v_1,...,v_n)$ mit $v_i \in V \; (i \in \set{0,...,n})$ heißt \textbf{Pfad von $v_0$ nach $v_n$ der Länge $n$}, gdw. \\
+		Sei $G=(V,E)$ ein gerichteter Graph. Ein $(n+1)$-Tupel $p=(v_0,v_1,...,v_n)$ mit $v_i \in V \; (i \in \set{0,...,n})$ heißt \textbf{Pfad von $v_0$ nach $v_n$ der Länge $n$}, gdw. \\
 		\[
 			\forall i \in \set{0, ..., n-1}: (v_i, v_{i+1}) \in E
 		\]
 		\\[12pt]
 		Die Länge des Pfades ist also gleich der Anzahl der Kanten (!).
+
+		Länge 0 für Pfade erlaubt: $p = (v_0)$
 	\end{block}
 
 	\begin{exampleblock}{Beispiele}
@@ -159,8 +161,9 @@
 	\begin{exampleblock}{Aufgabe}
 		Finde einen Graphen $G=(V,E)$, der die folgenden Eigenschaften hat:
 		\begin{itemize}
-		 	\item G ist streng zusammenhängend\footnote{$G=(V,E)$ streng zusammenhängend $:\Leftrightarrow$ $\forall (x,y) \in V^{2}: \exists$ Pfad von $x$ nach $y$}.
-		 	\item G hat mindestens zwei unterschiedliche Zyklen.
+		 	\item G ist streng zusammenhängend\footnote{$G=(V,E)$ streng zusammenhängend $:\Leftrightarrow$ $\forall u,v \in V: \exists$ Pfad von $u$ nach $v$}.
+		 	\item G hat mindestens zwei unterschiedliche Zyklen, die sich nicht nur durch beliebig häufige Wiederholungen unterscheiden.\\
+		 	Das bedeutet, $p=(0,1,0) \neq q=(0,1,0,1,0)$ reicht nicht.
 		 	\item G hat mindestens einen einfachen Zyklus.
 		 \end{itemize}
 		 \medskip
@@ -406,6 +409,8 @@
 			\end{center}
 		\end{column}	
 	\end{columns}
+	\vspace{3px}
+	Achtung: Die geometrische Anordnung auf dem Papier ist dabei irrelevant.
 \end{frame}
 
 \begin{frame}{Adjazenzmatrix}
