@@ -1,3 +1,18 @@
+\newcommand{\Rplus}{\ensuremath{\nR_+}}
+\newcommand{\Rnullplus}{\ensuremath{\nR^+_0}}
+
+\subsection{Ressourcenverbrauch, Abängigkeit von n, Best- Worst- und Average-Case}
+\begin{frame}{Laufzeit}
+\centering\includegraphics[height=4cm]{algorithm}
+
+\begin{exampleblock}{Aufgabe}
+	Wie viele \emph{Instruktionen} werden aufgerufen? \\% Worst-Case: n+1, Best-Case: 1, Average Case ?
+	\pause
+	Im \emph{worst case}? Im \emph{best case}? Im \emph{average case}?
+\end{exampleblock}
+\end{frame}
+
+\subsection{O-Kalkül}
 \begin{frame}{O-Notation}
 	\begin{block}{Def. Asymptotisches Wachstum $\asymp$}
 		Seien $f,g \from \nN_0 \to \Rnullplus$. Dann gilt
@@ -103,3 +118,82 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Master-Theorem}
+\begin{frame}{Mastertheorem}
+    \textbf{Problemstellung:}\\[1cm]    
+    Gegeben sei eine \emph{rekursiv} definierte Funktion $T$.\\
+    Frage: Welche Laufzeit hat $T$?\\[1cm]
+    Beispiel:
+    \[
+    	T(n) = 8 T \left(\frac{n}{2} \right) + 1000n^2
+    \]
+    \\[1cm]\centering$\Rightarrow$ \emph{Mastertheorem}
+\end{frame}
+
+\begin{frame}{Mastertheorem}
+    \begin{block}{Def.: Mastertheorem}
+    	Seien $a\geq 1$ und $b>1$ Konstanten, $f \from \nN \to \Rnullplus$ und $T(n)$ eine Laufzeitfunktion der Form
+    	\[
+			T = a T\left(\frac{n}{b}\right) + f 
+		\]
+		Dann gilt nach dem \textbf{Mastertheorem}:
+		\begin{itemize}
+			\item \textbf{Fall 1:} \\ Wenn $f \in O(n^{\log_b a -\varepsilon})$ für ein $\varepsilon>0$ ist, dann ist $T\in \Theta(n^{\log_b a})$.
+			\item \textbf{Fall 2:} \\ Wenn $f \in \Theta(n^{\log_b a})$ ist, dann ist $T\in \Theta(n^{\log_b a}\log n)$.
+			\item\textbf{Fall 3:} \\  Wenn $f \in \Omega(n^{\log_b a +\varepsilon})$ für ein $\varepsilon>0$ ist, und wenn es eine Konstante $d$ gibt mit $0<d<1$, so dass für alle hinreichend großen $n$ gilt $af\left(\frac{n}{b}\right)\leq d f(n)$, dann ist $T\in \Theta(f)$.
+		\end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Mastertheorem}
+    \begin{exampleblock}{Beispiel zum 1. Fall}
+    	Sei $T(n) = 8 T \left(\frac{n}{2} \right) + 1000n^2$.
+    	\begin{itemize}
+    		\item Aus der Formel lässt sich ablesen:\\
+    			$a=8$, $b=2$, $f(n)=1000n^2$
+    		\item $n^{\log_b a}$ bestimmen:\\
+    			$\log_b a = \log_2 8 = 3 \Rightarrow n^{\log_b a} = n^3$
+    		\item $n^{\log_b a}$ mit $f(n)$ vergleichen: $1000n^2 \in O(n^3-\varepsilon)$?\\
+    			Ja, für $\varepsilon = 1$ gilt $1000n^2 \in O(n^2)$.
+    		\item Mit dem Mastertheorem folgt:\\
+    			$T(n) = \Theta(n^3)$
+    	\end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+
+\begin{frame}{Mastertheorem}
+    \begin{exampleblock}{Beispiel zum 2. Fall}
+    	Sei $T(n) = 2 T \left(\frac{n}{2} \right) + 10n$.
+    	\begin{itemize}
+    		\item Aus der Formel lässt sich ablesen:\\
+    			$a=2$, $b=2$, $f(n)=10n$
+    		\item $n^{\log_b a}$ bestimmen:\\
+    			$\log_b a = \log_2 2 = 1 \Rightarrow n^{\log_b a} = n^1$
+    		\item $n^{\log_b a}$ mit $f(n)$ vergleichen: $10n \in \Theta(n)$?\\
+    			Ja!
+    		\item Mit dem Mastertheorem folgt:\\
+    			$T(n) = \Theta(n \log n)$
+    	\end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+
+
+\begin{frame}{Mastertheorem}
+    \begin{exampleblock}{Beispiel zum 3. Fall}
+    	Sei $T(n) = 2 T \left(\frac{n}{2} \right) + n^2$.
+    	\begin{itemize}
+    		\item Aus der Formel lässt sich ablesen:\\
+    			$a=2$, $b=2$, $f(n)=n^2$
+    		\item $n^{\log_b a}$ bestimmen:\\
+    			$\log_b a = \log_2 2 = 1 \Rightarrow n^{\log_b a} = n^1$
+    		\item $n^{\log_b a}$ mit $f(n)$ vergleichen: $n^2 \in \Omega(n^{1+\varepsilon})$?\\
+    			Ja, für $\varepsilon = 1$ gilt $n^2 \in \Omega(n^2)$.
+    		\item Zusatzbedingung überprüfen: Ist $af\left(\frac{n}{b}\right)\leq d f(n)$?\\
+    			Ja, für $d = \frac{1}{2}$ gilt $\forall n \geq 1 \; : \; \frac{1}{2}n^2 \leq \frac{1}{2}n^2$
+    		\item Mit dem Mastertheorem folgt:\\
+    			$T(n) = \Theta(n^2)$
+    	\end{itemize}
+    \end{exampleblock}
+\end{frame}

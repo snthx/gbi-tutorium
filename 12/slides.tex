@@ -6,6 +6,11 @@
 
 \input{../templates/praeambelTut.tex}
 
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{automata}
+\usetikzlibrary{tikzmark}
+
 \title[Quantitative Aspekte von Algorithmen]{12. Tutorium\\  Quantitative Aspekte von Algorithmen}
 \subtitle{Grundbegriffe der Informatik, Tutorium \hashtag\mytutnumber}
 \date{\today}
@@ -18,15 +23,10 @@
 %%%%%%%%%% %%%%%%%%%%
 
 \section{Quantitative Aspekte von Algorithmen}
-\newcommand{\Rplus}{\ensuremath{\nR_+}}
-\newcommand{\Rnullplus}{\ensuremath{\nR^+_0}}
-\subsection{Ressourcenverbrauch, Abängigkeit von n, Best- Worst- und Average-Case}
-\input{Abhaengigkeit_von_n}
-\subsection{O-Kalkül}
-\input{Theta}
-\subsection{Master-Theorem}
-\input{Mastertheorem}
+\input{../topics/algorithmen/laufzeiten.tex}
 
+\section{Endliche Automaten}
+\input{../topics/endliche-automaten/mealy-moore.tex}
 
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
@@ -34,22 +34,13 @@
 %\subsection{Zusammenfassung}
 	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
 			\begin{itemize}
-				\item Von der \emph{Adjazenzmatrix} zur \emph{Wegematrix}
 				\item \emph{Laufzeiten} von Algorithmen angeben und abschätzen
 				\item Mit dem \emph{$O$-Kalkül} arbeiten
 				\item Die Laufzeit rekursiver Algorithmen mit dem \emph{Mastertheorem} bestimmen
+				\item Mealy- und Moore Automaten sowie Endliche Akzeptoren erkennen und zeichnen
 			\end{itemize}
 	
 	\end{frame}
-%% Ausblick
-%\subsection{Ausblick}
-	\begin{frame}{Ausblick}
-		\begin{itemize}
-			\item Erste Nutzung von Graphen: \emph{endliche Automaten}
-			\item Neue Möglichkeiten mit formalen Sprachen: \emph{reguläre Ausdrücke} und \emph{rechtslineare Grammatriken} 
-		\end{itemize}
-	\end{frame}
-%%%%%%%%%% %%%%%%%%%%
 \section{}
 \questionframe
 \lastframe
