@@ -153,7 +153,7 @@
     			$a=8$, $b=2$, $f(n)=1000n^2$
     		\item $n^{\log_b a}$ bestimmen:\\
     			$\log_b a = \log_2 8 = 3 \Rightarrow n^{\log_b a} = n^3$
-    		\item $n^{\log_b a}$ mit $f(n)$ vergleichen: $1000n^2 \in O(n^3-\varepsilon)$?\\
+    		\item $n^{\log_b a}$ mit $f(n)$ vergleichen: $1000n^2 \in O(n^{3-\varepsilon})$?\\
     			Ja, für $\varepsilon = 1$ gilt $1000n^2 \in O(n^2)$.
     		\item Mit dem Mastertheorem folgt:\\
     			$T(n) = \Theta(n^3)$
