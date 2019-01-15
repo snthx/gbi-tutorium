@@ -6,33 +6,27 @@
 
 \input{../templates/praeambelTut.tex}
 
-\title[Graphen]{10. Tutorium\\ Graphen}
-\subtitle{Grundbegriffe der Informatik, Tutorium \hashtag\mytutnumber}
-\date{\today}
-
 \usetikzlibrary{matrix}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{automata}
 \usetikzlibrary{tikzmark}
 
+\title[Quantitative Aspekte von Algorithmen]{12. Tutorium\\  Quantitative Aspekte von Algorithmen}
+\subtitle{Grundbegriffe der Informatik, Tutorium \hashtag\mytutnumber}
+\date{\today}
+
+
 \begin{document}
 \titleframe
-
-\begin{frame}{Organisatorisches}
-\begin{itemize}
-    \item Probeklausur diesen Freitag
-\end{itemize}
-\end{frame}
-
 \roadmap
 
 %%%%%%%%%% %%%%%%%%%%
 
-\section{Graphen}
-\input{../topics/graphen/graphen.tex}
+\section{Quantitative Aspekte von Algorithmen}
+\input{../topics/algorithmen/laufzeiten.tex}
 
-\section{Algorithmen in Graphen}
-\input{../topics/graphen/Wegematrix_berechnen.tex}
+\section{Endliche Automaten}
+\input{../topics/endliche-automaten/mealy-moore.tex}
 
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
@@ -40,20 +34,13 @@
 %\subsection{Zusammenfassung}
 	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
 			\begin{itemize}
-				\item Graphen konstruieren und zeichnen
-				\item Eigenschaften von Graphen erkennen
-				\item Wegematrixalgorithmus
+				\item \emph{Laufzeiten} von Algorithmen angeben und abschätzen
+				\item Mit dem \emph{$O$-Kalkül} arbeiten
+				\item Die Laufzeit rekursiver Algorithmen mit dem \emph{Mastertheorem} bestimmen
+				\item Mealy- und Moore Automaten sowie Endliche Akzeptoren erkennen und zeichnen
 			\end{itemize}
 	
 	\end{frame}
-%% Ausblick
-%\subsection{Ausblick}
-	\begin{frame}{Ausblick}
-		\begin{itemize}
-			\item Wie \emph{schnell} ist ein Algorithmus $\Rightarrow$ O-Kalkül 
-		\end{itemize}
-	\end{frame}
-%%%%%%%%%% %%%%%%%%%%
 \section{}
 \questionframe
 \lastframe

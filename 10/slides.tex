@@ -2,26 +2,57 @@
 % Comment/uncomment this line to toggle handout mode
 % \newcommand{\handout}{}
 
-
 \input{../modes.tex}
 
 \input{../templates/praeambelTut.tex}
 
-\title[Algorithmen]{10. Tutorium\\ Algorithmen, Hoare-Kalkül, Schleifeninvariante}
+\title[Graphen]{10. Tutorium\\ Graphen}
 \subtitle{Grundbegriffe der Informatik, Tutorium \hashtag\mytutnumber}
 \date{\today}
 
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{automata}
+\usetikzlibrary{tikzmark}
+
 \begin{document}
 \titleframe
+
+\begin{frame}{Organisatorisches}
+\begin{itemize}
+    \item Probeklausur diesen Freitag
+\end{itemize}
+\end{frame}
+
 \roadmap
 
 %%%%%%%%%% %%%%%%%%%%
 
-%TODO: HIER MUSS JETZT DER INHALT AUS DEM EHEMALIGEN TUT 11 HIN!
+\section{Graphen}
+\input{../topics/graphen/graphen.tex}
 
+\section{Algorithmen in Graphen}
+\input{../topics/graphen/Wegematrix_berechnen.tex}
 
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
+\section{}
+%\subsection{Zusammenfassung}
+	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
+			\begin{itemize}
+				\item Graphen konstruieren und zeichnen
+				\item Eigenschaften von Graphen erkennen
+				\item Wegematrixalgorithmus
+			\end{itemize}
+	
+	\end{frame}
+%% Ausblick
+%\subsection{Ausblick}
+	\begin{frame}{Ausblick}
+		\begin{itemize}
+			\item Wie \emph{schnell} ist ein Algorithmus $\Rightarrow$ O-Kalkül 
+		\end{itemize}
+	\end{frame}
 %%%%%%%%%% %%%%%%%%%%
 \section{}
 \questionframe
