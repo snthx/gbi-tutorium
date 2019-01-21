@@ -399,9 +399,9 @@
 	\end{block}
 
 	\begin{block}{Def.: Verallgemeinerte Ausgabenfunktion $g_{\ast\ast} = h^{\ast\ast} \circ f_{\ast\ast}$}
-		$g_{\ast} : Z \times X^{\ast} \rightarrow Y$ gibt alle Ausgaben konkateniert aus und ist definiert durch:
+		$g_{\ast\ast} : Z \times X^{\ast} \rightarrow Y$ gibt alle Ausgaben konkateniert aus und ist definiert durch:
 		\[
-			\forall(z,w) \in Z \times X^{\ast} : g_{\ast\ast}(z,w) = h^{\ast\ast}(f_{\ast}(z,w))
+			\forall(z,w) \in Z \times X^{\ast} : g_{\ast\ast}(z,w) = h^{\ast\ast}(f_{\ast\ast}(z,w))
 		\]
 		mit $h^{\ast\ast} :$\textit{induzierter Homomorphismus von h}.
 	\end{block}
@@ -453,12 +453,12 @@
 	\begin{block}{Lösung zur Aufgabe zu $f_{\ast}$, $f_{\ast\ast}$, $g_{\ast}$ und $g_{\ast\ast}$}
 		\begin{enumerate}
 					\item $f_{\ast}(q_{\varepsilon}, aab) = q_{f}$
-					\item $f_{\ast\ast}(q_{\varepsilon}, aab) = q_{\varepsilon}q_{a}q_{f}$
+					\item $f_{\ast\ast}(q_{\varepsilon}, aab) = q_{\varepsilon}q_{a}q_{a}q_{f}$
 
 					\item $g_{\ast}(q_{\varepsilon}, aab) = 1$
-					\item $g_{\ast\ast}(q_{\varepsilon}, aab) = 001$
+					\item $g_{\ast\ast}(q_{\varepsilon}, aab) = 0001$
 					\item $g_{\ast}(q_{\varepsilon}, abab) = 0$
-					\item $g_{\ast\ast}(q_{f}, abba) 1000$
+					\item $g_{\ast\ast}(q_{f}, abba) = 10000$
 			\end{enumerate}
 	\end{block}
 \end{frame}
