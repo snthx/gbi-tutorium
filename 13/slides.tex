@@ -6,34 +6,10 @@
 
 \input{../templates/praeambelTut.tex}
 
-\title[Endliche Automaten, Reguläre Ausdrücke und Rechtslineare Grammatiken]{13. Tutorium\\ Endliche Automaten, Reguläre Ausdrücke, Rechtslineare Grammatiken}
+\title[Komplexität, Entscheidbarkeit, reguläre Sprachen]{13. Tutorium\\ Komplexität, Entscheidbarkeit und reguläre Sprachen}
 \subtitle{Grundbegriffe der Informatik, Tutorium \hashtag\mytutnumber}
 \date{\today}
 
-
-
-
-\def\mybox#1{\hbox{\vrule height 2ex width 0pt depth 0.6ex#1}}
-\def\taste[#1]#2{%
-  \tikz[x=8mm,y=8mm,baseline=(N.base)] \tasteinnerx[#1]{#2};%
-}
-\def\tasteinnerx[#1]#2{%
-  \node[midway,inner sep=0mm,draw,rounded corners,anchor=base,minimum width=10mm,#1] (N) {\mybox{#2}}%
-}
-\def\tasteinner[#1]#2{%
-  node[midway,inner sep=0mm,draw,rounded corners,minimum width=10mm,#1] (N) {\mybox{#2}}%
-}
-\def\tasteinnerOK{\tasteinner[fill=green!20]{OK}}
-\def\tasteOK{\taste[fill=green!20]{OK}}
-\def\tasteC{\taste[fill=red!20]{C}}
-\def\tasteinnerC{\tasteinner[fill=red!20]{C}}
-\def\tasteRein{\taste[fill=blue!10]{rein}}
-\def\tasteinnerRein{\tasteinner[fill=blue!10]{rein}}
-\def\tasteZitro{\taste[fill=yellow!10]{zitro}}
-\def\tasteinnerZitro{\tasteinner[fill=yellow!10]{zitro}}
-
-\newcommand{\io}[2]{#1|#2}
-\newcommand{\ioeps}[1]{#1|\varepsilon}
 
 \usetikzlibrary{matrix}
 \usetikzlibrary{arrows.meta}
@@ -42,69 +18,44 @@
 
 \begin{document}
 \titleframe
-\roadmap
-
-%%%%%%%%%% %%%%%%%%%%
-\section{Organisatorisches}
 \begin{frame}{Organisatorisches}
 	\begin{itemize}
 		\item Für Übungsschein angemeldet?
 		\item Für Klausur angemeldet?
-		\item Nach Blatt 6 kommt noch ein Bonusblatt mit ausschließlich Bonuspunkten
+		\item 120 Punkte sind hinreichend für den Übungsschein.
 	\end{itemize}
 \end{frame}
 
-\Stephan{
-	\begin{frame}{Übungsblatt 5}
-	    \begin{itemize}
-	    	\item Prädikatenlogik: $\rightarrow$ statt $\wedge$ in Erwägung ziehen, wenn das Universum nicht eingeschränkt ist
-	    	\item Variablenbelegungs\textbf{funktion} muss für alle $x \in \VPL$ definiert sein
-	    	\item $\varepsilon \notin A$. Niemals.
-	    	\item $ \text{mag}(\text{John},x)$ ist richtig, da John $\in \CPL$. Wer die Punkte haben möchte, soll sich bei mir melden :)
-	    \end{itemize}
-	
-	
-	\end{frame}
+\roadmap
 
+%%%%%%%%%% %%%%%%%%%%
+\section{Komplixtät und Entscheidbarkeit}
+\input{../topics/komplexitaet-und-entscheidbarkeit/berechnungskomplexitaet.tex}
+\input{../topics/komplexitaet-und-entscheidbarkeit/entscheidbarkeit.tex}
 
-
-
-}
-\Moritz{
-	\begin{frame}{Übungsblatt 5}
-		Achten auf:
-		\begin{itemize}
-			\item Ableitungspfeil: $\Rightarrow$
-			\item Bei Grammatiken auf genaue Notation achten: $G=(N,T,S,P)$: N, T und P sind \textbf{Mengen}.
-		\end{itemize}
-	\end{frame}
-}
-
-\section{Endliche Automaten}
-
-
-\input{regex}
-\input{reg_sprachen}
+\section{Reguläre Sprachen}
+\input{../topics/endliche-automaten/regex.tex}
+\input{../topics/endliche-automaten/reg_sprachen.tex}
 %%%%%%%%%% %%%%%%%%%%
 %% Zusammenfassung
-\section{}
-%\subsection{Zusammenfassung}
-	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
-			\begin{itemize}
-				\item Mealy- und Moore Automaten sowie Endliche Akzeptoren erkennen und zeichnen
-				\item Reguläre Ausdrücke bilden
-				\item Rechtslineare Grammatiken erkennen und aufstellen
-				\item Den Zusammenhang zwischen Endlichen Automaten, Regulären Ausdrücken und Rechtslinearen Grammatiken kennen
-			\end{itemize}
-	\end{frame}
-%% Ausblick
-%\subsection{Ausblick}
-	\begin{frame}{Ausblick}
-		\begin{itemize}
-			\item Turingmaschinen
-			% \item Noch mehr Relationen
-		\end{itemize}
-	\end{frame}
+% \section{}
+% %\subsection{Zusammenfassung}
+% 	\begin{frame}{Was ihr jetzt kennen und können solltet\dots}
+% 			\begin{itemize}
+% 				\item Mealy- und Moore Automaten sowie Endliche Akzeptoren erkennen und zeichnen
+% 				\item Reguläre Ausdrücke bilden
+% 				\item Rechtslineare Grammatiken erkennen und aufstellen
+% 				\item Den Zusammenhang zwischen Endlichen Automaten, Regulären Ausdrücken und Rechtslinearen Grammatiken kennen
+% 			\end{itemize}
+% 	\end{frame}
+% %% Ausblick
+% %\subsection{Ausblick}
+% 	\begin{frame}{Ausblick}
+% 		\begin{itemize}
+% 			\item Turingmaschinen
+% 			% \item Noch mehr Relationen
+% 		\end{itemize}
+% 	\end{frame}
 %%%%%%%%%% %%%%%%%%%%
 \section{}
 \questionframe
