@@ -79,7 +79,12 @@ Vermeide führende Nullen!
 		\includegraphics[width=\textwidth]{../topics/weihnachtstut-aufgaben/11.png} 
 	\end{figure}     
 
-	Wir wollen bei dieser Aufgabe die korrekte Notation etwas dehnen und wir erlauben \enquote{$\forall x \in F:$}. Der Doppelpunkt bedeutet dann, dass sich der Quantor auf die gesamte folgende Formel bezieht.
+	Wir wollen bei dieser Aufgabe die korrekte Notation etwas dehnen und erlauben die (in der intuitiven Bedeutung äquivalenten) Schreibweisen\footnote{vgl. Foliensatz Prädikatenlogik, Folie 44}:
+	\begin{itemize}
+		\item $\forall x \in F: \dots$ \quad statt \quad $\forall x (p(x) \rightarrow \dots) \quad \text{mit } I(p) = F \subseteq D.$
+		\item $\exists x \in F: \dots$ \quad statt \quad $\exists x (p(x) \wedge \dots) \quad \text{mit } I(p) = F \subseteq D.$
+	\end{itemize}
+
 \end{frame}
 
 \begin{frame}{Aufgabe 5}
@@ -96,7 +101,7 @@ Vermeide führende Nullen!
 
 		\begin{enumerate}
 			\item \enquote{Jeder Frosch ist glücklich, wenn alle seine Kinder quaken können.} \\[.3em]
-				\[ \forall y (F(y) \rightarrow ((\forall x ((F(x) \wedge K(x,y)) \rightarrow quak(x) )) \rightarrow happy(y))) \]
+				\[ \forall y (F(y) \rightarrow ((\forall x ((F(x) \rightarrow K(x,y)) \rightarrow quak(x) )) \rightarrow happy(y))) \]
 		\end{enumerate}
 
 \end{frame}
