@@ -157,13 +157,6 @@
 	\fi
 }
 
-\newcommand{\NotMoritz}[1]{
-	\ifdefined \MoritzMode
-	\else
-	#1
-	\fi
-}
-
 \newcommand{\Alex}[1]{
 	\ifdefined \AlexMode
 	#1
@@ -178,6 +171,18 @@
 
 \newcommand{\Kilian}[1]{
 	\ifdefined \KilianMode
+	#1
+	\fi
+}
+
+\newcommand{\Jan}[1]{
+	\ifdefined \JanMode
+	#1
+	\fi
+}
+
+\newcommand{\Leonard}[1]{
+	\ifdefined \LeonardMode
 	#1
 	\fi
 }

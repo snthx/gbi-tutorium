@@ -65,13 +65,15 @@
 	\begin{frame}{Mengen}
 		\begin{block}{Def.: Schnitt}
 			Der (Durch-)\textbf{Schnitt} $A \cap B$ der Mengen $A$ und $B$ ist die Menge aller Elemente, die sowohl Elemente der Menge $A$ als auch der Menge $B$ sind: $A \cap B = \{x \mid x \in A \text{ und } x \in B\}$.\\
-			Zwei Mengen heißen disjunkt, wenn ihr Schnitt leer ist, also $A \cap B = \emptyset$
+			Zwei Mengen heißen \textbf{disjunkt}, wenn ihr Schnitt leer ist, also $A \cap B = \emptyset$
 		\end{block}
 		\pause
 		\begin{exampleblock}{Beispiele}
 			\begin{itemize}
 				\item $\{1,2,3\}\cap\{1,2\} = \only<3->{\{1,2\}}$
-				\item Für jede Menge $M$ gilt: $M \cap \emptyset = \only<4->{\emptyset}$
+				\item $\set{1,2,3} \cap \set{3,4,5} = \only<4->{\set{3}}$
+				\item $\set{a,b} \cap \set{x,y} = $ \only<5->{$\emptyset$ \quad (also sind $\set{a,b}$ und $\set{x,y}$ disjunkt)}
+				\item Für jede Menge $M$ gilt: $M \cap \emptyset = \only<6->{\emptyset}$
 			\end{itemize}
 		\end{exampleblock}
 	\end{frame}	
@@ -84,7 +86,10 @@
 		\pause
 		\begin{exampleblock}{Beispiele}
 			\begin{itemize}
-				\item $\set{1,2,3}\setminus\set{1} = \pause \set{2,3}$
+				\item $\set{1,2,3}\setminus\set{1} = \only<3->{\set{2,3}}$
+				\item $\set{1,2,3}\setminus\set{4} = \only<4->{\set{1,2,3}}$
+				\item $\set{1,2,3}\setminus\set{1,2,3,4,5,6} = \only<4->{\emptyset}$
+				\item $\emptyset \setminus \set{a,b,c} = \only<5->{\emptyset}$
 			\end{itemize}
 		\end{exampleblock}
 	\end{frame}
