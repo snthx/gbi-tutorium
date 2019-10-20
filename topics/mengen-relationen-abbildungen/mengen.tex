@@ -158,14 +158,59 @@
 	\end{frame}
 
 	\begin{frame}{Mengen}
-	\small{
 		\begin{exampleblock}{Aufgabe}
-			Es sei M eine Menge und es seien $A \subseteq M$ und $B \subseteq M$. Zeigen Sie: \\
-			\centering $M \setminus (A \cup B) = (M \setminus A)  \cap (M \setminus B)$
+			Es sei M eine Menge und es seien $A \subseteq M$ und $B \subseteq M$. Zeige: \\
+			\[M \setminus (A \cup B) = (M \setminus A)  \cap (M \setminus B)\]
 		\end{exampleblock}
-		}
-	\pause 
-	\tiny{
+	\pause
+	\medskip
+	\textbf{Wie geht man überhaupt an so eine Aufgabe heran?}\\
+	\begin{itemize}
+		\item Mit der Zeit lernt man Herangehensweisen für Beweise (hier Mengengleichheit)
+		\item Erstmal vollkommen okay, keinen Ansatz zu wissen
+		\item Die Erfahrung kommt mit der Zeit, am Besten anfangs nicht frustrieren lassen
+		\item (Korrektur ist anfangs natürlich auch etwas weniger streng ;) )
+	\end{itemize}
+
+	\end{frame}
+
+	\begin{frame}{Allgemeine Mengengleichheit $A=B$ zeigen}
+
+		\begin{itemize}
+			\item Verwende etwas, das wir schon kennen: $A=B$ gilt genau dann, wenn $A \subseteq B$ und $B \subseteq A$
+			\item Also kann man auch die Teilmengenbeziehungen $A \subseteq B$ und $B \subseteq A$ zeigen
+			\pause\item Wie geht das? Definition verwenden: \begin{itemize}
+				\item $A \subseteq B$ $\Leftrightarrow$ Jedes Element in $A$ liegt auch in $B$
+				\item Wir zeigen, dass jedes Element in $A$ auch in $B$ liegt, indem wir nur ein $a \in A$ betrachten, welches wir nicht näher definieren
+				\item Dann steht dieses $a$ für jedes beliebige Element in $A$ und wir müssen nur noch $a \in B$ zeigen
+			\end{itemize}
+		\end{itemize}
+
+	\end{frame}
+
+	\begin{frame}{Allgemeine Mengengleichheit $A=B$ zeigen}
+
+		\begin{enumerate}
+			\item Zeige $A \subseteq B$: \begin{itemize}
+				\item Betrachte beliebiges $a \in A$.
+				\item Zeige $a \in B$.
+			\end{itemize}
+			\item Zeige $B \subseteq A$: \begin{itemize}
+				\item Betrachte beliebiges $b \in B$.
+				\item Zeige $b \in A$.
+			\end{itemize}
+		\end{enumerate}
+		\pause
+		\medskip
+		\begin{itemize}
+			\item Schema hilft oft beim Beweis von Mengengleichheiten (oder Teilmengenbeziehungen)
+			\item Schwierigkeit liegt dann noch beim Zeigen von $a \in B$ bzw. $b \in A$
+			\item Auch dabei gilt: Definitionen verwenden!
+		\end{itemize}
+		
+	\end{frame}
+
+	\begin{frame}{Mengen}
 		\begin{block}{Lösung}
 			$\subseteq$:
 				Es sei $x \in M \setminus (A \cup B)$. Dann ist $x \in M$ und $x \notin (A \cup B)$.\\
@@ -175,7 +220,7 @@
 					\item $x \in M$ und $x \notin A$ $\Longleftrightarrow $ $x \in M \setminus A$
 					\item $x \in M$ und $x \notin B$ $\Longleftrightarrow$ $x \in M \setminus B$
 				\end{itemize}
-				Folglich ist $x \in (M \setminus A)  \cap (M \setminus B)$ \\
+				Folglich ist $x \in (M \setminus A)  \cap (M \setminus B)$.\\[1em]
 
 			\pause
 
@@ -187,9 +232,8 @@
 					\item $x \in M \setminus B$ $\Longleftrightarrow$ $x \in M$ und $x \notin B$
 				\end{itemize}
 				Damit ist $x \in M$, $x \notin A$ und $x \notin B$. \\
-				Dies ist äquivalent zu $x \in M$ und $x \notin A \cup B$.
+				Dies ist äquivalent zu $x \in M$ und $x \notin A \cup B$.\\
 				Folglich ist $x \in M \setminus (A \cup B)$.
 
 		\end{block}
-		}
 	\end{frame}
