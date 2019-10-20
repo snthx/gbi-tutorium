@@ -157,6 +157,13 @@
 	\fi
 }
 
+\newcommand{\NotMoritz}[1]{
+	\ifdefined \MoritzMode
+	\else
+	#1
+	\fi
+}
+
 \newcommand{\Alex}[1]{
 	\ifdefined \AlexMode
 	#1
