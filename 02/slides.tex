@@ -7,6 +7,7 @@
 \input{../templates/praeambelTut.tex}
 
 \title[Formale Sprachen, Aussagenlogik]{2. Tutorium\\ Formale Sprachen, Aussagenlogik}
+\Stephan{\title[Relationen, Formale Sprachen, Aussagenlogik]{2. Tutorium\\ Relationen, Formale Sprachen, Aussagenlogik}}
 \subtitle{Grundbegriffe der Informatik, Tutorium \hashtag\mytutnumber}
 \date{\today}
 
@@ -19,45 +20,10 @@
 \input{../topics/orga/zu-UB1.tex}
 
 \Stephan{
-\section[Relationen (Wdh.)]{Wiederholung: Relationen}
-\begin{frame}{Relationen und Abbildungen}
-	\begin{exampleblock}{Beispiel \hashtag2}
-		\begin{minipage}{0.5\textwidth}
-			\begin{tikzpicture}
-			[scale=0.6,auto=left,every node/.style={circle,fill=kit-blue30}]
-			\node (a1) at (0,10)  {$a_1$};
-			\node (a2) at (0,8)  {$a_2$};
-			% \node (a3) at (0,6)  {$a_3$};
-			\node (b1) at (2,10)  {$b_1$};
-			\node (b2) at (2,8)  {$b_2$};
-			\node (b3) at (2,6)  {$b_3$};
-			
-			
-			\foreach \from/\to in {a1/b2, a2/b3, a2/b1}
-			\draw (\from) -- (\to);
-			\end{tikzpicture}
-		\end{minipage} \hfill
-		\begin{minipage}{0.45\textwidth}
-			\raggedright
-			% \begin{align*}
-			% Linkstotal&: \only<2->{Ja} \\
-			% Rechtseindeutig&: \only<3->{Nein} \\
-			% Rechtstotal bzw. surjektiv&: \only<4->{Nein} \\
-			% Linkseindeutig bzw. injektiv&: \only<5->{Nein} \\
-			% \end{align*}
-			\begin{tabular}{rl}
-			Linkstotal: & \only<2->{\textcolor{kit-green100}{Ja}} \\
-			Rechtseindeutig: & \only<3->{\textcolor{kit-red100}{Nein}}\\ 
-			Rechtstotal: & \only<4->{\textcolor{kit-green100}{Ja}} \\
-			Linkseindeutig: & \only<5->{\textcolor{kit-green100}{Ja}} \\
-			Bijektive Abbildung: & \only<6->{\textcolor{kit-red100}{Nein}} \\
-			\only<7->{Abbildung: }& \only<7->{\textcolor{kit-red100}{Nein}}
-			\end{tabular}
-
-		\end{minipage}
-	\end{exampleblock}
-\end{frame}
-	\input{../topics/mengen-relationen-abbildungen/kleine-aufgabe.tex}		
+\section{Relationen}
+\input{../topics/mengen-relationen-abbildungen/relationen1.tex}
+\input{../topics/mengen-relationen-abbildungen/relationen2.tex}
+\input{../topics/mengen-relationen-abbildungen/kleine-aufgabe.tex}	
 }
 
 \section{Formale Sprachen}
