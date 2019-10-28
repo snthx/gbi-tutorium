@@ -1,0 +1,206 @@
+\subsection{Postsches Korrespondenzproblem}
+\begin{frame}{Postsches Korrespondenzproblem}
+	
+	\begin{itemize}
+		\item Übungsblatt 2 beschäftigt sich mit dem Postschen Korrespondenzproblem (PKP)
+		\item Die Definition auf dem ÜB ist vollständig, aber etwas kompliziert
+		\item Das PKP kann man sich allerdings schön bildlich vorstellen
+		\item Wir gehen kleinschrittig durch die Definition des PKP im ÜB und verstehen sie
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Postsches Korrespondenzproblem}
+	
+	\textbf{Definition von P}
+	\begin{itemize}
+		\item Sei $A=\set{a,b}$ ein Alphabet.
+		\item Definiere die Menge aller Paare von Wörtern über A mit $P = A^\ast \times A^\ast$
+	\end{itemize}
+
+	\pause
+
+	\begin{exampleblock}{Beispiele für Elemente in $P$}
+		$(aa, bb), (a, b), (ba, \varepsilon), (bab, aaaaaaab), (\varepsilon, \varepsilon) \in P$
+	\end{exampleblock}
+
+	Bildlich schreiben wir die Wörter als ``Dominosteine'' in einem Paar $(v,w) \in P$ übereinander ($v$ oben, $w$ unten). Z.B. für $(aab, ba)$:\\[1em]
+
+	\texttt{
+	\begin{tabular}{|c|c|c|}
+		\hline
+		a & a & b \\
+		\hline
+		b & a & \\
+		\hline
+	\end{tabular}
+	}
+\end{frame}
+	
+\begin{frame}{Postsches Korrespondenzproblem}
+
+	\textbf{Definition von $\diamond$}
+
+	\begin{itemize}
+		\item Die Abbildung $\diamond: P \times P \to P$ ist definiert als \[ (t_1, b_1) \diamond (t_2, b_2) = (t_1 t_2, b_1 b_2) \]
+		\item $\diamond$ hängt also für zwei Wortpaare jeweils das erste und zweite Wort aneinander, um ein neues Wortpaar zu erzeugen
+	\end{itemize}
+
+	\pause
+
+	\begin{exampleblock}{Beispiele für $\diamond$}
+		\begin{align*}
+			(a,b) \diamond (a,b) &= (aa, bb) \\
+			(ab,a) \diamond (a,ba) &= (aba, aba) \\
+			(\varepsilon, aba) \diamond (bab, \varepsilon) &= (bab, aba)
+		\end{align*}
+	\end{exampleblock}
+
+	Als ``Dominosteine'' für $(ab,a) \diamond (a,ba)$:\\[1em]
+
+	\begin{columns}
+		\begin{column}{.2\textwidth}
+			\texttt{
+	\begin{tabular}{|c|c|}
+		\hline
+		a & b \\
+		\hline
+		a & \\
+		\hline
+	\end{tabular}
+	}
+		\end{column}
+
+		\begin{column}{.05\textwidth}
+			$\diamond$
+		\end{column}
+	
+		\begin{column}{.1\textwidth}
+			\texttt{
+	\begin{tabular}{|c|c|}
+		\hline
+		a &  \\
+		\hline
+		b & a \\
+		\hline
+	\end{tabular}
+	}
+		\end{column}
+
+		\begin{column}{.05\textwidth}
+			$=$
+		\end{column}
+
+		\begin{column}{.2\textwidth}
+			\texttt{
+	\begin{tabular}{|c|c|c|}
+		\hline
+		a & b & a \\
+		\hline
+		a & b & a \\
+		\hline
+	\end{tabular}
+	}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}{Postsches Korrespondenzproblem}
+	
+	\begin{itemize}
+		\item Problem selbst ist jetzt: \begin{itemize}
+			\item Kann man aus gegebener Liste von Paaren $D = (d_1, d_2, \dots, d_n) \in P^{n}$ so Paare auswählen, dass sie aneinandergehängt im ersten und zweiten Element das gleiche Wort ergeben?
+		\item Man wählt also eine Folge von Paaren aus, die aneinandergehangen werden sollen, indem man eine Folge von Indizes in $D$ definiert
+		\end{itemize}
+	\end{itemize}
+
+	\pause
+
+	\begin{exampleblock}{Beispiel}
+	\begin{itemize}
+		\item Sei $D = ((ab,a), (a, ba), (ba, b))$
+		\item Die Indexfolge $(2,3,3)$ heißt dann, dass $(a, ba)$ und $(ba,b)$ und $(ba,b)$ aneinander gehangen werden: \[ (a,ba) \diamond (ba,b) \diamond (ba,b) = (ababa, babb) \]
+		\item Wegen $ababa \ne babb$ ist also die Indexfolge $(2,3,3)$ keine Lösung des PKP für $D$
+	\end{itemize}
+	\pause
+	\textbf{Frage:} Welche Indexfolge würde das PKP für $D$ lösen?
+		
+	\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{Postsches Korrespondenzproblem}
+	
+	Für längere Folgen von Wortpaaren ist dann die Darstellung übereinander gut, weil man gut sieht, welche Stelle im oberen Wort mit welcher Stelle im unteren Wort zusammenpassen muss. Z.B. sieht man schnell das $(2,3,3)$ keine Lösung von $D$ sein kann:
+
+	\begin{columns}
+		\begin{column}{.05\textwidth}
+		\centering
+			\texttt{
+	\begin{tabular}{|c|c|}
+		\hline
+		a & \\
+		\hline
+		b & a \\
+		\hline
+	\end{tabular}
+	}
+		\end{column}
+
+		\begin{column}{.02\textwidth}
+		\centering
+			$\diamond$
+		\end{column}
+	
+		\begin{column}{.05\textwidth}
+		\centering
+			\texttt{
+	\begin{tabular}{|c|c|}
+		\hline
+		b & a \\
+		\hline
+		b & \\
+		\hline
+	\end{tabular}
+	}
+		\end{column}
+
+	\begin{column}{.02\textwidth}
+	\centering
+			$\diamond$
+		\end{column}
+	
+		\begin{column}{.05\textwidth}
+		\centering
+			\texttt{
+	\begin{tabular}{|c|c|}
+		\hline
+		b & a \\
+		\hline
+		b & \\
+		\hline
+	\end{tabular}
+	}
+		\end{column}
+
+		\begin{column}{.02\textwidth}
+		\centering
+			$=$
+		\end{column}
+
+		\begin{column}{.25\textwidth}
+		\centering
+			\texttt{
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		a & b & a & b & a \\
+		\hline
+		b & a & b & b & \\
+		\hline
+	\end{tabular}
+	}
+		\end{column}
+	\end{columns}
+
+\end{frame}
