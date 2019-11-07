@@ -1,0 +1,40 @@
+\Moritz{
+	
+\begin{frame}{2. Übungsblatt}
+	
+	\emph{Aufgabe 1:}
+	\begin{itemize}
+		\item Diese Aufgabe verlangt ein bisschen Kreativität
+		\item Bitte überlegt wirklich gründlich selbst, bevor ihr anfangt zu googlen o.Ä.
+		\item In der Klausur wird es auch keine Recherche-Möglichkeiten geben
+		\item \url{https://www.stacklounge.de/5060/binare-operation-kommutativ-aber-nicht-assoziativ}
+	\end{itemize}
+
+\end{frame}
+	
+\begin{frame}{2. Übungsblatt}
+
+	\emph{Aufgabe 3:}
+	\begin{itemize}
+		\item Bei Beweisen ist es meistens schön Gleichungsketten (oder Ungleichungsketten) zu verwenden
+		\item Also z.B. beim Beweis von Assoziativität:
+			\begin{itemize}
+				\item Nicht schön mit Behauptung anzufangen: 
+					\begin{align*}
+						((t_1,b_1) \diamond (t_2,b_2)) \diamond (t_3,b_3) &= (t_1,b_1) \diamond ((t_2,b_2) \diamond (t_3,b_3)) \\
+						\textcolor{orange}{\Leftrightarrow} (t_1 \cdot t_2, b_1 \cdot b_2)  \diamond (t_3,b_3) &= (t_1,b_1) \diamond (t_2 \cdot t_3, b_2 \cdot b_3) \\
+						\textcolor{orange}{\Leftrightarrow} (t_1 \cdot t_2 \cdot t_3, b_1 \cdot b_2 \cdot b_3) &= (t_1 \cdot t_2 \cdot t_3, b_1 \cdot b_2 \cdot b_3)
+					\end{align*}
+				\item Schöner Behauptung aus Gleichungskette zu schließen:
+					\begin{align*}
+						&((t_1,b_1) \diamond (t_2,b_2)) \diamond (t_3,b_3) = (t_1 \cdot t_2, b_1 \cdot b_2)  \diamond (t_3,b_3) \\
+						&= (t_1 \cdot t_2 \cdot t_3, b_1 \cdot b_2 \cdot b_3) = (t_1,b_1) \diamond (t_2 \cdot t_3, b_2 \cdot b_3) \\
+						&= (t_1,b_1) \diamond ((t_2,b_2) \diamond (t_3,b_3)) \\
+					\end{align*}
+			\end{itemize}
+			
+	\end{itemize}
+
+\end{frame}
+	
+}
