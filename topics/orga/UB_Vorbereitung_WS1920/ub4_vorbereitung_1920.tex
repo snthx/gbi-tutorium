@@ -1,7 +1,37 @@
 \subsection{Vorbereitng Übungsblatt 4}
-\begin{frame}{Formale Sprachen}
+\begin{frame}{ÜB-Tipps: Formale Sprachen}
     \[
     	L^+ = L \cdot L^*
     \]
-    $\Rightarrow$ Also im Allgemeinen $L^+\ne L^*$
+
+    \bigskip
+
+    \centering $\Rightarrow$ Also im Allgemeinen $L^+ \ne L^*$
+\end{frame}
+
+\begin{frame}{ÜB-Tipps: \enquote{Starke} vollständige Induktion}
+	\begin{columns}
+
+		\begin{column}[t]{.5\textwidth}
+			\textbf{\enquote{Normale} VI}
+			\begin{itemize}
+				\item IV: Annahme, dass Aussage $A(n)$ wahr für ein $n \in  \nN$
+				\item IS: $A(n)$ wahr $\rightarrow$ $A(n+1)$ wahr
+			\end{itemize}			
+		\end{column}
+
+		\begin{column}[t]{.5\textwidth}
+			\textbf{\enquote{Starke} VI}
+			\begin{itemize}
+				\item IV: Annahme, dass Aussage $A(n')$ wahr für \textbf{alle} $n' \in \nN$ mit $n' \le n$
+				\item IS: $A(n')$ wahr für alle $n' \le n$ $\rightarrow$ $A(n+1)$ wahr
+			\end{itemize}
+		\end{column}
+	
+	\end{columns}
+
+	\begin{alertblock}{Achtung}
+		Immer, wenn möglich, normale vollständige Induktion verwenden! Starke vollständige Induktion nur verwenden, wenn angegeben oder unausweichbar!
+	\end{alertblock}
+
 \end{frame}
