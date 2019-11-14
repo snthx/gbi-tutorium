@@ -43,3 +43,22 @@
     	L^+ = L \cdot L^*
     \]
 \end{frame}
+
+\begin{frame}{Formale Sprachen}
+	\begin{exampleblock}{Aufgabe}
+		Es sei $A = {a,b}$. Drücke folgende Sprachen $L_1, L_2, L_3 \subseteq A^*$ formell aus:
+		\begin{enumerate}
+			\item $L_1$ enthält nur Wörter mit mindestens drei Vorkommen von $a$
+			\item $L_2$ enthält nur Wörter, in denen die Zeichenfolge $bb$ nicht vorkommt
+			\item Für alle Wörter $w$ in $L_3$ gilt: Wenn $w$ mindestens drei Vorkommen von $a$ hat, so hat $w$ auch mindestens zwei Vorkommen von $b$ 
+		\end{enumerate}
+	\end{exampleblock}
+	\pause
+	\begin{block}{Lösung}
+		\begin{enumerate}
+			\item $L_1 = \set{a,b}^\ast \cdot \set{a} \cdot \set{a,b}^\ast \cdot \set{a} \cdot \set{a,b}^\ast \cdot \set{a} \cdot \set{a,b}^\ast$
+			\item $L_2 = \set{a}^\ast \cdot \set{b, \varepsilon} \cdot (\set{a}^+ \cdot \set{b})^\ast \cdot \{ a \}^*$ 
+			\item \begin{align*}L_3 = & \set{\varepsilon, a, ab, ba} \cup \set{aa, aab, aba, baa} \\ & \cup (\set{a,b}^\ast \cdot \set{b} \cdot \set{a,b}^\ast \cdot \set{b} \cdot \set{a,b}^\ast) \end{align*}
+		\end{enumerate}
+	\end{block}
+\end{frame}
