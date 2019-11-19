@@ -42,86 +42,118 @@
 
 }
 
+% \Stephan{
+% \begin{frame}{Drittes Übungsblatt}
+%     \begin{itemize}
+%     	\item Knapp 70\%
+%     	\item Haltet euch bei Beweisen mit vollständiger Induktion an gelernte Schemen und Definitionen
+%     	\item Schreibt Gleichungsketten, keine Äquivalenzen
+%     	\item nicht abschreiben
+%     \end{itemize}
+
+
+% \end{frame}
+
+% \begin{frame}{Drittes Übungsblatt}
+
+% \emph{Aufgabe 2}
+% \begin{itemize}
+% 	\item $u_n$ ist eine \textit{Zahl}, keine Menge von Formeln
+% 	\item (c) Häufige Antwort:\\
+% 		  Die Korrektheit folgt aus der rekursiven Definition.\\ Es gilt $u_0=1$ (IA) sowie $u_{n+1}$, wenn $u_n$ gilt (IS).
+% \end{itemize}
+% \end{frame}
+
+
+
+
+
+
+
+% \begin{frame}{Drittes Übungsblatt}
+% \emph{Aufgabe 3a}
+% \begin{itemize}
+% 	\item IA: $B(0,0) = 1 \geq 2^0$ \lul{}{und $B(1,1)=B(1,0)+B(0,1)=2 \geq 2^1$}
+% 	\item IS: Es sei $n \in \nN_{\lul{0}{+}}$\\
+% 	IV: $B(n,n) \geq 2^n$ gelte. Dann
+% 	\begin{align*}
+% 		B(n+1,n+1)	&= B(n+1,n) + B(n,n+1)\\
+% 					&= \underbrace{B(n+1,\lulz{n-1})}_{\lul{>}{\geq}0} + B(n,n) + B(n,n) + \underbrace{B(\lulz{n-1},n+1)}_{\lul{>}{\geq}0}\\
+% 					&\geq 2 B(n,n) \overset{IV}{\geq} 2 \cdot 2^n = 2^{n+1} 
+% 	\end{align*}
+% 	\item[]
+% 	\item \only<-2>{Was ist falsch?} \only<3>{Beachtet die \emph{schöne Gleichungskette}}
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Viertes Übungsblatt}
+% 	\begin{itemize}
+% 		\item Schnitt: 83\% (Das zweitbeste ÜB bisher!)
+% 		\item Viele schöne Lösungen
+% 		\item Das selbe wie im dritten ÜB: Definitionen und Formalismen einhalten, nicht abschreiben
+% 		\item[]
+% 		\item Unnötig: $M := \{x \in A^*\}$ statt $M := A*$
+% 	\end{itemize}
+% \end{frame}
+
+% \begin{frame}{Viertes Übungsblatt}
+% 	\emph{Aufgabe 4.1 + 4.2}
+% 	\begin{itemize}
+% 		\item Operationen auf Sprachen ergeben wieder Sprachen: \\ Konkatenation ($\cdot$), Potenzieren, Mengenoperationen ($\cup,\cap,\setminus$) und Konkatenationsabschluss
+% 		\item $\Rightarrow$ Keine weiteren Mengenklammern um Sprachen!
+% 		\only<2>{
+% 			\item \textcolor{red}{\textbf{Falsch:} $L_{1} = \set{ \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba} }$
+% 		}}
+% 		\only<3-|handout:0>{
+% 			\item \textcolor{red}{\sout{$L_{1} = \set{ \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba} }$}} 
+% 			\item \textcolor{kit-green100}{\textbf{Korrekt: } $L_{1} = \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba}$}
+% 		}
+% 	\end{itemize}
+% \end{frame}
+
+% \begin{frame}{zu ÜB 4 Aufg. 1 + 2}
+% 	\begin{itemize}
+% 		\item Entweder Konkatenation von Sprachen oder Konkatenation von Wörtern, nicht Sprachen mit Wörtern konkatenieren!
+% 		\item Beispiel: Sei $A=\set{a,b}$ ein Alphabet.
+% 		\only<1>{
+% 			\item \textcolor{red}{\textbf{Falsch:} $aa \cdot \set{b}^{k}$, $\varepsilon \cdot A^{+}$}
+% 		}
+% 		\only<2-|handout:0>{
+% 			\item \textcolor{red}{\sout{\textbf{Falsch:} $aa \cdot \set{b}^{k}$, $\varepsilon \cdot A^{+}$}}
+% 			\item \textcolor{kit-green100}{\textbf{Korrekt:}} $aa \cdot b^{k}$, $\set{\varepsilon} \cdot A^{+}$
+% 		}
+% 	\end{itemize}
+% \end{frame}
+% }
+
 \Stephan{
-\begin{frame}{Drittes Übungsblatt}
-    \begin{itemize}
-    	\item Knapp 70\%
-    	\item Haltet euch bei Beweisen mit vollständiger Induktion an gelernte Schemen und Definitionen
-    	\item Schreibt Gleichungsketten, keine Äquivalenzen
-    	\item nicht abschreiben
-    \end{itemize}
-
-
-\end{frame}
-
-\begin{frame}{Drittes Übungsblatt}
-
-\emph{Aufgabe 2}
-\begin{itemize}
-	\item $u_n$ ist eine \textit{Zahl}, keine Menge von Formeln
-	\item (c) Häufige Antwort:\\
-		  Die Korrektheit folgt aus der rekursiven Definition.\\ Es gilt $u_0=1$ (IA) sowie $u_{n+1}$, wenn $u_n$ gilt (IS).
-\end{itemize}
-\end{frame}
-
-
-
-
-
-
-
-\begin{frame}{Drittes Übungsblatt}
-\emph{Aufgabe 3a}
-\begin{itemize}
-	\item IA: $B(0,0) = 1 \geq 2^0$ \lul{}{und $B(1,1)=B(1,0)+B(0,1)=2 \geq 2^1$}
-	\item IS: Es sei $n \in \nN_{\lul{0}{+}}$\\
-	IV: $B(n,n) \geq 2^n$ gelte. Dann
-	\begin{align*}
-		B(n+1,n+1)	&= B(n+1,n) + B(n,n+1)\\
-					&= \underbrace{B(n+1,\lulz{n-1})}_{\lul{>}{\geq}0} + B(n,n) + B(n,n) + \underbrace{B(\lulz{n-1},n+1)}_{\lul{>}{\geq}0}\\
-					&\geq 2 B(n,n) \overset{IV}{\geq} 2 \cdot 2^n = 2^{n+1} 
-	\end{align*}
-	\item[]
-	\item \only<-2>{Was ist falsch?} \only<3>{Beachtet die \emph{schöne Gleichungskette}}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Viertes Übungsblatt}
+	\begin{frame}{Probeklausur}
 	\begin{itemize}
-		\item Schnitt: 83\% (Das zweitbeste ÜB bisher!)
-		\item Viele schöne Lösungen
-		\item Das selbe wie im dritten ÜB: Definitionen und Formalismen einhalten, nicht abschreiben
-		\item[]
-		\item Unnötig: $M := \{x \in A^*\}$ statt $M := A*$
+		\item Wahrscheinlich Probeklausur im Januar
+		\item Ein Termin statt Vorlesung
+		\item Vorteile:\begin{itemize}
+			\item Selbstkontrolle
+			\item Simulation Prüfungsumgebung
+			\item freiwillig
+		\end{itemize}
+		\item Von mir korrigiert und im Tut zurückgegeben \begin{itemize}
+			\item Punkte wirken sich \textbf{nicht} auf Übungsschein aus!
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Viertes Übungsblatt}
-	\emph{Aufgabe 4.1 + 4.2}
+\begin{frame}{Übungsschein}
 	\begin{itemize}
-		\item Operationen auf Sprachen ergeben wieder Sprachen: \\ Konkatenation ($\cdot$), Potenzieren, Mengenoperationen ($\cup,\cap,\setminus$) und Konkatenationsabschluss
-		\item $\Rightarrow$ Keine weiteren Mengenklammern um Sprachen!
-		\only<2>{
-			\item \textcolor{red}{\textbf{Falsch:} $L_{1} = \set{ \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba} }$
-		}}
-		\only<3-|handout:0>{
-			\item \textcolor{red}{\sout{$L_{1} = \set{ \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba} }$}} 
-			\item \textcolor{kit-green100}{\textbf{Korrekt: } $L_{1} = \set{a,b}^{\ast} \cdot \set{aa,bb,ab,ba}$}
-		}
+		\item Zitat von Übungsblatt 5:
+	\end{itemize}
+		\begin{quote}
+			Auf den ersten 6 Aufgabenblättern wird man insgesamt genau 120 Punkte erreichen können. Wer den Übungsschein erwerben will, kann dies also nur dann sicher schaffen, wenn auf den ersten 6 Aufgabenblättern mindestens 60 Punkte erreicht werden.
+		\end{quote}
+	\begin{itemize}
+		\item Das heißt \textbf{nicht}, dass man mit weniger als 60 Punkten garantiert keinen Übungsschein bekommt
+		\item Dr. Worsch hat darauf hingewiesen, dass auch mal beide Augen zugedrückt werden
+		\item Falls also bisher knapp hinterher: Dranbleiben!
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{zu ÜB 4 Aufg. 1 + 2}
-	\begin{itemize}
-		\item Entweder Konkatenation von Sprachen oder Konkatenation von Wörtern, nicht Sprachen mit Wörtern konkatenieren!
-		\item Beispiel: Sei $A=\set{a,b}$ ein Alphabet.
-		\only<1>{
-			\item \textcolor{red}{\textbf{Falsch:} $aa \cdot \set{b}^{k}$, $\varepsilon \cdot A^{+}$}
-		}
-		\only<2-|handout:0>{
-			\item \textcolor{red}{\sout{\textbf{Falsch:} $aa \cdot \set{b}^{k}$, $\varepsilon \cdot A^{+}$}}
-			\item \textcolor{kit-green100}{\textbf{Korrekt:}} $aa \cdot b^{k}$, $\set{\varepsilon} \cdot A^{+}$
-		}
-	\end{itemize}
-\end{frame}
 }
