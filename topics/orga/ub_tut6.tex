@@ -1,4 +1,4 @@
-\subsection{keko}
+\subsection{Orga}
 \begin{frame}{Organisatorisches}
     \begin{itemize}
     	\item Anmeldung f. Klausur und Übungsschein sind geöffnet
@@ -6,3 +6,52 @@
 
 
 \end{frame}
+
+\Moritz{
+
+\begin{frame}{Zu Übungsblatt 4}
+
+	\textbf{Aufgabe 1):}
+	\begin{itemize}
+		\item Auf Präzedenz der Operationen auf Sprachen achten!
+		\item Produkt ``$\cdot$'' bindet stärker als Vereinigung ``$\cup$''
+		\item \begin{align*}
+			L &= \set{ab}^\ast \cup \set{a} \cdot ({a} \cdot \set{a,ab})^\ast \cdot \set{bb}\\
+			&= 	(\set{ab}^\ast) \cup (\set{a} \cdot ({a} \cdot \set{a,ab})^\ast \cdot \set{bb})
+		\end{align*}
+	\end{itemize}
+
+\end{frame}
+	
+\begin{frame}{Zu Übungsblatt 4}
+	
+	\textbf{Aufgabe 3b):}
+	\begin{itemize}
+		\item $A(L):\; (\{a\}\cdot L)^\ast \cap A^+ = L$
+		\item ``Zeigen Sie: Wenn $A(L)$ gilt, dann ist $\varepsilon \notin L$.''
+		\item Gute Idee: Kontraposition (= Umkehrschluss) \begin{itemize}
+			\item Also zeigen: $\varepsilon \in L \, \rightarrow $ ($A(L)$ gilt nicht)
+			\item Kontraposition $\ne$ Beweis durch Widerspruch!
+		\end{itemize}
+		\pause
+		\item Nicht so gute Idee: Einfach $\varepsilon$ für $L$ einsetzen \begin{itemize}
+			\item \textcolor{red}{$(\{a\}\cdot \set{\varepsilon})^\ast \cap A^+ = \set{\varepsilon}$}
+			\item Das ist so, als würde man sagen ``Weil $\varepsilon \in L$, gilt $L=\set{\varepsilon}$''
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Zu Übungsblatt 4}
+	\textbf{Aufgabe 3b):}
+	\begin{itemize}
+		\item Bei Mengen über einzelne, beliebige Elemente argumentieren meist am Einfachsten. \begin{itemize}
+			\item Sei $w \in (\{a\}\cdot L)^\ast \cap A^+$ beliebig.
+			\item Dann gilt $w \in A^+$, womit $|w| > 0$. Wegen $|\varepsilon| = 0$ also $\varepsilon \notin (\{a\}\cdot L)^\ast \cap A^+$.
+			\item Aber $\varepsilon \in L$, also $L \ne (\{a\}\cdot L)^\ast \cap A^+$.
+			\item $A(L)$ gilt nicht.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+}
