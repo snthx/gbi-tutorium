@@ -2,11 +2,45 @@
 \newcommand{\Rnullplus}{\ensuremath{\nR^+_0}}
 
 \subsection{Ressourcenverbrauch, Abängigkeit von n, Best- Worst- und Average-Case}
+
+\begin{frame}{Laufzeit}
+    \centering \lstinputlisting[language=Java]{../topics/algorithmen/examples/first.java}
+
+    \begin{exampleblock}{Aufgabe}
+        \begin{itemize}
+            \item Wie viele \emph{Instruktionen} werden von \texttt{first} abgearbeitet?
+            \item Drücke die Anzahl Instruktionen als Funktion $f(n)$ aus, wobei $n$ die Größe des Array \texttt{a} bezeichnet.
+        \end{itemize}      
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Laufzeit}
+    \centering \lstinputlisting[language=Java]{../topics/algorithmen/examples/sum.java}
+
+    \begin{exampleblock}{Aufgabe}
+        \begin{itemize}
+            \item Wie viele \emph{Instruktionen} werden von \texttt{sum} abgearbeitet?
+            \item Drücke die Anzahl Instruktionen als Funktion $f(n)$ aus, wobei $n$ die Größe des Array \texttt{a} bezeichnet.
+        \end{itemize}      
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Laufzeit}
+    \centering \lstinputlisting[language=Java]{../topics/algorithmen/examples/doubleloop.java}
+
+    \begin{exampleblock}{Aufgabe}
+        \begin{itemize}
+            \item Wie viele \emph{Instruktionen} werden von \texttt{foo} abgearbeitet?
+            \item Drücke die Anzahl Instruktionen als Funktion $f(n)$ aus.
+        \end{itemize}      
+    \end{exampleblock}
+\end{frame}
+
 \begin{frame}{Laufzeit}
 \centering\includegraphics[height=4cm]{algorithm}
 
 \begin{exampleblock}{Aufgabe}
-	Wie viele \emph{Instruktionen} werden aufgerufen? \\% Worst-Case: n+1, Best-Case: 1, Average Case ?
+	Wie viele \emph{Instruktionen} werden von \texttt{algorithm} aufgerufen? \\% Worst-Case: n+1, Best-Case: 1, Average Case ?
 	\pause
 	Im \emph{worst case}? Im \emph{best case}? Im \emph{average case}?
 \end{exampleblock}
