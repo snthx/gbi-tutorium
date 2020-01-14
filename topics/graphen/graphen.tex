@@ -19,7 +19,6 @@
 \begin{frame}{Gerichtete Graphen}
 
 	\begin{exampleblock}{Beispiel}
-		Graph von eben:
 		\begin{figure}[H]
 		\begin{tikzpicture}[->,>=stealth,baseline=-5mm]
 		\matrix[matrix of math nodes,nodes={draw,circle,minimum size=10mm,inner sep=2pt},row sep=15mm,column sep=15mm,ampersand replacement=\&]
@@ -283,7 +282,7 @@
 
 \begin{frame}{Ungerichtete Graphen: Wege}
 	\begin{block}{Def.: Weg}
-		Was beim gerichteten Graphen Pfad heißt, heißt beim ungerichteten Graphen \textbf{Weg}. Ein Weg ist also ein n-Tupel $p=(v_0,...,v_n)$ mit
+		Was beim gerichteten Graphen Pfad heißt, heißt beim ungerichteten Graphen \textbf{Weg}. Ein Weg ist also ein $(n+1)$-Tupel $p=(v_0,...,v_n)$ mit
 		\begin{itemize}
 		 	\item $v_i\in V \: (i\in\set{0,...,n})$ und
 		 	\item $\forall i \in \set{0,...,n-1}: \set{v_i,v_{i+1}} \in E$.

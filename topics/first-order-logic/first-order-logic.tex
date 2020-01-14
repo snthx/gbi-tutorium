@@ -105,14 +105,14 @@
 \end{frame}
 
 \begin{frame}{Aufgabe 2 (WS 15/16, Blatt 7)}
-	\begin{block}{Aufgabe}
+	\begin{exampleblock}{Aufgabe}
 		Formuliert die folgenden Aussagen als Formeln in Prädikatenlogik:
 		\begin{enumerate}
 			\item Nicht alle Vögel können fliegen.
 			\item Wenn es irgendjemand kann, dann kann es Donald Ervin Knuth.
 			\item John liebt jeden, der sich nicht selbst liebt.
 		\end{enumerate}
-	\end{block}
+	\end{exampleblock}
 	
 	\visible<2-|handout:2>{
 		\begin{block}{Lösung}
@@ -172,10 +172,10 @@
 		\plkz}
 	\end{equation*}
 	
-	\begin{block}{Aufgabe 1.1}
+	\begin{exampleblock}{Aufgabe 1.1}
 		Welche Variablenvorkommen sind frei ($\fv$) und welche gebunden ($\bv$)?\\
 		Ist die Formel geschlossen?
-	\end{block}
+	\end{exampleblock}
 
 	\pause
 	\begin{block}{Lösung}
@@ -234,9 +234,11 @@
 		\plkz}
 	\end{equation*}
 	
-	\begin{block}{Aufgabe 1.2}
-		Gebt eine Substitution $\sigma$ an, die \emph{nicht} kollisionsfrei für $F$ ist.\\[1em] \pause
-		
+	\begin{exampleblock}{Aufgabe 1.2}
+		Gebt eine Substitution $\sigma$ an, die \emph{nicht} kollisionsfrei für $F$ ist.
+	\end{exampleblock}
+	\pause
+	\begin{block}{Lösung}
 		Die Substitution $\sigma_{\{\ply/\plx\}}$ leistet das Gewünschte.
 	\end{block}
 	
@@ -265,15 +267,30 @@
 		\plkz}
 	\end{equation*}\\[1em]
 	
-	\begin{block}{Aufgabe 1.3}
-		Gebt eine Interpretation $(D_1, I_1)$ und eine Variablenbelegung $\beta_1$ so an, dass $val_{D_1, I_1, \beta_1}(F) = \W$ gilt.\\[0.5em]
-		
-		\visible<2-|handout:2>{Die Interpretation $(D_1, I_1) = (\{ 0, 1 \}, {<})$ und die Variablenbelegung $\beta_1 \colon \VPL \functionto D$, $v \mapsto 0$, leisten das Gewünschte.}
+	\begin{exampleblock}{Aufgabe 1.3+1.4}
+		1.3: Gebt eine Interpretation $(D_1, I_1)$ und eine Variablenbelegung $\beta_1$ so an, dass $val_{D_1, I_1, \beta_1}(F) = \W$ gilt.\\[0.5em]
+		1.4: Gebt eine Interpretation $(D_2, I_2)$ und eine Variablenbelegung $\beta_2$ so an, dass $val_{D_2, I_2, \beta_2}(F) = \F$ gilt.
+	\end{exampleblock}
+	\pause
+	\begin{block}{Lösung}
+		1.3: $(D_1, I_1) = (\{ 0, 1 \}, {<})$ und $\beta_1 \colon \VPL \functionto D$, $v \mapsto 0$\\[.5em]
+		\pause
+		1.4:  $(D_2, I_2) = (\{ 0, 1 \}, {<})$ und $\beta_2 \colon \VPL \functionto D$, $v \mapsto 1$
 	\end{block}
 
-	\begin{block}{Aufgabe 1.4}
-		Gebt eine Interpretation $(D_2, I_2)$ und eine Variablenbelegung $\beta_2$ so an, dass $val_{D_2, I_2, \beta_2}(F) = \F$ gilt.\\[0.5em]
-		
-		\visible<3-|handout:2>{Die Interpretation $(D_2, I_2) = (\{ 0, 1 \}, {<})$ und die Variablenbelegung $\beta_2 \colon \VPL \functionto D$, $v \mapsto 1$, leisten das Gewünschte.}
+\end{frame}
+
+\begin{frame}{Äquivalenz}
+	
+	\begin{block}{Def.: Äquivalenz prädikatenlogischer Formeln}
+		Seien $F, G$ prädikatenlogische Formeln. $F, G$ heißen äquivalent, gdw. für alle Universen $D$, Interpretationen $I$ und Variablenbelegungen $\beta$ gilt: \[ val_{D,I,\beta}(F) = val_{D,I,\beta}(G) \]
 	\end{block}
+
+	\begin{exampleblock}{Beispiele}
+		Sei $R$ eine Relation mit $ar(R)=1$.
+		\begin{itemize}
+			\item $\neg \exists x R(x)$ ist äquivalent zu $\forall x \neg R(x)$
+		\end{itemize}
+	\end{exampleblock}
+
 \end{frame}
