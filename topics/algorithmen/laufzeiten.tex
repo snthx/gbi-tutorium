@@ -168,7 +168,7 @@
     \begin{block}{Def.: Mastertheorem}
     	Seien $a\geq 1$ und $b>1$ Konstanten, $f \from \nN \to \Rnullplus$ und $T(n)$ eine Laufzeitfunktion der Form
     	\[
-			T = a T\left(\frac{n}{b}\right) + f 
+			T(n) = a T\left(\frac{n}{b}\right) + f(n) 
 		\]
 		Dann gilt nach dem \textbf{Mastertheorem}:
 		\begin{itemize}
@@ -230,4 +230,70 @@
     			$T(n) \in \Theta(n^2)$
     	\end{itemize}
     \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Mastertheorem}
+
+    \begin{exampleblock}{Aufgabe}
+        Verwende das Mastertheorem, um asymptotische Schranken für die folgenden Funktionen zu finden:
+        \begin{enumerate}
+            \item $A(1)=1$ und für $n \in \nN : \; A(n) = 5 \cdot A(\lceil n / 5 \rceil) + 15n$
+            \item $B(1)=2$ und für $n \in \nN : \; B(n) = B(\lceil n / 7 \rceil) + n$
+            \item $C(1)=6$ und für $n \in \nN : \; C(n) = 8 \cdot C(\lceil n / 2 \rceil) + 4n + 3 \log n + 17$
+        \end{enumerate}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{Mastertheorem}
+    
+    \begin{block}{Lösung}
+        $A(1)=1$ und für $n \in \nN : \; A(n) = 5 \cdot A(\lceil n / 5 \rceil) + 15n$
+        \begin{itemize}
+            \item Aus der Formel lässt sich ablesen:\\
+                $a=5$, $b=5$, $f(n)=15n$
+            \item $n^{\log_b a}$ bestimmen:\\
+                $\log_b a = \log_5 5 = 1 \Rightarrow n^{\log_b a} = n^1$
+            \item $n^{\log_b a}$ mit $f(n)$ vergleichen: $15n \in \Theta(n^{1})$
+            \item Mit dem Mastertheorem folgt:\\
+                $T(n) \in \Theta(n \log n)$
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Mastertheorem}
+    
+    \begin{block}{Lösung}
+        $B(1)=2$ und für $n \in \nN : \; B(n) = B(\lceil n / 7 \rceil) + n$
+        \begin{itemize}
+            \item Aus der Formel lässt sich ablesen:\\
+                $a=1$, $b=7$, $f(n)=n$
+            \item $n^{\log_b a}$ bestimmen:\\
+                $\log_b a = \log_7 1 = 0 \Rightarrow n^{\log_b a} = n^0$
+            \item $n^{\log_b a}$ mit $f(n)$ vergleichen: $n \in \Omega(n^{0+\varepsilon})$ mit $\varepsilon = 1$.
+            \item Zusatzbedingung überprüfen: Ist $f\left(\frac{n}{7}\right)\leq d f(n)$ für ein $0< d < 1$?\\
+                Ja, für $d = \frac{1}{7}$ gilt $\forall n \geq 1 \; : \; f\left(\frac{n}{7}\right)=\frac{n}{7} \leq \frac{1}{7}n = \frac{1}{7}f(n)$
+            \item Mit dem Mastertheorem folgt:\\
+                $T(n) \in \Theta(n)$
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Mastertheorem}
+    
+    \begin{block}{Lösung}
+        $C(1)=6$ und für $n \in \nN : \; C(n) = 8 \cdot C(\lceil n / 2 \rceil) + 4n + 3 \log n + 17$
+        \begin{itemize}
+            \item Aus der Formel lässt sich ablesen:\\
+                $a=8$, $b=2$, $f(n)= 4n + 3 \log n + 17$
+            \item $n^{\log_b a}$ bestimmen:\\
+                $\log_b a = \log_2 8 = 3 \Rightarrow n^{\log_b a} = n^3$
+            \item $n^{\log_b a}$ mit $f(n)$ vergleichen: $4n + 3 \log n + 17 \in O(n^{3-\varepsilon})$ mit $\varepsilon = 2$.
+            \item Mit dem Mastertheorem folgt:\\
+                $T(n) \in \Theta(n^3)$
+        \end{itemize}
+    \end{block}
+
 \end{frame}
