@@ -71,15 +71,15 @@
           		\node[state]          (D) [right of=E] {$D$};
           		\path[->]
           		% (S) edge              node  {$\9\io\9R$} (A)
-          		(A) edge              node  {$\#1\io\#XR$} (B)
-          		(B) edge [loop above] node  {$\#1\io\#1R$} ()
-          		edge              node  {$\9\io\9R$} (C)
-          		(C) edge [loop above] node  {$\#1\io\#1R$} ()
-          		edge              node  {$\9\io\#1L$} (D)
-          		(D) edge [loop below] node  {$\#1\io\#1L$} ()
-          		edge              node  {$\9\io\9L$} (E)
-          		(E) edge [loop below] node  {$\#1\io\#1L$} ()
-          		edge              node  {$\#X\io\#1R$} (A)
+          		(A) edge              node  {$\io{\#1}{\#XR}$} (B)
+          		(B) edge [loop above] node  {$\io{\#1}{\#1R}$} ()
+          		edge              node  {$\io{\9}{\9R}$} (C)
+          		(C) edge [loop above] node  {$\io{\#1}{\#1R}$} ()
+          		edge              node  {$\io{\9}{\#1L}$} (D)
+          		(D) edge [loop below] node  {$\io{\#1}{\#1L}$} ()
+          		edge              node  {$\io{\9}{\9L}$} (E)
+          		(E) edge [loop below] node  {$\io{\#1}{\#1L}$} ()
+          		edge              node  {$\io{\#X}{\#1R}$} (A)
           		% (B) edge              node        {$\9\io\9R$} (B)
           		% edge [loop right] node        {$\#1\io\#1R$} ()
           		% (B) edge [loop right] node {$\9\io\#1L$} ()
@@ -193,11 +193,45 @@
 	\end{exampleblock}
 \end{frame}
 
+\begin{frame}{Turingmaschine}
+  
+  \begin{block}{Lösung}
+    \centering \begin{tikzpicture}[shorten >=1pt,initial text=,node distance=2.25cm,auto,->,>=stealth,baseline=(B.base)]
+              \node[state,initial]  (r)          {$r$};
+              \node[state]          (c_1) [right of=r] {$c_1$};
+              \node[state]          (c_0) [right of=c_1] {$c_0$};
+              \node[state]          (h) [right of=c_0] {$h$};
+              
+              \draw[->] (r) to [loop above] node[above,align=center] {$\io{\#0}{\#0R}$\\$\io{\#1}{\#1R}$} (r);
+              \draw[->] (c_1) to [loop above] node[above,align=center] {$\io{\#1}{\#0L}$} (c_1);
+              \draw[->] (c_0) to [loop above] node[above,align=center] {$\io{\#0}{\#0L}$\\$\io{\#1}{\#1L}$} (c_0);
+
+              \draw[->] (r) to node[above,align=center] {$\io{\9}{\9L}$} (c_1);
+              \draw[->] (c_1) to node[above,align=center] {$\io{\#0}{\#1L}$\\$\io{\9}{\#1L}$} (c_0);
+              \draw[->] (c_0) to node[above,align=center] {$\io{\9}{\9R}$} (h);
+
+        \end{tikzpicture}
+  \end{block}
+
+\end{frame}
+
 \begin{frame}{Turingmaschinen}
 	\begin{block}{Lösung}
 		\begin{enumerate}
-			\item s. Tafel
-			\item $\9 h \#{101} \9 $, $\9 h \#{1000} \9 $
+			\item s. o.
+			\item \begin{tabular}{ccccc}
+        &h&&&\\
+        \hline
+        $\9$&$\#{1}$&$\#{0}$&$\#{1}$&$\9$\\
+        \hline
+      \end{tabular} \quad und \quad 
+      \begin{tabular}{cccccc}
+        &h&&&&\\
+        \hline
+        $\9$&$\#{1}$&$\#{0}$&$\#{0}$&$\#{0}$&$\9$\\
+        \hline
+      \end{tabular}
+  %$\9 h \#{101} \9 $, $\9 h \#{1000} \9 $
 			\item Die TM erhöht eine binär dargestellte Zahl um 1
 		\end{enumerate}
 	\end{block}
