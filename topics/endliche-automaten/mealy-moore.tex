@@ -553,7 +553,7 @@
 
 \begin{frame}{Endlicher Akzeptor}
 
-	\begin{exampleblock}{Lösung zur Aufgabe zu endlichen Akzeptoren}
+	\begin{block}{Lösung zur Aufgabe zu endlichen Akzeptoren}
 		\begin{enumerate}
 			\item siehe Tafel
 		\item siehe Tafel
@@ -561,5 +561,143 @@
 		\item siehe Tafel
 		\item $L(A)= \setc{w \in \set{a,b}^{\ast}}{\,\setsize{w} mod\, 2 = 1} = \setC{w \in \set{a,b}^{\ast}}{$w$ hat ungerade Länge}$
 		\end{enumerate}		
-	\end{exampleblock}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Endlicher Akzeptor}
+
+	\begin{block}{Lösung}
+
+	1. Zeichne einen Akzeptor mit $X=\set{a,b}$, der alle Wörter akzeptiert, bei denen die Anzahl der \emph{a} durch 5 teilbar ist.\\
+
+	\textbf{Lösung:}\\
+
+	\centering \begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto,initial text=,->,>=stealth]
+   		\node[state,initial, accepting] (s_0) {$s_{0}$};
+  		\node[state] (s_1) [right of= s_0] {$s_{1}$};
+  		\node[state] (s_2) [right of= s_1] {$s_{2}$};
+    	\node[state] (s_3) [right of= s_2] {$s_3$};
+    	\node[state] (s_4) [right of= s_3] {$s_4$};
+    	\draw[->] (s_0) edge node {$a$} (s_1);
+    	\draw[->] (s_1) edge node {$a$} (s_2);
+    	\draw[->] (s_2) edge node {$a$} (s_3);
+    	\draw[->] (s_3) edge node {$a$} (s_4);
+    	\draw[->] (s_0) edge node {$a$} (s_1);
+    	\draw[->] (s_0) to [loop above] node {$b$} (s_0);
+    	\draw[->] (s_1) to [loop above] node {$b$} (s_1);
+    	\draw[->] (s_2) to [loop above] node {$b$} (s_2);
+    	\draw[->] (s_3) to [loop above] node {$b$} (s_3);
+    	\draw[->] (s_4) to [loop above] node {$b$} (s_4);
+    	\draw[->] (s_4) to [bend left] node {$b$} (s_0);
+ 	\end{tikzpicture}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Endlicher Akzeptor}
+
+	\begin{block}{Lösung}
+
+	2. Zeichne einen Akzeptor mit $X=\set{a,b}$, der alle Wörter akzeptiert, in denen nirgends hintereinander zwei \emph{b} vorkommen.\\
+
+	\textbf{Lösung:}\\
+
+	\centering \begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto,initial text=,->,>=stealth]
+   		\node[state,initial,accepting] (s_0) {$s_{0}$};
+  		\node[state] (s_1) [right of= s_0] {$s_{1}$};
+  		\node[state] (s_2) [right of= s_1] {$s_{2}$};
+    	\draw[->] (s_0) to [bend left] node {$b$} (s_1);
+    	\draw[->] (s_1) to [bend left] node {$a$} (s_0);
+    	\draw[->] (s_1) edge node {$b$} (s_2);
+    	\draw[->] (s_0) to [loop above] node {$a$} (s_0);
+    	\draw[->] (s_2) to [loop above] node {$a,b$} (s_2);
+ 	\end{tikzpicture}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Endlicher Akzeptor}
+
+	\begin{block}{Lösung}
+
+	3. Zeichne einen Akzeptor mit $X=\set{a,b}$, der alle Wörter akzeptiert, in denen irgendwo das Teilwort \emph{abab} vorkommt.\\
+
+	\textbf{Lösung:}\\
+
+	\centering \begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto,initial text=,->,>=stealth]
+   		\node[state,initial] (s_0) {$s_{0}$};
+  		\node[state] (s_1) [right of= s_0] {$s_{1}$};
+  		\node[state] (s_2) [right of= s_1] {$s_{2}$};
+    	\node[state] (s_3) [right of= s_2] {$s_3$};
+    	\node[state,accepting] (s_4) [right of= s_3] {$s_4$};
+
+    	\draw[->] (s_0) edge node {$a$} (s_1);
+    	\draw[->] (s_1) edge node {$b$} (s_2);
+    	\draw[->] (s_2) edge node {$a$} (s_3);
+    	\draw[->] (s_3) edge node {$b$} (s_4);
+
+    	\draw[->] (s_2) to [bend left] node {$b$} (s_0);
+    	\draw[->] (s_3) to [bend right] node[above] {$a$} (s_1);
+
+    	\draw[->] (s_0) to [loop above] node {$b$} (s_0);
+    	\draw[->] (s_1) to [loop above] node {$a$} (s_1);
+    	\draw[->] (s_4) to [loop above] node {$a,b$} (s_4);
+ 	\end{tikzpicture}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Endlicher Akzeptor}
+
+	\begin{block}{Lösung}
+
+	4. Zeichne einen Akzeptor mit $X=\set{a,b}$, der alle Wörter akzeptiert, in denen nirgends das Teilwort \emph{abab} vorkommt.\\
+
+	\textbf{Lösung:}\\
+
+	\centering \begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto,initial text=,->,>=stealth]
+   		\node[state,initial,accepting] (s_0) {$s_{0}$};
+  		\node[state,accepting] (s_1) [right of= s_0] {$s_{1}$};
+  		\node[state,accepting] (s_2) [right of= s_1] {$s_{2}$};
+    	\node[state,accepting] (s_3) [right of= s_2] {$s_3$};
+    	\node[state] (s_4) [right of= s_3] {$s_4$};
+
+    	\draw[->] (s_0) edge node {$a$} (s_1);
+    	\draw[->] (s_1) edge node {$b$} (s_2);
+    	\draw[->] (s_2) edge node {$a$} (s_3);
+    	\draw[->] (s_3) edge node {$b$} (s_4);
+
+    	\draw[->] (s_2) to [bend left] node {$b$} (s_0);
+    	\draw[->] (s_3) to [bend right] node[above] {$a$} (s_1);
+
+    	\draw[->] (s_0) to [loop above] node {$b$} (s_0);
+    	\draw[->] (s_1) to [loop above] node {$a$} (s_1);
+    	\draw[->] (s_4) to [loop above] node {$a,b$} (s_4);
+ 	\end{tikzpicture}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Endlicher Akzeptor}
+
+	\begin{block}{Lösung}
+		5. Welche Sprache wird vom folgenden Akzeptor $A$ erkannt?\\
+
+		\begin{figure}[ht]
+  			\centering
+  			\begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto,initial text=,->,>=stealth]
+   			 	\node[state,initial]  (s_0)                       {$s_{0}$};
+  			 	\node[state,accepting](s_1) [right of= s_0] {$s_{1}$};
+  			 	\node[state]          (s_2) [right of= s_1] {$s_{2}$};
+    			\node[state,accepting](s_3) [right of= s_2] {$s_3$};
+    			\draw[->] 	(s_0) 	edge              	node        {$a,b$} (s_1);
+              	\draw[->]	(s_1) 	to [bend left=20] 	node        {$a,b$} (s_2);
+              	\draw[->]	(s_2) 	to [bend left=20] 	node 		{$b$} 	(s_3);
+              	\draw[->]	(s_2)	to [bend left=20] 	node 		{$a$} 	(s_1);
+              	\draw[->]	(s_3)	to [bend left=20] 	node 		{$a,b$} (s_2);
+  			\end{tikzpicture}
+			\end{figure}
+
+		\textbf{Lösung:}\\
+		\begin{align*}
+			L(A) &= \setc{w \in \set{a,b}^{\ast}}{\,|w| mod\, 2 = 1}\\
+			&= \setC{w \in \set{a,b}^{\ast}}{$w$ hat ungerade Länge}
+		\end{align*}
+	\end{block}
 \end{frame}
