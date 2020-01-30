@@ -86,8 +86,8 @@
 \end{frame}
 
 \subsection{Regex-Bäume}
-\begin{frame}{Kantorowitsch-/Regex-Bäume}
-    \begin{block}{Def.: Kantorowitsch-/Regex-Baum}
+\begin{frame}{Regex-Bäume}
+    \begin{block}{Def.: Regex-Baum}
     \small
     	Es sei $A$ ein beliebiges Alphabet. Dann heißt ein Baum \textbf{Regex-Baum}, falls:
     	\begin{itemize}
@@ -97,14 +97,14 @@
     	\end{itemize}
     \end{block}
 
-    \only<1|handout:1>{
-    \begin{exampleblock}{Beispiel}
-    	Zeichne den Kantorowitschbaum zum arithmetischen Ausdruck
-    	\[
-    		3+(a+b)*(-c)
-    	\]
-    \end{exampleblock}
-    }
+    % \only<1|handout:1>{
+    % \begin{exampleblock}{Beispiel}
+    % 	Zeichne den Kantorowitschbaum zum arithmetischen Ausdruck
+    % 	\[
+    % 		3+(a+b)*(-c)
+    % 	\]
+    % \end{exampleblock}
+    % }
 
    %  \begin{center}
    %  \begin{tikzpicture}
@@ -136,7 +136,7 @@
   	% \end{center}
 
 
-    \only<2|handout:2>{
+    \only<1|handout:1>{
     	\begin{exampleblock}{Aufgabe}
     		Zeichne den Regex-Baum zu folgendem regulären Ausdruck:
     		\[
@@ -148,7 +148,7 @@
     
 \end{frame}
 
-\begin{frame}{Kantorowitsch-/Regex-Bäume}
+\begin{frame}{Regex-Bäume}
 	\begin{block}{Lösung zu $R = ( ( b | \emptyset * ) a ) (b * )$}
 		\begin{figure}[ht]
   			\centering
