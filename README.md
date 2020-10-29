@@ -16,17 +16,17 @@
 * Die topics Dateien kann man natürlich auch einfach ausschlachten und anderweitig verwenden
 
 ### Tutor\*innen
-* Jede\*r Tutor\*in gibt die Daten zur eigenen Person/Tut in config\_<Name>.tex an
-* In modes.tex (von git ignoriert) wird ein Command \<Name>Mode für die aktuelle Person angelegt (siehe modes\_template.tex)
-* In templates/praeambelTut.tex wird die Definition von \<Name>Mode zur Erkennung der/des Tutor\*in verwendet und die entsprechende config eingebunden
+* Jede\*r Tutor\*in gibt die Daten zur eigenen Person/Tut in config\_&lt;Name&gt;.tex an
+* In modes.tex (von git ignoriert) wird ein Command \&lt;Name&gt;Mode für die aktuelle Person angelegt (siehe modes\_template.tex)
+* In templates/praeambelTut.tex wird die Definition von \&lt;Name&gt;Mode zur Erkennung der/des Tutor\*in verwendet und die entsprechende config eingebunden
 
 ### Sonstiges
 * In templates/gbi-makros.tex finden sich die Definitionen allerhand Commands, die verwendet werden
 
 ## Neue\*n Tutor\*in anlegen
-1. config\_<Name>.tex erstellen und mit passenden Daten füllen (als Referenz kann man andere configs nehmen)
+1. config\_&lt;Name&gt;.tex erstellen und mit passenden Daten füllen (als Referenz kann man andere configs nehmen)
 2. modes\_template.tex kopieren und in modes.tex umbenennen
-3. In modes.tex Command \<Name>Mode anlegen (so wie bestehende)
+3. In modes.tex Command \&lt;Name&gt;Mode anlegen (so wie bestehende)
 4. In templates/praeambelTut.tex 
 	`\ifdefined \<Name>Mode
 	\input{../config_<Name>.tex}
