@@ -1,0 +1,58 @@
+\subsection{Binäre Operationen}
+
+\begin{frame}{Binäre Operation}
+	\begin{block}{Def.: Binäre Operation}
+		Eine \textbf{binäre Operation auf einer Menge $M$} ist eine Abbildung $f: M \times M \to M$. Meist wird ein Operationssymbol eingeführt, um die binäre Operation in \textit{Infix}-Schreibweise zu verwenden. Also z.B.
+		\medskip
+		\[f(x,y) =: x \diamond y \text{ für } x,y \in M\]
+	\end{block}
+
+	\begin{exampleblock}{Beispiel}
+		Aus der Mathematik sind viele binäre Operationen bekannt, z.B.: \begin{align*}
+			&f_{add}: \nN_0^2 \to \nN_0, \quad (x,y) \mapsto x+y \\
+			&f_{sub}: \nZ^2 \to \nZ, \quad (x,y) \mapsto x-y \\
+			&f_{mult}: \nN_0^2 \to \nN_0, \quad (x,y) \mapsto x \cdot y \\
+			&f_{div}: \nQ^2 \to \nQ, \quad (x,y) \mapsto x / y \\
+		\end{align*}
+	\end{exampleblock}
+	
+\end{frame}
+
+\begin{frame}{Binäre Operationen}
+	\begin{block}{Def.: Kommutative Binäre Operation}
+		Eine binäre Operation $\diamond:M \times M \to M$  heißt \textbf{kommutativ}, wenn für alle Elemente $x,y \in M$ gilt: 
+		\medskip
+		\[f(x,y) = f(y,x) \; (\text{bzw. } x \diamond y = y \diamond x)\]
+		
+		\medskip
+		Anschaulich: \enquote{Die Operanden dürfen vertauscht werden, ohne das Ergebnis zu beeinflussen}
+	\end{block}
+
+	\begin{exampleblock}{Beispiele}
+		\begin{itemize}
+			\item Addition ist kommutativ $x + y = y + x$
+			\item Multiplikation ist kommutativ $x \cdot y = y \cdot x$
+			\item Subtraktion ist nicht kommutativ $ x-y \ne y-x$
+			\item $f_{Abstand}: \nZ^2 \to \nZ, \; (x,y) \mapsto |x-y|$ ist kommutativ!
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Binäre Operationen}
+	\begin{block}{Def.: Assoziative Binäre Operation}
+		Eine binäre Operation $\diamond:M \times M \to M$  heißt \textbf{assoziativ}, wenn für alle Elemente $x,y,z \in M$ gilt: 
+		\medskip
+		\[f(x,f(y,z)) = f(f(x,y),z) \; (\text{bzw. } x \diamond (y \diamond z) = (x \diamond y) \diamond z )\]
+
+		\medskip
+		Anschaulich: \enquote{Klammern um Operanden dürfen gesetzt werden, wie man will (oder weggelassen werden!), ohne das Ergebnis zu beeinflussen}
+	\end{block}
+
+	\begin{exampleblock}{Beispiele}
+		\begin{itemize}
+			\item Addition ist assoziativ $x + (y + z) = (x + y) + z = x + y + z$
+			\item Subtraktion ist nicht assoziativ $x - (y - z) \ne (x - y) - z$ 
+			\item $f_{Abstand}: \nZ^2 \to \nZ, \; (x,y) \mapsto |x-y|$ ist nicht assoziativ
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
