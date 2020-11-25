@@ -1,0 +1,80 @@
+\subsection{Symbole und Bedeutung}
+\begin{frame}{AL-Symbole}
+	\textbf{AL-Konnektive:} $\set{\bnot, \bund, \boder, \bimp(, \bgdw)}$ \begin{itemize}
+		\item Erscheinen nur in AL-Formeln
+		\item Sind rein syntaktisches Konstrukt (haben an sich keine Bedeutung, sondern sind nur Zeichen zur Notation)
+	\end{itemize}
+
+	\medskip
+	\pause
+
+	\textbf{Wahrheitswerte:} $\BB = \set{\mathbf{w},\mathbf{f}}$ \begin{itemize}
+		\item Sind nur Ergebnisse der semantischen Auswertung einer AL-Formel
+		\item Erscheinen \textbf{nie \textit{in} AL-Formeln}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{AL-Symbole}
+
+	\textbf{(Syntaktische) Gleichheit:} $=$ \begin{itemize}
+		\item Für zwei AL-Formeln $F,G$ gilt $F=G$ gdw $F$ und $G$ \textit{syntaktisch} gleich
+		\item D.h. $F$ und $G$ sind genau die gleiche Folge von AL-Variablen und AL-Konnektiven
+	\end{itemize}
+
+	\medskip
+	\pause
+
+	\textbf{(Semantische) Äquivalenz:} $\equiv$ \begin{itemize}
+		\item Für zwei AL-Formeln $F,G$ gilt $F \equiv G$ gdw $F$ und $G$ \textit{semantisch} gleich
+		\item D.h. $F$ und $G$ werden bei gleicher Interpretation $I$ der vorkommenden Variablen auch durch $val_I$ zum gleichen Wahrheitswert ausgewertet
+	\end{itemize}
+
+	\pause
+
+	\begin{alertblock}{Beziehung zwischen $=$ und $\equiv$}
+		
+		Für AL-Formeln $F,G$ gilt: Aus $F = G$ folgt $F \equiv G$, aber i.A. nicht andersherum!
+		Seien z.B. $A,B$ AL-Variablen und $F := \bnot A \boder B$, sowie $G := A \bimp B$. Dann gilt $F \equiv G$, aber nicht $F = G$.
+
+	\end{alertblock}
+
+
+\end{frame}
+
+\begin{frame}{AL-Symbole}
+
+	\textbf{\enquote{Folgt-aus} (Modell):} $\models$ \begin{itemize}
+		\item Für eine Formelmenge $\Gamma$ und eine Formel $G$ gilt $\Gamma \models G$ gdw jedes Modell von $\Gamma$ auch Modell von $G$ ist
+		% \item D.h. $\Gamma \models G$ gdw für jede Interpretation $I$ gilt: $val_I(F) = \mathbf{w}$ für jede Formel $F \in \Gamma$ $\Rightarrow$ $val_I(G) = \mathbf{w}$
+		\item Schreibe $\models G$ (statt $\emptyset \models G$), wenn $val_I(G) = \mathbf{w}$ für jede Interpretation $I$
+		\item Bei $\models$ geht es um aussagenlogische Folgerbarkeit: $\Gamma \models G$ heißt: Wenn eine Interpretation alle Formeln in $\Gamma$ erfüllt, so erfüllt sie auch $G$ $\Rightarrow$ \enquote{Aus Erfülltheit von $\Gamma$ folgt Erfülltheit von $G$}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{AL-Symbole}
+
+	\textbf{Ableitbarkeit (in einem Kalkül):} $\vdash_C$ \begin{itemize}
+		\item Für einen Kalkül $C$, eine Formelmenge $\Gamma$ und eine Formel $G$ gilt $\Gamma \vdash_C G$ gdw $G$ aus $\Gamma$ im Kalkül $C$ ableitbar ist
+		\item (Bei uns ist immer $C$ = AL-Hilbertkalkül und wir schreiben $\vdash$ statt $\vdash_C$)
+		\item D.h. $\Gamma \vdash G$ gdw mit den Regeln des Hilbertkalküls $G$ aus den Prämissen (Formeln in $\Gamma$) und den Axiomen abgeleitet werden kann
+		\item Schreibe $\vdash G$ (statt $\emptyset \vdash G$), wenn sich $G$ nur aus den Axiomen herleiten lässt ($G$ heißt dann \textit{Theorem} und die Ableitung \textit{Beweis})
+		\item Bei $\vdash$ geht es um die Ableitbarkeit in Bezug auf einen speziellen Kalkül, also bestimmte Axiome und Regeln
+	\end{itemize}
+
+\end{frame}
+	
+\begin{frame}{AL-Symbole}
+
+	\begin{alertblock}{Beziehung zwischen $\models$ und $\vdash_C$} 
+		
+		Wenn $\Gamma \vdash_C G$, dann $\Gamma \models G$ gdw $C$ ein \textit{korrekter} Kalkül für die Theorie ist.\\
+		Wenn $\Gamma \models G$, dann $\Gamma \vdash_C G$ gdw $C$ ein \textit{vollständiger} Kalkül für die Theorie ist.\\
+
+		Der Hilbertkalkül ist korrekt und vollständig für AL, also bei uns gilt: \[ \Gamma \models G \text{ gdw } \Gamma \vdash G\]
+
+	\end{alertblock}
+
+
+\end{frame}
