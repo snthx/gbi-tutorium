@@ -1,0 +1,45 @@
+\subsection{VI Aufgaben zu Sprachen}
+
+\begin{frame}{Induktiv Beweisen: Sprachen I}
+	\small \begin{exampleblock}{Aufgabe}
+		Sei $L$ eine formale Sprache über einem Alphabet $A$. $L$ sei induktiv definiert durch:
+		\begin{align*}
+		 	L_1 &= A \\
+		 	L_{n+1} &= L_n \cdot L_n \text{ für } n\in \nN^+ \\
+		 	L &= \bigcup_{i=1}^\infty L_i
+		 \end{align*}
+
+		 \smallskip
+		 Zeige per vollständiger Induktion, dass folgender geschlossener Ausdruck für $L$ gilt: \[L = \setc{w\in A^\ast}{|w|=2^n, n\in \nN_0}\]
+		 
+	\end{exampleblock}
+
+	\smallskip
+	Tipp: Zeige $\forall n\in \nN^+: L_n = \setc{w\in A^\ast}{|w|=2^{n-1}}$, denn dann folgt:
+	\[
+		L = \bigcup_{i=1}^\infty L_i 
+		= \bigcup_{n=1}^\infty \setc{w\in A^\ast}{|w|=2^{n-1}} 
+		= \bigcup_{n=0}^\infty \setc{w\in A^\ast}{|w|=2^{n}}
+	\]
+
+\end{frame}
+	
+\begin{frame}{Induktiv Beweisen: Sprachen I}
+
+	\small \begin{block}{Lösung}
+		\textbf{Induktionsanfang (I.A.):} Betrachte $n=1$. Es gilt $L_1 = A$, d.h. für jedes $w \in L_1$ gilt $|w|=1=2^0=2^{n-1}$ \checkmark\\
+		\textbf{Induktionsschritt (I.S.):}\\
+		\textit{Induktionsvorauss. (I.V.):} Sei $n \in \nN^+$ bel. und gelte $L_n = \setc{w\in A^\ast}{|w|=2^{n-1}}$.\\[.25em]
+		$\zz L_{n+1} = \setc{w\in A^\ast}{|w|=2^{n}}$ \quad bzw. \quad $w\in L_{n+1} \textit{ gdw. } |w|=2^n$		
+		\begin{align*}
+			&w\in L_{n+1} \\
+			\textit{gdw. \quad}& w \in L_n \cdot L_n\\
+			\textit{gdw. \quad}& \exists w',w'' \in L_n: w = w' \cdot w'' \\
+			\textit{mit I.V. gdw. \quad}& \exists w',w'' \in \setc{x\in A^\ast}{|x|=2^{n-1}}: w = w' \cdot w'' \\
+			\textit{gdw. \quad}& \exists w',w'' \in A^\ast: |w'|=|w''|=2^{n-1} \wedge w = w' \cdot w''\\
+			%\textit{gdw. }& \exists w',w'' \in A^\ast: |w'|=|w''|=2^{n-1} \wedge w = w' \cdot w'' \wedge |w|=|w'|+|w''|\\
+			\textit{gdw. \quad}& |w|=2^{n-1}+2^{n-1}=2*2^{n-1}\\
+			\textit{gdw. \quad}& |w|=2^n
+		\end{align*}
+	\end{block}
+\end{frame}
