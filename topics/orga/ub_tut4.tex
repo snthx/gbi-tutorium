@@ -1,27 +1,37 @@
 \Kilian{}
 
-\Moritz{}
+\Moritz{
+	
+\begin{frame}{Zu ÜB 3}
+	
+	Allgemein:
+	\begin{itemize}
+		\item \enquote{Geben Sie an} $\Rightarrow$ Nur Lösung reicht!
+		\item Ich bewerte auch nur die endgültige Lösung
+		\item Begründungen/Erklärungen ignoriere ich (größtenteils)
+	\end{itemize}
 
-\Stephan{
-	\begin{frame}{Zweites Übungsblatt}
-		\emph{Aufgabe 1}
-		\begin{itemize}
-			\item $M_y = \setC{x \in \nR_0^+}{f(x)=y} \neq \set{0,1} $
-			\item Oft solche Angaben: $M_0 = \setc{x \in \nN_0}{f(x)=0}$.\\
-	    	      Die Einschränkung ist unnötig, $M_0 = \nN_0$ reicht.
-		\end{itemize}
+\end{frame}
+		
+\begin{frame}{Zu ÜB 3}
+
+	Aufgabe 3.5 (d):\\[.3em]
+
+	\includegraphics[width=\textwidth]{../topics/orga/WS2021_Aufg_3_5_d}
+
+	\begin{itemize}
+		\item Korrekturanweisung von Worschanese: Definition der Monotonie (oder ähnliche Formulierungen) geben keine Punkte
+		\item Ziel der Aufgabe: Zusammenhang zwischen Formel $F$ und Monotonie der Funktion $\Phi_F$ finden
 		\pause
-		\emph{Aufgabe 1c}
-		\begin{itemize}
-			\item Häufige Lösung: $h^n(n) = \lfloor \frac{n}{2^n} \rfloor$
-			\item Das Ergebnis ist korrekt, da $h^n(n) = 0 =\lfloor \frac{n}{2^n} \rfloor$
-			\item Die Erkenntnis ($\forall a,b : h^a (b) = \lfloor \frac{b}{2^a} \rfloor$) falsch, da in \textit{jedem} Schritt abgerundet wird
+		\item Lösung: \begin{itemize}
+			\item Idee: Negation $\bnot$ und Implikation $\bimp$ können selbst bei $x \preceq y$ zu $\Phi_F(x) \npreceq \Phi_F(y)$ führen
+			\item Aber Achtung: In $F$ selbst darf $\bnot$ und $\bimp$ vorkommen, solange es eine zu $F$ logisch äquivalente Formel $G$ gibt, die kein $\bnot$ oder $\bimp$ enthält
+			% \item z.B. $n=1$, $F = \bnot\bnot P_0$, $G = P_0$ $\Rightarrow$ $\Phi_F$ ist monoton
+			\item Außerdem gilt: Wenn $F$ eine Tautologie oder unerfüllbar ist, so ist $\Phi_F$ immer monoton
 		\end{itemize}
-		\pause
-		\emph{Aufgabe 3d}
-		\begin{itemize}
-	    	\item Häufige Lösung: $((k \diamond n) \diamond (k-n-1)) + ((n \diamond k) \diamond (n-k-1))$
-	    	\item Problem: $k-n-1$ und $n-k-1$ können negativ werden, dafür die Operation $\diamond$ nicht definiert
-	    \end{itemize}	
-	\end{frame}
+	\end{itemize}
+
+
+\end{frame}
+
 }
