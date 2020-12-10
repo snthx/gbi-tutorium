@@ -166,7 +166,7 @@
 \end{frame}
 
 \subsection{Zweierkomplement}
-\begin{frame}{Ein asymetrischer Zahlenbereich}
+\begin{frame}{Ein asymmetrischer Zahlenbereich}
 	\[
 	\nK_{\ell} := \{ x\in \nZ\mid -2^{\ell-1} \leq x \leq 2^{\ell-1} -1 \} \;.
 	\]
@@ -189,12 +189,12 @@
 \begin{frame}{Zweierkomplement}
 	\begin{block}{Def.: $\text{Zkpl}_\ell$}
 		Die Zweierkomplementdarstellung $ \text{Zkpl}_\ell: \nK \to \set{\texttt{0}, \texttt{1}}^\ell$ der Länge $\ell$:
-		$$\text{Zkpl}_\ell(x) = \begin{cases} 0 \text{bin}_{l-1}(x) & \text{falls } x \geq 0 \\ 1 \text{bin}_{l-1}(2^{l-1}+x) & \text{falls } x < 0\end{cases}$$
+		$$\text{Zkpl}_\ell(x) = \begin{cases} 0 \text{bin}_{\ell-1}(x) & \text{falls } x \geq 0 \\ 1 \text{bin}_{\ell-1}(2^{\ell-1}+x) & \text{falls } x < 0\end{cases}$$
 		Äquivalent:
-		$$\text{Zkpl}_\ell(x) = \begin{cases} \text{bin}_{l}(x) & \text{, falls } x \geq 0 \\ \text{bin}_{l}(2^{l}+x) & \text{, falls } x < 0\end{cases}$$
+		$$\text{Zkpl}_\ell(x) = \begin{cases} \text{bin}_{\ell}(x) & \text{, falls } x \geq 0 \\ \text{bin}_{\ell}(2^{l}+x) & \text{, falls } x < 0\end{cases}$$
 		wobei
 		\[
-			\text{bin} \colon \nZ_{2^{\ell}} \to \{\texttt{0},\texttt{1}\}^{\ell}, n \mapsto \texttt{0}^{\ell- |\text{Repr}_2(n)|} \text{Repr}_2(n) 
+			\text{bin}_\ell \colon \nZ_{2^{\ell}} \to \{\texttt{0},\texttt{1}\}^{\ell}, n \mapsto \texttt{0}^{\ell- |\text{Repr}_2(n)|} \text{Repr}_2(n) 
 		\]
 	\end{block}
 \end{frame}
@@ -233,8 +233,8 @@
     \begin{exampleblock}{Aufgabe}
     	Es seien die Wörter $u := \texttt{10010}, v := \texttt{01011}$ aus $Z_2^*$.
     	\begin{enumerate}
-     		\item Gib die Dezimaldarstellung an, die $u$ und $v$ als Binärdarstellung haben. Gib die Binärdarstellung von $u+v=:w \in Z_2^*$ an.
-    		\item Gib den Dezimalwert der Zkpl-Interpretation von $u, v, w$ an, also $\text{Num}_{Zkpl}(x)$ für $x\in \set{u,v,w}$.
+     		\item Gib die Dezimaldarstellung an, die $u$ und $v$ als Binärdarstellung haben. Gib ein Wort $w \in Z_2^*$ an, sodass $Num_2(u)+Num_2(v)=Num_2(w)$ gilt.
+    		\item Gib den Dezimalwert der Zkpl-Interpretation (der Länge $5$) von $u, v, w$ an, also $\text{Num}_{Zkpl}(x)$ für $x\in \set{u,v,w}$.
     		\item Ist $w$ die Zweierkomplementdarstellung der Summe der Zahlen mit den Zweierkomplementdarstellungen $u$ und $v$?
   		\end{enumerate}
     \end{exampleblock}
