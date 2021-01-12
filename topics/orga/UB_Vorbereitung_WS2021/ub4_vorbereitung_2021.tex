@@ -1,0 +1,31 @@
+\subsection{Vorbereitung Übungsblatt 4}
+\begin{frame}{ÜB-Tipps: Konkatenationsabschluss}
+    \[
+    	L^\ast = \bigcup_{i = 0}^\infty L^i
+    \]
+
+    Also insbesondere:
+    \begin{itemize}
+    	\item $\set{\varepsilon} = L^0 \subseteq L^\ast$ für beliebige Sprachen $L$!
+    	\item $\emptyset^\ast = \set{}^\ast = \emptyset^0 \cup \bigcup_{i = 1}^\infty \emptyset^i = \set{\varepsilon} \cup \bigcup_{i = 1}^\infty \emptyset^{i-1} \cdot \emptyset = \set{\varepsilon}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{ÜB-Tipps: Induktive Abbildungen auf Wörtern}
+	
+	\begin{itemize}
+		\item Induktiv definierte Abbildungen auf Wörtern verwenden oft Konkatenation in Abbildungsvorschrift
+		\item z.B. Funktion $inv : A^\ast \to A^\ast$ auf bel. Alphabet $A$, die Wörter \enquote{umdreht}:
+	\end{itemize}
+	\begin{align*}
+		inv(\varepsilon) &= \varepsilon \\
+		\forall w \in A^\ast \forall x \in A: inv(wx) &= x \cdot inv(w)
+	\end{align*}
+	\begin{itemize}
+		\item Achten auf: Genaue Definition der Operanden in der Konkatenation \begin{itemize}
+			\item Hier ein Wort $w \in A^\ast$ und ein letztes Zeichen $x \in A$
+			\item Auf Übungsblatt binäre Operation auf immer zwei solcher Wörter
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}

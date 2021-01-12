@@ -1,0 +1,60 @@
+\subsection{Aufgaben}
+
+\begin{frame}{Aufgaben}
+	\begin{exampleblock}{Aufgabe}
+		\small Seien $A,B,C$ AL-Variablen. Bestimme für jede der folgenden AL-Formeln, ob sie unerfüllbar, erfüllbar und/oder eine Tautologie sind. Falls die Formel $F_i$ ... \begin{itemize}
+			\item ... unerfüllbar oder eine Tautologie ist, begründe dies (Wahrheitstabelle, Umformung zu bekannter unerf. Formel/Tautologie, Ableitung...)
+			\item ... erfüllbar, aber keine Tautologie ist, gib zwei Interpretationen $I$ und $I'$, sodass $val_I(F_i)=\mathbf{w}$ und $val_{I'}(F_i)=\mathbf{f}$
+		\end{itemize}
+
+		\begin{enumerate}
+			\item $F_1 = A \bgdw \bnot A$
+			\item $F_2 = \bnot (A \bund B) \bgdw (\bnot A \boder \bnot B)$
+			\item $F_3 = A \bimp (A \bund B)$
+			\item $F_4 = (A \bund B) \bgdw (\bnot A \boder \bnot B)$
+			\item $F_5 = (A \boder B) \bimp (A \boder C)$
+		\end{enumerate}
+	\end{exampleblock}
+
+\end{frame}
+	
+\begin{frame}{Aufgaben}
+
+	\begin{block}{Lösung}
+		\begin{enumerate}
+			\item $F_1$ ist unerfüllbar, denn $A \bgdw \bnot A \equiv (A \bimp \bnot A) \bund (\bnot A \bimp A) \equiv (\bnot A \boder \bnot A) \bund (\bnot \bnot A \boder A) \equiv \bnot A \bund A$, was bekanntermaßen unerfüllbar ist
+			\item $F_2$ ist eine Tautologie
+			\item $F_3$ ist erfüllbar, aber keine Tautologie z.B. $val_I(F_3)=\mathbf{w}$ für $I(A)=I(B)=\mathbf{w}$ und $val_{I'}(F_3)=\mathbf{f}$ für $I'(A)=\mathbf{w}$ und $I'(B)=\mathbf{f}$
+			\item $F_4$ ist unerfüllbar. Nach $F_2$ gilt $F_4 = (A \bund B) \bgdw (\bnot A \boder \bnot B) \equiv (A \bund B) \bgdw \bnot (A \bund B)$. Substituiere $G := A \bund B$, womit $F_4 \equiv G \bgdw \bnot G$. Nach $F_1$ ist dies unerfüllbar.
+			\item $F_5$ ist erfüllbar, aber keine Tautologie z.B. $val_I(F_5)=\mathbf{w}$ für $I(A)=I(B)=\mathbf{f}$ und $val_{I'}(F_5)=\mathbf{f}$ für $I'(A)=I'(C)=\mathbf{f}$ und $I'(B) = \mathbf{w}$
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Aufgaben}
+
+	\begin{block}{Deduktionstheorem}
+		Für jedes $G \in \ForAL$ und jedes $H \in \ForAL$ gilt $G \vdash H$ gdw $\vdash (G \bimp H)$ gilt.
+	\end{block}
+
+	\begin{exampleblock}{Aufgabe}
+		Seien $A,B \in \ForAL$. Zeige, dass $B \models A \bimp (A \bund B)$ gilt. Verwende das Deduktionstheorem.
+	\end{exampleblock}
+
+\end{frame}
+	
+\begin{frame}{Aufgaben}
+
+	\begin{block}{Lösung}
+		Es gilt $B \models A \bimp (A \bund B)$ gdw $B \vdash A \bimp (A \bund B)$. Nach dem Deduktionstheorem ist dies äquivalent zu $\vdash (B \bimp (A \bimp (A \bund B)))$. Dies gilt gdw $\models (B \bimp (A \bimp (A \bund B)))$. Zeige also, dass $B \bimp (A \bimp (A \bund B))$ allgemeingültig ist: \begin{align*}
+			& B \bimp (A \bimp (A \bund B)) \\
+			\equiv & \bnot B \boder (\bnot A \boder (A \bund B)) \\
+			\equiv & (\bnot B \boder \bnot A) \boder (A \bund B) \\
+			\equiv & \bnot (B \bund A) \boder (A \bund B) \\
+			& (\text{Substituiere } G := A \bund B)\\
+			\equiv & \bnot G \boder G
+		\end{align*}
+
+		Dies ist bekanntermaßen eine Tautologie.
+	\end{block}
+\end{frame}

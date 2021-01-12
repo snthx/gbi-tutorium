@@ -16,4 +16,4 @@
 	del -f .\*.zip
 	del -f .\*~
 
-	start .\%SOURCE%.pdf
+	::start .\%SOURCE%.pdf

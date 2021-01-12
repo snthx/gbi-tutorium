@@ -37,12 +37,33 @@
 	\end{alertblock}
 \end{frame}
 
-%\begin{frame}{Formale Sprachen}
-%    Tipp für's ÜB:
-%    \[
-%    	L^+ = L \cdot L^*
-%    \]
-%\end{frame}
+\begin{frame}{Formale Sprachen}
+	
+	\textbf{Baukasten, aus dem wir Sprachen bauen können:} $\cdot, \cup, \ast, +$\\[.5em]
+	
+	\small\begin{tabular}{l|l|c}
+	Was man will & Wie man es formuliert & Beispiele\\
+	\hline\hline
+	Festes Teilwort/Zeichen & Konstante Menge & $\set{a,b}; \set{aa,baa,aab}$ \\
+	\hline
+	\multirow{2}{*}{\makecell[l]{Wörter einer Teilsprache\\bel. oft wiederholen}} & Auch null Mal $\Rightarrow$ $\ast$ & $\set{a}^\ast;\set{ab,ba}^\ast$\\
+	\cline{2-3}
+	& Mind. ein Mal $\Rightarrow$ $+$ & $\set{a}^+;\set{ab,ba}^+$\\
+	\hline
+	\makecell[l]{Wörter aus zwei Teilsprachen\\aneinander hängen} & Produkt & $L_1 \cdot L_2$; $\set{b}^\ast \cdot \set{a}^+$ \\
+	\hline
+	\makecell[l]{Wörter aus einer Teilsprachen\\oder einer anderen} & Vereinigung & $L_1 \cup L_2$; $\set{b}^\ast \cup \set{a}^+$
+	\end{tabular}
+
+
+\end{frame}
+
+% \begin{frame}{Formale Sprachen}
+%     Tipp für's ÜB:
+%     \[
+%     	L^+ = L \cdot L^*
+%     \]
+% \end{frame}
 
 \begin{frame}{Formale Sprachen}
 	\begin{exampleblock}{Aufgabe}
@@ -58,7 +79,7 @@
 		\begin{enumerate}
 			\item $L_1 = \set{a,b}^\ast \cdot \set{a} \cdot \set{a,b}^\ast \cdot \set{a} \cdot \set{a,b}^\ast \cdot \set{a} \cdot \set{a,b}^\ast$
 			\item $L_2 = \set{a}^\ast \cdot \set{b, \varepsilon} \cdot (\set{a}^+ \cdot \set{b})^\ast \cdot \{ a \}^*$ 
-			\item \begin{align*}L_3 = & \set{\varepsilon, a, ab, ba} \cup \set{aa, aab, aba, baa} \\ & \cup (\set{a,b}^\ast \cdot \set{b} \cdot \set{a,b}^\ast \cdot \set{b} \cdot \set{a,b}^\ast) \end{align*}
+			\item \begin{align*}L_3 = & \set{\varepsilon,b} \cup \set{a, ab, ba} \cup \set{aa, aab, aba, baa} \\ & \cup (\set{a,b}^\ast \cdot \set{b} \cdot \set{a,b}^\ast \cdot \set{b} \cdot \set{a,b}^\ast) \end{align*}
 		\end{enumerate}
 	\end{block}
 \end{frame}

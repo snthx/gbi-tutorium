@@ -1,0 +1,64 @@
+\Moritz{
+	
+\begin{frame}{Zum ersten Übungsblatt}
+	
+	\textbf{Aufg. 1.1:}
+	\begin{itemize}
+		\item Denkweise bei Beweis von Implikation $A \Rightarrow B$ \\(\enquote{Es gilt A, \textbf{wenn} B gilt}): \begin{itemize}
+			\item Nehme an, dass $A$ gilt
+			\item Dann folgere $B$
+		\end{itemize}
+		\item Denkweise bei Beweis von Äquivalenz $A \Leftrightarrow B$ \\(\enquote{Es gilt A \textbf{genau dann, wenn} B gilt}): \begin{itemize}
+			\item Zeige $A \Rightarrow B$ und
+			\item Zeige $B \Rightarrow A$
+		\end{itemize}
+		\item Immer nur die Informationen verwenden, die bekannt sind aus \begin{itemize}
+			\item Aufgabenstellung
+			\item Annahmen (z.B. bei Implikation)
+		\end{itemize}
+		\item Speziell durften hier die Mengen $A,B,C$ nicht festgelegt werden, da die Aufgabenstellung das nicht hergibt
+		\item Relation auf Mengen gegeben, z.B. $B \subseteq C$ in Annahme $\Rightarrow$ Informationen über \textit{Elemente der Mengen} bekannt!
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Zum ersten Übungsblatt}
+
+	\textbf{Aufg. 1.2}: Wie man quantifizierte Aussagen beweist oder widerlegt:
+	\begin{itemize}
+		\item Beweise: A(x) gilt für alle x: \begin{itemize}
+			\item Option 1: Zeige, dass A(x) für ein beliebiges x gilt
+			\item Option 2: Gegenannahme: Nehme an, dass ein x existiert, für das A(x) nicht gilt. Führe das zum Widerspruch (reductio ad absurdum)
+		\end{itemize}
+		\pause
+		\item Beweise: Es existiert ein x, für das A(x) gilt: \begin{itemize}
+			\item Gesucht: Beispiel x, das existiert und für welches A(x) gilt!
+			\item Beispiel kann explizit sein, oder abstrakt mit bestimmten Eigenschaften
+		\end{itemize}
+		\pause
+		\item Widerlege: A(x) gilt für alle x: \begin{itemize}
+			\item Äquivalent: Beweise: Es gibt x, für das A(x) nicht gilt $\Rightarrow$ Gegenbeispiel!
+		\end{itemize}
+		\item Widerlege: Es existiert ein x, für das A(x) gilt: \begin{itemize}
+			\item Äquivalent: Beweise: Für kein x gilt A(x) $\Leftrightarrow$ Für alle x gilt $\not$A(x)
+		\end{itemize}
+	\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Zum ersten Übungsblatt}
+
+	\textbf{Aufg. 1.2 (c)}:\\
+	\enquote{Gilt $A \times B = B \times C$ für Mengen $A$,$B$ und $C$, so muss dann $A=B=C$ sein.}
+	\begin{itemize}
+		\item Annahme: Es gelte $A \times B = B \times C$
+		\item Korrekte Folgerung: $\forall (a,b_1) \in A \times B: \exists (b_2,c): \; a=b_1 \text{ und } b_2=c$
+		\pause
+		\item Inkorrekte (!) Folgerung: $a \in B$ und $b_1 \in C$
+		\item Falle: Für alle $x\in M$ gilt A(x), heißt nicht, dass es ein $x$ geben muss!
+	\end{itemize}
+	
+\end{frame}
+
+}
