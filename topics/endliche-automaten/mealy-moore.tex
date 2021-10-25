@@ -603,7 +603,7 @@
 
 	\centering \begin{tikzpicture}[shorten >=1pt,node distance=2cm,auto,initial text=,->,>=stealth]
    		\node[state,initial,accepting] (s_0) {$s_{0}$};
-  		\node[state] (s_1) [right of= s_0] {$s_{1}$};
+  		\node[state,accepting] (s_1) [right of= s_0] {$s_{1}$};
   		\node[state] (s_2) [right of= s_1] {$s_{2}$};
     	\draw[->] (s_0) to [bend left] node {$b$} (s_1);
     	\draw[->] (s_1) to [bend left] node {$a$} (s_0);

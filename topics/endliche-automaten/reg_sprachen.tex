@@ -167,9 +167,12 @@
         			child { node {$b$}  edge from parent
           			% [level 2/.style={sibling distance=15mm}]
         			}
-        			child { node {$\emptyset$}  edge from parent
-          			% [level 2/.style={sibling distance=15mm}]
-        			}
+              child { node {$*$}  edge from parent
+                % [level 2/.style={sibling distance=15mm}]
+                child { node {$\emptyset$}  edge from parent
+                  % [level 2/.style={sibling distance=15mm}]
+                }
+              }
       			}
       			child {node {$a$} edge from parent}
     			}
